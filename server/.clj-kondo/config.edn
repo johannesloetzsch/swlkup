@@ -1,0 +1,2 @@
+{:lint-as {specialist-server.type/defscalar clojure.core/declare
+           #_#_orchestra.core/defn-spec clojure.core/declare}}
