@@ -4,6 +4,7 @@
             [ring.middleware.resource :refer [wrap-resource]]
             [ring.middleware.webjars :refer [wrap-webjars]]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]
+            [ring.middleware.cors :refer [wrap-cors]]
             [lib.graphql.middleware :refer [wrap-graphql-error]]
             [ring.util.response :refer [response]]
             [swlkup.resolver.core :refer [graphql]]))
@@ -22,4 +23,7 @@
       (wrap-resource "public")
 
       (wrap-json-response)
-      (wrap-json-body {:keywords? true :bigdecimals? true})))
+      (wrap-json-body {:keywords? true :bigdecimals? true})
+      
+      (wrap-cors :access-control-allow-origin [#"http://localhost:3000"]
+                 :access-control-allow-methods [:get :put :post :delete])))
