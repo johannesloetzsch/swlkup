@@ -42,10 +42,10 @@
                                            :radius_kilometer 10}
                                 :text "todo"
                                 :ngos #{:seawatch}}]
-                 :languages [{:id :de :name "Deutsch"
-                              :flag_url "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg"}
-                             {:id :en :name "English"
+                 :languages [{:id :en :name "English"
                               :flag_url "https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg"}
+                             {:id :de :name "Deutsch"
+                              :flag_url "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg"}
                              {:id :it :name "Italiano"
                               :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg"}
                              {:id :es :name "Español"
