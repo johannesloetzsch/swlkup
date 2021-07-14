@@ -19,4 +19,10 @@ export const lookup = gql`
         text
       }
     }
+
+    languages {
+      id
+      name
+      flag_url
+    }
   }`

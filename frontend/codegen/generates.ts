@@ -36,12 +36,22 @@ export type QueryType = {
   __typename?: 'QueryType';
   /** All supervisors visible to the ngo assiged to the token */
   lookup: Lookup;
+  /** All languages */
+  languages: Array<Languages>;
 };
 
 
 /** The type that query operations will be rooted at. */
 export type QueryTypeLookupArgs = {
   token: Scalars['String'];
+};
+
+/** All languages */
+export type Languages = {
+  __typename?: 'languages';
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  flag_url?: Maybe<Scalars['String']>;
 };
 
 /** All supervisors visible to the ngo assiged to the token */
@@ -99,7 +109,10 @@ export type LookupQuery = (
         & Pick<Contacts, 'phone' | 'website'>
       ) }
     )> }
-  ) }
+  ), languages: Array<(
+    { __typename?: 'languages' }
+    & Pick<Languages, 'id' | 'name' | 'flag_url'>
+  )> }
 );
 
 
@@ -121,6 +134,11 @@ export const LookupDocument = `
       email
       text
     }
+  }
+  languages {
+    id
+    name
+    flag_url
   }
 }
     `;

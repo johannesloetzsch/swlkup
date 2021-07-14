@@ -12,7 +12,7 @@ export default function Token() {
   } else if(isFetching) {
     return "loading…"
   } else if(data) {
-    return ( <LookupResult lookup={data.lookup} /> )
+    return ( <LookupResult data={data} /> )
   } else {
     return ( <p>Sorry, something went wrong.<br/> Maybe there is an <b><i>typing error in the Token</i></b>?<br/> Please try again.</p> )
   }

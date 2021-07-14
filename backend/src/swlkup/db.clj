@@ -28,7 +28,7 @@
                                 :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_stephanie.png"
                                 :login :todo
                                 :email "maria@mm.de"
-                                :languages [:de :en :it :es :fr :ar]
+                                :languages [#_:de #_:en :it :es :fr :ar]
                                 :offers #{:counselling :counselling_telephone :crisis_intervention
                                           :mediation :moderation :supervision :workshops}
                                 :offers_online true
@@ -42,9 +42,18 @@
                                            :radius_kilometer 10}
                                 :text "todo"
                                 :ngos #{:seawatch}}]
-                 :languages [{:id :de
-                              :name "Deutsch"
-                              :flag_url "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/180px-Flag_of_Germany.svg.png"}]
+                 :languages [{:id :de :name "Deutsch"
+                              :flag_url "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg"}
+                             {:id :en :name "English"
+                              :flag_url "https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg"}
+                             {:id :it :name "Italiano"
+                              :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg"}
+                             {:id :es :name "Español"
+                              :flag_url "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"}
+                             {:id :fr :name "Français"
+                              :flag_url "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg"}
+                             {:id :ar :name "العربية"
+                              :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/0e/Flag_of_the_Arabic_language.svg"}]
                  :offers [{:id :counselling
                            :target :individual
                            :desc "sessions for individuals (maybe this could also be framed as 'counselling with individuals'"}

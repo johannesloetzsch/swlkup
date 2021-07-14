@@ -1,14 +1,25 @@
 import styles from '../styles/Supervisor.module.css'
-import { Lookup, Supervisors } from '../codegen/generates'
+import { Languages, LookupQuery, Supervisors } from '../codegen/generates'
 
-function Supervisor({supervisor}: {supervisor: Supervisors}) {
+function LanguageChooser({languages}: {languages: Languages[]}) {
+  return (
+    <div>
+      { languages.map( lang => <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px", paddingLeft: "5px"}}/> ) }
+    </div>
+  )
+}
+
+function Supervisor({supervisor, languages}: {supervisor: Supervisors, languages: Languages[]}) {
   return (
     <div className={styles.card}>
       <table style={{width: "100%"}}>
         <tr>
 	  <td><h2>{supervisor.name_full}</h2></td>
-          <td style={{textAlign: "right"}}>
-	    {supervisor.languages && supervisor.languages.map( (lang) => (<span key={lang}>{lang + " "}</span>) )}
+          <td style={{textAlign: "right", verticalAlign: "top"}}>
+	    {supervisor.languages && supervisor.languages.map( lang_id =>
+	      { const lang = languages[languages.findIndex( l => l.id === lang_id )]
+                return <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px", paddingLeft: "5px"}}/>
+	      })}
 	  </td>
 	</tr>
         <tr>
@@ -28,13 +39,15 @@ function Supervisor({supervisor}: {supervisor: Supervisors}) {
   )
 }
 
-export function LookupResult({lookup}: {lookup: Lookup}) {
+export function LookupResult({data}: {data: LookupQuery}) {
   return (
     <div>
-      <p> The Token was created by {lookup.ngo.name}.</p>
-      <p> {lookup.supervisors.length} Supervisors are available:</p>
+      {/* <LanguageChooser languages={data.languages}/> */}
+
+      <p> The Token was created by {data.lookup.ngo.name}.</p>
+      <p> {data.lookup.supervisors.length} Supervisors are available:</p>
       <div className={styles.grid}>
-        {lookup.supervisors.map( (supervisor) => <Supervisor supervisor={supervisor} key={supervisor.email} /> )}
+        {data.lookup.supervisors.map( (supervisor) => <Supervisor supervisor={supervisor} languages={data.languages} key={supervisor.email} /> )}
       </div>
     </div>
   )
