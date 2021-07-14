@@ -56,26 +56,28 @@
                               :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/0e/Flag_of_the_Arabic_language.svg"}]
                  :offers [{:id :counselling
                            :target :individual
-                           :desc "sessions for individuals (maybe this could also be framed as 'counselling with individuals'"}
-                          {:id :counselling_telephone
-                           :target :individual}
+                           :desc "Counselling for individuals"}
                           {:id :crisis_intervention
-                           :target :individual}
-
+                           :target :individual
+                           :desc "Crisis intervention for individuals"}
                           {:id :briefing
                            :target :group
-                           :desc "psychological briefing & debriefing of crews"}
+                           :desc "Psychological briefing & debriefing of crews"}
                           {:id :moderation
-                           :target :group}
+                           :target :group
+                           :desc "Moderation"}
                           {:id :mediation
-                           :target :group}
+                           :target :group
+                           :desc "Mediation"}
                           {:id :supervision
-                           :target :group}
+                           :target :group
+                           :desc "Supervision"}
                           {:id :workshops
-                           :target :group}
+                           :target :group
+                           :desc "Workshops"}
 
-                          {:id :coaching}
-                          {:id :translation}
+                          #_{:id :coaching}
+                          #_{:id :translation}
                          ]})
 
 (def db example-db)

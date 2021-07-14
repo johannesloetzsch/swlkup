@@ -25,4 +25,10 @@ export const lookup = gql`
       name
       flag_url
     }
+
+    offers {
+      id
+      target
+      desc
+    }
   }`

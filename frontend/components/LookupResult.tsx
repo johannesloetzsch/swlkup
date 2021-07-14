@@ -1,37 +1,64 @@
 import styles from '../styles/Supervisor.module.css'
-import { Languages, LookupQuery, Supervisors } from '../codegen/generates'
+import { Languages, LookupQuery, Supervisors, Offers } from '../codegen/generates'
 import create from 'zustand'
 
-type Options = undefined | any //Map<string, boolean>
+type Options = any //Map<string, boolean>
 
-function keysWhereVal(o:Options) {
-  return !o ? undefined : Object.keys(o).filter(k=>o[k])
+function keysWhereVal(o:Options, initKeys: string[]) {
+  if(!o) return initKeys
+  const result = Object.keys(o).filter(k=>o[k])
+  return result.length === 0
+         ? initKeys
+	 : result
 }
 
 interface FilterState {
   languages: Options,
   setLanguage: (e:Event) => void,
-  getLanguages: (all: string[]) => Options
+  getLanguages: (init: string[]) => Options,
+  targets: Options,
+  setTarget: (e:Event) => void,
+  getTargets: (init: string[]) => Options,
+  offers: Options,
+  setOffer: (e:Event) => void,
+  getOffers: (init: string[]) => Options,
 }
 
 const useFilterStore = create<FilterState>((set, get) => ({
-  languages: undefined,
+  languages: {},
   setLanguage: e => set( orig => { const target: HTMLInputElement = e.target as any
-                                   let languages = orig.languages || {}
+                                   let languages = orig.languages
+				   console.log(target.checked)
                                    languages[target.value] = target.checked
                                    return {languages} as FilterState }),
-  getLanguages: (all) => keysWhereVal( get().languages ) || all
+  getLanguages: (init) => keysWhereVal( get().languages, init ),
+  targets: {},
+  setTarget: e => set( orig => { const target: HTMLInputElement = e.target as any
+                                 let targets = orig.targets
+                                 targets[target.value] = target.checked
+                                 return {targets, offers: {}} as FilterState }),
+  getTargets: (init) => keysWhereVal( get().targets, init ),
+  offers: {},
+  setOffer: e => set( orig => { const target: HTMLInputElement = e.target as any
+                                 let offers = orig.offers
+                                 offers[target.value] = target.checked
+                                 return {offers} as FilterState }),
+  getOffers: (init) => keysWhereVal( get().offers, init ),
 }))
 
-function FilterForm({languages}: {languages: Languages[]}) {
-  const {setLanguage} = useFilterStore()
+function FilterForm({languages, offers, selections}:
+		    {languages: Languages[], offers: Offers[], selections: any}) {
+  const {setLanguage, getLanguages, setTarget, getTargets, setOffer, getOffers} = useFilterStore()
+  const visibleOffers = offers.filter(o => selections.selectedTargets.includes( o.target ))
   return (
     <form>
       <fieldset>
         <legend>Only show supervisors speaking one of this languages</legend>
         { languages.map( lang => (
           <span key={lang.id}>
-            <input type="checkbox" name="language" value={lang.id} id={lang.id} onClick={setLanguage} />
+            <input type="checkbox" name="language" value={lang.id} id={lang.id} onChange={setLanguage}
+	           ref={el => el && (el.indeterminate = getLanguages([]).length === 0
+				 && selections.selectedLanguages.includes(lang.id))} />
             <label htmlFor={lang.id}>
               <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
               {lang.name}
@@ -41,10 +68,25 @@ function FilterForm({languages}: {languages: Languages[]}) {
       </fieldset><br/>
       <fieldset>
         <legend>What kind of offers are you looking for?</legend>
-        <input type="checkbox" name="target" value="individual" id="individual" />
-        <label htmlFor="individual">Individual</label>
-        <input type="checkbox" name="target" value="group" id="group" />
-        <label htmlFor="individual">Group</label>
+	{ [{"id": "individual", "label": "Individual"}, {"id": "group", "label": "Group"}].map( target => (
+	    <span key={target.id}>
+              <input type="checkbox" name="target" value={target.id} id={target.id} onChange={setTarget}
+                     ref={el => el && (el.indeterminate = getTargets([]).length === 0
+                                   && selections.selectedTargets.includes(target.id))} />
+              <label htmlFor={target.id}>{target.label}</label>
+	    </span>
+	) ) }
+        <hr/>
+        { visibleOffers.map( offer => (
+	  <span key={offer.id}>
+	    <input type="checkbox" name="offer" value={offer.id} id={offer.id} onChange={setOffer}
+	           ref={el => el && (el.indeterminate = getOffers([]).length === 0
+				 && selections.selectedOffers.includes(offer.id))} />
+	    <label htmlFor={offer.id}>
+	      {offer.desc}
+	    </label><br/>
+          </span>
+	) ) }
       </fieldset><br/>
       <fieldset>
         <legend>How would you like to get support?</legend>
@@ -57,7 +99,8 @@ function FilterForm({languages}: {languages: Languages[]}) {
   )
 }
 
-function Supervisor({supervisor, languages}: {supervisor: Supervisors, languages: Languages[]}) {
+function Supervisor({supervisor, languages}:
+		    {supervisor: Supervisors, languages: Languages[]}) {
   return (
     <div className={styles.card}>
       <table style={{width: "100%"}}>
@@ -82,8 +125,8 @@ function Supervisor({supervisor, languages}: {supervisor: Supervisors, languages
       {/* <p>{supervisor.offers.join(", ")}</p> */}
       <p>
         <i>
-          <span style={{display: "inline-block"}}>{supervisor.contacts.website} &nbsp;</span>
-          <span style={{display: "inline-block"}}>{supervisor.email} &nbsp;</span>
+          <span style={{display: "inline-block"}}>{supervisor.contacts.website} &nbsp;</span><br/>
+          <span style={{display: "inline-block"}}>{supervisor.email} &nbsp;</span><br/>
           <span style={{display: "inline-block"}}>{supervisor.contacts.phone}</span>
         </i>
       </p>
@@ -92,16 +135,20 @@ function Supervisor({supervisor, languages}: {supervisor: Supervisors, languages
 }
 
 export function LookupResult({data}: {data: LookupQuery}) {
-  const {getLanguages} = useFilterStore()
-  const visibleLanguages = getLanguages(data.languages.map(lang => lang.id))
+  const {getLanguages, getTargets, getOffers} = useFilterStore()
+  const selectedLanguages = getLanguages(data.languages.map(lang => lang.id))
+  const selectedTargets = getTargets(["individual"])
+  const selectedOffers = getOffers(data.offers.map(offer => offer.id))
   const filteredSupervisors = data.lookup.supervisors
-                             .filter(s => s.languages.some( (supervisorLang: string) => visibleLanguages.includes(supervisorLang) ))
+                             .filter(s => s.languages.some( (supervisorLang: string) => selectedLanguages.includes(supervisorLang) ))
+			     .filter(s => s.offers.some( (supervisorOffer: string) => selectedOffers.includes(supervisorOffer) )) 
   return (
     <>
       <div>
         <p> The Token was created by {data.lookup.ngo.name}.</p>
         <p> {data.lookup.supervisors.length} Supervisors are available. You can use the following options to filter them:</p><br/>
-        <FilterForm languages={data.languages}/>
+        <FilterForm languages={data.languages} offers={data.offers}
+	            selections={{selectedLanguages, selectedTargets, selectedOffers}}/>
         <p> {filteredSupervisors.length} Supervisors match this filters: </p>
       </div>
 

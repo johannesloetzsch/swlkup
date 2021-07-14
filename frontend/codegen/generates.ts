@@ -38,6 +38,8 @@ export type QueryType = {
   lookup: Lookup;
   /** All languages */
   languages: Array<Languages>;
+  /** All offers */
+  offers: Array<Offers>;
 };
 
 
@@ -67,6 +69,14 @@ export type Lookup = {
 export type Ngo = {
   __typename?: 'ngo';
   name?: Maybe<Scalars['String']>;
+};
+
+/** All offers */
+export type Offers = {
+  __typename?: 'offers';
+  id?: Maybe<Scalars['String']>;
+  target?: Maybe<Scalars['String']>;
+  desc?: Maybe<Scalars['String']>;
 };
 
 /** All supervisor visible with the used credentials */
@@ -112,6 +122,9 @@ export type LookupQuery = (
   ), languages: Array<(
     { __typename?: 'languages' }
     & Pick<Languages, 'id' | 'name' | 'flag_url'>
+  )>, offers: Array<(
+    { __typename?: 'offers' }
+    & Pick<Offers, 'id' | 'target' | 'desc'>
   )> }
 );
 
@@ -139,6 +152,11 @@ export const LookupDocument = `
     id
     name
     flag_url
+  }
+  offers {
+    id
+    target
+    desc
   }
 }
     `;

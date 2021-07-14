@@ -7,4 +7,4 @@
                   (get-in [:data :__schema :types]))
               (map :name)
               sort)
-         '("Boolean" "Contacts" "Float" "ID" "Int" "Location" "Long" "QueryType" "String" "lookup" "ngo" "supervisors"))))
+         '("Boolean" "Contacts" "Float" "ID" "Int" "Location" "Long" "QueryType" "String" "languages" "lookup" "ngo" "offers" "supervisors"))))
