@@ -23,7 +23,7 @@
                                            :lat 23.42
                                            :lon 52.34
                                            :radius_kilometer 10}
-                                :text "irgend etwas über mich ;)"}
+                                :text "Irgend etwas über mich ;)"}
                                {:name_full "Maria Musterfrau"
                                 :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_stephanie.png"
                                 :login :todo
@@ -40,7 +40,7 @@
                                            :lon 42.23
                                            :lat 13.37
                                            :radius_kilometer 10}
-                                :text "todo"
+                                :text "Here I should write something about myself, my specialization and my motivation for supporting SAR NGOs…"
                                 :ngos #{:seawatch}}]
                  :languages [{:id :en :name "English"
                               :flag_url "https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg"}
