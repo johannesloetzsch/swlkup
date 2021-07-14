@@ -15,6 +15,21 @@ export type Scalars = {
   Long: any;
 };
 
+export type Contacts = {
+  __typename?: 'Contacts';
+  phone?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
+};
+
+export type Location = {
+  __typename?: 'Location';
+  zip?: Maybe<Scalars['String']>;
+  lon?: Maybe<Scalars['String']>;
+  lat?: Maybe<Scalars['String']>;
+  radius_kilometer?: Maybe<Scalars['String']>;
+  address_string?: Maybe<Scalars['String']>;
+};
+
 
 /** The type that query operations will be rooted at. */
 export type QueryType = {
@@ -52,6 +67,14 @@ export type Supervisors = {
   name_full?: Maybe<Scalars['String']>;
   languages?: Maybe<Scalars['String']>;
   offers?: Maybe<Scalars['String']>;
+  /** Self descriptive. */
+  offers_online: Scalars['Boolean'];
+  /** Self descriptive. */
+  offers_offline: Scalars['Boolean'];
+  /** Self descriptive. */
+  contacts: Contacts;
+  /** Self descriptive. */
+  location: Location;
   photo?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
 };
@@ -70,7 +93,11 @@ export type LookupQuery = (
       & Pick<Ngo, 'name'>
     ), supervisors: Array<(
       { __typename?: 'supervisors' }
-      & Pick<Supervisors, 'name_full' | 'email' | 'text'>
+      & Pick<Supervisors, 'name_full' | 'photo' | 'languages' | 'offers' | 'email' | 'text'>
+      & { contacts: (
+        { __typename?: 'Contacts' }
+        & Pick<Contacts, 'phone' | 'website'>
+      ) }
     )> }
   ) }
 );
@@ -84,6 +111,13 @@ export const LookupDocument = `
     }
     supervisors {
       name_full
+      photo
+      languages
+      offers
+      contacts {
+        phone
+        website
+      }
       email
       text
     }

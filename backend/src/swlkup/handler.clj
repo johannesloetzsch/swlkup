@@ -12,7 +12,8 @@
 (defroutes app-routes
   (GET "/" [] "Try the /graphql endpoint :)")
   (POST "/graphql" req
-    (-> (response (graphql (:body req)))))
+    (-> (response (graphql (-> (:body req)
+                               #_(assoc-in [:context :validate-output?] false))))))
   (route/not-found "Not Found"))
 
 (def app

@@ -4,7 +4,9 @@
 
 (defn wrap-graphql-error
  "An alternative to ring.middleware.stacktrace/wrap-stacktrace, but more compliant with graphql.
-  The response is a json datastructure with an `errors` key."
+  The response is a json datastructure with an `errors` key.
+ 
+  specialist-server.core only catches ExceptionInfo"
 
   [handler]
   (fn [request]
@@ -13,4 +15,4 @@
       (catch Throwable e
         (-> (response {:errors [{:message (ex-message e)
                                  :trace (with-out-str (print-stack-trace e))}]})
-            (status 500))))))
+            (status 200))))))
