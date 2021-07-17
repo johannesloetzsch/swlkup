@@ -14,8 +14,8 @@
                                 :email "praxis@max.mueller.de"
                                 :languages [:de :en]
                                 :offers #{:counselling :counselling_telephone :crisis_intervention}
-                                :offers_online true
-                                :offers_offline true
+                                ;:offers_online true
+                                ;:offers_offline true
                                 :contacts {:phone "0351 1234 5678"
                                            :website "https://max.mueller.de"}
                                 :location {:zip "01022"
@@ -31,8 +31,8 @@
                                 :languages [#_:de #_:en :it :es :fr :ar]
                                 :offers #{:counselling :counselling_telephone :crisis_intervention
                                           :mediation :moderation :supervision :workshops}
-                                :offers_online true
-                                :offers_offline true
+                                ;:offers_online true
+                                ;:offers_offline true
                                 :contacts {:phone "+49 123 4567 8901"
                                            :website "https://mm.de"}
                                 :location {:zip "01010"

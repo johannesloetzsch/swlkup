@@ -17,4 +17,9 @@ a {
 
 fieldset {
   padding: 15px;
+  border: solid 1px lightgray;
+}
+
+hr {
+  border: solid 0.5px lightgray;
 }

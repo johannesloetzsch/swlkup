@@ -2,7 +2,7 @@
 
 The core of the server is an graphql-api based on [specialist](https://github.com/ajk/specialist-server).
 
-## Running
+## Running development server
 
 To start the server and send queries, run:
 
@@ -16,4 +16,13 @@ curl -H 'Content-type: application/json' -d '{"query":"{ lookup(token: \"T0p53cr
 
 ```bash
 lein test
+```
+
+## Production build
+
+```
+lein ring uberjar
+
+
+java -jar target/swlkup-*standalone.jar
 ```

@@ -51,9 +51,12 @@ export type QueryTypeLookupArgs = {
 /** All languages */
 export type Languages = {
   __typename?: 'languages';
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  flag_url?: Maybe<Scalars['String']>;
+  /** Self descriptive. */
+  id: Scalars['String'];
+  /** Self descriptive. */
+  name: Scalars['String'];
+  /** Self descriptive. */
+  flag_url: Scalars['String'];
 };
 
 /** All supervisors visible to the ngo assiged to the token */
@@ -74,9 +77,12 @@ export type Ngo = {
 /** All offers */
 export type Offers = {
   __typename?: 'offers';
-  id?: Maybe<Scalars['String']>;
-  target?: Maybe<Scalars['String']>;
-  desc?: Maybe<Scalars['String']>;
+  /** Self descriptive. */
+  id: Scalars['String'];
+  /** Self descriptive. */
+  target: Scalars['String'];
+  /** Self descriptive. */
+  desc: Scalars['String'];
 };
 
 /** All supervisor visible with the used credentials */
@@ -85,12 +91,8 @@ export type Supervisors = {
   email?: Maybe<Scalars['String']>;
   login?: Maybe<Scalars['String']>;
   name_full?: Maybe<Scalars['String']>;
-  languages?: Maybe<Scalars['String']>;
-  offers?: Maybe<Scalars['String']>;
-  /** Self descriptive. */
-  offers_online: Scalars['Boolean'];
-  /** Self descriptive. */
-  offers_offline: Scalars['Boolean'];
+  languages: Array<Scalars['String']>;
+  offers: Array<Scalars['String']>;
   /** Self descriptive. */
   contacts: Contacts;
   /** Self descriptive. */

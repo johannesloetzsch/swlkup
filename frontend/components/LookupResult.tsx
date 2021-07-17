@@ -14,45 +14,46 @@ function keysWhereVal(o:Options, initKeys: string[]) {
 
 interface FilterState {
   languages: Options,
-  setLanguage: (e:Event) => void,
+  setLanguage: (e:React.ChangeEvent<HTMLInputElement>) => void,
   getLanguages: (init: string[]) => Options,
+
   targets: Options,
-  setTarget: (e:Event) => void,
+  setTarget: (e:React.ChangeEvent<HTMLInputElement>) => void,
   getTargets: (init: string[]) => Options,
+
   offers: Options,
-  setOffer: (e:Event) => void,
+  setOffer: (e:React.ChangeEvent<HTMLInputElement>) => void,
   getOffers: (init: string[]) => Options,
+
   contacts: Options,
-  setContact: (e:Event) => void,
+  setContact: (e:React.ChangeEvent<HTMLInputElement>) => void,
   getContacts: (init: string[]) => Options,
 }
 
 const useFilterStore = create<FilterState>((set, get) => ({
   languages: {},
-  setLanguage: e => set( orig => { const target: HTMLInputElement = e.target as any
-                                   let languages = orig.languages
-				   console.log(target.checked)
-                                   languages[target.value] = target.checked
-                                   return {languages} as FilterState }),
-  getLanguages: (init) => keysWhereVal( get().languages, init ),
+  setLanguage: e => set( orig => { let languages = orig.languages
+                                   languages[e.target.value] = e.target.checked
+                                   return {languages} }),
+  getLanguages: (init) => keysWhereVal(get().languages, init),
+
   targets: {},
-  setTarget: e => set( orig => { const target: HTMLInputElement = e.target as any
-                                 let targets = orig.targets
-                                 targets[target.value] = target.checked
-                                 return {targets, offers: {}} as FilterState }),
-  getTargets: (init) => keysWhereVal( get().targets, init ),
+  setTarget: e => set( orig => { let targets = orig.targets
+                                 targets[e.target.value] = e.target.checked
+                                 return {targets, offers: {}} }),
+  getTargets: (init) => keysWhereVal(get().targets, init),
+
   offers: {},
-  setOffer: e => set( orig => { const target: HTMLInputElement = e.target as any
-                                 let offers = orig.offers
-                                 offers[target.value] = target.checked
-                                 return {offers} as FilterState }),
-  getOffers: (init) => keysWhereVal( get().offers, init ),
+  setOffer: e => set( orig => { let offers = orig.offers
+                                offers[e.target.value] = e.target.checked
+                                return {offers} }),
+  getOffers: (init) => keysWhereVal(get().offers, init),
+
   contacts: {},
-  setContact: e => set( orig => { const target: HTMLInputElement = e.target as any
-                                  let contacts = orig.contacts
-                                  contacts[target.value] = target.checked
-                                  return {contacts} as FilterState }),
-  getContacts: (init) => keysWhereVal( get().contacts, init ),
+  setContact: e => set( orig => { let contacts = orig.contacts
+                                  contacts[e.target.value] = e.target.checked
+                                  return {contacts} }),
+  getContacts: (init) => keysWhereVal(get().contacts, init),
 }))
 
 function FilterForm({languages, offers, selections}:
@@ -163,7 +164,7 @@ export function LookupResult({data}: {data: LookupQuery}) {
   const selectedLanguages = getLanguages(data.languages.map(lang => lang.id))
   const selectedTargets = getTargets(["individual"])
   const selectedOffers = getOffers(data.offers.map(offer => offer.id))
-  const selectedContacts = getContacts(["inperson", "remote"])
+  const selectedContacts = getContacts([/*"inperson",*/ "remote"])  // TODO decide what the default should be
   const filteredSupervisors = data.lookup.supervisors
                              .filter(s => s.languages.some( (supervisorLang: string) => selectedLanguages.includes(supervisorLang) ))
 			     .filter(s => s.offers.some( (supervisorOffer: string) => selectedOffers.includes(supervisorOffer) )) 
@@ -178,7 +179,7 @@ export function LookupResult({data}: {data: LookupQuery}) {
       </div>
 
       <div className={styles.grid}>
-        {filteredSupervisors.map( (supervisor) => <Supervisor supervisor={supervisor} languages={data.languages} key={supervisor.email} /> )}
+        {filteredSupervisors.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} key={supervisor.email} /> )}
       </div>
     </>
   )
