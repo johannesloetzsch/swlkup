@@ -15,6 +15,10 @@ We use typescript types automatically generated from the graphql-schema. Wheneve
 ```
 npm run generate
 ```
+or
+```
+nix develop ..#frontendCodegen
+```
 
 ## Production build
 
@@ -28,3 +32,18 @@ npm run build && npm run export && npm run serve
 
 You should configure the Webserver to rewrite `/token/*` to `out/token/\[token\].html`.
 If you don't, access is only possible from other pages using `next/router`.
+A trivial server doing this rewrite is implemented in `serve.js`.
+
+### Reproducible builds
+
+Whenever dependencies are changed, rebuild `default.nix`,  `node-env.nix` and  `node-packages.nix` in `./nix/deps/`:
+
+```
+nix develop ..#frontendUpdateDeps
+```
+
+This allows to build by:
+
+```
+nix build ..#frontend
+```

@@ -1,0 +1,63 @@
+{
+  "nodes": {
+    "mvn2nix-pkgs": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1609979564,
+        "narHash": "sha256-VE0AHNyeU1nGYmqn+lAnsDY1UdzzSXYfPI8jlUTYsmw=",
+        "owner": "johannesloetzsch",
+        "repo": "mvn2nix",
+        "rev": "a803b7641a6e259090e23de8e47b50ea13b929b5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "johannesloetzsch",
+        "ref": "master",
+        "repo": "mvn2nix",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1609187327,
+        "narHash": "sha256-6lCwWpGpZxbSYclryv4ixsxxbISe7HuLyyQnGWCC8ZQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e065200fc90175a8f6e50e76ef10a48786126e1c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-20.09",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1626489334,
+        "narHash": "sha256-WcQDF/JB3yWfO7E37M6rlUCKkqcMwG2UiWz+2Vsib9Y=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b2f87e0043aaf3f0f05cc983bd6aa80a616b8352",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "mvn2nix-pkgs": "mvn2nix-pkgs",
+        "nixpkgs": "nixpkgs_2"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

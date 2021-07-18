@@ -10,3 +10,4 @@ pom.xml.asc
 /.nrepl-port
 /.lsp
 /.clj-kondo/.cache
+result

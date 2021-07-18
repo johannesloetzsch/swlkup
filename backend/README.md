@@ -7,7 +7,7 @@ The core of the server is an graphql-api based on [specialist](https://github.co
 To start the server and send queries, run:
 
 ```bash
-lein ring server
+lein run
 
 curl -H 'Content-type: application/json' -d '{"query":"{ lookup(token: \"T0p53cret\"){ ngo{name} supervisors {name_full} } }"}' http://localhost:4000/graphql
 ```
@@ -25,4 +25,18 @@ lein ring uberjar
 
 
 java -jar target/swlkup-*standalone.jar
+```
+
+### Reproducible builds
+
+Whenever dependencies are changed, rebuild the mvn2nix-lock.json:
+
+```
+nix develop ..#backendUpdateDeps
+```
+
+This allows to build by:
+
+```
+nix build ..#backend
 ```
