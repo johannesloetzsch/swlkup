@@ -1,0 +1,34 @@
+version: 2.1
+jobs:
+  build-test:
+    docker:
+      - image: johannesloetzsch/nix-flake:latest
+    steps:
+      - run:
+          name: Disable Sandbox
+          command: mkdir -p ~/.config/nix/; echo 'sandbox = false' >> ~/.config/nix/nix.conf;
+      - run:
+          name: Allow qemu to be used in dockerTools.buildImage.runAsRoot
+          command: mkdir -p ~/.config/nix/; echo 'system-features = kvm' >> ~/.config/nix/nix.conf;
+      - checkout
+      - restore_cache:
+          keys:
+            - nix-{{ checksum "flake.lock" }}-{{ checksum "flake.nix" }}
+            - nix-{{ checksum "flake.lock" }}  ## the cache will be cleaned on updates
+      - run:
+          name: Pure reproducible build
+          command: nix build --show-trace
+      - save_cache:
+          key: nix-{{ checksum "flake.lock" }}-{{ checksum "flake.nix" }}-{{ .BuildNum }}
+          paths:
+            - /nix/
+workflows:
+  version: 2
+  all:
+    jobs:
+      - build-test:
+          filters:  ## tags + branches
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/

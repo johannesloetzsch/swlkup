@@ -20,9 +20,8 @@ lein test
 
 ## Production build
 
-```
+```bash
 lein ring uberjar
-
 
 java -jar target/swlkup-*standalone.jar
 ```
@@ -31,12 +30,12 @@ java -jar target/swlkup-*standalone.jar
 
 Whenever dependencies are changed, rebuild the mvn2nix-lock.json:
 
-```
+```bash
 nix develop ..#backendUpdateDeps
 ```
 
 This allows to build by:
 
-```
+```bash
 nix build ..#backend
 ```
