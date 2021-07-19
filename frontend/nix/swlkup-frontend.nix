@@ -5,13 +5,21 @@
  ...}:
 
 let
+  src = stdenv.mkDerivation {
+    name = "swlkup-frontend-src";
+    src = lib.cleanSource ./..;
+    installPhase = ''
+      cp -r . $out
+    '';
+  };
+
   nodeDependencies = (pkgs.callPackage ./deps/default.nix {}).shell.nodeDependencies;
 
   deps = [ nodejs ] ++ (with pkgs; [ which coreutils ]);
 
-  swlkupFrontend = stdenv.mkDerivation {
-    name = "swlkup-frontend";
-    src = lib.cleanSource ./..;
+  staticHTML = stdenv.mkDerivation {
+    name = "swlkup-frontend-staticHTML";
+    inherit src;
     buildInputs = deps;
     buildPhase = ''
       export PATH="${nodeDependencies}/bin:$PATH"
@@ -21,9 +29,15 @@ let
       npm run export
     '';
     installPhase = ''
-      echo $out
+      cp -r out $out
+    '';
+  };
+
+  minimalServer = stdenv.mkDerivation {
+    name = "swlkup-frontend-minimalServer";
+    inherit src;
+    installPhase = ''
       mkdir $out
-      cp -r out $out/www
       cp serve.js $out
     '';
   };
@@ -32,10 +46,11 @@ lib.mergeAttrs
   (pkgs.writeScriptBin "swlkup-frontend" ''
     #!${pkgs.runtimeShell} -e
 
+    ## Note: we could strip the following dependencies further down, since only runtime deps of minimalServer are required.
     export PATH="${nodeDependencies}/bin:${lib.makeBinPath deps}:$PATH"
     export NODE_PATH=${nodeDependencies}/lib/node_modules
 
-    node ${swlkupFrontend}/serve.js ${swlkupFrontend}/www
+    node ${minimalServer}/serve.js ${staticHTML}
     ''
   )
-  { inherit swlkupFrontend; }
+  { inherit staticHTML; }

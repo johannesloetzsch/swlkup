@@ -25,8 +25,10 @@
       ## Builds
       backend = import ./backend/nix/swlkup-backend.nix { inherit pkgs buildMavenRepositoryFromLockFile; };
       frontend = import ./frontend/nix/swlkup-frontend.nix { inherit pkgs; };
+      fullstack =  import ./backend/nix/swlkup-backend.nix { inherit pkgs buildMavenRepositoryFromLockFile;
+                                                             patchPublic = legacyPackages.x86_64-linux.frontend.staticHTML; };
     };
 
-    defaultPackage.x86_64-linux = legacyPackages.x86_64-linux.frontend;
+    defaultPackage.x86_64-linux = legacyPackages.x86_64-linux.fullstack;
   };
 }
