@@ -2335,13 +2335,13 @@ let
         sha1 = "590c61156b0ae2f4f0255732a158b266bc56b21d";
       };
     };
-    "electron-to-chromium-1.3.779" = {
+    "electron-to-chromium-1.3.780" = {
       name = "electron-to-chromium";
       packageName = "electron-to-chromium";
-      version = "1.3.779";
+      version = "1.3.780";
       src = fetchurl {
-        url = "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.779.tgz";
-        sha512 = "nreave0y/1Qhmo8XtO6C/LpawNyC6U26+q7d814/e+tIqUK073pM+4xW7WUXyqCRa5K4wdxHmNMBAi8ap9nEew==";
+        url = "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.780.tgz";
+        sha512 = "2KQ9OYm9WMUNpAPA/4aerURl3hwRc9tNlpsiEj3Y8Gf7LVf26NzyLIX2v0hSagQwrS9+cWab+28A2GPKDoVNRA==";
       };
     };
     "elegant-spinner-1.0.1" = {
@@ -2531,16 +2531,6 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/express/-/express-4.17.1.tgz";
         sha512 = "mHJ9O79RqluphRrcw2X/GTh3k9tVv8YcoyY4Kkh4WDMUYKRZUq0h1o0w2rrrxBqM7VoeUVqgb27xlEMXTnYt4g==";
-      };
-    };
-    "express-rewrite-https://registry.npmjs.org/express-rewrite/-/express-rewrite-0.0.4.tgz" = {
-      name = "express-rewrite";
-      packageName = "express-rewrite";
-      version = 1;
-      src = fetchurl {
-        name = "express-rewrite-1.tar.gz";
-        url = "https://registry.npmjs.org/express-rewrite/-/express-rewrite-0.0.4.tgz";
-        sha1 = "a8ca2e3d695bba12c31868dfc2719a10e4eac27b";
       };
     };
     "external-editor-3.1.0" = {
@@ -6770,7 +6760,7 @@ let
       sources."duplexer3-0.1.4"
       sources."ecdsa-sig-formatter-1.0.11"
       sources."ee-first-1.1.1"
-      sources."electron-to-chromium-1.3.779"
+      sources."electron-to-chromium-1.3.780"
       sources."elegant-spinner-1.0.1"
       (sources."elliptic-6.5.4" // {
         dependencies = [
@@ -6805,7 +6795,6 @@ let
           sources."ms-2.0.0"
         ];
       })
-      sources."express-rewrite-https://registry.npmjs.org/express-rewrite/-/express-rewrite-0.0.4.tgz"
       sources."external-editor-3.1.0"
       sources."extract-files-9.0.0"
       sources."fast-glob-3.2.7"

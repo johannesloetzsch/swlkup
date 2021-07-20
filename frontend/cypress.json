@@ -1,0 +1,12 @@
+{
+  "baseUrl": "http://localhost:4000",
+
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "cypress/results/[hash].xml",
+    "toConsole": false
+  },
+
+  "viewportWidth": 1200,
+  "viewportHeight": 1000
+}

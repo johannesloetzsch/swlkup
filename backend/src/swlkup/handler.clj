@@ -91,7 +91,12 @@
       (wrap-cors :access-control-allow-origin [#"http://localhost:3000"]
                  :access-control-allow-methods [:get :put :post :delete]) ))
 
+(defn pid []
+  (-> (java.lang.management.ManagementFactory/getRuntimeMXBean) .getName (clojure.string/split #"@") first))
+
 (defn -main [& _args]
   (println "Start server at http://localhost:4000")
   (run-jetty (wrap-reload #'app)
-             {:port 4000 :join? false}))
+             {:port 4000 :join? false})
+
+  (spit ".pid" (pid)))

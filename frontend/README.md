@@ -10,13 +10,22 @@ Assuming you also started the backend, you should be able to access the frontend
 
 ### Codegen
 
-We use typescript types automatically generated from the graphql-schema. Whenever the schema is changed in the backend, run:
+We use typescript types automatically generated from the graphql-schema. Whenever the schema is changed in the backend, run either of this commands:
 
 ```bash
-npm run generate
-or
+npm run generate  ## uses the local node dependencies
+
+nix develop ..#frontendCodegen  ## provides reproducible dependencies
+```
+
+## Testing
+
+End-to-end integration tests are written with [Cypress](https://docs.cypress.io/). You can inspect them using either of this commands:
+
 ```bash
-nix develop ..#frontendCodegen
+npx cypress open  ## requires an existing Cypress installation
+
+nix run ../#cypress -- open  ## provides reproducible dependencies
 ```
 
 ## Production build

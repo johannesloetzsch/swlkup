@@ -9,7 +9,9 @@
   outputs = { self, nixpkgs, mvn2nix-pkgs }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs { system="x86_64-linux"; };
+    pkgs = import nixpkgs { system="x86_64-linux";
+                            overlays = [ (import ./frontend/nix/deps/cypress/cypress-overlay.nix) ];
+                          };
     mvn2nix = mvn2nix-pkgs.legacyPackages.x86_64-linux.mvn2nix;
     buildMavenRepositoryFromLockFile = mvn2nix-pkgs.legacyPackages.x86_64-linux.buildMavenRepositoryFromLockFile;
   in
@@ -21,6 +23,7 @@
       backendUpdateDeps = import ./backend/nix/tools/update-deps.nix { inherit pkgs mvn2nix; };
       frontendCodegen = import ./frontend/nix/tools/codegen.nix { inherit pkgs; };
       frontendUpdateDeps = import ./frontend/nix/tools/update-deps.nix { inherit pkgs; };
+      cypress = import ./frontend/nix/deps/cypress/override.nix { inherit pkgs; };
 
       ## Builds
       backend = import ./backend/nix/swlkup-backend.nix { inherit pkgs buildMavenRepositoryFromLockFile; };
