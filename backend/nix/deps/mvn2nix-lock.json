@@ -725,6 +725,11 @@
       "sha256": "902b0160f7b81ec76452468f8ae087fc1cfefc08367c84d9197512dfb01d845d",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.2.1/maven-plugin-parameter-documenter-2.2.1.pom"
     },
+    "org.clojure:tools.logging:pom:0.5.0": {
+      "layout": "org/clojure/tools.logging/0.5.0/tools.logging-0.5.0.pom",
+      "sha256": "db7d074bce2c94457e6ec2b051283e4f2a78a1aca164d84f8d81617a5542919d",
+      "url": "https://repo.maven.apache.org/maven2/org/clojure/tools.logging/0.5.0/tools.logging-0.5.0.pom"
+    },
     "org.apache.xbean:xbean:pom:3.4": {
       "layout": "org/apache/xbean/xbean/3.4/xbean-3.4.pom",
       "sha256": "56ab9c6c2d022a9b7079006ba500a996cd2c21411d53cac524933af20c5a4b99",
@@ -1224,6 +1229,11 @@
       "layout": "org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.pom",
       "sha256": "e37731ea5ed19d276f33b77c93399fb5df026e1191133b15fbeab73342c6363b",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.pom"
+    },
+    "yogthos:config:jar:1.1.8": {
+      "layout": "yogthos/config/1.1.8/config-1.1.8.jar",
+      "sha256": "3ddacd746356ccfba4ec679ecef988bb5384779ddcfead87697d5ea80fd99181",
+      "url": "https://clojars.org/repo/yogthos/config/1.1.8/config-1.1.8.jar"
     },
     "org.eclipse.jetty:jetty-io:jar:9.4.31.v20200723": {
       "layout": "org/eclipse/jetty/jetty-io/9.4.31.v20200723/jetty-io-9.4.31.v20200723.jar",
@@ -1740,6 +1750,11 @@
       "sha256": "4df7a6a7be64b35bbccf60b5c115697f9ea3421d22674ae67135dde375fcca1f",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar"
     },
+    "org.clojure:tools.logging:jar:0.5.0": {
+      "layout": "org/clojure/tools.logging/0.5.0/tools.logging-0.5.0.jar",
+      "sha256": "500fb4391f2ce7158d4cb49058ea48eb42e24f376b6e82fcfe88c91de5dec31a",
+      "url": "https://repo.maven.apache.org/maven2/org/clojure/tools.logging/0.5.0/tools.logging-0.5.0.jar"
+    },
     "commons-lang:commons-lang:pom:2.1": {
       "layout": "commons-lang/commons-lang/2.1/commons-lang-2.1.pom",
       "sha256": "f1a709cd489f23498a0b6b3dfbfc0d21d4f15904791446dec7f8a58a7da5bd6a",
@@ -1785,6 +1800,11 @@
       "sha256": "0c8c3811322cc84c09a93f34436fe784a1259dd5376a90aec5a73493456f757d",
       "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.3.0/jackson-annotations-2.3.0.jar"
     },
+    "yogthos:config:pom:1.1.8": {
+      "layout": "yogthos/config/1.1.8/config-1.1.8.pom",
+      "sha256": "41d40fa25861ae7222fda60f549e5a60d3a0498067bb4323027aca9929a5672f",
+      "url": "https://clojars.org/repo/yogthos/config/1.1.8/config-1.1.8.pom"
+    },
     "org.slf4j:jcl-over-slf4j:pom:1.5.6": {
       "layout": "org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.pom",
       "sha256": "d71d7748e68bb9cb7ad38b95d17c0466e31fc1f4d15bb1e635f3ebad34a38ff3",
@@ -1819,11 +1839,6 @@
       "layout": "org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.pom",
       "sha256": "2bfc8ce93b46c1bbe8e809197a2f970c5573d2b0d3412c84d7cdfa5961299087",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.pom"
-    },
-    "org.clojure:tools.logging:jar:0.4.1": {
-      "layout": "org/clojure/tools.logging/0.4.1/tools.logging-0.4.1.jar",
-      "sha256": "4aee0d54467ce1bd578180499767cc6570e164bf1f5e1c3ed01ef4d75ae83a00",
-      "url": "https://repo.maven.apache.org/maven2/org/clojure/tools.logging/0.4.1/tools.logging-0.4.1.jar"
     },
     "tigris:tigris:jar:0.1.2": {
       "layout": "tigris/tigris/0.1.2/tigris-0.1.2.jar",

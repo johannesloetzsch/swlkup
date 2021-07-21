@@ -14,7 +14,8 @@
             [ring.util.response :refer [response resource-response content-type]]
             [swlkup.resolver.core :refer [graphql]]
             [lib.resources.list-resources :refer [list-resources]]
-            [clojure.string :as string :refer [ends-with?]]))
+            [clojure.string :as string :refer [ends-with?]]
+            [config.core :refer [env]]))
 
 (def frontend-url "http://localhost:3000/")
 
@@ -91,12 +92,7 @@
       (wrap-cors :access-control-allow-origin [#"http://localhost:3000"]
                  :access-control-allow-methods [:get :put :post :delete]) ))
 
-(defn pid []
-  (-> (java.lang.management.ManagementFactory/getRuntimeMXBean) .getName (clojure.string/split #"@") first))
-
 (defn -main [& _args]
-  (println "Start server at http://localhost:4000")
+  (println (str "Start server at http://localhost:" (:port env)))
   (run-jetty (wrap-reload #'app)
-             {:port 4000 :join? false})
-
-  (spit ".pid" (pid)))
+             {:port (:port env) :join? false}))

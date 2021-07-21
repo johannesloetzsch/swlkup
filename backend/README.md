@@ -31,7 +31,7 @@ java -jar target/swlkup-*standalone.jar
 Whenever dependencies are changed, rebuild the mvn2nix-lock.json:
 
 ```bash
-nix develop ..#backendUpdateDeps
+nix run ..#backendUpdatedDeps
 ```
 
 This allows to build by:
@@ -39,3 +39,9 @@ This allows to build by:
 ```bash
 nix build ..#backend
 ```
+
+## Configuration
+
+Configuration management is done with [yogthos](https://github.com/yogthos/config).
+Default values are set at `src/config.edn`, there you see the available options.
+To set config options at runtime, use `environment variables`, `java system properties` or an .edn file specified using the `config` environment variable.

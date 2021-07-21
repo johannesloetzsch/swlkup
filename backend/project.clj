@@ -2,6 +2,7 @@
   :description "supervisor lookup backend"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.10.3"]
+                 [yogthos/config "1.1.8"]
                  [ajk/specialist-server "0.6.0"]
                  [compojure "1.6.2"]
                  [ring/ring-core "1.8.2"]

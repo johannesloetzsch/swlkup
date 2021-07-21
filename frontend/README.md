@@ -48,7 +48,7 @@ The backend also supports serving the frontend.
 Whenever dependencies are changed, rebuild `default.nix`,  `node-env.nix` and  `node-packages.nix` in `./nix/deps/`:
 
 ```bash
-nix develop ..#frontendUpdateDeps
+nix run ..#frontendUpdatedDeps
 ```
 
 This allows to build by:

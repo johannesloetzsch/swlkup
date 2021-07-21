@@ -20,9 +20,9 @@
       inherit nixpkgs pkgs;
 
       ## Tools
-      backendUpdateDeps = import ./backend/nix/tools/update-deps.nix { inherit pkgs mvn2nix; };
+      backendUpdatedDeps = import ./backend/nix/tools/updated-deps.nix { inherit pkgs mvn2nix; };
       frontendCodegen = import ./frontend/nix/tools/codegen.nix { inherit pkgs; };
-      frontendUpdateDeps = import ./frontend/nix/tools/update-deps.nix { inherit pkgs; };
+      frontendUpdatedDeps = import ./frontend/nix/tools/updated-deps.nix { inherit pkgs; };
       cypress = import ./frontend/nix/deps/cypress/override.nix { inherit pkgs; };
 
       ## Builds
