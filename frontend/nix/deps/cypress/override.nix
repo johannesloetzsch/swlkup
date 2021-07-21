@@ -10,7 +10,7 @@ let
     '';
   };
 in
-(pkgs.writeScriptBin "swlkup-frontend" ''
+(pkgs.writeScriptBin "cypress" ''
   #!${pkgs.runtimeShell} -e
 
   [ -d ~/.config/Cypress ] && chmod -R +w ~/.config/Cypress
