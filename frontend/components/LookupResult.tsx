@@ -115,7 +115,7 @@ function FilterForm({languages, offers, selections}:
 	       <input type="text" name="country" id="country"/>
 	       &nbsp;&nbsp;&nbsp;
 	       <label htmlFor="zip">Zip code</label>&nbsp;
-	       <input type="text" name="zip" id="country"/>
+	       <input type="text" name="zip" id="zip"/>
 	     </span>
 	}
       </fieldset><br/>
