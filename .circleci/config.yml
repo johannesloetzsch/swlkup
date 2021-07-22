@@ -22,7 +22,7 @@ jobs:
           name: Integration tests
           command: |
             nix run &
-            (sleep 5; cd frontend; nix run ..#cypress -- run); EXIT=$?
+            (sleep 10; cd frontend; nix run ..#cypress -- run); EXIT=$?
             kill $(cat .pid); exit $EXIT
       - save_cache:
           key: nix-{{ checksum "flake.lock" }}-{{ checksum "flake.nix" }}-{{ .BuildNum }}

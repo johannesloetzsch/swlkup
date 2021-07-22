@@ -1,11 +1,8 @@
-(ns swlkup.handler
-  (:gen-class)
-  (:require [ring.adapter.jetty :refer [run-jetty]]
-            [compojure.core :refer [defroutes GET POST]]
+(ns swlkup.webserver.handler
+  (:require [compojure.core :refer [defroutes GET POST]]
             [compojure.route :as route]
             [ring.middleware.content-type :refer [wrap-content-type]] 
             [ring.middleware.not-modified :refer [wrap-not-modified]]
-            [ring.middleware.reload :refer [wrap-reload]]
             [ring.middleware.resource :refer [wrap-resource]]
             [ring.middleware.webjars :refer [wrap-webjars]]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]
@@ -14,9 +11,7 @@
             [ring.util.response :refer [response resource-response content-type]]
             [swlkup.resolver.core :refer [graphql]]
             [lib.resources.list-resources :refer [list-resources]]
-            [clojure.string :as string :refer [ends-with?]]
-            [config.core :refer [env]]
-            [swlkup.db.crux :refer [seed]]))
+            [clojure.string :as string :refer [ends-with?]]))
 
 (def frontend-url "http://localhost:3000/")
 
@@ -92,11 +87,3 @@
 
       (wrap-cors :access-control-allow-origin [#"http://localhost:3000"]
                  :access-control-allow-methods [:get :put :post :delete]) ))
-
-(defn -main [& _args]
-  (println "Seed the database")
-  (seed)
-
-  (println (str "Start server at http://localhost:" (:port env)))
-  (run-jetty (wrap-reload #'app)
-             {:port (:port env) :join? false}))

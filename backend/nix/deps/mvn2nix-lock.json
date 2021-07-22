@@ -15,6 +15,11 @@
       "sha256": "d727fcd70cec4b002c743e1f884bc49bee62cb9dd2d787d42733f72f9f3be75f",
       "url": "https://repo.maven.apache.org/maven2/org/clojure/tools.reader/1.3.5/tools.reader-1.3.5.pom"
     },
+    "mount:mount:jar:0.1.16": {
+      "layout": "mount/mount/0.1.16/mount-0.1.16.jar",
+      "sha256": "2dc9d7bbf75b3b561914f45b2ce8d53a68b1ed6389396d787527392fe54dc5dd",
+      "url": "https://clojars.org/repo/mount/mount/0.1.16/mount-0.1.16.jar"
+    },
     "org.apache.commons:commons-parent:pom:22": {
       "layout": "org/apache/commons/commons-parent/22/commons-parent-22.pom",
       "sha256": "fb8c5e55e30a7addb4ff210858a0e8d2494ed6757bbe19012da99d51586c3cbb",
@@ -1564,6 +1569,11 @@
       "layout": "org/clojure/clojure/1.7.0/clojure-1.7.0.pom",
       "sha256": "5f7296ed51ff70ebab6d283f803242990bd7bda7419f94132ecf406a35c94b7f",
       "url": "https://repo.maven.apache.org/maven2/org/clojure/clojure/1.7.0/clojure-1.7.0.pom"
+    },
+    "mount:mount:pom:0.1.16": {
+      "layout": "mount/mount/0.1.16/mount-0.1.16.pom",
+      "sha256": "ab8295be3486ec1c96e5971444161171dd103a1a71478d9a0972dddd5b6a6532",
+      "url": "https://clojars.org/repo/mount/mount/0.1.16/mount-0.1.16.pom"
     },
     "org.codehaus.plexus:plexus-components:pom:1.3.1": {
       "layout": "org/codehaus/plexus/plexus-components/1.3.1/plexus-components-1.3.1.pom",

@@ -13,9 +13,10 @@
                  [ring-webjars "0.2.0"]
                  [org.webjars/graphiql "0.11.11"]
 
+                 [mount "0.1.16"]
                  [pro.juxt.crux/crux-core "1.17.1"]                 
                  [pro.juxt.crux/crux-rocksdb "1.17.1"]]
-  :main swlkup.handler
+  :main swlkup.webserver.state
   :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                                   [ring/ring-mock "0.4.0"]
                                   ;; additional deps to run `lein test` 

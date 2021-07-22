@@ -2,7 +2,7 @@
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
             [swlkup.model.ngo :as ngo]
-            [swlkup.db.crux :refer [q_id_unary]]))
+            [swlkup.db.state :refer [q_id_unary]]))
 
 (s/fdef ngo
         :args (s/tuple map? map? map? map?)
