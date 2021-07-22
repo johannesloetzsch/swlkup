@@ -11,10 +11,14 @@
                  [ring-cors "0.1.13"]
                  [ring/ring-json "0.5.1"]
                  [ring-webjars "0.2.0"]
-                 [org.webjars/graphiql "0.11.11"]]
+                 [org.webjars/graphiql "0.11.11"]
+
+                 [pro.juxt.crux/crux-core "1.17.1"]                 
+                 [pro.juxt.crux/crux-rocksdb "1.17.1"]]
   :main swlkup.handler
   :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                                   [ring/ring-mock "0.4.0"]
                                   ;; additional deps to run `lein test` 
                                   [nrepl/nrepl "0.8.3"]
-                                  [clojure-complete/clojure-complete "0.2.5"]]}})
+                                  [clojure-complete/clojure-complete "0.2.5"]]}
+             :uberjar {:aot :all}})

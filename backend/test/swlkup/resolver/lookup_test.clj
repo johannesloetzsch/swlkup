@@ -1,6 +1,9 @@
 (ns swlkup.resolver.lookup-test
   (:require [clojure.test :refer [deftest is]]
-            [swlkup.resolver.core :refer [graphql]]))
+            [swlkup.resolver.core :refer [graphql]]
+            [swlkup.db.crux :refer [seed]]))
+
+(seed)
 
 (deftest correct-token
   (is (= (graphql {:query "{lookup(token: \"T0p53cret\") {ngo{name}}}"})

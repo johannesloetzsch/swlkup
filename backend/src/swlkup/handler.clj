@@ -15,7 +15,8 @@
             [swlkup.resolver.core :refer [graphql]]
             [lib.resources.list-resources :refer [list-resources]]
             [clojure.string :as string :refer [ends-with?]]
-            [config.core :refer [env]]))
+            [config.core :refer [env]]
+            [swlkup.db.crux :refer [seed]]))
 
 (def frontend-url "http://localhost:3000/")
 
@@ -93,6 +94,9 @@
                  :access-control-allow-methods [:get :put :post :delete]) ))
 
 (defn -main [& _args]
+  (println "Seed the database")
+  (seed)
+
   (println (str "Start server at http://localhost:" (:port env)))
   (run-jetty (wrap-reload #'app)
              {:port (:port env) :join? false}))

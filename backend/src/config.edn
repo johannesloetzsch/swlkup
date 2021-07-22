@@ -1,1 +1,2 @@
-{:port 4000}
+{:port 4000
+ :db-dir "./data/crux/rocksdb"}

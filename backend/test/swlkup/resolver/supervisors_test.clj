@@ -1,6 +1,9 @@
 (ns swlkup.resolver.supervisors-test
   (:require [clojure.test :refer [deftest is]]
-            [swlkup.resolver.core :refer [graphql]]))
+            [swlkup.resolver.core :refer [graphql]]
+            [swlkup.db.crux :refer [seed]]))
+
+(seed)
 
 ;; Depending on the ngo the token belongs to, a limited set of supervisors is returned
 

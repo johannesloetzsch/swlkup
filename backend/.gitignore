@@ -11,3 +11,4 @@ pom.xml.asc
 /.lsp
 /.clj-kondo/.cache
 result
+data
