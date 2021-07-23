@@ -7,7 +7,8 @@
             [swlkup.config.state]
             [swlkup.db.state]))
 
-(defstate webserver
+(defstate ^{:on-reload :noop}  ;; When the app is recompiled, mount should not care, but we use ring.middleware.reload/wrap-reload
+  webserver
   :start (do (println (str "Start server at http://localhost:" (:port swlkup.config.state/env)))
              (ring.adapter.jetty/run-jetty (ring.middleware.reload/wrap-reload #'swlkup.webserver.handler/app)
                                            {:port (:port swlkup.config.state/env) :join? false}))

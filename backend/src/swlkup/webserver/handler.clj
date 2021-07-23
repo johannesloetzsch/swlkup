@@ -52,11 +52,11 @@
    4. If all attempts failed, pass the 404"
   [handler]
   (fn [req]
-
       (let [res (handler req)
             path (string/replace (:uri req) #"/[^/]*$" "/")
             html (->> (list-resources (str "public" path))
-                     (filter #(re-matches #".*\.html" %)))]
+                      (remove #(re-matches #".+[/].*" %))  ;; only files that are not in a subdirectory
+                      (filter #(re-matches #".*\.html" %)))]
            (cond (not (or (= 404 (:status res))
                           (= "/" (:uri req))))
                    res
