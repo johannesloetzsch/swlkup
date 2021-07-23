@@ -11,7 +11,8 @@
             [ring.util.response :refer [response resource-response content-type]]
             [swlkup.resolver.core :refer [graphql]]
             [lib.resources.list-resources :refer [list-resources]]
-            [clojure.string :as string :refer [ends-with?]]))
+            [clojure.string :as string :refer [ends-with?]]
+            [swlkup.config.state :refer [env]]))
 
 (def frontend-url "http://localhost:3000/")
 
@@ -26,7 +27,7 @@
                    "</p/>"))
   (POST "/graphql" req
     (-> (response (graphql (-> (:body req)
-                               #_(assoc-in [:context :validate-output?] false))))))
+                               (assoc-in [:context :validate-output?] (:validate-output env)))))))
   (route/not-found "Not Found"))
 
 (defn wrap-graphiql
