@@ -166,20 +166,20 @@ export function LookupResult({data}: {data: LookupQuery}) {
   const selectedOffers = getOffers(data.offers.map(offer => offer.id))
   const selectedContacts = getContacts([/*"inperson",*/ "remote"])  // TODO decide what the default should be
   const filteredSupervisors = data.lookup.supervisors
-                             .filter(s => s.languages.some( (supervisorLang: string) => selectedLanguages.includes(supervisorLang) ))
+                             ?.filter(s => s.languages.some( (supervisorLang: string) => selectedLanguages.includes(supervisorLang) ))
 			     .filter(s => s.offers.some( (supervisorOffer: string) => selectedOffers.includes(supervisorOffer) )) 
   return (
     <>
       <div>
-        <p> The Token was created by {data.lookup.ngo.name}.</p>
-        <p> {data.lookup.supervisors.length} Supervisors are available. You can use the following options to filter them:</p><br/>
+        <p> The Token was created by {data.lookup.ngo?.name}.</p>
+        <p> {data.lookup.supervisors?.length} Supervisors are available. You can use the following options to filter them:</p><br/>
         <FilterForm languages={data.languages} offers={data.offers}
 	            selections={{selectedLanguages, selectedTargets, selectedOffers, selectedContacts}}/>
-        <p> {filteredSupervisors.length} Supervisors match this filters: </p>
+        <p> {filteredSupervisors?.length} Supervisors match this filters: </p>
       </div>
 
       <div className={styles.grid}>
-        {filteredSupervisors.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} key={supervisor.email} /> )}
+        {filteredSupervisors?.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} key={supervisor.email} /> )}
       </div>
     </>
   )

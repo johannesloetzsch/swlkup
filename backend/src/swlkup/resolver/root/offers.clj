@@ -2,7 +2,7 @@
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
             [swlkup.model.offers :as offers]
-            [swlkup.db :refer [db]]))
+            [swlkup.db.state :refer [q_unary]]))
 
 (s/fdef offers
         :args (s/tuple map? map? map? map?)
@@ -11,6 +11,7 @@
 (defn offers
   "All offers"
   [_node _opt _ctx _info]
-  (:offers db))
+  (q_unary '{:find [(pull ?e [*])]
+             :where [[?e :crux.spec :swlkup.model.offers/offers]]}))
 
 (s/def ::offers (t/resolver #'offers))

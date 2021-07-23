@@ -6,12 +6,12 @@
 
 (s/fdef ngo
         :args (s/tuple map? map? map? map?)
-        :ret ::ngo/ngo)
+        :ret (s/nilable ::ngo/ngo))
 
 (defn ngo
   "Details of a ngo"
   [node _opt _ctx _info]
-  (q_id_unary '{:find [(pull ?e [:name])]
+  (q_id_unary '{:find [(pull ?e [*])]
                 :in [ngo]
                 :where [;[?e :crux.spec :swlkup.model.ngo/ngo]
                        [?e :crux.db/id ngo]]}

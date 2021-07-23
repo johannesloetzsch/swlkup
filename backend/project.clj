@@ -21,6 +21,7 @@
                                   [ring/ring-mock "0.4.0"]
                                   ;; additional deps to run `lein test` 
                                   [nrepl/nrepl "0.8.3"]
-                                  [clojure-complete/clojure-complete "0.2.5"]]}
+                                  [clojure-complete/clojure-complete "0.2.5"]]
+                   :jvm-opts ["-Dverbose=true"]}
              :test {:jvm-opts ["-Ddb-inmemory=true"]}
              :uberjar {:aot :all}})

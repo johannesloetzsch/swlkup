@@ -7,9 +7,11 @@
 (mount/start)
 
 (deftest correct-token
-  (is (= (graphql {:query "{lookup(token: \"T0p53cret\") {ngo{name}}}"})
-         {:data {:lookup {:ngo {:name "Sea-Watch"}}}})))
+  (is (= (graphql {:query "{lookup(token: \"R4nd0m\") {valid ngo{name} supervisors{name_full}}}"})
+         {:data {:lookup {:valid true
+                          :ngo {:name "Mission Lifeline"}
+                          :supervisors [{:name_full "Max Müller"}]}}})))
 
 (deftest wrong-token
-  (is (thrown? Error
-      (graphql {:query "{lookup(token: \"wrong\") {ngo{name}}}"}))))
+  (is (= (graphql {:query "{lookup(token: \"wrong\") {valid ngo{name} supervisors{name_full}}}"})
+         {:data {:lookup {:valid false :ngo nil :supervisors nil}}})))

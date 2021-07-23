@@ -63,9 +63,11 @@ export type Languages = {
 export type Lookup = {
   __typename?: 'lookup';
   /** Self descriptive. */
-  ngo: Ngo;
+  valid: Scalars['Boolean'];
   /** Self descriptive. */
-  supervisors: Array<Supervisors>;
+  ngo?: Maybe<Ngo>;
+  /** Self descriptive. */
+  supervisors?: Maybe<Array<Supervisors>>;
 };
 
 /** Details of a ngo */
@@ -110,17 +112,18 @@ export type LookupQuery = (
   { __typename?: 'QueryType' }
   & { lookup: (
     { __typename?: 'lookup' }
-    & { ngo: (
+    & Pick<Lookup, 'valid'>
+    & { ngo?: Maybe<(
       { __typename?: 'ngo' }
       & Pick<Ngo, 'name'>
-    ), supervisors: Array<(
+    )>, supervisors?: Maybe<Array<(
       { __typename?: 'supervisors' }
       & Pick<Supervisors, 'name_full' | 'photo' | 'languages' | 'offers' | 'email' | 'text'>
       & { contacts: (
         { __typename?: 'Contacts' }
         & Pick<Contacts, 'phone' | 'website'>
       ) }
-    )> }
+    )>> }
   ), languages: Array<(
     { __typename?: 'languages' }
     & Pick<Languages, 'id' | 'name' | 'flag_url'>
@@ -134,6 +137,7 @@ export type LookupQuery = (
 export const LookupDocument = `
     query Lookup($token: String = "R4nd0m") {
   lookup(token: $token) {
+    valid
     ngo {
       name
     }

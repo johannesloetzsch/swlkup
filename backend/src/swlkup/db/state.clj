@@ -28,14 +28,21 @@
   (apply crux/q (crux/db node) args))
 
 
+(defn q_unary
+  "A query returning unary results"
+  [& args]
+  (->> (apply q args)
+       (map first)))
+
+
 (defn q_id
-  "A query that should return only 1 result"
+  "A query returning only 1 result"
   [& args]
   (-> (apply q args)
       first))
 
 (defn q_id_unary
-  "A query that should return only 1 unary result"
+  "A query returning only 1 unary result"
   [& args]
   (-> (apply q args)
       first first))

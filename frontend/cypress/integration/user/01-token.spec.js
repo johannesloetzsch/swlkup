@@ -29,7 +29,7 @@ describe('Test different tokens', () => {
 
   it('Invalid token', () => {
     cy.visit('/token/noclue')
-    cy.get('main').contains('Maybe there is an typing error in the Token', { timeout: 10000 })
+    cy.get('main').contains('This is not a valid Token')
     cy.get('main').not(':contains("Token was created by")')
     cy.get('main').not(':contains("Supervisor")')
   })

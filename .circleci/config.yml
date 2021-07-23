@@ -21,6 +21,7 @@ jobs:
       - run:
           name: Integration tests
           command: |
+            export CYPRESS_BASE_URL="http://localhost:4000"
             nix run &
             (sleep 10; cd frontend; nix run ..#cypress -- run); EXIT=$?
             kill $(cat .pid); exit $EXIT

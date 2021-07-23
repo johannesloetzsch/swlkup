@@ -12,7 +12,6 @@
   (is (= (graphql {:query "{lookup(token: \"R4nd0m\") {ngo{name} supervisors{name_full}}}"})
          {:data {:lookup {:ngo {:name "Mission Lifeline"} :supervisors [{:name_full "Max Müller"}]}}})))
 
-(deftest token->max+maria
+(deftest token->maria+max
   (is (= (graphql {:query "{lookup(token: \"T0p53cret\") {ngo{name} supervisors{name_full}}}"})
-         {:data {:lookup {:ngo {:name "Sea-Watch"} :supervisors [{:name_full "Max Müller"}
-                                                                 {:name_full "Maria Musterfrau"}]}}})))
+         {:data {:lookup {:ngo {:name "Sea-Watch"} :supervisors [{:name_full "Maria Musterfrau"}{:name_full "Max Müller"}]}}})))
