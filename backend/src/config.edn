@@ -1,2 +1,3 @@
 {:port 4000
+ :db-inmemory false
  :db-dir "./data/crux/rocksdb"}

@@ -10,7 +10,8 @@
 (defstate webserver
   :start (do (println (str "Start server at http://localhost:" (:port swlkup.config.state/env)))
              (ring.adapter.jetty/run-jetty (ring.middleware.reload/wrap-reload #'swlkup.webserver.handler/app)
-                                           {:port (:port swlkup.config.state/env) :join? false})))
+                                           {:port (:port swlkup.config.state/env) :join? false}))
+  :stop (.stop webserver))
 
 (defn -main [& _args]
   (mount/start))

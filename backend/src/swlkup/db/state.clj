@@ -6,11 +6,12 @@
             [swlkup.config.state]))
 
 (defstate node
-  :start (let [node (crux/start-node {:my-rocksdb {:crux/module 'crux.rocksdb/->kv-store
-                                                   :db-dir (clojure.java.io/file (:db-dir swlkup.config.state/env))
-                                                   :sync? true}
-                                      :crux/tx-log {:kv-store :my-rocksdb}
-                                      :crux/document-store {:kv-store :my-rocksdb}})]
+  :start (let [node (crux/start-node (when-not (:db-inmemory swlkup.config.state/env)
+                                               {:my-rocksdb {:crux/module 'crux.rocksdb/->kv-store
+                                                             :db-dir (clojure.java.io/file (:db-dir swlkup.config.state/env))
+                                                             :sync? true}
+                                                :crux/tx-log {:kv-store :my-rocksdb}
+                                                :crux/document-store {:kv-store :my-rocksdb}}))]
 
               (println "Seed the database")
               (crux/submit-tx node (map (fn [entry] [:crux.tx/put entry])

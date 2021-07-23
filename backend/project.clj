@@ -22,4 +22,5 @@
                                   ;; additional deps to run `lein test` 
                                   [nrepl/nrepl "0.8.3"]
                                   [clojure-complete/clojure-complete "0.2.5"]]}
+             :test {:jvm-opts ["-Ddb-inmemory=true"]}
              :uberjar {:aot :all}})
