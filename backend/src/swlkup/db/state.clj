@@ -45,4 +45,4 @@
   "A query returning only 1 unary result"
   [& args]
   (-> (apply q args)
-      first first))
+      ffirst))

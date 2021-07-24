@@ -14,15 +14,12 @@
   (let [token (get-in node [:_ :swlkup.resolver.root.lookup/lookup])
         valid (not (nil? token))]
        (when valid
-             (->> (q_unary '{:find [(pull ?e [*])]
-                             :in [ngo-filter token:ngo]
-                             :where [[?e :crux.spec :swlkup.model.supervisor/supervisor]
-                                     [?e :ngos ?ngo]
-                                     [(ngo-filter ?ngo token:ngo)]]}
-                           (fn [?ngo token:ngo]
-                               (or (= ?ngo token:ngo)
-                                   (= ?ngo :any)))
-                           (:ngo token))
-                  (sort-by :name_full)))))  ;; for reproducability in tests
+             (q_unary '{:find [(pull ?e [*]) ?name_full]
+                        :order-by [[?name_full :asc]]  ;; For reproducability in tests
+                        :where [[?e :crux.spec :swlkup.model.supervisor/supervisor]
+                                [?e :ngos ngos]
+                                [?e :name_full ?name_full]]
+                        :in [[ngos ...]]}  ;; Collection binding
+                      #{(:ngo token) :any}))))
 
 (s/def ::supervisors (t/resolver #'supervisors))

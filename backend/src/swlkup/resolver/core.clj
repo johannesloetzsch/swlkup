@@ -7,9 +7,9 @@
             [swlkup.config.state :refer [env]]))
 
 (def graphql* (executor {:query {:lookup #'lookup
-                         :languages #'languages
-                         :offers #'offers
-                         :supervisor_register #'supervisor_register}}))
+                                 :languages #'languages
+                                 :offers #'offers}
+                         :mutation {:supervisor_register #'supervisor_register}}))
 
 (defn graphql [query]
   (graphql* (assoc-in query
