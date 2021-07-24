@@ -1,8 +1,14 @@
 (defproject swlkup-backend "0.1.0-SNAPSHOT"
   :description "supervisor lookup backend"
   :min-lein-version "2.0.0"
-  :dependencies [[org.clojure/clojure "1.10.3"]
+  :dependencies [;; core
+                 [org.clojure/clojure "1.10.3"]
                  [yogthos/config "1.1.8"]
+                 [mount "0.1.16"]
+                 ;; db
+                 [pro.juxt.crux/crux-core "1.17.1"]
+                 [pro.juxt.crux/crux-rocksdb "1.17.1"]
+                 ;; graphql + http
                  [ajk/specialist-server "0.6.0"]
                  [compojure "1.6.2"]
                  [ring/ring-core "1.8.2"]
@@ -12,12 +18,15 @@
                  [ring/ring-json "0.5.1"]
                  [ring-webjars "0.2.0"]
                  [org.webjars/graphiql "0.11.11"]
-
-                 [mount "0.1.16"]
-                 [pro.juxt.crux/crux-core "1.17.1"]                 
-                 [pro.juxt.crux/crux-rocksdb "1.17.1"]]
+                 ;; auth + mail
+                 [cryptohash-clj "0.1.10"]
+                 [likid_geimfari/secrets "1.0.0"]
+                 [crypto-random "1.2.1"]
+                 #_[buddy/buddy-sign "3.4.1"]
+                 [com.draines/postal "2.0.4"]]
   :main swlkup.webserver.state
-  :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
+  :profiles {:dev {:dependencies [;; helpers for testing
+                                  [javax.servlet/servlet-api "2.5"]
                                   [ring/ring-mock "0.4.0"]
                                   ;; additional deps to run `lein test` 
                                   [nrepl/nrepl "0.8.3"]

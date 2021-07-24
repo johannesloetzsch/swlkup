@@ -6,7 +6,9 @@ pom.xml
 pom.xml.asc
 *.jar
 *.class
-/.lein-*
+/.lein-env
+/.lein-repl-history
+/.lein-failures
 /.nrepl-port
 /.lsp
 /.clj-kondo/.cache

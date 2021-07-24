@@ -5,4 +5,11 @@
  :validate-output true
 
  :db-inmemory false
- :db-dir "./data/crux/rocksdb"}
+ :db-dir "./data/crux/rocksdb"
+
+ :mail-host ""
+ :mail-user ""
+ :mail-pass ""
+ :mail-port 587
+ :mail-from nil
+}

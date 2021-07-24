@@ -46,6 +46,7 @@ nix build ..#backend
 
 Configuration management is done with [yogthos](https://github.com/yogthos/config).
 Default values are set at `src/config.edn`, there you see the available options.
+In `.lein-env.example` you find the variables you should set yourself.
 To set config options at runtime, use `environment variables`, `java system properties` or an .edn file specified using the `config` environment variable.
 
 ## Notes to developers

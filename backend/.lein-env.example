@@ -1,0 +1,6 @@
+{
+ :mail-host "mail.ifsr.de"
+ :mail-user "johannes"
+ :mail-pass "I don't share my topsecret password with you ;)"
+ :mail-from "johannes@ifsr.de"
+}

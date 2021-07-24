@@ -3,11 +3,13 @@
             [swlkup.resolver.root.lookup :refer [lookup]]
             [swlkup.resolver.root.languages :refer [languages]]
             [swlkup.resolver.root.offers :refer [offers]]
+            [swlkup.resolver.root.supervisor.register :refer [supervisor_register]]
             [swlkup.config.state :refer [env]]))
 
 (def graphql* (executor {:query {:lookup #'lookup
                          :languages #'languages
-                         :offers #'offers}}))
+                         :offers #'offers
+                         :supervisor_register #'supervisor_register}}))
 
 (defn graphql [query]
   (graphql* (assoc-in query
