@@ -1,0 +1,61 @@
+.input {
+    position:absolute;
+    opacity: 0;
+    z-index: -9999;
+}
+
+.label {
+    position: relative;
+    padding-left: 14px;
+    margin-left: 14px;
+}
+
+.indicator{
+    position: absolute;
+    left: -4px;
+    /** display: block; **/
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius:3px;
+    border: 1px solid #aaa;
+    cursor: pointer;
+}
+
+
+/** When indeterminate, the background is a bit transparent **/
+
+.input:checked + .indicator {
+    background: #1370ca;
+}
+
+.input:indeterminate + .indicator {
+    background: #1370ca75;
+}
+
+
+/** The same indicator for checked and indeterminate **/
+
+.input:checked  + .indicator::after {
+    content: "";
+    position: absolute;
+    width: 3px;  /** left leg **/
+    height: 7px;  /** right leg **/
+    border: 2px solid #fff;
+    border-left: none;
+    border-top: none;
+    transform: rotate(40deg);
+    left: 4px;
+}
+
+.input:indeterminate + .indicator::after {
+    content: "";
+    position: absolute;
+    width: 3px;  /** left leg **/
+    height: 7px;  /** right leg **/
+    border: 2px solid #fff;
+    border-left: none;
+    border-top: none;
+    transform: rotate(40deg);
+    left: 4px;
+}

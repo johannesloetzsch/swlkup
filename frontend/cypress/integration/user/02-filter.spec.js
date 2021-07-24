@@ -5,21 +5,21 @@ describe('Test filters on a LookupResult for a token', () => {
     cy.get('main').contains('2 Supervisors match this filters')
 
     cy.log('Filter: en only')
-    cy.get('#en').check()
+    cy.get('#en').check({force: true})
     cy.get('main').contains('1 Supervisors match this filters')
     cy.get('main').contains('Max Müller')
 
     cy.log('Filter: en or it')
-    cy.get('#it').check()
+    cy.get('#it').check({force: true})
     cy.get('main').contains('2 Supervisors match this filters')
 
     cy.log('Filter: it only')
-    cy.get('#en').uncheck()
+    cy.get('#en').uncheck({force: true})
     cy.get('main').contains('1 Supervisors match this filters')
     cy.get('main').contains('Maria Musterfrau')
 
     cy.log('No filter')
-    cy.get('#it').uncheck()
+    cy.get('#it').uncheck({force: true})
     cy.get('main').contains('2 Supervisors match this filters')
   })
 
@@ -30,26 +30,26 @@ describe('Test filters on a LookupResult for a token', () => {
     cy.get('input[name=offer]').should('have.length', 2)
 
     cy.log('The same as the default')
-    cy.get('#individual').check()
+    cy.get('#individual').check({force: true})
     cy.get('main').contains('2 Supervisors match this filters')
     cy.get('input[name=offer]').should('have.length', 2)
 
     cy.log('No filter on offers and show filters for offers for individuals and groups')
-    cy.get('#group').check()
+    cy.get('#group').check({force: true})
     cy.get('main').contains('2 Supervisors match this filters')
     cy.get('input[name=offer]').should('have.length', 7)
 
     cy.log('No filter on offers and show filters for offers for groups only')
-    cy.get('#individual').uncheck()
+    cy.get('#individual').uncheck({force: true})
     cy.get('main').contains('2 Supervisors match this filters')
     cy.get('input[name=offer]').should('have.length', 5)
 
     cy.log('Filter: moderation only')
-    cy.get('#moderation').check()
+    cy.get('#moderation').check({force: true})
     cy.get('main').contains('1 Supervisors match this filters')
 
     cy.log('Changing the target will reset the filter')
-    cy.get('#group').uncheck()
+    cy.get('#group').uncheck({force: true})
     cy.get('main').contains('2 Supervisors match this filters')
   })
 
@@ -59,7 +59,7 @@ describe('Test filters on a LookupResult for a token', () => {
     cy.get('#zip').should('not.exist')
 
     cy.log('Checking inperson asks for zip code')
-    cy.get('#inperson').check()
+    cy.get('#inperson').check({force: true})
     cy.get('#zip')
   })
 })

@@ -1,6 +1,7 @@
 import styles from '../styles/Supervisor.module.css'
 import { Languages, LookupQuery, Supervisors, Offers } from '../codegen/generates'
 import create from 'zustand'
+import { Checkbox } from './Checkbox'
 
 type Options = any //Map<string, boolean>
 
@@ -65,48 +66,42 @@ function FilterForm({languages, offers, selections}:
       <fieldset>
         <legend>Only show supervisors speaking one of this languages</legend>
         { languages.map( lang => (
-          <span key={lang.id}>
-            <input type="checkbox" name="language" value={lang.id} id={lang.id} onChange={setLanguage}
-	           ref={el => el && (el.indeterminate = getLanguages([]).length === 0
-				 && selections.selectedLanguages.includes(lang.id))} />
-            <label htmlFor={lang.id}>
-              <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
-              {lang.name}
-            </label>&nbsp;&nbsp;&nbsp;
-          </span>
+          <Checkbox name="language" value={lang.id} id={lang.id} onChange={setLanguage} key={lang.id}
+                    refInput={el => el && (el.indeterminate = getLanguages([]).length === 0
+	                               && selections.selectedLanguages.includes(lang.id))} >
+            <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
+            {lang.name}
+	  </Checkbox>
         ) ) }
       </fieldset><br/>
       <fieldset>
         <legend>What kind of offers are you looking for?</legend>
 	{ [{"id": "individual", "label": "Individual"}, {"id": "group", "label": "Group"}].map( target => (
-	    <span key={target.id}>
-              <input type="checkbox" name="target" value={target.id} id={target.id} onChange={setTarget}
-                     ref={el => el && (el.indeterminate = getTargets([]).length === 0
-                                   && selections.selectedTargets.includes(target.id))} />
-              <label htmlFor={target.id}>{target.label}</label>
-	    </span>
+            <Checkbox name="target" value={target.id} id={target.id} onChange={setTarget} key={target.id}
+                      refInput={el => el && (el.indeterminate = getTargets([]).length === 0
+                                         && selections.selectedTargets.includes(target.id))} >
+              {target.label}
+	    </Checkbox>
 	) ) }
         <hr/>
         { visibleOffers.map( offer => (
 	  <span key={offer.id}>
-	    <input type="checkbox" name="offer" value={offer.id} id={offer.id} onChange={setOffer}
-	           ref={el => el && (el.indeterminate = getOffers([]).length === 0
-				 && selections.selectedOffers.includes(offer.id))} />
-	    <label htmlFor={offer.id}>
+	    <Checkbox name="offer" value={offer.id} id={offer.id} onChange={setOffer}
+	              refInput={el => el && (el.indeterminate = getOffers([]).length === 0
+                                         && selections.selectedOffers.includes(offer.id))} >
 	      {offer.desc}
-	    </label><br/>
-          </span>
+            </Checkbox><br/>
+	  </span>
 	) ) }
       </fieldset><br/>
       <fieldset>
         <legend>How would you like to get support?</legend>
 	{ [{"id": "inperson", "label": "In Person"}, {"id": "remote", "label": "Remote"}].map( contact => (
-	    <span key={contact.id}>
-              <input type="checkbox" name="contact" value={contact.id} id={contact.id} onChange={setContact}
-	           ref={el => el && (el.indeterminate = getContacts([]).length === 0
-				 && selections.selectedContacts.includes(contact.id))} />
-              <label htmlFor={contact.id}>{contact.label}</label>
-	    </span>
+            <Checkbox name="contact" value={contact.id} id={contact.id} onChange={setContact} key={contact.id}
+	              refInput={el => el && (el.indeterminate = getContacts([]).length === 0
+                                         && selections.selectedContacts.includes(contact.id))} >
+              {contact.label}
+	    </Checkbox>
 	) ) }
 	{ selections.selectedContacts.includes("inperson")
 	  && <span><hr/>
