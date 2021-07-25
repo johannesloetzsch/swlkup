@@ -2,14 +2,13 @@ Swlkup is an application to manage a database of supervisors and provide anonymo
 
 ## Quickstart
 
-<!--
 ### Prebuild jar
 
-In future releases we will publish jar files at github, to be run by:
+If you don't want build it yourself, you can [download a prebuild jar](https://github.com/johannesloetzsch/swlkup/releases/latest) and run it with:
+
 ```bash
 java -jar swlkup.jar
 ```
--->
 
 ### Nix
 

@@ -19,12 +19,13 @@
         password (generate-password)
         password:hash (hash-password password)]
        ;; TODO do we want allow reregistration of existing users?
+       ;; At the moment this simply substitudes the existing password (trivial password recovery)
 
        (tx[[:crux.tx/put {:crux.db/id mail
                           :crux.spec :swlkup.model.login
                           :password-hash password:hash}]])
 
-       (-> (send-mail {:to mail :subject "Your swlkup login"
+       (-> (send-mail {:to mail :subject "swlkup login"
                        :body (str "username: " mail "\n"
                                   "password: " password)})
            (#(= :SUCCESS (:error %))))))
@@ -32,4 +33,5 @@
 (s/def ::supervisor_register (t/resolver #'supervisor_register))
 
 (comment (clojure.pprint/pprint (swlkup.db.state/q_unary '{:find [(pull ?e [*])]
-                                                           :where [[?e :crux.spec :swlkup.model.login]]})))
+                                                           :where [[?e :crux.spec :swlkup.model.login]]}))
+         (swlkup.auth.password.hash/verify-password "i!A;z\\\"'^G3Q)w])%83)" "100$12$argon2id$v13$hq47jacLIYoiNMD9kdyy+w$ISDi+bSSTmsgqu648LQLv7ySU+lG2VGKRfa06HNfjzk$$$"))
