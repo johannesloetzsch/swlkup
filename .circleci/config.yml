@@ -17,25 +17,58 @@ jobs:
             - nix-{{ checksum "flake.lock" }}  ## the cache will be cleaned on updates
       - run:
           name: Pure reproducible build + unit tests
-          command: nix build --show-trace
+          command: nix build -o result-fullstack --show-trace
       - run:
           name: Integration tests
           command: |
+            nix build .#cypress -o result-cypress
             export CYPRESS_BASE_URL="http://localhost:4000"
             nix run &
             (sleep 10; cd frontend; nix run ..#cypress -- run); EXIT=$?
             kill $(cat .pid); exit $EXIT
+      - run:
+          name: Cleanup
+          command: |
+            du -hs /nix/store/
+            nix-collect-garbage
+            du -hs /nix/store/
       - save_cache:
           key: nix-{{ checksum "flake.lock" }}-{{ checksum "flake.nix" }}-{{ .BuildNum }}
           paths:
             - /nix/
+  release:
+    docker:
+      - image: johannesloetzsch/nix-flake:latest
+    steps:
+      - run:
+          name: Disable Sandbox
+          command: mkdir -p ~/.config/nix/; echo 'sandbox = false' >> ~/.config/nix/nix.conf;
+      - checkout
+      - restore_cache:
+          keys:
+            - nix-{{ checksum "flake.lock" }}-{{ checksum "flake.nix" }}
+            - nix-{{ checksum "flake.lock" }}  ## the cache will be cleaned on updates
+      - run:
+          name: Release .jar
+          command: |
+            nix build .#fullstack.jar
+            nix run .#release result/*.jar swlkup.jar
 workflows:
   version: 2
   default:
     jobs:
       - build-test:
-          filters:  ## tags + branches
-            tags:
-              only: /.*/
+          filters:  ## branches + tags
             branches:
               only: /.*/
+            tags:
+              only: /.*/
+      - release:
+          filters:  ## tags
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
+          requires:
+            - build-test
+          context: deployment

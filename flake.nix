@@ -24,6 +24,7 @@
       frontendCodegen = import ./frontend/nix/tools/codegen.nix { inherit pkgs; };
       frontendUpdatedDeps = import ./frontend/nix/tools/updated-deps.nix { inherit pkgs; };
       cypress = import ./frontend/nix/deps/cypress/override.nix { inherit pkgs; };
+      release = import ./.circleci/nix/tools/release.nix { inherit pkgs; };
 
       ## Builds
       backend = import ./backend/nix/swlkup-backend.nix { inherit pkgs buildMavenRepositoryFromLockFile; };
