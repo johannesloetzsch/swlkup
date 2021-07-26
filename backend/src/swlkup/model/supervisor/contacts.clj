@@ -3,6 +3,6 @@
             [specialist-server.type :as t]))
 
 (t/defobject Contacts {:kind t/object-kind #_#_:description "Example object"}
-            :req-un [::phone ::website])
+            :req-un [::phone ::website ::email])
 
 (s/def ::contacts Contacts)

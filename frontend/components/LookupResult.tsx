@@ -146,7 +146,7 @@ function Supervisor({supervisor, languages}:
       <p>
         <i>
           <span style={{display: "inline-block"}}>{supervisor.contacts.website} &nbsp;</span><br/>
-          <span style={{display: "inline-block"}}>{supervisor.email} &nbsp;</span><br/>
+          <span style={{display: "inline-block"}}>{supervisor.contacts.email} &nbsp;</span><br/>
           <span style={{display: "inline-block"}}>{supervisor.contacts.phone}</span>
         </i>
       </p>
@@ -174,7 +174,7 @@ export function LookupResult({data}: {data: LookupQuery}) {
       </div>
 
       <div className={styles.grid}>
-        {filteredSupervisors?.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} key={supervisor.email} /> )}
+        {filteredSupervisors?.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} key={supervisor.id} /> )}
       </div>
     </>
   )

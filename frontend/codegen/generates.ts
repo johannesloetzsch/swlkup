@@ -19,6 +19,7 @@ export type Contacts = {
   __typename?: 'Contacts';
   phone?: Maybe<Scalars['String']>;
   website?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
 };
 
 export type Location = {
@@ -30,6 +31,19 @@ export type Location = {
   address_string?: Maybe<Scalars['String']>;
 };
 
+
+/** If this server supports mutation, the type that mutation operations will be rooted at. */
+export type MutationType = {
+  __typename?: 'MutationType';
+  /** Add a new supervisor account to the database and send a mail containing the password via mail */
+  supervisor_register: Scalars['Boolean'];
+};
+
+
+/** If this server supports mutation, the type that mutation operations will be rooted at. */
+export type MutationTypeSupervisor_RegisterArgs = {
+  mail: Scalars['String'];
+};
 
 /** The type that query operations will be rooted at. */
 export type QueryType = {
@@ -90,8 +104,8 @@ export type Offers = {
 /** All supervisor visible with the used credentials */
 export type Supervisors = {
   __typename?: 'supervisors';
-  email?: Maybe<Scalars['String']>;
-  login?: Maybe<Scalars['String']>;
+  /** Self descriptive. */
+  id: Scalars['ID'];
   name_full?: Maybe<Scalars['String']>;
   languages: Array<Scalars['String']>;
   offers: Array<Scalars['String']>;
@@ -118,10 +132,10 @@ export type LookupQuery = (
       & Pick<Ngo, 'name'>
     )>, supervisors?: Maybe<Array<(
       { __typename?: 'supervisors' }
-      & Pick<Supervisors, 'name_full' | 'photo' | 'languages' | 'offers' | 'email' | 'text'>
+      & Pick<Supervisors, 'id' | 'name_full' | 'photo' | 'languages' | 'offers' | 'text'>
       & { contacts: (
         { __typename?: 'Contacts' }
-        & Pick<Contacts, 'phone' | 'website'>
+        & Pick<Contacts, 'phone' | 'email' | 'website'>
       ) }
     )>> }
   ), languages: Array<(
@@ -142,15 +156,16 @@ export const LookupDocument = `
       name
     }
     supervisors {
+      id
       name_full
       photo
       languages
       offers
       contacts {
         phone
+        email
         website
       }
-      email
       text
     }
   }

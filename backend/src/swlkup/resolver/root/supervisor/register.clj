@@ -4,16 +4,17 @@
             [swlkup.db.state :refer [tx]]
             [swlkup.auth.password.generate :refer [generate-password]]
             [swlkup.auth.password.hash :refer [hash-password]]
-            [swlkup.auth.mail.send :refer [send-mail]]))
+            [swlkup.auth.mail.send :refer [send-mail]]
+            [swlkup.model.login :as login]))
 
 (s/def ::mail t/string)
 
 (s/fdef supervisor_register
-        :args (s/tuple map? (s/keys :req-un [::mail]) map? map?)
+        :args (s/tuple map? (s/keys :req-un [::login/mail]) map? map?)
         :ret t/boolean)
 
 (defn supervisor_register
-  "Add a new supervisor to the database and send a mail containing the password via mail"
+  "Add a new supervisor account to the database and send a mail containing the password via mail"
   [_node opt _ctx _info]
   (let [mail (:mail opt)
         password (generate-password)
@@ -22,7 +23,8 @@
        ;; At the moment this simply substitudes the existing password (trivial password recovery)
 
        (tx[[:crux.tx/put {:crux.db/id mail
-                          :crux.spec :swlkup.model.login
+                          :crux.spec :swlkup.model.login/login
+                          :mail mail
                           :password-hash password:hash}]])
 
        (-> (send-mail {:to mail :subject "swlkup login"
@@ -31,7 +33,3 @@
            (#(= :SUCCESS (:error %))))))
 
 (s/def ::supervisor_register (t/resolver #'supervisor_register))
-
-(comment (clojure.pprint/pprint (swlkup.db.state/q_unary '{:find [(pull ?e [*])]
-                                                           :where [[?e :crux.spec :swlkup.model.login]]}))
-         (swlkup.auth.password.hash/verify-password "i!A;z\\\"'^G3Q)w])%83)" "100$12$argon2id$v13$hq47jacLIYoiNMD9kdyy+w$ISDi+bSSTmsgqu648LQLv7ySU+lG2VGKRfa06HNfjzk$$$"))

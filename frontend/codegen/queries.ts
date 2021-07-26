@@ -8,15 +8,16 @@ export const lookup = gql`
         name
       }
       supervisors {
+	id
         name_full
 	photo
 	languages
 	offers
 	contacts {
 	  phone
+          email
 	  website
 	}
-        email
         text
       }
     }

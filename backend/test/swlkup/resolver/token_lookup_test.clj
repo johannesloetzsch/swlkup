@@ -1,4 +1,4 @@
-(ns swlkup.resolver.supervisors-test
+(ns swlkup.resolver.token-lookup-test
   (:require [clojure.test :refer [deftest is]]
             [swlkup.resolver.core :refer [graphql]]
             [mount.core :as mount]
@@ -7,6 +7,10 @@
 (mount/start)
 
 ;; Depending on the ngo the token belongs to, a limited set of supervisors is returned
+
+(deftest wrong-token
+  (is (= (graphql {:query "{lookup(token: \"wrong\") {valid ngo{name} supervisors{name_full}}}"})
+         {:data {:lookup {:valid false :ngo nil :supervisors nil}}})))
 
 (deftest token->max
   (is (= (graphql {:query "{lookup(token: \"R4nd0m\") {ngo{name} supervisors{name_full}}}"})

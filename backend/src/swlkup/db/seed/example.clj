@@ -90,15 +90,15 @@
    :token "R4nd0m"
    :ngo :lifeline}
 
-  {:crux.db/id :MaxMüller
+  {:crux.db/id "MaxMüller"
    :crux.spec :swlkup.model.supervisor/supervisor
+   :swlkup.model.login/login:id "praxis@max.mueller.de"
    :name_full "Max Müller"
    :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_joe.png"
-   :login :todo
-   :email "praxis@max.mueller.de"
    :languages [:de :en]
    :offers #{:counselling :counselling_telephone :crisis_intervention}
    :contacts {:phone "0351 1234 5678"
+              :email "praxis@max.mueller.de"
               :website "https://max.mueller.de"}
    :location {:zip "01022"
               :address_string "Leipziger Str. 13, 01022 Dresden"
@@ -107,16 +107,16 @@
               :radius_kilometer 10}
    :text "Irgend etwas über mich ;)"
    :ngos :any}
-  {:crux.db/id :MariaMusterfrau
+  {:crux.db/id "MariaMusterfrau"
    :crux.spec :swlkup.model.supervisor/supervisor
+   :swlkup.model.login/login:id "maria@mm.de"
    :name_full "Maria Musterfrau"
    :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_stephanie.png"
-   :login :todo
-   :email "maria@mm.de"
    :languages [:it :es :fr :ar]
    :offers #{:counselling :counselling_telephone :crisis_intervention
              :mediation :moderation :supervision :workshops}
    :contacts {:phone "+49 123 4567 8901"
+              :email "maria@mm.de"
               :website "https://mm.de"}
    :location {:zip "01010"
               :address_string "Hauptstr. 7, 01010 Dresden"
@@ -125,4 +125,9 @@
               :radius_kilometer 10}
    :text "Here I should write something about myself, my specialization and my motivation for supporting SAR NGOs…"
    :ngos #{:seawatch :sosmediterranee}}
+
+  {:crux.db/id "praxis@max.mueller.de"
+   :crux.spec :swlkup.model.login/login
+   :mail "praxis@max.mueller.de"
+   :password-hash "100$12$argon2id$v13$hq47jacLIYoiNMD9kdyy+w$ISDi+bSSTmsgqu648LQLv7ySU+lG2VGKRfa06HNfjzk$$$"}
 ])

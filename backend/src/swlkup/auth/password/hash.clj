@@ -7,5 +7,7 @@
        (hash-with algo password args)))
 
 (defn verify-password [password pwhash]
-  (let [algo :argon2]
-       (verify-with algo password pwhash)))
+  (if (empty? pwhash)
+      false
+      (let [algo :argon2]
+           (verify-with algo password pwhash))))

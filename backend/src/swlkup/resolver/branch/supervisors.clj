@@ -14,12 +14,13 @@
   (let [token (get-in node [:_ :swlkup.resolver.root.lookup/lookup])
         valid (not (nil? token))]
        (when valid
-             (q_unary '{:find [(pull ?e [*]) ?name_full]
-                        :order-by [[?name_full :asc]]  ;; For reproducability in tests
-                        :where [[?e :crux.spec :swlkup.model.supervisor/supervisor]
-                                [?e :ngos ngos]
-                                [?e :name_full ?name_full]]
-                        :in [[ngos ...]]}  ;; Collection binding
-                      #{(:ngo token) :any}))))
+             (let [db-docs (q_unary '{:find [(pull ?e [*]) ?name_full]
+                                      :order-by [[?name_full :asc]]  ;; For reproducability in tests
+                                      :where [[?e :crux.spec :swlkup.model.supervisor/supervisor]
+                                              [?e :ngos ngos]
+                                              [?e :name_full ?name_full]]
+                                      :in [[ngos ...]]}  ;; Collection binding
+                                    #{(:ngo token) :any})]
+                  (map supervisor/db->graphql db-docs) ))))
 
 (s/def ::supervisors (t/resolver #'supervisors))

@@ -6,14 +6,18 @@
             [swlkup.model.languages :as languages]
             [swlkup.model.offers :as offers]))
 
+(defn db->graphql [doc]
+  (assoc doc :id (:crux.db/id doc)))
+
+(s/def ::id t/string)
+
 (s/def ::languages (t/field (s/* ::languages/id) ""))
 (s/def ::offers (t/field (s/coll-of ::offers/id) ""))
 
 ;(s/def ::offers_online t/boolean)
 ;(s/def ::offers_offline t/boolean)
 
-(s/def ::supervisor (s/keys :req-un [::email  ;; also used as primary key
-                                     ::login  ;; password hash
+(s/def ::supervisor (s/keys :req-un [::id
                                      ::name_full
                                      ::languages
                                      ::offers
