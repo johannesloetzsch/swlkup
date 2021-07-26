@@ -12,4 +12,6 @@
  :mail-pass ""
  :mail-port 587
  :mail-from nil
+
+ :frontend-graphql-endpoint "http://localhost:4000/graphql"
 }

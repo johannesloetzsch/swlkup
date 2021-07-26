@@ -1,10 +1,9 @@
-const endpoint = "http://localhost:4000/graphql";
-
-/** add `Content-Type` header **/
+import {config, fetch_config} from "../config";
 
 export function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
   return async (): Promise<TData> => {
-    const res = await fetch(endpoint, {
+    await fetch_config()
+    const res = await fetch(config.graphql_endpoint, {
       method: 'POST',
       body: JSON.stringify({ query, variables }),
 

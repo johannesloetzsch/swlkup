@@ -1,6 +1,9 @@
 (ns swlkup.webserver.handler
-  (:require [compojure.core :refer [defroutes GET POST]]
+  (:require [swlkup.config.state :refer [env]]
+            [compojure.core :refer [defroutes GET POST]]
             [compojure.route :as route]
+            [ring.util.response :refer [response resource-response content-type]]
+            [ring.util.json-response :refer [json-response]]
             [ring.middleware.content-type :refer [wrap-content-type]] 
             [ring.middleware.not-modified :refer [wrap-not-modified]]
             [ring.middleware.resource :refer [wrap-resource]]
@@ -8,7 +11,6 @@
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]
             [ring.middleware.cors :refer [wrap-cors]]
             [lib.graphql.middleware :refer [wrap-graphql-error]]
-            [ring.util.response :refer [response resource-response content-type]]
             [swlkup.resolver.core :refer [graphql]]
             [lib.resources.list-resources :refer [list-resources]]
             [clojure.string :as string :refer [ends-with?]]))
@@ -70,6 +72,14 @@
                  :else
                    res))))
 
+(defn wrap-frontend-config
+  "Provide config for static build of frontend"
+  [handler]
+  (fn [req]
+      (if (= "/config.json" (:uri req))
+          (json-response {:graphql_endpoint (:frontend-graphql-endpoint env)})
+          (handler req))))
+
 (defn wrap-defaults [handler]
   (-> handler
       (wrap-content-type)
@@ -81,6 +91,7 @@
       (wrap-graphiql)
 
       (wrap-nextjs-frontend)
+      (wrap-frontend-config)
 
       (wrap-defaults)
 

@@ -16,6 +16,7 @@
                  [ring/ring-devel "1.9.4"]
                  [ring-cors "0.1.13"]
                  [ring/ring-json "0.5.1"]
+                 [ring-json-response "0.2.0"]
                  [ring-webjars "0.2.0"]
                  [org.webjars/graphiql "0.11.11"]
                  ;; auth + mail
