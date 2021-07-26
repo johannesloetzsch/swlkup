@@ -37,7 +37,7 @@
    :id "counselling"
    :crux.spec :swlkup.model.offers/offers
    :target :individual
-   :desc "Counselling for individuals"}
+   :desc "Counselling/Coaching for individuals"}
   {:crux.db/id :crisis_intervention
    :id "crisis_intervention"
    :crux.spec :swlkup.model.offers/offers
@@ -69,9 +69,6 @@
    :target :group
    :desc "Workshops"}
 
-  #_{:crux.db/id :coaching
-   :crux.spec :swlkup.model.offers/offers
-     }
   #_{:crux.db/id :translation
    :crux.spec :swlkup.model.offers/offers
      }

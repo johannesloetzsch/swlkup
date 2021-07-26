@@ -15,8 +15,16 @@ jobs:
           keys:
             - nix-{{ checksum "flake.lock" }}-{{ checksum "flake.nix" }}
             - nix-{{ checksum "flake.lock" }}  ## the cache will be cleaned on updates
+      ## We build the depedencies in a separate step.
+      ## This is not required, but allows to see the time it took.
       - run:
-          name: Pure reproducible build + unit tests
+          name: Build Node dependencies
+          command: nix build .#frontend.nodeDependencies -o result-node
+      - run:
+          name: Build Maven dependencies
+          command: nix build .#backend.mavenRepository -o result-maven
+      - run:
+          name: Reproducible build + unit tests
           command: nix build -o result-fullstack --show-trace
       - run:
           name: Integration tests

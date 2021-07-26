@@ -56,4 +56,4 @@ lib.mergeAttrs
     echo $! > .pid
     fg
   '')
-  { jar = swlkup-backend-jar; }
+  { inherit mavenRepository; jar = swlkup-backend-jar; }

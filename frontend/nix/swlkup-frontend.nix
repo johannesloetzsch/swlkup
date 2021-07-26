@@ -53,4 +53,4 @@ lib.mergeAttrs
     node ${minimalServer}/serve.js ${staticHTML}
     ''
   )
-  { inherit staticHTML; }
+  { inherit staticHTML nodeDependencies; }
