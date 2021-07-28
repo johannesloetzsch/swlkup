@@ -4,8 +4,7 @@
             [ring.middleware.reload]
             [swlkup.webserver.handler]
             [mount.core :as mount :refer [defstate]]
-            [swlkup.config.state]
-            [swlkup.db.state]))
+            [swlkup.config.state]))
 
 (defstate ^{:on-reload :noop}  ;; When the app is recompiled, mount should not care, but we use ring.middleware.reload/wrap-reload
   webserver

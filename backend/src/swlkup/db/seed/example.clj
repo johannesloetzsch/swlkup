@@ -33,43 +33,43 @@
    :name "العربية"
    :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/0e/Flag_of_the_Arabic_language.svg"}
 
-  {:crux.db/id :counselling
-   :id "counselling"
+  {:crux.db/id "counseling"
+   :id "counseling"
    :crux.spec :swlkup.model.offers/offers
    :target :individual
    :desc "Counselling/Coaching for individuals"}
-  {:crux.db/id :crisis_intervention
+  {:crux.db/id "crisis_intervention"
    :id "crisis_intervention"
    :crux.spec :swlkup.model.offers/offers
    :target :individual
    :desc "Crisis intervention for individuals"}
-  {:crux.db/id :briefing
+  {:crux.db/id "briefing"
    :id "briefing"
    :crux.spec :swlkup.model.offers/offers
    :target :group
    :desc "Psychological briefing & debriefing of crews"}
-  {:crux.db/id :moderation
+  {:crux.db/id "moderation"
    :id "moderation"
    :crux.spec :swlkup.model.offers/offers
    :target :group
    :desc "Moderation"}
-  {:crux.db/id :mediation
+  {:crux.db/id "mediation"
    :id "mediation"
    :crux.spec :swlkup.model.offers/offers
    :target :group
    :desc "Mediation"}
-  {:crux.db/id :supervision
+  {:crux.db/id "supervision"
    :id "supervison"
    :crux.spec :swlkup.model.offers/offers
    :target :group
    :desc "Supervision"}
-  {:crux.db/id :workshops
+  {:crux.db/id "workshops"
    :id "workshops"
    :crux.spec :swlkup.model.offers/offers
    :target :group
    :desc "Workshops"}
 
-  #_{:crux.db/id :translation
+  #_{:crux.db/id "translation"
    :crux.spec :swlkup.model.offers/offers
      }
 
@@ -93,7 +93,7 @@
    :name_full "Max Müller"
    :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_joe.png"
    :languages [:de :en]
-   :offers #{:counselling :counselling_telephone :crisis_intervention}
+   :offers #{"counselling" "crisis_intervention"}
    :contacts {:phone "0351 1234 5678"
               :email "praxis@max.mueller.de"
               :website "https://max.mueller.de"}
@@ -110,8 +110,8 @@
    :name_full "Maria Musterfrau"
    :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_stephanie.png"
    :languages [:it :es :fr :ar]
-   :offers #{:counselling :counselling_telephone :crisis_intervention
-             :mediation :moderation :supervision :workshops}
+   :offers #{"counseling" "crisis_intervention"
+             "mediation" "moderation" "supervision" "workshops"}
    :contacts {:phone "+49 123 4567 8901"
               :email "maria@mm.de"
               :website "https://mm.de"}
@@ -125,6 +125,7 @@
 
   {:crux.db/id "praxis@max.mueller.de"
    :crux.spec :swlkup.model.login/login
+   :swlkup.model.login/role :supervisor
    :mail "praxis@max.mueller.de"
    :password-hash "100$12$argon2id$v13$hq47jacLIYoiNMD9kdyy+w$ISDi+bSSTmsgqu648LQLv7ySU+lG2VGKRfa06HNfjzk$$$"}
 ])

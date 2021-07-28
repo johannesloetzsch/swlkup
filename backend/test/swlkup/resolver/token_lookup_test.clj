@@ -1,12 +1,10 @@
 (ns swlkup.resolver.token-lookup-test
-  (:require [clojure.test :refer [deftest is]]
-            [swlkup.resolver.core :refer [graphql]]
+  "Depending on the ngo the token belongs to, a limited set of supervisors is returned"
+  (:require [clojure.test :refer [use-fixtures deftest is]]
             [mount.core :as mount]
-            [swlkup.db.state]))
+            [swlkup.resolver.core :refer [graphql]]))
 
-(mount/start)
-
-;; Depending on the ngo the token belongs to, a limited set of supervisors is returned
+(use-fixtures :once (fn [testcases] (mount/stop) (mount/start) (testcases) (mount/stop)))
 
 (deftest wrong-token
   (is (= (graphql {:query "{lookup(token: \"wrong\") {valid ngo{name} supervisors{name_full}}}"})

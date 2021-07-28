@@ -2,8 +2,7 @@
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
             [swlkup.resolver.branch.ngo :as ngo]
-            [swlkup.resolver.branch.supervisors :as supervisors]
-            [swlkup.db.state :refer [q_id_unary]]))
+            [swlkup.resolver.branch.supervisors :as supervisors]))
 
 (s/def ::token (t/field t/string "The secret given to a group of users, allowing anonym access to the lookup"))
 (s/def ::valid t/boolean)
@@ -14,8 +13,9 @@
 
 (defn lookup
   "All supervisors visible to the ngo assiged to the token"
-  [_node opt _ctx _info]
-  (let [token (:token opt)
+  [_node opt ctx _info]
+  (let [{:keys [q_id_unary]} (:db_ctx ctx)
+        token (:token opt)
         token-data (q_id_unary '{:find [(pull ?e [*])]
                                  :in [token]
                                  :where [#_[?e :crux.spec :swlkup.model.languages/languages]

@@ -10,6 +10,7 @@
                  [pro.juxt.crux/crux-rocksdb "1.17.1"]
                  ;; graphql + http
                  [ajk/specialist-server "0.6.0"]
+                 ;[ajk/specialist-server "0.7.0-SNAPSHOT"]
                  [compojure "1.6.2"]
                  [ring/ring-core "1.8.2"]
                  [ring/ring-jetty-adapter "1.8.2"]
@@ -32,6 +33,6 @@
                                   ;; additional deps to run `lein test` 
                                   [nrepl/nrepl "0.8.3"]
                                   [clojure-complete/clojure-complete "0.2.5"]]
-                   :jvm-opts ["-Dverbose=true"]}
+                   #_#_:jvm-opts ["-Dverbose=true"]}
              :test {:jvm-opts ["-Ddb-inmemory=true"]}
              :uberjar {:aot :all}})

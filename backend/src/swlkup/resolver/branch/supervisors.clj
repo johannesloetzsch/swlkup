@@ -1,8 +1,7 @@
 (ns swlkup.resolver.branch.supervisors
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
-            [swlkup.model.supervisor :as supervisor]
-            [swlkup.db.state :refer [q_unary]]))
+            [swlkup.model.supervisor :as supervisor]))
 
 (s/fdef supervisors
         :args (s/tuple map? map? map? map?)
@@ -10,8 +9,9 @@
 
 (defn supervisors
   "All supervisor visible with the used credentials"
-  [node _opt _ctx _info]
-  (let [token (get-in node [:_ :swlkup.resolver.root.lookup/lookup])
+  [node _opt ctx _info]
+  (let [{:keys [q_unary]} (:db_ctx ctx)
+        token (get-in node [:_ :swlkup.resolver.root.lookup/lookup])
         valid (not (nil? token))]
        (when valid
              (let [db-docs (q_unary '{:find [(pull ?e [*]) ?name_full]

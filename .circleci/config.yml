@@ -24,6 +24,9 @@ jobs:
           name: Build Maven dependencies
           command: nix build .#backend.mavenRepository -o result-maven
       - run:
+          name: Build Frontend
+          command: nix build .#frontend -o result-frontend
+      - run:
           name: Reproducible build + unit tests
           command: nix build -o result-fullstack --show-trace
       - run:

@@ -1,8 +1,7 @@
 (ns swlkup.resolver.branch.ngo
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
-            [swlkup.model.ngo :as ngo]
-            [swlkup.db.state :refer [q_id_unary]]))
+            [swlkup.model.ngo :as ngo]))
 
 (s/fdef ngo
         :args (s/tuple map? map? map? map?)
@@ -10,11 +9,12 @@
 
 (defn ngo
   "Details of a ngo"
-  [node _opt _ctx _info]
-  (q_id_unary '{:find [(pull ?e [*])]
-                :in [ngo]
-                :where [;[?e :crux.spec :swlkup.model.ngo/ngo]
-                       [?e :crux.db/id ngo]]}
-              (get-in node [:_ :swlkup.resolver.root.lookup/lookup :ngo])))
+  [node _opt ctx _info]
+  (let [{:keys [q_id_unary]} (:db_ctx ctx)]
+       (q_id_unary '{:find [(pull ?e [*])]
+                     :in [ngo]
+                     :where [[?e :crux.db/id ngo]
+                             [?e :crux.spec :swlkup.model.ngo/ngo]]}
+                   (get-in node [:_ :swlkup.resolver.root.lookup/lookup :ngo]))))
 
 (s/def ::ngo (t/resolver #'ngo))
