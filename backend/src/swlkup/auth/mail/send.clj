@@ -1,5 +1,6 @@
 (ns swlkup.auth.mail.send
-  (:require [postal.core :refer [send-message]]
+  (:require ;[postal.core :refer [send-message]]
+            [swlkup.auth.mail.local.mailutils :refer [send-message]]
             [swlkup.config.state :refer [env]]))
 
 (defn send-mail [msg*]
@@ -9,5 +10,7 @@
                 :port (:mail-port env)
                 :tls true}
         msg (assoc msg* :from (or (:mail-from env)
-                                  (:mail-user-from env)))]
-       (send-message server msg)))
+                                  (:mail-user-from env)))
+        result (send-message server msg)]
+       (or (= :SUCCESS (:error result))
+           (= 0 (:exit result)))))

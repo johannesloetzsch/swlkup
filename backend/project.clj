@@ -25,7 +25,8 @@
                  [likid_geimfari/secrets "1.0.0"]
                  [crypto-random "1.2.1"]
                  #_[buddy/buddy-sign "3.4.1"]
-                 [com.draines/postal "2.0.4"]]
+                 ;[com.draines/postal "2.0.4"]
+                ]
   :main swlkup.webserver.state
   :profiles {:dev {:dependencies [;; helpers for testing
                                   [javax.servlet/servlet-api "2.5"]

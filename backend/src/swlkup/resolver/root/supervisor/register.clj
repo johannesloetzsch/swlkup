@@ -28,9 +28,8 @@
                            :mail mail
                            :password-hash password:hash}]])
 
-       (-> (send-mail {:to mail :subject "swlkup login"
-                       :body (str "username: " mail "\n"
-                                  "password: " password)})
-           (#(= :SUCCESS (:error %))))))
+       (send-mail {:to mail :subject "swlkup login"
+                   :body (str "username: " mail "\n"
+                              "password: " password)})))
 
 (s/def ::supervisor_register (t/resolver #'supervisor_register))
