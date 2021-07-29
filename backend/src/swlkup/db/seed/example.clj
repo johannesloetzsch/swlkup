@@ -73,19 +73,19 @@
    :crux.spec :swlkup.model.offers/offers
      }
 
-  {:crux.db/id :lifeline
+  {:crux.db/id "lifeline"
    :crux.spec :swlkup.model.ngo/ngo
    :name "Mission Lifeline"}
-  {:crux.db/id :seawatch
+  {:crux.db/id "seawatch"
    :crux.spec :swlkup.model.ngo/ngo
    :name "Sea-Watch"}
 
   {:crux.db/id :T0p53cret
    :token "T0p53cret"
-   :ngo :seawatch}
+   :ngo "seawatch"}
   {:crux.db/id :R4nd0m
    :token "R4nd0m"
-   :ngo :lifeline}
+   :ngo "lifeline"}
 
   {:crux.db/id "MaxMüller"
    :crux.spec :swlkup.model.supervisor/supervisor
@@ -121,7 +121,7 @@
               :lat 13.37
               :radius_kilometer 10}
    :text "Here I should write something about myself, my specialization and my motivation for supporting SAR NGOs…"
-   :ngos #{:seawatch :sosmediterranee}}
+   :ngos #{"seawatch" "sosmediterranee"}}
 
   {:crux.db/id "praxis@max.mueller.de"
    :crux.spec :swlkup.model.login/login

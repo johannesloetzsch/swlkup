@@ -7,7 +7,8 @@
 (def password "i!A;z\\\"'^G3Q)w])%83)")
 (def supervisor_updated {:name_full "Max M. Müller"
                          :languages ["de"]
-                         :offers ["moderation"]
+                         :ngos "any" #_["lifeline", "seawatch"]
+                         :offers ["counseling", "moderation"]
                          :contacts {:phone "0123456789"
                                     :email "contact@max.mueller.de"
                                     :website "https://praxis.mueller.de"}})
