@@ -9,8 +9,7 @@
                  [pro.juxt.crux/crux-core "1.17.1"]
                  [pro.juxt.crux/crux-rocksdb "1.17.1"]
                  ;; graphql + http
-                 [ajk/specialist-server "0.6.0"]
-                 ;[ajk/specialist-server "0.7.0-SNAPSHOT"]
+                 [org.clojars.johannesloetzsch/specialist-server "0.6.1"]
                  [compojure "1.6.2"]
                  [ring/ring-core "1.8.2"]
                  [ring/ring-jetty-adapter "1.8.2"]

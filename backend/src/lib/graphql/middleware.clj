@@ -1,5 +1,6 @@
 (ns lib.graphql.middleware
-  (:require [ring.util.response :refer [response status]]
+  (:require [ring.util.response :refer [status]]
+            [ring.util.json-response :refer [json-response]]
             [clojure.stacktrace :refer [print-stack-trace]]))
 
 (defn wrap-graphql-error
@@ -13,6 +14,6 @@
     (try
       (handler request)
       (catch Throwable e
-        (-> (response {:errors [{:message (ex-message e)
-                                 :trace (with-out-str (print-stack-trace e))}]})
-            (status 200))))))
+        (-> (json-response {:errors [{:message (ex-message e)
+                                      :trace (with-out-str (print-stack-trace e))}]})
+            (status 500))))))

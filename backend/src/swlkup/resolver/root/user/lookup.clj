@@ -1,8 +1,8 @@
-(ns swlkup.resolver.root.lookup
+(ns swlkup.resolver.root.user.lookup
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
-            [swlkup.resolver.branch.ngo :as ngo]
-            [swlkup.resolver.branch.supervisors :as supervisors]))
+            [swlkup.resolver.branch.user.ngo :as ngo]
+            [swlkup.resolver.branch.user.supervisors :as supervisors]))
 
 (s/def ::token (t/field t/string "The secret given to a group of users, allowing anonym access to the lookup"))
 (s/def ::valid t/boolean)

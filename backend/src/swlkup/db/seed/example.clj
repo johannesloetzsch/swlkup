@@ -79,6 +79,10 @@
   {:crux.db/id "seawatch"
    :crux.spec :swlkup.model.ngo/ngo
    :name "Sea-Watch"}
+  {:crux.db/id "example-ngo"
+   :crux.spec :swlkup.model.ngo/ngo
+   :name "Example NGO"
+   :swlkup.model.login/login:id ["crewing@example-ngo.com"]}
 
   {:crux.db/id :T0p53cret
    :token "T0p53cret"
@@ -128,4 +132,10 @@
    :swlkup.model.login/role :supervisor
    :mail "praxis@max.mueller.de"
    :password-hash "100$12$argon2id$v13$hq47jacLIYoiNMD9kdyy+w$ISDi+bSSTmsgqu648LQLv7ySU+lG2VGKRfa06HNfjzk$$$"}
+
+  {:crux.db/id "crewing@example-ngo.com"
+   :crux.spec :swlkup.model.login/login
+   :swlkup.model.login/role :ngo
+   :mail "crewing@example-ngo.com"
+   :password-hash "100$12$argon2id$v13$lWXab18B+9b79jAk7noAwg$01ak9vbuyxhuKDvBnWV8wuwxIJ5GR6zjz/lJhdw1s+I$$$" #_"Vr(+cFtUG=rsj2:/]*uR" }
 ])

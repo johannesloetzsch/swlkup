@@ -95,6 +95,11 @@
       "sha256": "f70398c9d2b57b5a620886d59840b4c7c2a0cd0f3e6b0e0de54fc2b4bc43664c",
       "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformats-binary/2.10.2/jackson-dataformats-binary-2.10.2.pom"
     },
+    "org.antlr:antlr4-runtime:pom:4.7.2": {
+      "layout": "org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.pom",
+      "sha256": "dc09cba98c25d3c06e4aec516885d4c3af03062ba55f4fe6283fc9cf176a60fb",
+      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.pom"
+    },
     "ring:ring-mock:pom:0.4.0": {
       "layout": "ring/ring-mock/0.4.0/ring-mock-0.4.0.pom",
       "sha256": "23f7c54d65bc9a6ba5d5fdd7b49357f7646f90477489d6058cb25d9cc9575491",
@@ -245,6 +250,11 @@
       "sha256": "84f6a8a5ca6072eee7b48592e3e491d7bb85f24faebbc5fcf4c745056d5d8dfb",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/2.12.4/surefire-api-2.12.4.jar"
     },
+    "org.antlr:antlr4-master:pom:4.7.2": {
+      "layout": "org/antlr/antlr4-master/4.7.2/antlr4-master-4.7.2.pom",
+      "sha256": "ba99cb25d2390f38680c7502842a0ee0959d1e6403e013ccff698fd5856eead1",
+      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4-master/4.7.2/antlr4-master-4.7.2.pom"
+    },
     "com.fasterxml.jackson.core:jackson-core:jar:2.10.2": {
       "layout": "com/fasterxml/jackson/core/jackson-core/2.10.2/jackson-core-2.10.2.jar",
       "sha256": "4c41f22a48f6ebb28752baeb6d25bf09ba4ff0ad8bfb82650dde448928b9da4f",
@@ -254,6 +264,11 @@
       "layout": "org/lz4/lz4-java/1.7.1/lz4-java-1.7.1.pom",
       "sha256": "2cb726d89098c141879cceadcee532ac99a9c016d5429e440123aa112fc96a02",
       "url": "https://repo.maven.apache.org/maven2/org/lz4/lz4-java/1.7.1/lz4-java-1.7.1.pom"
+    },
+    "org.antlr:antlr4:pom:4.7.2": {
+      "layout": "org/antlr/antlr4/4.7.2/antlr4-4.7.2.pom",
+      "sha256": "cf9eb36940fac44881038c1be3f2c58e06e68d1abfbfd4a68d34bbd8bac55771",
+      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4/4.7.2/antlr4-4.7.2.pom"
     },
     "org.apache.maven:maven-parent:pom:8": {
       "layout": "org/apache/maven/maven-parent/8/maven-parent-8.pom",
@@ -269,6 +284,11 @@
       "layout": "org/apache/maven/maven-parent/5/maven-parent-5.pom",
       "sha256": "5d7c2a229173155823c45380332f221bf0d27e52c9db76e9217940306765bd50",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/5/maven-parent-5.pom"
+    },
+    "org.antlr:antlr-master:pom:3.5.2": {
+      "layout": "org/antlr/antlr-master/3.5.2/antlr-master-3.5.2.pom",
+      "sha256": "42d91a531ea5100eb09b541aa002c3b908e8f282bd73b6e2f52f371ef1331bd6",
+      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr-master/3.5.2/antlr-master-3.5.2.pom"
     },
     "ring:ring-servlet:pom:1.8.2": {
       "layout": "ring/ring-servlet/1.8.2/ring-servlet-1.8.2.pom",
@@ -410,11 +430,6 @@
       "sha256": "3b0fa210dcbf0c92545ac31740fc2dd8af61dc72fd452cfca3d68aeabb642003",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.pom"
     },
-    "ajk:specialist-server:jar:0.6.0": {
-      "layout": "ajk/specialist-server/0.6.0/specialist-server-0.6.0.jar",
-      "sha256": "06ba875d2b663746b80aef0a8e57bf3473148c884f10e3f6de44089db3d3ad5d",
-      "url": "https://clojars.org/repo/ajk/specialist-server/0.6.0/specialist-server-0.6.0.jar"
-    },
     "org.bouncycastle:bcpkix-jdk15on:jar:1.67": {
       "layout": "org/bouncycastle/bcpkix-jdk15on/1.67/bcpkix-jdk15on-1.67.jar",
       "sha256": "efbca754880ce3922ca47a43c1f0b72c45731450a0ef193b9db33bf4bb38ce5f",
@@ -429,6 +444,11 @@
       "layout": "org/apache/maven/plugins/maven-jar-plugin/2.4/maven-jar-plugin-2.4.pom",
       "sha256": "a98f60925af4a1729529a1e9c5aba78ffdd024c67a8f825ed974a0ab006d315a",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.4/maven-jar-plugin-2.4.pom"
+    },
+    "org.antlr:ST4:jar:4.1": {
+      "layout": "org/antlr/ST4/4.1/ST4-4.1.jar",
+      "sha256": "8b1ccaed9edc55cd255d9c19c4d8da4756d9b6fcb435671292b43470b16d75d8",
+      "url": "https://repo.maven.apache.org/maven2/org/antlr/ST4/4.1/ST4-4.1.jar"
     },
     "clojure-complete:clojure-complete:pom:0.2.5": {
       "layout": "clojure-complete/clojure-complete/0.2.5/clojure-complete-0.2.5.pom",
@@ -559,11 +579,6 @@
       "layout": "org/codehaus/plexus/plexus-compiler-manager/2.2/plexus-compiler-manager-2.2.jar",
       "sha256": "e5e201f06eca14b5268ec58003926552aea36b27492da20134c1a00ded6759bb",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.2/plexus-compiler-manager-2.2.jar"
-    },
-    "org.antlr:antlr4:pom:4.5.3": {
-      "layout": "org/antlr/antlr4/4.5.3/antlr4-4.5.3.pom",
-      "sha256": "8a4e4b32eedaa72976a757e12cf1dfe742725db0b7311bf176dd937ba4236384",
-      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4/4.5.3/antlr4-4.5.3.pom"
     },
     "com.fasterxml.jackson:jackson-parent:pom:2.10": {
       "layout": "com/fasterxml/jackson/jackson-parent/2.10/jackson-parent-2.10.pom",
@@ -815,6 +830,11 @@
       "sha256": "0f8a1b116e760b8fe6389c51b84e4b07a70fc11082d4f936e453b583dd50b43b",
       "url": "https://repo.maven.apache.org/maven2/org/ow2/ow2/1.5/ow2-1.5.pom"
     },
+    "org.clojars.johannesloetzsch:specialist-server:pom:0.6.1": {
+      "layout": "org/clojars/johannesloetzsch/specialist-server/0.6.1/specialist-server-0.6.1.pom",
+      "sha256": "51e658770ef437bd993525d819fec192358828f4e3f02ada11342350da85ab1a",
+      "url": "https://clojars.org/repo/org/clojars/johannesloetzsch/specialist-server/0.6.1/specialist-server-0.6.1.pom"
+    },
     "org.apache.maven:maven-plugin-api:pom:2.2.1": {
       "layout": "org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom",
       "sha256": "c10d0460c2d5c5076304598965991d6257d1bf31bdef921a17ce3d059bce654e",
@@ -839,6 +859,11 @@
       "layout": "joda-time/joda-time/2.8.2/joda-time-2.8.2.pom",
       "sha256": "81cd90da363c7ac3832055f81ab6cc6c4d9303806c4bffc89c68856aa1a0eb1d",
       "url": "https://repo.maven.apache.org/maven2/joda-time/joda-time/2.8.2/joda-time-2.8.2.pom"
+    },
+    "org.abego.treelayout:org.abego.treelayout.core:pom:1.0.3": {
+      "layout": "org/abego/treelayout/org.abego.treelayout.core/1.0.3/org.abego.treelayout.core-1.0.3.pom",
+      "sha256": "a3b2b223794370355e792433af012fc993667c0331be2bacad84dbc09ace4a0c",
+      "url": "https://repo.maven.apache.org/maven2/org/abego/treelayout/org.abego.treelayout.core/1.0.3/org.abego.treelayout.core-1.0.3.pom"
     },
     "org.apache.maven:maven-plugin-parameter-documenter:pom:2.2.1": {
       "layout": "org/apache/maven/maven-plugin-parameter-documenter/2.2.1/maven-plugin-parameter-documenter-2.2.1.pom",
@@ -955,6 +980,11 @@
       "sha256": "2fea8e63ea9a6032725f9819aa948657374a353cd776690b31f5ab11057ad894",
       "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.4.31.v20200723/jetty-util-9.4.31.v20200723.jar"
     },
+    "org.antlr:antlr-runtime:pom:3.5.2": {
+      "layout": "org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.pom",
+      "sha256": "46a9c2200bb8b12bd7124aa7a5097ff49099908329c851a04cb2051420aa7f25",
+      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.pom"
+    },
     "org.ow2.asm:asm-analysis:jar:7.1": {
       "layout": "org/ow2/asm/asm-analysis/7.1/asm-analysis-7.1.jar",
       "sha256": "4612c0511a63db2a2570f07ad1959e19ed8eb703e4114da945cb85682519a55c",
@@ -1004,11 +1034,6 @@
       "layout": "ring-json-response/ring-json-response/0.2.0/ring-json-response-0.2.0.pom",
       "sha256": "43d10e688dcc0ef10b5148c249e373fbbaaa57d1bd710746b9f55de7e7399eae",
       "url": "https://clojars.org/repo/ring-json-response/ring-json-response/0.2.0/ring-json-response-0.2.0.pom"
-    },
-    "org.clojure:tools.logging:pom:0.4.1": {
-      "layout": "org/clojure/tools.logging/0.4.1/tools.logging-0.4.1.pom",
-      "sha256": "0e26a6e5e8361d0b48ac97ac0f4bd30faa7efe71a6ab234a77205595f28b0ee2",
-      "url": "https://repo.maven.apache.org/maven2/org/clojure/tools.logging/0.4.1/tools.logging-0.4.1.pom"
     },
     "com.fasterxml.jackson:jackson-parent:pom:2.9.1.1": {
       "layout": "com/fasterxml/jackson/jackson-parent/2.9.1.1/jackson-parent-2.9.1.1.pom",
@@ -1215,10 +1240,10 @@
       "sha256": "47289bc307849383d41eddbe3800f1945b2204ab319b0d38e391f6780c37b4e3",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.jar"
     },
-    "org.antlr:antlr4-master:pom:4.5.3": {
-      "layout": "org/antlr/antlr4-master/4.5.3/antlr4-master-4.5.3.pom",
-      "sha256": "401877d5e70ad599e9b6cff18434ea0332f637b51f8ec68352646c836f9bb2a4",
-      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4-master/4.5.3/antlr4-master-4.5.3.pom"
+    "org.antlr:antlr4-runtime:jar:4.7.2": {
+      "layout": "org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar",
+      "sha256": "4c518b87d4bdff8b44cd8cbc1af816e944b62a3fe5b80b781501cf1f4759bbc4",
+      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar"
     },
     "javax.servlet:javax.servlet-api:pom:3.1.0": {
       "layout": "javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.pom",
@@ -1289,6 +1314,11 @@
       "layout": "pro/juxt/crux/crux-core/1.17.1/crux-core-1.17.1.jar",
       "sha256": "5fcabcf0bc297e0e19b5b31548d0f2157b4b4f920d6baa72aa2ca01d3daefae1",
       "url": "https://repo.maven.apache.org/maven2/pro/juxt/crux/crux-core/1.17.1/crux-core-1.17.1.jar"
+    },
+    "com.ibm.icu:icu4j:jar:61.1": {
+      "layout": "com/ibm/icu/icu4j/61.1/icu4j-61.1.jar",
+      "sha256": "55c98eb1838b2a4bb9a07dc36bd378532d64d0cdcb7ceee914236866a7de4464",
+      "url": "https://repo.maven.apache.org/maven2/com/ibm/icu/icu4j/61.1/icu4j-61.1.jar"
     },
     "org.codehaus.plexus:plexus-compiler-javac:jar:2.2": {
       "layout": "org/codehaus/plexus/plexus-compiler-javac/2.2/plexus-compiler-javac-2.2.jar",
@@ -1500,15 +1530,15 @@
       "sha256": "2bf4e59f3acd106fea6145a9a88fe8956509f8b9c0fdd11eb96fee757269e3f3",
       "url": "https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"
     },
-    "clj-antlr:clj-antlr:pom:0.2.4": {
-      "layout": "clj-antlr/clj-antlr/0.2.4/clj-antlr-0.2.4.pom",
-      "sha256": "1af77c049e3cfaa51f964fe514fa4df5b9ceb83dff80820410bc19477a9978d5",
-      "url": "https://clojars.org/repo/clj-antlr/clj-antlr/0.2.4/clj-antlr-0.2.4.pom"
-    },
     "org.clojure:clojure:pom:1.10.0": {
       "layout": "org/clojure/clojure/1.10.0/clojure-1.10.0.pom",
       "sha256": "200d2eca8665240cbcbaee48c007324b7b44d366080e958df1d22e8dde24838c",
       "url": "https://repo.maven.apache.org/maven2/org/clojure/clojure/1.10.0/clojure-1.10.0.pom"
+    },
+    "clj-antlr:clj-antlr:pom:0.2.5": {
+      "layout": "clj-antlr/clj-antlr/0.2.5/clj-antlr-0.2.5.pom",
+      "sha256": "fd565566446044b8477e55b3cd792749ef0e4649e089038acce06a835c2df7d3",
+      "url": "https://clojars.org/repo/clj-antlr/clj-antlr/0.2.5/clj-antlr-0.2.5.pom"
     },
     "org.clojure:clojure:pom:1.10.1": {
       "layout": "org/clojure/clojure/1.10.1/clojure-1.10.1.pom",
@@ -1524,11 +1554,6 @@
       "layout": "org/apache/maven/maven-toolchain/2.0.9/maven-toolchain-2.0.9.jar",
       "sha256": "dcbddf7cbc3bb03f76afdeb598491ae815620c5ff66cf8f18d7239d1dc764dc8",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-toolchain/2.0.9/maven-toolchain-2.0.9.jar"
-    },
-    "org.antlr:antlr4:jar:4.5.3": {
-      "layout": "org/antlr/antlr4/4.5.3/antlr4-4.5.3.jar",
-      "sha256": "a32de739cfdf515774e696f91aa9697d2e7731e5cb5045ca8a4b657f8b1b4fb4",
-      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4/4.5.3/antlr4-4.5.3.jar"
     },
     "org.sonatype.plexus:plexus-sec-dispatcher:pom:1.3": {
       "layout": "org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.pom",
@@ -1549,11 +1574,6 @@
       "layout": "pro/juxt/clojars-mirrors/edn-query-language/eql/2021.02.28/eql-2021.02.28.jar",
       "sha256": "2272050f888f89cc2ca7ec91d432df159ed9d85aa5605adc1630e7d09113931c",
       "url": "https://repo.maven.apache.org/maven2/pro/juxt/clojars-mirrors/edn-query-language/eql/2021.02.28/eql-2021.02.28.jar"
-    },
-    "ajk:specialist-server:pom:0.6.0": {
-      "layout": "ajk/specialist-server/0.6.0/specialist-server-0.6.0.pom",
-      "sha256": "da87694d5b9d7b3afe2b0a4f92c9e7c959dee8b15bf6ae3fba6decc1c04230dd",
-      "url": "https://clojars.org/repo/ajk/specialist-server/0.6.0/specialist-server-0.6.0.pom"
     },
     "org.apache.maven.plugins:maven-compiler-plugin:jar:3.1": {
       "layout": "org/apache/maven/plugins/maven-compiler-plugin/3.1/maven-compiler-plugin-3.1.jar",
@@ -1605,11 +1625,6 @@
       "sha256": "c957ece3f4f9dec683f30b79ff428e5f58096d5320bddbcdddc83121a7ecb502",
       "url": "https://repo.maven.apache.org/maven2/com/github/jnr/jnr-ffi/2.1.12/jnr-ffi-2.1.12.jar"
     },
-    "org.antlr:antlr4-runtime:jar:4.5.3": {
-      "layout": "org/antlr/antlr4-runtime/4.5.3/antlr4-runtime-4.5.3.jar",
-      "sha256": "93bca08ec995caeaaf60bdf80035a0be8507fcdabd3c2618fd8c5aab4444a752",
-      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.5.3/antlr4-runtime-4.5.3.jar"
-    },
     "org.apache.maven:maven-repository-metadata:pom:2.0.9": {
       "layout": "org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.pom",
       "sha256": "0447b3919bc7d0301b763852aca8dc0e87ccfbe34a4d5257f7f4fae8a4e87998",
@@ -1634,6 +1649,11 @@
       "layout": "org/codehaus/plexus/plexus-container-default/1.5.5/plexus-container-default-1.5.5.pom",
       "sha256": "3f0dc324ff65ccdbd6bb3df39136e2878047a2b0c19799689bcefa4132bdcba4",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.5.5/plexus-container-default-1.5.5.pom"
+    },
+    "org.antlr:ST4:pom:4.1": {
+      "layout": "org/antlr/ST4/4.1/ST4-4.1.pom",
+      "sha256": "733e6bd97ca34cc6df93a4243e511e5673cb9b88c74b18844e042a45d516987c",
+      "url": "https://repo.maven.apache.org/maven2/org/antlr/ST4/4.1/ST4-4.1.pom"
     },
     "org.clojure:clojure:pom:1.7.0": {
       "layout": "org/clojure/clojure/1.7.0/clojure-1.7.0.pom",
@@ -1679,6 +1699,11 @@
       "layout": "medley/medley/1.3.0/medley-1.3.0.jar",
       "sha256": "50c857950a775da6d414e9930f96dfbaa59c3e756e053bd4863f54b7fda94346",
       "url": "https://clojars.org/repo/medley/medley/1.3.0/medley-1.3.0.jar"
+    },
+    "com.ibm.icu:icu4j:pom:61.1": {
+      "layout": "com/ibm/icu/icu4j/61.1/icu4j-61.1.pom",
+      "sha256": "13b87a4079ceb05515b19ac7a15203947075601d49423f719358a4980098056b",
+      "url": "https://repo.maven.apache.org/maven2/com/ibm/icu/icu4j/61.1/icu4j-61.1.pom"
     },
     "org.clojure:tools.reader:jar:1.3.5": {
       "layout": "org/clojure/tools.reader/1.3.5/tools.reader-1.3.5.jar",
@@ -1760,6 +1785,11 @@
       "sha256": "228367b7569fb1462a3eb1423bc2778e2fc7fbaee3d3767890c02b8924fa1889",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom"
     },
+    "org.glassfish:javax.json:pom:1.0.4": {
+      "layout": "org/glassfish/javax.json/1.0.4/javax.json-1.0.4.pom",
+      "sha256": "6baf8383ffa98b66ea96cd5bfc1ec7f2d79463bb98ac98052964b121c2212d54",
+      "url": "https://repo.maven.apache.org/maven2/org/glassfish/javax.json/1.0.4/javax.json-1.0.4.pom"
+    },
     "org.apache.maven:maven-project:jar:2.0.9": {
       "layout": "org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.jar",
       "sha256": "c82db125f53716f59008e3214063869717a976bf857879de6d4092c73cdc7e12",
@@ -1799,6 +1829,11 @@
       "layout": "org/codehaus/plexus/plexus-io/2.0.2/plexus-io-2.0.2.pom",
       "sha256": "67a1ce072ad9ff4ce37985a1c32827eaeda4660cabe7f69eff2ca1ebff2d23bd",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/2.0.2/plexus-io-2.0.2.pom"
+    },
+    "org.antlr:antlr4:jar:4.7.2": {
+      "layout": "org/antlr/antlr4/4.7.2/antlr4-4.7.2.jar",
+      "sha256": "a3811fad1e4cb6dde62c189c204cf931c5fa40e06e43839ead4a9f2e188f2fe5",
+      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4/4.7.2/antlr4-4.7.2.jar"
     },
     "com.github.jnr:jffi:jar:native:1.2.23": {
       "layout": "com/github/jnr/jffi/1.2.23/jffi-1.2.23-native.jar",
@@ -1945,6 +1980,11 @@
       "sha256": "bc962d48dcebb463c1071004015c4609516d616e884ce36eb7390f9a8095a65b",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.2.1/maven-monitor-2.2.1.pom"
     },
+    "org.clojars.johannesloetzsch:specialist-server:jar:0.6.1": {
+      "layout": "org/clojars/johannesloetzsch/specialist-server/0.6.1/specialist-server-0.6.1.jar",
+      "sha256": "f2b7e8e9f77038281b45af8735bd88171ba4ff472fd337b6d0163b06fdee67a2",
+      "url": "https://clojars.org/repo/org/clojars/johannesloetzsch/specialist-server/0.6.1/specialist-server-0.6.1.jar"
+    },
     "org.codehaus.plexus:plexus-containers:pom:1.0.3": {
       "layout": "org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom",
       "sha256": "7c75075badcb014443ee94c8c4cad2f4a9905be3ce9430fe7b220afc7fa3a80f",
@@ -2000,6 +2040,11 @@
       "sha256": "4e48eebcf948480479c3ff802337177497163e01c010ecae2ca9539764d31635",
       "url": "https://repo.maven.apache.org/maven2/org/rocksdb/rocksdbjni/6.12.7/rocksdbjni-6.12.7.jar"
     },
+    "org.antlr:antlr-runtime:jar:3.5.2": {
+      "layout": "org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar",
+      "sha256": "ce3fc8ecb10f39e9a3cddcbb2ce350d272d9cd3d0b1e18e6fe73c3b9389c8734",
+      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar"
+    },
     "ring:ring-devel:jar:1.9.4": {
       "layout": "ring/ring-devel/1.9.4/ring-devel-1.9.4.jar",
       "sha256": "aba7e2e97462ccc9323b34371f65496788fc7380db7a788132e865dfe4b6d940",
@@ -2024,6 +2069,11 @@
       "layout": "org/clojure/spec.alpha/0.2.194/spec.alpha-0.2.194.pom",
       "sha256": "5a11f0e1e8b3c052e651c498c6945b44db3535bf2c18719fdcf65df1f88b13e6",
       "url": "https://repo.maven.apache.org/maven2/org/clojure/spec.alpha/0.2.194/spec.alpha-0.2.194.pom"
+    },
+    "org.glassfish:javax.json:jar:1.0.4": {
+      "layout": "org/glassfish/javax.json/1.0.4/javax.json-1.0.4.jar",
+      "sha256": "0e1dec40a1ede965941251eda968aeee052cc4f50378bc316cc48e8159bdbeb4",
+      "url": "https://repo.maven.apache.org/maven2/org/glassfish/javax.json/1.0.4/javax.json-1.0.4.jar"
     },
     "org.apache.maven:maven-plugin-descriptor:pom:2.2.1": {
       "layout": "org/apache/maven/maven-plugin-descriptor/2.2.1/maven-plugin-descriptor-2.2.1.pom",
@@ -2135,15 +2185,15 @@
       "sha256": "d71d7748e68bb9cb7ad38b95d17c0466e31fc1f4d15bb1e635f3ebad34a38ff3",
       "url": "https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.pom"
     },
-    "clj-antlr:clj-antlr:jar:0.2.4": {
-      "layout": "clj-antlr/clj-antlr/0.2.4/clj-antlr-0.2.4.jar",
-      "sha256": "ec31f3b6b4e7d791de166783c3bcd7dd16dad4e174d25db8096c1d1d58606a75",
-      "url": "https://clojars.org/repo/clj-antlr/clj-antlr/0.2.4/clj-antlr-0.2.4.jar"
-    },
     "org.clojure:spec.alpha:pom:0.2.176": {
       "layout": "org/clojure/spec.alpha/0.2.176/spec.alpha-0.2.176.pom",
       "sha256": "c99cc0477b584cc8b76a9cd66a03e5bfc90b19d439757f1832103b6af820b292",
       "url": "https://repo.maven.apache.org/maven2/org/clojure/spec.alpha/0.2.176/spec.alpha-0.2.176.pom"
+    },
+    "clj-antlr:clj-antlr:jar:0.2.5": {
+      "layout": "clj-antlr/clj-antlr/0.2.5/clj-antlr-0.2.5.jar",
+      "sha256": "34ab0caf23f0aa3c4f9609096dc8fdd6cf977aa632df6cf08a9f532aab9c0d58",
+      "url": "https://clojars.org/repo/clj-antlr/clj-antlr/0.2.5/clj-antlr-0.2.5.jar"
     },
     "org.apache.maven.plugins:maven-surefire-plugin:jar:2.12.4": {
       "layout": "org/apache/maven/plugins/maven-surefire-plugin/2.12.4/maven-surefire-plugin-2.12.4.jar",
@@ -2285,11 +2335,6 @@
       "sha256": "2242fd02d12b1ca73267fb3d89863025517200e7a4ee426cba4667d0172c74c3",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom"
     },
-    "org.antlr:antlr4-runtime:pom:4.5.3": {
-      "layout": "org/antlr/antlr4-runtime/4.5.3/antlr4-runtime-4.5.3.pom",
-      "sha256": "454e2e5b3c3e5fa7af8dbe61cb5bf06e1e2e976e37e555ae9ce651bdfe35a80e",
-      "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.5.3/antlr4-runtime-4.5.3.pom"
-    },
     "com.fasterxml.jackson.dataformat:jackson-dataformat-smile:jar:2.10.2": {
       "layout": "com/fasterxml/jackson/dataformat/jackson-dataformat-smile/2.10.2/jackson-dataformat-smile-2.10.2.jar",
       "sha256": "c4a6b047db85d57894a3eb45a62bf832f39386d0ef65b1f892f66abd0d627eba",
@@ -2325,6 +2370,11 @@
       "sha256": "a9bb30bd987dc305b05ee53e9f27e6e902fc10ce3c6e99618cff0362d796b04d",
       "url": "https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.67/bcpkix-jdk15on-1.67.pom"
     },
+    "org.abego.treelayout:org.abego.treelayout.core:jar:1.0.3": {
+      "layout": "org/abego/treelayout/org.abego.treelayout.core/1.0.3/org.abego.treelayout.core-1.0.3.jar",
+      "sha256": "fa5e31395c39c2e7d46aca0f81f72060931607b2fa41bd36038eb2cb6fb93326",
+      "url": "https://repo.maven.apache.org/maven2/org/abego/treelayout/org.abego.treelayout.core/1.0.3/org.abego.treelayout.core-1.0.3.jar"
+    },
     "org.codehaus.plexus:plexus-classworlds:jar:2.2.2": {
       "layout": "org/codehaus/plexus/plexus-classworlds/2.2.2/plexus-classworlds-2.2.2.jar",
       "sha256": "13a90763640e445ffa432ce9586e416572645c3ed4db6a860fe0d28256ad40ce",
@@ -2344,6 +2394,11 @@
       "layout": "com/github/jnr/jnr-ffi/2.1.12/jnr-ffi-2.1.12.pom",
       "sha256": "1fd737c91838a92c8e71c8c6c17572a2dab6ebbad24b8f14135c8abd0631a92b",
       "url": "https://repo.maven.apache.org/maven2/com/github/jnr/jnr-ffi/2.1.12/jnr-ffi-2.1.12.pom"
+    },
+    "org.glassfish:json:pom:1.0.4": {
+      "layout": "org/glassfish/json/1.0.4/json-1.0.4.pom",
+      "sha256": "6d7c68423115f921718d944f859924b4c685217ec03a49f70455a8b2caa972e6",
+      "url": "https://repo.maven.apache.org/maven2/org/glassfish/json/1.0.4/json-1.0.4.pom"
     },
     "org.ow2.asm:asm-tree:pom:7.1": {
       "layout": "org/ow2/asm/asm-tree/7.1/asm-tree-7.1.pom",

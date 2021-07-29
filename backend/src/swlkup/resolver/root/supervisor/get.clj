@@ -2,18 +2,19 @@
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
             [swlkup.auth.password.verify-db :refer [verify-login-against-db]]
-            [swlkup.model.login :as login]
+            [swlkup.model.auth :as auth]
             [swlkup.model.supervisor :as supervisor]))
 
 (s/fdef supervisor_get
-        :args (s/tuple map? (s/keys :req-un [::login/mail ::login/password]) map? map?)
+        :args (s/tuple map? (s/keys :req-un [::auth/auth]) map? map?)
         :ret (s/nilable ::supervisor/supervisor))
 
 (defn supervisor_get
   "For a supervisor login, get the supervisors data"
   [_node opt ctx _info]
   (let [{:keys [q_id_unary]} (:db_ctx ctx)
-        [supervisor:id] (verify-login-against-db ctx :supervisor (:mail opt) (:password opt))]
+        auth (:auth opt)
+        [supervisor:id] (verify-login-against-db ctx :supervisor (:mail auth) (:password auth))]
        (when supervisor:id
              (supervisor/db->graphql
                (q_id_unary '{:find [(pull ?e [*])]

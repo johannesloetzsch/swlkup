@@ -1,4 +1,4 @@
-(ns swlkup.resolver.branch.ngo
+(ns swlkup.resolver.branch.user.ngo
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
             [swlkup.model.ngo :as ngo]))
@@ -15,6 +15,6 @@
                      :in [ngo]
                      :where [[?e :crux.db/id ngo]
                              [?e :crux.spec :swlkup.model.ngo/ngo]]}
-                   (get-in node [:_ :swlkup.resolver.root.lookup/lookup :ngo]))))
+                   (get-in node [:_ :swlkup.resolver.root.user.lookup/lookup :ngo]))))
 
 (s/def ::ngo (t/resolver #'ngo))

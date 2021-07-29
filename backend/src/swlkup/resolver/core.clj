@@ -1,11 +1,11 @@
 (ns swlkup.resolver.core
   (:require [specialist-server.core :refer [executor]]
-            [swlkup.resolver.root.lookup :refer [lookup]]
-            [swlkup.resolver.root.languages :refer [languages]]
-            [swlkup.resolver.root.offers :refer [offers]]
-            [swlkup.resolver.root.supervisor.register :refer [supervisor_register]]
+            [swlkup.resolver.root.ngo.register-supervisor :refer [supervisor_register]]
             [swlkup.resolver.root.supervisor.get :refer [supervisor_get]]
             [swlkup.resolver.root.supervisor.update :refer [supervisor_update]]
+            [swlkup.resolver.root.user.lookup :refer [lookup]]
+            [swlkup.resolver.root.languages :refer [languages]]
+            [swlkup.resolver.root.offers :refer [offers]]
             [mount.core :as mount :refer [defstate]]
             [swlkup.config.state :refer [env]]
             [swlkup.db.state :refer [->db_ctx db_ctx]]))
