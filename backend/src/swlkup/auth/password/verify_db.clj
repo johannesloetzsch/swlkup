@@ -1,20 +1,24 @@
 (ns swlkup.auth.password.verify-db
   (:require [swlkup.auth.password.hash :refer [verify-password]]))
 
-(defn verify-login-against-db
-  "highlevel password validation, based on our db schema"
-  [ctx role mail password]
+(defn login->id [ctx mail password]
   (let [{:keys [q_id]} (:db_ctx ctx)
-        [entity:id login:id password:hash]
-          (q_id '{:find [<-entity:id <-login:id <-password:hash]
-                  :where [[?l :crux.spec :swlkup.model.login/login]
-                          [?l :swlkup.model.login/role ->role]
-                          [?l :mail ->mail]
-                          [?l :crux.db/id <-login:id]
-                          [?l :password-hash <-password:hash]
-                          [?e :swlkup.model.login/login:id <-login:id]
-                          [?e :crux.db/id <-entity:id]]
-                  :in [->role ->mail]}
-                role mail)
+        [login:id password:hash] (q_id '{:find [<-login:id <-password:hash]
+                                         :where [[?l :crux.spec :swlkup.model.login/login]
+                                                 [?l :mail ->mail]
+                                                 [?l :crux.db/id <-login:id]
+                                                 [?l :password-hash <-password:hash]]
+                                         :in [->mail]}
+                                       mail)
         valid (verify-password password password:hash)]
-       (when valid [entity:id login:id])))
+       (when valid login:id)))
+
+(defn id->roles+entities [ctx login:id]
+  (let [{:keys [q]} (:db_ctx ctx)]
+       (q '{:keys [role entity]
+            :find [<-role <-entity:id]
+            :where [[?e :swlkup.model.login/login:id <-login:id]
+                    [?e :crux.spec <-role]
+                    [?e :crux.db/id <-entity:id]]
+            :in [<-login:id]}
+          login:id)))

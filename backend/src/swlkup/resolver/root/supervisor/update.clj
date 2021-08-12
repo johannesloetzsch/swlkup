@@ -1,7 +1,7 @@
 (ns swlkup.resolver.root.supervisor.update
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
-            [swlkup.auth.password.verify-db :refer [verify-login-against-db]]
+            [swlkup.auth.core :refer [auth+role->entity]]
             [swlkup.model.auth :as auth]
             [swlkup.model.login :as login]
             [swlkup.model.supervisor :as supervisor]))
@@ -14,8 +14,7 @@
   "Update a supervisors data"
   [_node opt ctx _info]
   (let [{:keys [tx]} (:db_ctx ctx)
-        auth (:auth opt)
-        [supervisor:id login:id] (verify-login-against-db ctx :supervisor (:mail auth) (:password auth))
+        [supervisor:id login:id] (auth+role->entity ctx (:auth opt) ::supervisor/supervisor)
         tx_result (when supervisor:id
                         (tx [[:crux.tx/put (assoc (:supervisor_input opt)
                                                    :crux.db/id supervisor:id

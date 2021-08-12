@@ -13,10 +13,28 @@ export type Scalars = {
   Float: number;
   /** The 'Long' scalar type represents non-fractional signed whole numeric values. Long can represent values between -(2^64) and 2^64 - 1. */
   Long: any;
+  /** Either a collection of ngo-ids or `any` */
+  NgoRefs: any;
+};
+
+/** Authentication requires either a valid mail+password combination or a jwt obtained by an earlier login. */
+export type Auth = {
+  /** Self descriptive. */
+  mail: Scalars['String'];
+  /** Self descriptive. */
+  password: Scalars['String'];
+  /** Self descriptive. */
+  jwt: Scalars['String'];
 };
 
 export type Contacts = {
   __typename?: 'Contacts';
+  phone?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+};
+
+export type ContactsInput = {
   phone?: Maybe<Scalars['String']>;
   website?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
@@ -37,29 +55,70 @@ export type MutationType = {
   __typename?: 'MutationType';
   /** Add a new supervisor account to the database and send a mail containing the password via mail */
   supervisor_register: Scalars['Boolean'];
+  /** Update a supervisors data */
+  supervisor_update: Scalars['Boolean'];
 };
 
 
 /** If this server supports mutation, the type that mutation operations will be rooted at. */
 export type MutationTypeSupervisor_RegisterArgs = {
+  auth: Auth;
   mail: Scalars['String'];
 };
+
+
+/** If this server supports mutation, the type that mutation operations will be rooted at. */
+export type MutationTypeSupervisor_UpdateArgs = {
+  auth: Auth;
+  supervisor_input: SupervisorInput;
+};
+
 
 /** The type that query operations will be rooted at. */
 export type QueryType = {
   __typename?: 'QueryType';
+  /** For a username+password get a jwt containing the login:id and roles */
+  login: Login;
   /** All supervisors visible to the ngo assiged to the token */
   lookup: Lookup;
   /** All languages */
   languages: Array<Languages>;
   /** All offers */
   offers: Array<Offers>;
+  /** For a supervisor login, get the supervisors data */
+  supervisor_get?: Maybe<Supervisor_Get>;
+};
+
+
+/** The type that query operations will be rooted at. */
+export type QueryTypeLoginArgs = {
+  auth: Auth;
 };
 
 
 /** The type that query operations will be rooted at. */
 export type QueryTypeLookupArgs = {
   token: Scalars['String'];
+};
+
+
+/** The type that query operations will be rooted at. */
+export type QueryTypeSupervisor_GetArgs = {
+  auth: Auth;
+};
+
+/** The new Dataset of a Supervisor */
+export type SupervisorInput = {
+  /** Self descriptive. */
+  ngos: Scalars['NgoRefs'];
+  name_full?: Maybe<Scalars['String']>;
+  languages: Array<Scalars['String']>;
+  offers: Array<Scalars['String']>;
+  /** Self descriptive. */
+  contacts: ContactsInput;
+  photo?: Maybe<Scalars['String']>;
+  text_specialization?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
 };
 
 /** All languages */
@@ -71,6 +130,12 @@ export type Languages = {
   name: Scalars['String'];
   /** Self descriptive. */
   flag_url: Scalars['String'];
+};
+
+/** For a username+password get a jwt containing the login:id and roles */
+export type Login = {
+  __typename?: 'login';
+  jwt?: Maybe<Scalars['String']>;
 };
 
 /** All supervisors visible to the ngo assiged to the token */
@@ -101,11 +166,13 @@ export type Offers = {
   desc: Scalars['String'];
 };
 
-/** All supervisor visible with the used credentials */
-export type Supervisors = {
-  __typename?: 'supervisors';
+/** For a supervisor login, get the supervisors data */
+export type Supervisor_Get = {
+  __typename?: 'supervisor_get';
   /** Self descriptive. */
-  id: Scalars['ID'];
+  id: Scalars['String'];
+  /** Self descriptive. */
+  ngos: Scalars['NgoRefs'];
   name_full?: Maybe<Scalars['String']>;
   languages: Array<Scalars['String']>;
   offers: Array<Scalars['String']>;
@@ -114,6 +181,26 @@ export type Supervisors = {
   /** Self descriptive. */
   location: Location;
   photo?: Maybe<Scalars['String']>;
+  text_specialization?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+/** All supervisor visible with the used credentials */
+export type Supervisors = {
+  __typename?: 'supervisors';
+  /** Self descriptive. */
+  id: Scalars['String'];
+  /** Self descriptive. */
+  ngos: Scalars['NgoRefs'];
+  name_full?: Maybe<Scalars['String']>;
+  languages: Array<Scalars['String']>;
+  offers: Array<Scalars['String']>;
+  /** Self descriptive. */
+  contacts: Contacts;
+  /** Self descriptive. */
+  location: Location;
+  photo?: Maybe<Scalars['String']>;
+  text_specialization?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
 };
 

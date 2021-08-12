@@ -1,5 +1,6 @@
 (ns swlkup.resolver.core
   (:require [specialist-server.core :refer [executor]]
+            [swlkup.resolver.root.login :refer [login]]
             [swlkup.resolver.root.ngo.register-supervisor :refer [supervisor_register]]
             [swlkup.resolver.root.supervisor.get :refer [supervisor_get]]
             [swlkup.resolver.root.supervisor.update :refer [supervisor_update]]
@@ -10,7 +11,8 @@
             [swlkup.config.state :refer [env]]
             [swlkup.db.state :refer [->db_ctx db_ctx]]))
 
-(def graphql* (executor {:query {:lookup #'lookup
+(def graphql* (executor {:query {:login #'login
+                                 :lookup #'lookup
                                  :languages #'languages
                                  :offers #'offers
                                  :supervisor_get #'supervisor_get}

@@ -82,7 +82,7 @@
   {:crux.db/id "example-ngo"
    :crux.spec :swlkup.model.ngo/ngo
    :name "Example NGO"
-   :swlkup.model.login/login:id ["crewing@example-ngo.com"]}
+   :swlkup.model.login/login:id ["login_crewing_example-ngo"]}
 
   {:crux.db/id :T0p53cret
    :token "T0p53cret"
@@ -93,7 +93,7 @@
 
   {:crux.db/id "MaxMüller"
    :crux.spec :swlkup.model.supervisor/supervisor
-   :swlkup.model.login/login:id "praxis@max.mueller.de"
+   :swlkup.model.login/login:id "login_max_mueller"
    :name_full "Max Müller"
    :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_joe.png"
    :languages [:de :en]
@@ -127,13 +127,13 @@
    :text "Here I should write something about myself, my specialization and my motivation for supporting SAR NGOs…"
    :ngos #{"seawatch" "sosmediterranee"}}
 
-  {:crux.db/id "praxis@max.mueller.de"
+  {:crux.db/id "login_max_mueller"
    :crux.spec :swlkup.model.login/login
    :swlkup.model.login/role :supervisor
    :mail "praxis@max.mueller.de"
    :password-hash "100$12$argon2id$v13$hq47jacLIYoiNMD9kdyy+w$ISDi+bSSTmsgqu648LQLv7ySU+lG2VGKRfa06HNfjzk$$$"}
 
-  {:crux.db/id "crewing@example-ngo.com"
+  {:crux.db/id "login_crewing_example-ngo"
    :crux.spec :swlkup.model.login/login
    :swlkup.model.login/role :ngo
    :mail "crewing@example-ngo.com"

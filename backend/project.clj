@@ -23,7 +23,7 @@
                  [cryptohash-clj "0.1.10"]
                  [likid_geimfari/secrets "1.0.0"]
                  [crypto-random "1.2.1"]
-                 #_[buddy/buddy-sign "3.4.1"]
+                 [buddy/buddy-sign "3.4.1"]
                  ;[com.draines/postal "2.0.4"]
                 ]
   :main swlkup.webserver.state

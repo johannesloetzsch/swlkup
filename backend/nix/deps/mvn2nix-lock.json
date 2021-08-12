@@ -95,6 +95,11 @@
       "sha256": "f70398c9d2b57b5a620886d59840b4c7c2a0cd0f3e6b0e0de54fc2b4bc43664c",
       "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformats-binary/2.10.2/jackson-dataformats-binary-2.10.2.pom"
     },
+    "buddy:buddy-core:jar:1.10.1": {
+      "layout": "buddy/buddy-core/1.10.1/buddy-core-1.10.1.jar",
+      "sha256": "0dc32e6d7e15cf16e249f463bd534979838a50073bcb8d56a5bc976909b44aa1",
+      "url": "https://clojars.org/repo/buddy/buddy-core/1.10.1/buddy-core-1.10.1.jar"
+    },
     "org.antlr:antlr4-runtime:pom:4.7.2": {
       "layout": "org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.pom",
       "sha256": "dc09cba98c25d3c06e4aec516885d4c3af03062ba55f4fe6283fc9cf176a60fb",
@@ -109,6 +114,11 @@
       "layout": "org/iq80/snappy/snappy/0.4/snappy-0.4.jar",
       "sha256": "46a0c87d504ce9d6063e1ff6e4d20738feb49d8abf85b5071a7d18df4f11bac9",
       "url": "https://repo.maven.apache.org/maven2/org/iq80/snappy/snappy/0.4/snappy-0.4.jar"
+    },
+    "buddy:buddy-sign:pom:3.4.1": {
+      "layout": "buddy/buddy-sign/3.4.1/buddy-sign-3.4.1.pom",
+      "sha256": "d084991bd13a1c17a2aeb082eb2b141448f19d2350446137bca19ae876f02ef8",
+      "url": "https://clojars.org/repo/buddy/buddy-sign/3.4.1/buddy-sign-3.4.1.pom"
     },
     "org.apache.maven:maven-project:pom:2.0.6": {
       "layout": "org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.pom",
@@ -975,6 +985,11 @@
       "sha256": "1ff4fb95c218af4a46f71d625212c70f377ccf97ad2e26cb8d4c10709265bf62",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.8/plexus-utils-1.5.8.pom"
     },
+    "buddy:buddy-core:pom:1.10.1": {
+      "layout": "buddy/buddy-core/1.10.1/buddy-core-1.10.1.pom",
+      "sha256": "dd627333d8c4d3e1370c0fb3b1aa34db27ebe845d7d17a30d258198ff0b9e181",
+      "url": "https://clojars.org/repo/buddy/buddy-core/1.10.1/buddy-core-1.10.1.pom"
+    },
     "org.eclipse.jetty:jetty-util:jar:9.4.31.v20200723": {
       "layout": "org/eclipse/jetty/jetty-util/9.4.31.v20200723/jetty-util-9.4.31.v20200723.jar",
       "sha256": "2fea8e63ea9a6032725f9819aa948657374a353cd776690b31f5ab11057ad894",
@@ -1820,6 +1835,11 @@
       "sha256": "894180615ecf965a5407eb31da064f99b69e99811b4685fd53d84dc4fabda317",
       "url": "https://clojars.org/repo/ring/ring-mock/0.4.0/ring-mock-0.4.0.jar"
     },
+    "buddy:buddy-sign:jar:3.4.1": {
+      "layout": "buddy/buddy-sign/3.4.1/buddy-sign-3.4.1.jar",
+      "sha256": "f9f542b05ecf91e36c0969a9510179efad8c46f55f8a93e43940ef8c916b3aa5",
+      "url": "https://clojars.org/repo/buddy/buddy-sign/3.4.1/buddy-sign-3.4.1.jar"
+    },
     "org.apache.maven:maven-project:jar:2.0.6": {
       "layout": "org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.jar",
       "sha256": "f091ef5587537947a4c6e43cf200c567e1bf44c101443e8f8cf51e2c126e0195",
@@ -1919,6 +1939,11 @@
       "layout": "commons-codec/commons-codec/1.6/commons-codec-1.6.pom",
       "sha256": "a06e35d3fff3a6b813d94894ebf3e498f9540c864c5b39ae783907e3a6c72889",
       "url": "https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.pom"
+    },
+    "org.bouncycastle:bcprov-jdk15on:pom:1.68": {
+      "layout": "org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.pom",
+      "sha256": "d907decd685f9cd971e71bdf6ce597cf3a95b7c8ff6a3482351bfd8abc17cfe0",
+      "url": "https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.pom"
     },
     "net.java:jvnet-parent:pom:3": {
       "layout": "net/java/jvnet-parent/3/jvnet-parent-3.pom",
@@ -2369,6 +2394,11 @@
       "layout": "org/bouncycastle/bcpkix-jdk15on/1.67/bcpkix-jdk15on-1.67.pom",
       "sha256": "a9bb30bd987dc305b05ee53e9f27e6e902fc10ce3c6e99618cff0362d796b04d",
       "url": "https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.67/bcpkix-jdk15on-1.67.pom"
+    },
+    "org.bouncycastle:bcpkix-jdk15on:pom:1.68": {
+      "layout": "org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.pom",
+      "sha256": "26ad4f965c2a68666340a8729273a9c795ca51fbfecde5e6f523258c4cba6ec2",
+      "url": "https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.pom"
     },
     "org.abego.treelayout:org.abego.treelayout.core:jar:1.0.3": {
       "layout": "org/abego/treelayout/org.abego.treelayout.core/1.0.3/org.abego.treelayout.core-1.0.3.jar",

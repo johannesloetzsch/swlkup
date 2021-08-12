@@ -1,7 +1,7 @@
 (ns swlkup.resolver.root.supervisor.get
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
-            [swlkup.auth.password.verify-db :refer [verify-login-against-db]]
+            [swlkup.auth.core :refer [auth+role->entity]]
             [swlkup.model.auth :as auth]
             [swlkup.model.supervisor :as supervisor]))
 
@@ -13,8 +13,7 @@
   "For a supervisor login, get the supervisors data"
   [_node opt ctx _info]
   (let [{:keys [q_id_unary]} (:db_ctx ctx)
-        auth (:auth opt)
-        [supervisor:id] (verify-login-against-db ctx :supervisor (:mail auth) (:password auth))]
+        [supervisor:id] (auth+role->entity ctx (:auth opt) ::supervisor/supervisor)]
        (when supervisor:id
              (supervisor/db->graphql
                (q_id_unary '{:find [(pull ?e [*])]

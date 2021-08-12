@@ -3,7 +3,10 @@
             [specialist-server.type :as t]
             [swlkup.model.login :as login]))
 
-(t/defobject Auth {:name "Auth" :kind t/input-object-kind}
-            :req-un [::login/mail ::login/password])
+(s/def ::jwt t/string)
+
+(t/defobject Auth {:name "Auth" :kind t/input-object-kind :description "Authentication requires either a valid mail+password combination or a jwt obtained by an earlier login."}
+            :opt-un [::login/mail ::login/password
+                     ::jwt])
 
 (s/def ::auth Auth)

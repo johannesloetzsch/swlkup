@@ -18,33 +18,33 @@
 (use-fixtures :once (fn [testcases] (mount/stop) (mount/start) (testcases) (mount/stop)))
 
 (deftest get-wrong-login
-  (is (= (graphql {:query (str "query x($auth: Auth) { supervisor_get(auth: $auth){name_full} }")
+  (is (= (graphql {:query "query x($auth: Auth) { supervisor_get(auth: $auth){name_full} }"
                    :variables {:auth {:mail mail :password "wrong"}}})
          {:data {:supervisor_get nil}})))
 
 (deftest get-correct-login
-  (is (= (graphql {:query (str "query x($auth: Auth) { supervisor_get(auth: $auth){name_full} }")
+  (is (= (graphql {:query "query x($auth: Auth) { supervisor_get(auth: $auth){name_full} }"
                    :variables {:auth {:mail mail :password password}}})
          {:data {:supervisor_get {:name_full name_original}}})))
 
 (deftest update-wrong-login
   (let [graphql (->graphql)]
-       (is (= (graphql {:query (str "mutation x($auth: Auth, $supervisor: SupervisorInput) { 
-                                       supervisor_update(auth: $auth, supervisor_input: $supervisor)}")
+       (is (= (graphql {:query "mutation x($auth: Auth, $supervisor: SupervisorInput) { 
+                                  supervisor_update(auth: $auth, supervisor_input: $supervisor)}"
                         :variables {:supervisor supervisor_updated
                                     :auth {:mail mail :password "wrong"}}})
               {:data {:supervisor_update false}}))
-       (is (= (graphql {:query (str "query x($auth: Auth) { supervisor_get(auth: $auth){name_full} }")
+       (is (= (graphql {:query "query x($auth: Auth) { supervisor_get(auth: $auth){name_full} }"
                         :variables {:auth {:mail mail :password password}}})
               {:data {:supervisor_get {:name_full name_original}}}))))
 
 (deftest update-correct-login
   (let [graphql (->graphql)]
-       (is (= (graphql {:query (str "mutation x($auth: Auth, $supervisor: SupervisorInput) { 
-                                       supervisor_update(auth: $auth, supervisor_input: $supervisor)}")
+       (is (= (graphql {:query "mutation x($auth: Auth, $supervisor: SupervisorInput) { 
+                                  supervisor_update(auth: $auth, supervisor_input: $supervisor)}"
                         :variables {:supervisor supervisor_updated
                                     :auth {:mail mail :password password}}})
               {:data {:supervisor_update true}}))
-       (is (= (graphql {:query (str "query x($auth: Auth) { supervisor_get(auth: $auth){name_full} }")
+       (is (= (graphql {:query "query x($auth: Auth) { supervisor_get(auth: $auth){name_full} }"
                         :variables {:auth {:mail mail :password password}}})
               {:data {:supervisor_get {:name_full name_updated}}}))))
