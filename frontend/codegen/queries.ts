@@ -34,3 +34,8 @@ export const lookup = gql`
       desc
     }
   }`
+
+export const login = gql`
+  query Login($auth: Auth!) {
+    login(auth: $auth) {jwt}
+  }`

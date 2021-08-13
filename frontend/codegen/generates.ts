@@ -77,7 +77,7 @@ export type MutationTypeSupervisor_UpdateArgs = {
 /** The type that query operations will be rooted at. */
 export type QueryType = {
   __typename?: 'QueryType';
-  /** For a username+password get a jwt containing the login:id and roles */
+  /** For a username+password get a jwt containing the login:id */
   login: Login;
   /** All supervisors visible to the ngo assiged to the token */
   lookup: Lookup;
@@ -132,7 +132,7 @@ export type Languages = {
   flag_url: Scalars['String'];
 };
 
-/** For a username+password get a jwt containing the login:id and roles */
+/** For a username+password get a jwt containing the login:id */
 export type Login = {
   __typename?: 'login';
   jwt?: Maybe<Scalars['String']>;
@@ -234,6 +234,19 @@ export type LookupQuery = (
   )> }
 );
 
+export type LoginQueryVariables = Exact<{
+  auth: Auth;
+}>;
+
+
+export type LoginQuery = (
+  { __typename?: 'QueryType' }
+  & { login: (
+    { __typename?: 'login' }
+    & Pick<Login, 'jwt'>
+  ) }
+);
+
 
 export const LookupDocument = `
     query Lookup($token: String = "R4nd0m") {
@@ -278,5 +291,24 @@ export const useLookupQuery = <
     useQuery<LookupQuery, TError, TData>(
       ['Lookup', variables],
       fetcher<LookupQuery, LookupQueryVariables>(LookupDocument, variables),
+      options
+    );
+export const LoginDocument = `
+    query Login($auth: Auth!) {
+  login(auth: $auth) {
+    jwt
+  }
+}
+    `;
+export const useLoginQuery = <
+      TData = LoginQuery,
+      TError = unknown
+    >(
+      variables: LoginQueryVariables, 
+      options?: UseQueryOptions<LoginQuery, TError, TData>
+    ) => 
+    useQuery<LoginQuery, TError, TData>(
+      ['Login', variables],
+      fetcher<LoginQuery, LoginQueryVariables>(LoginDocument, variables),
       options
     );

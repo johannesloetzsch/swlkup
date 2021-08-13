@@ -1,0 +1,72 @@
+import  { useEffect } from 'react';
+import { useLoginQuery } from '../codegen/generates'
+import create from 'zustand'
+
+function jwtDecode(jwt: string) {
+  /* Just parses the payload — Be aware that signature is not checked */
+  return jwt && JSON.parse(atob(jwt.split('.')[1]))
+}
+
+interface AuthState {
+  mail: string,
+  password: string,
+  setLogin: (mail: string, password: string) => void
+  jwt: string,
+  setJwt: (jwt: string) => void,
+  logout: () => void
+}
+
+const useAuthStore = create<AuthState>(set => ({
+  mail: '',
+  password: '',
+  setLogin: (mail, password) => set( _orig => ({mail, password})),
+  jwt: '',
+  setJwt: jwt => set( _orig => ({jwt}) ),
+  logout: () => set({mail: '', password: '', jwt: ''})
+}))
+
+export function Login() {
+  const auth = useAuthStore()
+
+  const { data } = useLoginQuery({auth}, {enabled: Boolean(!auth.jwt && auth.mail && auth.password)})
+
+  useEffect(() => {
+    if(auth.jwt) {
+      localStorage.setItem('jwt', auth.jwt)
+    }
+    else {
+      auth.setJwt(data?.login.jwt || localStorage.getItem('jwt') || '')
+    }
+
+    if(jwtDecode(auth.jwt).exp < Date.now()/1000) {
+      console.log('session expired')
+      localStorage.removeItem('jwt')
+      auth.logout()
+    }
+  }, [auth.jwt, data])
+
+  if(!auth.jwt) {
+    return (
+      <form onSubmit={ (event) => {event.preventDefault()
+                                   auth.setLogin((document.getElementById('mail') as HTMLInputElement).value,
+				                 (document.getElementById('password') as HTMLInputElement).value) }}>
+        <label>Email:
+          <input id='mail' name='mail'/>
+        </label>&nbsp;
+        <label>Password:
+          <input id='password' type='password' name='password'/>
+        </label>&nbsp;
+        <input type='submit' value='Login'/>
+      </form>
+    )
+  } else {
+    return (
+      <form onSubmit={ async (event) => {event.preventDefault()
+	                           localStorage.removeItem('jwt')
+                                   auth.logout()
+                                  }}>
+        <input type='submit' value='Logout'/>
+      </form>
+    )
+  }
+}
