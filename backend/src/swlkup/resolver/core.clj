@@ -5,6 +5,7 @@
             [swlkup.resolver.root.supervisor.get :refer [supervisor_get]]
             [swlkup.resolver.root.supervisor.update :refer [supervisor_update]]
             [swlkup.resolver.root.user.lookup :refer [lookup]]
+            [swlkup.resolver.root.ngos :refer [ngos]]
             [swlkup.resolver.root.languages :refer [languages]]
             [swlkup.resolver.root.offers :refer [offers]]
             [mount.core :as mount :refer [defstate]]
@@ -13,6 +14,7 @@
 
 (def graphql* (executor {:query {:login #'login
                                  :lookup #'lookup
+                                 :ngos #'ngos
                                  :languages #'languages
                                  :offers #'offers
                                  :supervisor_get #'supervisor_get}

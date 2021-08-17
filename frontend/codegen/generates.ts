@@ -81,6 +81,8 @@ export type QueryType = {
   login: Login;
   /** All supervisors visible to the ngo assiged to the token */
   lookup: Lookup;
+  /** All Ngos */
+  ngos: Array<Ngos>;
   /** All languages */
   languages: Array<Languages>;
   /** All offers */
@@ -99,6 +101,12 @@ export type QueryTypeLoginArgs = {
 /** The type that query operations will be rooted at. */
 export type QueryTypeLookupArgs = {
   token: Scalars['String'];
+};
+
+
+/** The type that query operations will be rooted at. */
+export type QueryTypeNgosArgs = {
+  auth: Auth;
 };
 
 
@@ -152,7 +160,17 @@ export type Lookup = {
 /** Details of a ngo */
 export type Ngo = {
   __typename?: 'ngo';
-  name?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  /** Self descriptive. */
+  name: Scalars['String'];
+};
+
+/** All Ngos */
+export type Ngos = {
+  __typename?: 'ngos';
+  id?: Maybe<Scalars['String']>;
+  /** Self descriptive. */
+  name: Scalars['String'];
 };
 
 /** All offers */
@@ -247,6 +265,35 @@ export type LoginQuery = (
   ) }
 );
 
+export type SupervisorGetQueryVariables = Exact<{
+  auth: Auth;
+}>;
+
+
+export type SupervisorGetQuery = (
+  { __typename?: 'QueryType' }
+  & { supervisor_get?: Maybe<(
+    { __typename?: 'supervisor_get' }
+    & Pick<Supervisor_Get, 'id' | 'ngos' | 'name_full' | 'languages' | 'offers' | 'photo' | 'text_specialization' | 'text'>
+    & { contacts: (
+      { __typename?: 'Contacts' }
+      & Pick<Contacts, 'phone' | 'website' | 'email'>
+    ), location: (
+      { __typename?: 'Location' }
+      & Pick<Location, 'zip'>
+    ) }
+  )>, languages: Array<(
+    { __typename?: 'languages' }
+    & Pick<Languages, 'id' | 'name' | 'flag_url'>
+  )>, offers: Array<(
+    { __typename?: 'offers' }
+    & Pick<Offers, 'id' | 'target' | 'desc'>
+  )>, ngos: Array<(
+    { __typename?: 'ngos' }
+    & Pick<Ngos, 'id' | 'name'>
+  )> }
+);
+
 
 export const LookupDocument = `
     query Lookup($token: String = "R4nd0m") {
@@ -310,5 +357,53 @@ export const useLoginQuery = <
     useQuery<LoginQuery, TError, TData>(
       ['Login', variables],
       fetcher<LoginQuery, LoginQueryVariables>(LoginDocument, variables),
+      options
+    );
+export const SupervisorGetDocument = `
+    query SupervisorGet($auth: Auth!) {
+  supervisor_get(auth: $auth) {
+    id
+    ngos
+    name_full
+    languages
+    offers
+    contacts {
+      phone
+      website
+      email
+    }
+    location {
+      zip
+    }
+    photo
+    text_specialization
+    text
+  }
+  languages {
+    id
+    name
+    flag_url
+  }
+  offers {
+    id
+    target
+    desc
+  }
+  ngos(auth: $auth) {
+    id
+    name
+  }
+}
+    `;
+export const useSupervisorGetQuery = <
+      TData = SupervisorGetQuery,
+      TError = unknown
+    >(
+      variables: SupervisorGetQueryVariables, 
+      options?: UseQueryOptions<SupervisorGetQuery, TError, TData>
+    ) => 
+    useQuery<SupervisorGetQuery, TError, TData>(
+      ['SupervisorGet', variables],
+      fetcher<SupervisorGetQuery, SupervisorGetQueryVariables>(SupervisorGetDocument, variables),
       options
     );

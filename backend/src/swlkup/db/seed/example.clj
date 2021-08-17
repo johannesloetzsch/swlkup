@@ -59,7 +59,7 @@
    :target :group
    :desc "Mediation"}
   {:crux.db/id "supervision"
-   :id "supervison"
+   :id "supervision"
    :crux.spec :swlkup.model.offers/offers
    :target :group
    :desc "Supervision"}
@@ -79,7 +79,7 @@
   {:crux.db/id "seawatch"
    :crux.spec :swlkup.model.ngo/ngo
    :name "Sea-Watch"}
-  {:crux.db/id "example-ngo"
+  {:crux.db/id "example_ngo"
    :crux.spec :swlkup.model.ngo/ngo
    :name "Example NGO"
    :swlkup.model.login/login:id ["login_crewing_example-ngo"]}
@@ -106,6 +106,7 @@
               :lat 23.42
               :lon 52.34
               :radius_kilometer 10}
+   :text_specialization "PTSD"
    :text "Irgend etwas über mich ;)"
    :ngos :any}
   {:crux.db/id "MariaMusterfrau"
@@ -124,6 +125,7 @@
               :lon 42.23
               :lat 13.37
               :radius_kilometer 10}
+   :text_specialization "PTSD"
    :text "Here I should write something about myself, my specialization and my motivation for supporting SAR NGOs…"
    :ngos #{"seawatch" "sosmediterranee"}}
 

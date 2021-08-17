@@ -11,7 +11,8 @@
                          :offers ["counseling", "moderation"]
                          :contacts {:phone "0123456789"
                                     :email "contact@max.mueller.de"
-                                    :website "https://praxis.mueller.de"}})
+                                    :website "https://praxis.mueller.de"}
+                         :location {:zip "01099"}})
 (def name_original "Max Müller")
 (def name_updated (:name_full supervisor_updated))
 

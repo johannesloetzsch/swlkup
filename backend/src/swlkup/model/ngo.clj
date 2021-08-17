@@ -2,9 +2,7 @@
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]))
 
-;(s/def ::name (t/field t/string "Optional Description that is available in interospection"))
-
-(s/def ::ngo (s/keys :req-un [::name]))
+(s/def ::ngo (s/keys :req-un [::id ::name]))
 
 (s/def ::ngo:id t/id)
 
@@ -13,3 +11,8 @@
              (s/conformer #(cond (coll? %) (set %)
                                  (= "any" (name %)) :any
                                  :else :clojure.spec.alpha/invalid)))
+
+(defn db->graphql [doc]
+  (some-> doc
+          (select-keys [:crux.db/id :name])
+          (assoc :id (:crux.db/id doc))))

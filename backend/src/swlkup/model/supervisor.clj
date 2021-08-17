@@ -2,7 +2,7 @@
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
             [swlkup.model.ngo :as ngo]
-            [swlkup.model.supervisor.location :as location]
+            [swlkup.model.supervisor.location :as location :refer [LocationInput]]
             [swlkup.model.supervisor.contacts :as contacts :refer [ContactsInput]]
             [swlkup.model.languages :as languages]
             [swlkup.model.offers :as offers]))
@@ -44,6 +44,7 @@
                                      ::text]))
 
 (s/def :input/contacts ContactsInput)
+(s/def :input/location LocationInput)
 
 (t/defobject SupervisorInput {:kind t/input-object-kind
                               :description "The new Dataset of a Supervisor"}
@@ -52,6 +53,7 @@
                      ::languages
                      ::offers
                      :input/contacts
+                     :input/location
                      ]
             :opt-un [;::location/location
                      ::photo

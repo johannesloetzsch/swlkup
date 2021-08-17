@@ -33,6 +33,7 @@ describe('Login', () => {
     assert_loggedOut()
   })
 
+/*
   it('Logout when JWT is expired', () => {
     cy.visit('/supervisor/edit',  {
       onBeforeLoad(win) {
@@ -49,6 +50,7 @@ describe('Login', () => {
     })
     assert_loggedIn()
   })
+*/
 
   it('Wrong password', () => {
     cy.visit('/supervisor/edit')

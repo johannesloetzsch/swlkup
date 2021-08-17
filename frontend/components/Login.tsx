@@ -1,4 +1,4 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react'
 import { useLoginQuery } from '../codegen/generates'
 import create from 'zustand'
 
@@ -7,7 +7,7 @@ function jwtDecode(jwt: string) {
   return jwt && JSON.parse(atob(jwt.split('.')[1]))
 }
 
-interface AuthState {
+export interface AuthState {
   mail: string,
   password: string,
   setLogin: (mail: string, password: string) => void
@@ -16,7 +16,7 @@ interface AuthState {
   logout: () => void
 }
 
-const useAuthStore = create<AuthState>(set => ({
+export const useAuthStore = create<AuthState>(set => ({
   mail: '',
   password: '',
   setLogin: (mail, password) => set( _orig => ({mail, password})),
@@ -49,7 +49,7 @@ export function Login() {
     return (
       <form onSubmit={ (event) => {event.preventDefault()
                                    auth.setLogin((document.getElementById('mail') as HTMLInputElement).value,
-				                 (document.getElementById('password') as HTMLInputElement).value) }}>
+                                                 (document.getElementById('password') as HTMLInputElement).value) }}>
         <label>Email:
           <input id='mail' name='mail'/>
         </label>&nbsp;
@@ -62,9 +62,9 @@ export function Login() {
   } else {
     return (
       <form onSubmit={ async (event) => {event.preventDefault()
-	                           localStorage.removeItem('jwt')
-                                   auth.logout()
-                                  }}>
+                                         localStorage.removeItem('jwt')
+                                         auth.logout()}}
+	    style={{width: "100%", textAlign: "right"}}>
         <input type='submit' value='Logout'/>
       </form>
     )

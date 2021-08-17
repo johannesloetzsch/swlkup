@@ -15,6 +15,7 @@ a {
   box-sizing: border-box;
 }
 
+
 fieldset {
   padding: 15px;
   border: solid 1px lightgray;
@@ -22,4 +23,21 @@ fieldset {
 
 hr {
   border: solid 0.5px lightgray;
+}
+
+
+form table {
+  width: 100%;
+}
+
+form td {
+  vertical-align: top;
+}
+
+form input[type="text"] {
+  width: 100%;
+}
+
+form textarea {
+  width: 100%;
 }

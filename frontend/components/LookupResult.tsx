@@ -10,7 +10,7 @@ function keysWhereVal(o:Options, initKeys: string[]) {
   const result = Object.keys(o).filter(k=>o[k])
   return result.length === 0
          ? initKeys
-	 : result
+         : result
 }
 
 interface FilterState {
@@ -58,7 +58,7 @@ const useFilterStore = create<FilterState>((set, get) => ({
 }))
 
 function FilterForm({languages, offers, selections}:
-		    {languages: Languages[], offers: Offers[], selections: any}) {
+                    {languages: Languages[], offers: Offers[], selections: any}) {
   const {setLanguage, getLanguages, setTarget, getTargets, setOffer, getOffers, setContact, getContacts} = useFilterStore()
   const visibleOffers = offers.filter(o => selections.selectedTargets.includes( o.target ))
   return (
@@ -68,58 +68,58 @@ function FilterForm({languages, offers, selections}:
         { languages.map( lang => (
           <Checkbox name="language" value={lang.id} id={lang.id} onChange={setLanguage} key={lang.id}
                     refInput={el => el && (el.indeterminate = getLanguages([]).length === 0
-	                               && selections.selectedLanguages.includes(lang.id))} >
+                                       && selections.selectedLanguages.includes(lang.id))} >
             <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
             {lang.name}
-	  </Checkbox>
+          </Checkbox>
         ) ) }
       </fieldset><br/>
       <fieldset>
         <legend>What kind of offers are you looking for?</legend>
-	{ [{"id": "individual", "label": "Individual"}, {"id": "group", "label": "Group"}].map( target => (
+        { [{"id": "individual", "label": "Individual"}, {"id": "group", "label": "Group"}].map( target => (
             <Checkbox name="target" value={target.id} id={target.id} onChange={setTarget} key={target.id}
                       refInput={el => el && (el.indeterminate = getTargets([]).length === 0
                                          && selections.selectedTargets.includes(target.id))} >
               {target.label}
-	    </Checkbox>
-	) ) }
+            </Checkbox>
+        ) ) }
         <hr/>
         { visibleOffers.map( offer => (
-	  <span key={offer.id}>
-	    <Checkbox name="offer" value={offer.id} id={offer.id} onChange={setOffer}
-	              refInput={el => el && (el.indeterminate = getOffers([]).length === 0
+          <span key={offer.id}>
+            <Checkbox name="offer" value={offer.id} id={offer.id} onChange={setOffer}
+                      refInput={el => el && (el.indeterminate = getOffers([]).length === 0
                                          && selections.selectedOffers.includes(offer.id))} >
-	      {offer.desc}
+              {offer.desc}
             </Checkbox><br/>
-	  </span>
-	) ) }
+          </span>
+        ) ) }
       </fieldset><br/>
       <fieldset>
         <legend>How would you like to get support?</legend>
-	{ [{"id": "inperson", "label": "In Person"}, {"id": "remote", "label": "Remote"}].map( contact => (
+        { [{"id": "inperson", "label": "In Person"}, {"id": "remote", "label": "Remote"}].map( contact => (
             <Checkbox name="contact" value={contact.id} id={contact.id} onChange={setContact} key={contact.id}
-	              refInput={el => el && (el.indeterminate = getContacts([]).length === 0
+                      refInput={el => el && (el.indeterminate = getContacts([]).length === 0
                                          && selections.selectedContacts.includes(contact.id))} >
               {contact.label}
-	    </Checkbox>
-	) ) }
-	{ selections.selectedContacts.includes("inperson")
-	  && <span><hr/>
-	       Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here,<br/> than the list of supervisors will be sorted by distance.<br/>
-	       <label htmlFor="country">Country</label>&nbsp;
-	       <input type="text" name="country" id="country"/>
-	       &nbsp;&nbsp;&nbsp;
-	       <label htmlFor="zip">Zip code</label>&nbsp;
-	       <input type="text" name="zip" id="zip"/>
-	     </span>
-	}
+            </Checkbox>
+        ) ) }
+        { selections.selectedContacts.includes("inperson")
+          && <span><hr/>
+               Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here,<br/> than the list of supervisors will be sorted by distance.<br/>
+               <label htmlFor="country">Country</label>&nbsp;
+               <input type="text" name="country" id="country"/>
+               &nbsp;&nbsp;&nbsp;
+               <label htmlFor="zip">Zip code</label>&nbsp;
+               <input type="text" name="zip" id="zip"/>
+             </span>
+        }
       </fieldset><br/>
     </form>
   )
 }
 
 function Supervisor({supervisor, languages}:
-		    {supervisor: Supervisors, languages: Languages[]}) {
+                    {supervisor: Supervisors, languages: Languages[]}) {
   return (
     <div className={styles.card}>
       <table style={{width: "100%"}}>
@@ -137,7 +137,7 @@ function Supervisor({supervisor, languages}:
             <td>{supervisor.text}</td>
             <td style={{textAlign: "right"}}>
               {supervisor.photo && <img src={supervisor.photo} style={{maxWidth: "110px",  /** enough to display 4 flags **/
-		                                                       maxHeight: "200px"}}/>}
+                                                                       maxHeight: "200px"}}/>}
             </td>
           </tr>
         </tbody>
@@ -162,14 +162,14 @@ export function LookupResult({data}: {data: LookupQuery}) {
   const selectedContacts = getContacts([/*"inperson",*/ "remote"])  // TODO decide what the default should be
   const filteredSupervisors = data.lookup.supervisors
                              ?.filter(s => s.languages.some( (supervisorLang: string) => selectedLanguages.includes(supervisorLang) ))
-			     .filter(s => s.offers.some( (supervisorOffer: string) => selectedOffers.includes(supervisorOffer) )) 
+                             .filter(s => s.offers.some( (supervisorOffer: string) => selectedOffers.includes(supervisorOffer) ))
   return (
     <>
       <div>
         <p> The Token was created by {data.lookup.ngo?.name}.</p>
         <p> {data.lookup.supervisors?.length} Supervisors are available. You can use the following options to filter them:</p><br/>
         <FilterForm languages={data.languages} offers={data.offers}
-	            selections={{selectedLanguages, selectedTargets, selectedOffers, selectedContacts}}/>
+                    selections={{selectedLanguages, selectedTargets, selectedOffers, selectedContacts}}/>
         <p> {filteredSupervisors?.length} Supervisors match this filters: </p>
       </div>
 
