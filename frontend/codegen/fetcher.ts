@@ -17,8 +17,7 @@ export function fetcher<TData, TVariables>(query: string, variables?: TVariables
 
     if (json.errors) {
       const { message } = json.errors[0];
-
-      throw new Error(message);
+      console.error(message)
     }
 
     return json.data;

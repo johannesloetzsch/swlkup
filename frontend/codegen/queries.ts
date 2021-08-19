@@ -1,5 +1,10 @@
 import { gql } from 'graphql-request'
 
+export const login = gql`
+  query Login($auth: Auth!) {
+    login(auth: $auth) {jwt}
+  }`
+
 export const lookup = gql`
   query Lookup($token: String="R4nd0m") {
     lookup(token: $token) {
@@ -33,11 +38,6 @@ export const lookup = gql`
       target
       desc
     }
-  }`
-
-export const login = gql`
-  query Login($auth: Auth!) {
-    login(auth: $auth) {jwt}
   }`
 
 export const supervisor_get = gql`
@@ -78,3 +78,9 @@ export const supervisor_get = gql`
       name
     }
   }`
+
+export const ngo = gql`
+  query Ngo($auth: Auth!) {
+    supervisors_registered(auth: $auth) {mail name_full}
+  }
+`

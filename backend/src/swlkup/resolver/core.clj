@@ -2,6 +2,7 @@
   (:require [specialist-server.core :refer [executor]]
             [swlkup.resolver.root.login :refer [login]]
             [swlkup.resolver.root.ngo.register-supervisor :refer [supervisor_register]]
+            [swlkup.resolver.root.ngo.registered-supervisor :refer [supervisors_registered]]
             [swlkup.resolver.root.supervisor.get :refer [supervisor_get]]
             [swlkup.resolver.root.supervisor.update :refer [supervisor_update]]
             [swlkup.resolver.root.user.lookup :refer [lookup]]
@@ -17,7 +18,8 @@
                                  :ngos #'ngos
                                  :languages #'languages
                                  :offers #'offers
-                                 :supervisor_get #'supervisor_get}
+                                 :supervisor_get #'supervisor_get
+                                 :supervisors_registered #'supervisors_registered}
                          :mutation {:supervisor_register #'supervisor_register
                                     :supervisor_update #'supervisor_update}}))
 

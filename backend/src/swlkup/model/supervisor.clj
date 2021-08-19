@@ -21,6 +21,7 @@
       (assoc-missing-opt :text)))
 
 (s/def ::id t/string)
+(s/def ::name_full t/string)
 
 (s/def ::ngos ngo/NgoRefs)
 

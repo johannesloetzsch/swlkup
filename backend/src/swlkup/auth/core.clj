@@ -14,5 +14,6 @@
         roles+entities (id->roles+entities ctx login:id)
         entities (->> (filter #(= role (:role %)) roles+entities)
                       (map :entity))]
-       (when (= 1 (count entities))
+       (when (and login:id
+                  (<= (count entities) 1))
              [(first entities) login:id])))

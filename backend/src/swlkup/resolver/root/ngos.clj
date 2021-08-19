@@ -14,8 +14,8 @@
   "All Ngos"
   [_node opt ctx _info]
   (let [{:keys [q_unary]} (:db_ctx ctx)
-        [supervisor:id] (auth+role->entity ctx (:auth opt) ::supervisor/supervisor)]
-       (when supervisor:id
+        [_supervisor:id login:id] (auth+role->entity ctx (:auth opt) ::supervisor/supervisor)]
+       (when login:id
              (map db->graphql
                   (q_unary '{:find [(pull ?e [*])]
                              :where [[?e :crux.spec :swlkup.model.ngo/ngo]]})))))

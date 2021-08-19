@@ -50,7 +50,7 @@ function validate() {
 		 ? {data: {supervisor}}
 	         : {data: {supervisor},
 	            errors: filter_empty_vals(errors)}
-  form && console.log(result)
+  //form && console.log(result)
   return result
 }
 
@@ -58,14 +58,14 @@ async function mutate(auth: AuthState, supervisor: SupervisorInput) {
   const result = await fetcher<any, any>(`mutation update($auth: Auth, $supervisor: SupervisorInput) {
                                             supervisor_update(auth: $auth, supervisor_input: $supervisor) }`,
                                          {auth, supervisor})()
-  console.debug(result)
+  //console.debug(result)
   return result.supervisor_update
 }
 
-function offer_options(offers: Offers[], supervisor: Supervisor_Get) {
+function offer_options(offers: Offers[], supervisor: Supervisor_Get|null) {
   return offers.map( offer => (
           <label key={offer.id}>
-            <input type="checkbox" name="offer" value={offer.id} id={offer.id} defaultChecked={supervisor.offers.includes(offer.id)} onChange={validate} />
+            <input type="checkbox" name="offer" value={offer.id} id={offer.id} defaultChecked={supervisor?.offers.includes(offer.id)} onChange={validate} />
             {offer.desc}<br/>
           </label>
         ))
@@ -88,12 +88,14 @@ export default function SupervisorEdit() {
     validate()
   }, [supervisor])
 
+  const default_any_ngo = Boolean(!supervisor || supervisor.ngos === 'any')
+
   return (
     <>
       <Login />
       <br/><br/>
 
-      { data && supervisor && <>
+      { data && data.ngos && <>
         <form onSubmit={ async event => { event.preventDefault()
 		                          const {data, errors} = validate()
 		                          remove()  /** we want delete the cache between calculation based on this data and mutation **/
@@ -106,7 +108,7 @@ export default function SupervisorEdit() {
             <legend>Languages you speak</legend>
             { data.languages.map( lang => (
               <label key={lang.id}>
-                <input type="checkbox" name="language" value={lang.id} id={lang.id} defaultChecked={supervisor.languages.includes(lang.id)} onChange={validate} />
+                <input type="checkbox" name="language" value={lang.id} id={lang.id} defaultChecked={supervisor?.languages.includes(lang.id)} onChange={validate} />
                 <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
                 {lang.name}
               </label>
@@ -118,15 +120,15 @@ export default function SupervisorEdit() {
 	    <table><tbody>
 	      <tr>
 	        <td>Name:</td>
-                <td><input type="text" name="name_full" defaultValue={supervisor.name_full || undefined} required={true}/></td>
+                <td><input type="text" name="name_full" defaultValue={supervisor?.name_full || undefined} required={true}/></td>
 	      </tr>
 	      <tr>
 		<td>Specialization:</td>
-                <td><input type="text" name="text_specialization" defaultValue={supervisor.text_specialization || undefined} required={true}/></td>
+                <td><input type="text" name="text_specialization" defaultValue={supervisor?.text_specialization || undefined} required={true}/></td>
 	      </tr>
               <tr>
 	        <td>Motivation:</td>
-                <td><textarea name="text" defaultValue={supervisor.text || undefined} rows={4} required={true}/></td>
+                <td><textarea name="text" defaultValue={supervisor?.text || undefined} rows={4} required={true}/></td>
               </tr>
 	    </tbody></table>
           </fieldset><br/>
@@ -150,15 +152,15 @@ export default function SupervisorEdit() {
 	    <table><tbody>
               <tr>
 	        <td>Phone:</td>
-                <td><input type="text" name="phone" defaultValue={supervisor.contacts.phone || undefined} onChange={validate}/></td>
+                <td><input type="text" name="phone" defaultValue={supervisor?.contacts.phone || undefined} onChange={validate}/></td>
 	      </tr>
               <tr>
                 <td>Email:</td>
-                <td><input type="text" name="email" defaultValue={supervisor.contacts.email || undefined} onChange={validate}/></td>
+                <td><input type="text" name="email" defaultValue={supervisor?.contacts.email || undefined} onChange={validate}/></td>
               </tr>
               <tr>
 	        <td>Website:<br/><i>(optional)</i></td>
-                <td><input type="text" name="website" defaultValue={supervisor.contacts.website || undefined}/></td>
+                <td><input type="text" name="website" defaultValue={supervisor?.contacts.website || undefined}/></td>
 	      </tr>
             </tbody></table>
           </fieldset><br/>
@@ -168,7 +170,7 @@ export default function SupervisorEdit() {
 	    <table><tbody>
 	      <tr>
                 <td>Zip code:<br/><i>(optional)</i></td>
-                <td><input type="text" name="zip" defaultValue={supervisor.location.zip || undefined}/></td>
+                <td><input type="text" name="zip" defaultValue={supervisor?.location.zip || undefined}/></td>
 	      </tr>
 	    </tbody></table>
           </fieldset><br/>
@@ -179,7 +181,7 @@ export default function SupervisorEdit() {
   	      <tr>
 	        <td>
 		  <label>
-		    <input type="radio" name="all_ngos" value="true" defaultChecked={supervisor.ngos === 'any'} onChange={validate} onClick={validate}/>
+                    <input type="radio" name="all_ngos" value="true" defaultChecked={default_any_ngo} onChange={validate} onClick={validate}/>
 		    Any
 		  </label>
 		</td>
@@ -188,7 +190,7 @@ export default function SupervisorEdit() {
   	      <tr>
 	        <td>
 		  <label>
-  	            <input type="radio" name="all_ngos" value="false" defaultChecked={supervisor.ngos !== 'any'} id="all_ngos_false" onChange={validate} onClick={validate}/>
+                    <input type="radio" name="all_ngos" value="false" defaultChecked={!default_any_ngo} id="all_ngos_false" onChange={validate} onClick={validate}/>
   	            Only this explicitly selected:
                   </label>
                 </td>
@@ -196,7 +198,7 @@ export default function SupervisorEdit() {
   	          {data.ngos.map(ngo => { return (
   		    <label key={ngo.id as string}>
                       <input type="checkbox" name="ngos" value={ngo.id as string}
-		             defaultChecked={typeof(supervisor.ngos) === 'object' && supervisor.ngos.includes(ngo.id)}
+		             defaultChecked={typeof(supervisor?.ngos) === 'object' && supervisor?.ngos.includes(ngo.id)}
 			     onClick={() => { (document.getElementById('all_ngos_false') as HTMLInputElement).checked = true }}
                              onChange={validate}/>
                       {ngo.name}<br/>
@@ -208,7 +210,7 @@ export default function SupervisorEdit() {
           </fieldset><br/>
 
           <div style={{textAlign: "right"}}>
-	    <input type="submit" value="Update"/>
+            <input type="submit" value="Update"/>
 	  </div>
         </form>
       </> }
