@@ -1,1 +1,2 @@
-{"graphql_endpoint": "http://localhost:4000/graphql"}
+{"graphql_endpoint": "http://localhost:4000/graphql",
+ "base_url": "http://localhost:3000"}

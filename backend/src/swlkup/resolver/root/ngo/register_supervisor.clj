@@ -1,5 +1,6 @@
 (ns swlkup.resolver.root.ngo.register-supervisor
-  (:require [clojure.spec.alpha :as s]
+  (:require [swlkup.config.state :refer [env]]
+            [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
             [crux.api :refer [sync tx-committed?]]
             [swlkup.auth.core :refer [auth+role->entity]]
@@ -37,8 +38,13 @@
                                      :invited-by ngo:id}]])]
               (when (and (sync node)
                          (tx-committed? node t))
-                    (send-mail {:to mail :subject "swlkup login"
-                                :body (str "username: " mail "\n"
-                                           "password: " password)})))))))
+                    (send-mail {:to mail :subject (str (:frontend-base-url env) " login")
+                                :body (str "You have been invited by the SAR Support Network.\n"
+                                           "We would be glad, if you participate by setting up your profile at\n"
+                                           (:frontend-base-url env) "/supervisor/edit\n"
+                                           "You can login using this credentials:\n"
+                                           "\n"
+                                           "Username: " mail "\n"
+                                           "Password: " password)})))))))
 
 (s/def ::supervisor_register (t/resolver #'supervisor_register))

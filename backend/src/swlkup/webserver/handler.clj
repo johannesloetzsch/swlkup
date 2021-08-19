@@ -77,7 +77,8 @@
   [handler]
   (fn [req]
       (if (= "/config.json" (:uri req))
-          (json-response {:graphql_endpoint (:frontend-graphql-endpoint env)})
+          (json-response {:graphql_endpoint (:frontend-graphql-endpoint env)
+                          :base_url (:frontend-base-url env)})
           (handler req))))
 
 (defn wrap-defaults [handler]

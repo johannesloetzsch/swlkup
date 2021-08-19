@@ -59,6 +59,7 @@ export type MutationType = {
   supervisor_register: Scalars['Boolean'];
   /** Update a supervisors data */
   supervisor_update: Scalars['Boolean'];
+  create_token: Scalars['String'];
 };
 
 
@@ -73,6 +74,13 @@ export type MutationTypeSupervisor_RegisterArgs = {
 export type MutationTypeSupervisor_UpdateArgs = {
   auth: Auth;
   supervisor_input: SupervisorInput;
+};
+
+
+/** If this server supports mutation, the type that mutation operations will be rooted at. */
+export type MutationTypeCreate_TokenArgs = {
+  auth: Auth;
+  purpose?: Maybe<Scalars['String']>;
 };
 
 
@@ -92,6 +100,7 @@ export type QueryType = {
   /** For a supervisor login, get the supervisors data */
   supervisor_get?: Maybe<Supervisor_Get>;
   supervisors_registered: Array<Supervisors_Registered>;
+  created_tokens: Array<Created_Tokens>;
 };
 
 
@@ -124,6 +133,12 @@ export type QueryTypeSupervisors_RegisteredArgs = {
   auth: Auth;
 };
 
+
+/** The type that query operations will be rooted at. */
+export type QueryTypeCreated_TokensArgs = {
+  auth: Auth;
+};
+
 /** The new Dataset of a Supervisor */
 export type SupervisorInput = {
   /** Self descriptive. */
@@ -139,6 +154,13 @@ export type SupervisorInput = {
   photo?: Maybe<Scalars['String']>;
   text_specialization?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
+};
+
+export type Created_Tokens = {
+  __typename?: 'created_tokens';
+  /** The secret given to a group of users, allowing anonym access to the lookup */
+  token: Scalars['String'];
+  purpose?: Maybe<Scalars['String']>;
 };
 
 /** All languages */
@@ -320,7 +342,10 @@ export type NgoQueryVariables = Exact<{
 
 export type NgoQuery = (
   { __typename?: 'QueryType' }
-  & { supervisors_registered: Array<(
+  & { created_tokens: Array<(
+    { __typename?: 'created_tokens' }
+    & Pick<Created_Tokens, 'token' | 'purpose'>
+  )>, supervisors_registered: Array<(
     { __typename?: 'supervisors_registered' }
     & Pick<Supervisors_Registered, 'mail' | 'name_full'>
   )> }
@@ -441,6 +466,10 @@ export const useSupervisorGetQuery = <
     );
 export const NgoDocument = `
     query Ngo($auth: Auth!) {
+  created_tokens(auth: $auth) {
+    token
+    purpose
+  }
   supervisors_registered(auth: $auth) {
     mail
     name_full

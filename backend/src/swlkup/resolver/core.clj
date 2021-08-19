@@ -3,6 +3,8 @@
             [swlkup.resolver.root.login :refer [login]]
             [swlkup.resolver.root.ngo.register-supervisor :refer [supervisor_register]]
             [swlkup.resolver.root.ngo.registered-supervisor :refer [supervisors_registered]]
+            [swlkup.resolver.root.ngo.create-token :refer [create_token]]
+            [swlkup.resolver.root.ngo.created-tokens :refer [created_tokens]]
             [swlkup.resolver.root.supervisor.get :refer [supervisor_get]]
             [swlkup.resolver.root.supervisor.update :refer [supervisor_update]]
             [swlkup.resolver.root.user.lookup :refer [lookup]]
@@ -19,9 +21,11 @@
                                  :languages #'languages
                                  :offers #'offers
                                  :supervisor_get #'supervisor_get
-                                 :supervisors_registered #'supervisors_registered}
+                                 :supervisors_registered #'supervisors_registered
+                                 :created_tokens #'created_tokens}
                          :mutation {:supervisor_register #'supervisor_register
-                                    :supervisor_update #'supervisor_update}}))
+                                    :supervisor_update #'supervisor_update
+                                    :create_token #'create_token}}))
 
 (defn ->graphql
   "Create a wrapped graphql-executor, that merges context into the request.

@@ -81,6 +81,7 @@ export const supervisor_get = gql`
 
 export const ngo = gql`
   query Ngo($auth: Auth!) {
+    created_tokens(auth: $auth) {token purpose}
     supervisors_registered(auth: $auth) {mail name_full}
   }
 `

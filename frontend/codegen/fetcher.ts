@@ -17,7 +17,7 @@ export function fetcher<TData, TVariables>(query: string, variables?: TVariables
 
     if (json.errors) {
       const { message } = json.errors[0];
-      console.error(message)
+      console.error('Graphql Error:', message, query, variables)
     }
 
     return json.data;

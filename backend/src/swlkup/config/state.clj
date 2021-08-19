@@ -21,6 +21,7 @@
 (s/def ::mail-from (s/nilable string?))
 
 (s/def ::frontend-graphql-endpoint string?)
+(s/def ::frontend-base-url string?)
 
 (s/def ::env (s/keys :req-un [::verbose
                               ::port
@@ -28,7 +29,8 @@
                               ::db-inmemory ::db-dir
                               ::mail-host ::mail-user ::mail-pass ::mail-port ::mail-from
 
-                              ::frontend-graphql-endpoint]))
+                              ::frontend-graphql-endpoint
+                              ::frontend-base-url]))
 
 (defn filter-defined [keys-spec m]
   (let [req-un (last (s/form keys-spec))

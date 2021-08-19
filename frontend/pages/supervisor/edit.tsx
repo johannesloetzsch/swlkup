@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Login, useAuthStore, AuthState } from '../../components/Login'
-import { useSupervisorGetQuery, Offers, Supervisor_Get, Ngo, SupervisorInput} from '../../codegen/generates'
+import { useSupervisorGetQuery, Offers, SupervisorInput} from '../../codegen/generates'
 import { fetcher } from '../../codegen/fetcher'
 
 function filter_empty_vals(map: object) {
@@ -62,7 +62,7 @@ async function mutate(auth: AuthState, supervisor: SupervisorInput) {
   return result.supervisor_update
 }
 
-function offer_options(offers: Offers[], supervisor: Supervisor_Get|null) {
+function offer_options(offers: Offers[], supervisor: any) {
   return offers.map( offer => (
           <label key={offer.id}>
             <input type="checkbox" name="offer" value={offer.id} id={offer.id} defaultChecked={supervisor?.offers.includes(offer.id)} onChange={validate} />

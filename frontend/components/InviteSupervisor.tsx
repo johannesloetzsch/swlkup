@@ -17,12 +17,13 @@ export function InviteSupervisor() {
     auth.setJwt(localStorage.getItem('jwt') || '')
   }, [auth.jwt])
 
-  const { data, remove, refetch } = useNgoQuery({auth})
+  const { data, remove, refetch } = useNgoQuery({auth}, {enabled: Boolean(auth.jwt)})
   const registered_active = data?.supervisors_registered.filter(s => s.name_full) 
   const registered_new = data?.supervisors_registered.filter(s => !s.name_full) 
 
   return auth.jwt && (
-    <>
+    <div style={{width: "100%"}}>
+      <h4>Supervisor</h4>
       <form onSubmit={ async event => { event.preventDefault()
                                         const mail = (document.getElementsByName('supervisor_email')[0] as HTMLInputElement).value
 					remove()
@@ -37,23 +38,19 @@ export function InviteSupervisor() {
 	  <input type="submit" value="Invite"/>
         </fieldset>
 
-        { data?.supervisors_registered &&
+        { Boolean(registered_active?.length) &&
           <>
-            { registered_active?.length &&
-              <>
-                <h5>{registered_active.length} Active registered supervisors:</h5>
-                <p>{ registered_active.map(s => s.name_full + ' (' + s.mail + ')').join(', ') }</p>
-              </>
-            }
-            { registered_new?.length &&
-              <>
-                <h5>{registered_new.length} New registered supervisors:</h5>
-                <p>{ registered_new.map(s => s.mail).join(', ') }</p>
-              </>
-            }
+            <h5>{registered_active?.length} Active registered supervisors:</h5>
+            <p>{ registered_active?.map(s => s.name_full + ' (' + s.mail + ')').join(', ') }</p>
           </>
-	}
+        }
+        { Boolean(registered_new?.length) &&
+          <>
+            <h5>{registered_new?.length} New registered supervisors:</h5>
+            <p>{ registered_new?.map(s => s.mail).join(', ') }</p>
+          </>
+        }
       </form>
-    </>
+    </div>
   ) || null
 }

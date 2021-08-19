@@ -10,4 +10,4 @@
                   (get-in [:data :__schema :types]))
               (map :name)
               sort)
-         '("Auth" "Boolean" "Contacts" "ContactsInput" "Float" "ID" "Int" "Location" "LocationInput" "Long" "MutationType" "NgoRefs" "QueryType" "String" "SupervisorInput" "languages" "login" "lookup" "ngo" "ngos" "offers" "supervisor_get" "supervisors"))))
+         '("Auth" "Boolean" "Contacts" "ContactsInput" "Float" "ID" "Int" "Location" "LocationInput" "Long" "MutationType" "NgoRefs" "QueryType" "String" "SupervisorInput" "created_tokens" "languages" "login" "lookup" "ngo" "ngos" "offers" "supervisor_get" "supervisors" "supervisors_registered"))))
