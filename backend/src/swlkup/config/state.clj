@@ -13,6 +13,8 @@
 
 (s/def ::db-inmemory boolean?)  ;; we run unit tests in an in-memory instance, otherwise the default db would be looked
 (s/def ::db-dir string?)  ;; ignored when ::db-inmemory
+(s/def ::db-seed string?)  ;; an edn-file to be used for seeding
+(s/def ::db-export-prefix (s/nilable string?))  ;; path where during startup an export should be written
 
 (s/def ::mail-host string?)
 (s/def ::mail-user string?)
@@ -27,6 +29,7 @@
                               ::port
                               ::validate-output
                               ::db-inmemory ::db-dir
+                              ::db-seed ::db-export-prefix
                               ::mail-host ::mail-user ::mail-pass ::mail-port ::mail-from
 
                               ::frontend-graphql-endpoint

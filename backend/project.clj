@@ -1,10 +1,11 @@
-(defproject swlkup-backend "0.1.2"
+(defproject swlkup-backend "0.1.3"
   :description "supervisor lookup backend"
   :min-lein-version "2.0.0"
   :dependencies [;; core
                  [org.clojure/clojure "1.10.3"]
                  [yogthos/config "1.1.8"]
                  [mount "0.1.16"]
+                 [spootnik/signal "0.2.4"]
                  ;; db
                  [pro.juxt.crux/crux-core "1.17.1"]
                  [pro.juxt.crux/crux-rocksdb "1.17.1"]
@@ -34,5 +35,5 @@
                                   [nrepl/nrepl "0.8.3"]
                                   [clojure-complete/clojure-complete "0.2.5"]]
                    #_#_:jvm-opts ["-Dverbose=true"]}
-             :test {:jvm-opts ["-Ddb-inmemory=true"]}
+             :test {:jvm-opts ["-Ddb-inmemory=true" "-Ddb-export-prefix="]}
              :uberjar {:aot :all}})

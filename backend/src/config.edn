@@ -6,6 +6,8 @@
 
  :db-inmemory false
  :db-dir "./data/crux/rocksdb"
+ :db-seed ""
+ :db-export-prefix "./data/export_"
 
  :mail-host ""
  :mail-user ""

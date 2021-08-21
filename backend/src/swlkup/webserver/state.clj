@@ -4,7 +4,8 @@
             [ring.middleware.reload]
             [swlkup.webserver.handler]
             [mount.core :as mount :refer [defstate]]
-            [swlkup.config.state]))
+            [swlkup.config.state]
+            [signal.handler :refer [with-handler]]))
 
 (defstate ^{:on-reload :noop}  ;; When the app is recompiled, mount should not care, but we use ring.middleware.reload/wrap-reload
   webserver
@@ -14,4 +15,8 @@
   :stop (.stop webserver))
 
 (defn -main [& _args]
-  (mount/start))
+  (mount/start)
+
+  (with-handler :term
+    (mount/stop)  ;; Export the database
+    (System/exit 0)))

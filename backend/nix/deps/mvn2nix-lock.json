@@ -780,6 +780,11 @@
       "sha256": "27d479100de9a2282d5bbca8bee7700c299a7f4103a9734e78644a2f462ef7fa",
       "url": "https://clojars.org/repo/cheshire/cheshire/3.1.0/cheshire-3.1.0.pom"
     },
+    "spootnik:signal:pom:0.2.4": {
+      "layout": "spootnik/signal/0.2.4/signal-0.2.4.pom",
+      "sha256": "c49a5e4c0fe94f3c7d13297c24c5e06f648c5d578d573b07b0e5831570a944a9",
+      "url": "https://clojars.org/repo/spootnik/signal/0.2.4/signal-0.2.4.pom"
+    },
     "org.webjars:webjars-locator:pom:0.27": {
       "layout": "org/webjars/webjars-locator/0.27/webjars-locator-0.27.pom",
       "sha256": "b8275c2c1d82e143edde840e6cf9701b70034ae1ce23236dfa2fa68e161cf3d2",
@@ -914,6 +919,11 @@
       "layout": "commons-io/commons-io/2.6/commons-io-2.6.jar",
       "sha256": "f877d304660ac2a142f3865badfc971dec7ed73c747c7f8d5d2f5139ca736513",
       "url": "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.6/commons-io-2.6.jar"
+    },
+    "spootnik:signal:jar:0.2.4": {
+      "layout": "spootnik/signal/0.2.4/signal-0.2.4.jar",
+      "sha256": "8dbf2fa43f2ceb712b0131bbefae10b01451ef47f6f70d77297a5d0e43566426",
+      "url": "https://clojars.org/repo/spootnik/signal/0.2.4/signal-0.2.4.jar"
     },
     "org.apache.maven.plugins:maven-resources-plugin:pom:2.6": {
       "layout": "org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.pom",

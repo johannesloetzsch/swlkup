@@ -2,7 +2,6 @@
   (:require [swlkup.config.state :refer [env]]
             [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
-            [crux.api :refer [sync tx-committed?]]
             [swlkup.auth.core :refer [auth+role->entity]]
             [swlkup.auth.password.generate :refer [generate-password]]
             [swlkup.auth.password.hash :refer [hash-password]]
@@ -24,7 +23,7 @@
 (defn supervisor_register
   "Add a new supervisor account to the database and send a mail containing the password via mail"
   [_node opt ctx _info]
-  (let [{:keys [node tx]} (:db_ctx ctx)
+  (let [{:keys [tx tx-committed?]} (:db_ctx ctx)
         [ngo:id] (auth+role->entity ctx (:auth opt) ::ngo/ngo)]
        (boolean (when ngo:id
          (let [mail (:mail opt)
@@ -36,8 +35,7 @@
                                      :mail mail
                                      :password-hash password:hash
                                      :invited-by ngo:id}]])]
-              (when (and (sync node)
-                         (tx-committed? node t))
+              (when (tx-committed? t)
                     (send-mail {:to mail :subject (str (:frontend-base-url env) " login")
                                 :body (str "You have been invited by the SAR Support Network.\n"
                                            "We would be glad, if you participate by setting up your profile at\n"
