@@ -34,9 +34,10 @@
                 :tx_sync (fn [tx-ops]
                              (->> (submit-tx node tx-ops)
                                   (crux.api/await-tx node)))
-                :tx-commited? (fn [transaction]
-                                  (and (crux/sync node)
-                                       (crux/tx-committed? node transaction)))
+                :tx-committed? (fn [transaction]
+                                   (println "synced" (crux/sync node))
+                                   (println "awaited" (crux/await-tx node transaction))
+                                   (crux/tx-committed? node transaction))
                 :sync (fn [] (crux/sync node))
                 :q (fn [& args]
                        (apply q node args))

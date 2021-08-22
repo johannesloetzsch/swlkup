@@ -17,5 +17,5 @@
  :mail-from nil
 
  :frontend-graphql-endpoint "http://localhost:4000/graphql"
- :frontend-base-url "http://localhost:3000"
+ :frontend-base-url "http://localhost:4000"
 }

@@ -48,12 +48,11 @@ let
 in
 lib.mergeAttrs
   (pkgs.writeScriptBin "${pname}" ''
-    #!${pkgs.runtimeShell} -em
+    #!${pkgs.runtimeShell}
 
     ${jdk11_headless}/bin/java -jar ${swlkup-backend-jar}/${name}-standalone.jar $@ &
 
     ## We write a pid-file, so the integration test knows how to kill the server
     echo $! > .pid
-    fg
   '')
   { inherit mavenRepository; jar = swlkup-backend-jar; }

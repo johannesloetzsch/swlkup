@@ -24,18 +24,19 @@
   "Add a new supervisor account to the database and send a mail containing the password via mail"
   [_node opt ctx _info]
   (let [{:keys [tx tx-committed?]} (:db_ctx ctx)
-        [ngo:id] (auth+role->entity ctx (:auth opt) ::ngo/ngo)]
+        [ngo:id] (auth+role->entity ctx (:auth opt) ::ngo/doc)]
        (boolean (when ngo:id
          (let [mail (:mail opt)
                password (generate-password)
                password:hash (hash-password password)
                t (tx [[:crux.tx/match (login_id mail) nil]
                       [:crux.tx/put {:crux.db/id (login_id mail)
-                                     :crux.spec :swlkup.model.login/login
+                                     :crux.spec :swlkup.model.login/doc
                                      :mail mail
                                      :password-hash password:hash
                                      :invited-by ngo:id}]])]
               (when (tx-committed? t)
+                    (println "committed")
                     (send-mail {:to mail :subject (str (:frontend-base-url env) " login")
                                 :body (str "You have been invited by the SAR Support Network.\n"
                                            "We would be glad, if you participate by setting up your profile at\n"

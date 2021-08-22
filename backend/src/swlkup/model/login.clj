@@ -5,6 +5,11 @@
 (s/def ::mail t/string)  ;; Used as login-name
 (s/def ::password-hash t/string)
 
+(s/def ::invited-by t/string)
+
+(s/def ::doc (s/keys :req-un [::mail ::password-hash] :opt-un [::invited-by]))
+
+
 (s/def ::login (s/keys :req-un [::mail ::password-hash]))
 
 (s/def ::login:id t/string)

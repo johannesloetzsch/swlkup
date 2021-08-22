@@ -1,6 +1,11 @@
 {
   "baseUrl": "http://localhost:3000",
 
+  "retries": {
+    "runMode": 0,
+    "openMode": 0
+  },
+
   "reporter": "junit",
   "reporterOptions": {
     "mochaFile": "cypress/results/[hash].xml",

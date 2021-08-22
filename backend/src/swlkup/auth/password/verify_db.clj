@@ -4,7 +4,7 @@
 (defn login->id [ctx mail password]
   (let [{:keys [q_id]} (:db_ctx ctx)
         [login:id password:hash] (q_id '{:find [<-login:id <-password:hash]
-                                         :where [[?l :crux.spec :swlkup.model.login/login]
+                                         :where [[?l :crux.spec :swlkup.model.login/doc]
                                                  [?l :mail ->mail]
                                                  [?l :crux.db/id <-login:id]
                                                  [?l :password-hash <-password:hash]]

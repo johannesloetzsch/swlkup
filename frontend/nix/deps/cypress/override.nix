@@ -16,7 +16,7 @@ in
   [ -d ~/.config/Cypress ] && chmod -R +w ~/.config/Cypress
   export CYPRESS_RUN_BINARY=${pkgs.cypress}/bin/Cypress
 
-  export PATH=$PATH:${pkgs.lib.makeBinPath (with pkgs; [xlibs.xorgserver])}
+  export PATH=$PATH:${pkgs.lib.makeBinPath (with pkgs; [xlibs.xorgserver which])}
   export FONTCONFIG_PATH=${pkgs.fontconfig.out}/etc/fonts
 
   ${cypressNpm}/bin/cypress $@

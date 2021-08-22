@@ -8,7 +8,7 @@ async function mutate(auth: AuthState, mail: string) {
 					    supervisor_register(auth: $auth, mail: $mail) }`,
                                          {auth, mail})()
   console.debug(result)
-  return result.supervisor_register
+  return result?.supervisor_register
 }
 
 export function InviteSupervisor() {
@@ -18,8 +18,8 @@ export function InviteSupervisor() {
   }, [auth.jwt])
 
   const { data, remove, refetch } = useNgoQuery({auth}, {enabled: Boolean(auth.jwt)})
-  const registered_active = data?.supervisors_registered.filter(s => s.name_full) 
-  const registered_new = data?.supervisors_registered.filter(s => !s.name_full) 
+  const registered_active = data?.supervisors_registered?.filter(s => s.name_full) 
+  const registered_new = data?.supervisors_registered?.filter(s => !s.name_full) 
 
   return auth.jwt && (
     <div style={{width: "100%"}}>

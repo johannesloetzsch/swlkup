@@ -13,7 +13,7 @@
 (defn created_tokens
   [_node opt ctx _info]
   (let [{:keys [q]} (:db_ctx ctx)
-        [ngo:id] (auth+role->entity ctx (:auth opt) ::ngo/ngo)]
+        [ngo:id] (auth+role->entity ctx (:auth opt) ::ngo/doc)]
        (when ngo:id
          (let [tokens (q '{:find [?token ?purpose]
                            :keys [token purpose]

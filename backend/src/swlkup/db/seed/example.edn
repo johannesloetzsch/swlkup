@@ -129,14 +129,12 @@
   :ngos #{"seawatch" "sosmediterranee"}}
 
  {:crux.db/id "login_max_mueller"
-  :crux.spec :swlkup.model.login/login
-  :swlkup.model.login/role :supervisor
+  :crux.spec :swlkup.model.login/doc
   :mail "praxis@max.mueller.de"
   :password-hash "100$12$argon2id$v13$hq47jacLIYoiNMD9kdyy+w$ISDi+bSSTmsgqu648LQLv7ySU+lG2VGKRfa06HNfjzk$$$"}
 
  {:crux.db/id "login_crewing_example-ngo"
-  :crux.spec :swlkup.model.login/login
-  :swlkup.model.login/role :ngo
+  :crux.spec :swlkup.model.login/doc
   :mail "crewing@example-ngo.com"
   :password-hash "100$12$argon2id$v13$lWXab18B+9b79jAk7noAwg$01ak9vbuyxhuKDvBnWV8wuwxIJ5GR6zjz/lJhdw1s+I$$$" #_"Vr(+cFtUG=rsj2:/]*uR" }
 ]

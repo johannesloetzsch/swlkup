@@ -16,7 +16,7 @@
   [_node opt ctx _info]
   (let [{:keys [tx]} (:db_ctx ctx)
         [supervisor:id login:id] (auth+role->entity ctx (:auth opt) ::supervisor/doc)
-        tx_result (when login:id
+        tx_result (when login:id  ;; any login, independent of role can be used
                         (tx [[:crux.tx/put (assoc (:supervisor_input opt)
                                                    :crux.db/id (or supervisor:id (uuid))
                                                    :crux.spec ::supervisor/doc
