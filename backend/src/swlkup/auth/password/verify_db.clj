@@ -17,7 +17,7 @@
   (let [{:keys [q]} (:db_ctx ctx)]
        (q '{:keys [role entity]
             :find [<-role <-entity:id]
-            :where [[?e :swlkup.model.login/login:id <-login:id]
+            :where [[?e :swlkup.model.login/login:ids <-login:id]
                     [?e :crux.spec <-role]
                     [?e :crux.db/id <-entity:id]]
             :in [<-login:id]}

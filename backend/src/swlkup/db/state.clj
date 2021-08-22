@@ -1,9 +1,10 @@
 (ns swlkup.db.state
   (:require[crux.api :as crux]
             [clojure.java.io :as io]
-            [swlkup.db.export :refer [export seed]]
+            [swlkup.db.export :refer [export seed ]]
             [mount.core :as mount :refer [defstate]]
-            [swlkup.config.state :refer [env]]))
+            [swlkup.config.state :refer [env]]
+            [swlkup.db.validate :refer [validate-db validate-tx]]))
 
 (defn export-named-by-date [db_ctx]
   (when (:db-export-prefix env)
@@ -12,10 +13,13 @@
               file (str (:db-export-prefix env) date ".edn")]
              (when (:verbose env)
                    (println "Export database to:" file))
-             (export db_ctx file))))
+             (export file db_ctx))))
+
+(defn submit-tx [node tx-ops]
+  (crux/submit-tx node (validate-tx tx-ops)))
 
 (defn q [node & args]
-        (apply crux/q (crux/db node) args))
+  (apply crux/q (crux/db node) args))
 
 (defn ->db_ctx []
   (let [node (crux/start-node (when-not (:db-inmemory env)
@@ -25,10 +29,10 @@
                                          :crux/tx-log {:kv-store :my-rocksdb}
                                          :crux/document-store {:kv-store :my-rocksdb}}))
         db_ctx {:node node
-                :tx (fn [& args]
-                        (apply crux/submit-tx node args))
-                :tx_sync (fn [& args]
-                             (->> (apply crux/submit-tx node args)
+                :tx (fn [tx-ops]
+                        (submit-tx node tx-ops))
+                :tx_sync (fn [tx-ops]
+                             (->> (submit-tx node tx-ops)
                                   (crux.api/await-tx node)))
                 :tx-commited? (fn [transaction]
                                   (and (crux/sync node)
@@ -51,13 +55,17 @@
 
        (export-named-by-date db_ctx)
 
-       (when (:verbose env)
-             (println "Seed the database"))
-       (seed db_ctx (if (not-empty (:db-seed env))
-                        (:db-seed env)
-                        (io/resource "swlkup/db/seed/example.edn")))
-       
-       db_ctx))
+       (let [seed-file (if (not-empty (:db-seed env))
+                           (:db-seed env)
+                           (io/resource "swlkup/db/seed/example.edn"))]
+            (when (:verbose env)
+                  (println "Seed the database from:" seed-file))
+            (seed seed-file db_ctx))
+      
+       (if (:db-validate env)
+           (or (validate-db db_ctx)
+               (System/exit 1))
+           db_ctx)))
 
 (defstate db_ctx
   :start (->db_ctx)

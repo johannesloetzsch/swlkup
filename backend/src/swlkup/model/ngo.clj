@@ -12,6 +12,8 @@
                                  (= "any" (name %)) :any
                                  :else :clojure.spec.alpha/invalid)))
 
+(s/def ::doc (s/keys :req-un [::name]))
+
 (defn db->graphql [doc]
   (some-> doc
           (select-keys [:crux.db/id :name])

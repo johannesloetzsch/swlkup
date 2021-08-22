@@ -17,7 +17,7 @@
        (when ngo:id
          (let [tokens (q '{:find [?token ?purpose]
                            :keys [token purpose]
-                           :where [[?t :crux.spec :swlkup.model.token/token]
+                           :where [[?t :crux.spec :swlkup.model.token/doc]
                                    [?t :ngo ->ngo:id]
                                    [?t :token ?token]
                                    [?t :purpose ?purpose]]

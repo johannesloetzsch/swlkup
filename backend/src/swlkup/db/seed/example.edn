@@ -71,26 +71,28 @@
     }
 
  {:crux.db/id "lifeline"
-  :crux.spec :swlkup.model.ngo/ngo
+  :crux.spec :swlkup.model.ngo/doc
   :name "Mission Lifeline"}
  {:crux.db/id "seawatch"
-  :crux.spec :swlkup.model.ngo/ngo
+  :crux.spec :swlkup.model.ngo/doc
   :name "Sea-Watch"}
  {:crux.db/id "example_ngo"
-  :crux.spec :swlkup.model.ngo/ngo
+  :crux.spec :swlkup.model.ngo/doc
   :name "Example NGO"
-  :swlkup.model.login/login:id ["login_crewing_example-ngo"]}
+  :swlkup.model.login/login:ids ["login_crewing_example-ngo"]}
 
  {:crux.db/id :T0p53cret
+  :crux.spec :swlkup.model.token/doc
   :token "T0p53cret"
   :ngo "seawatch"}
  {:crux.db/id :R4nd0m
+  :crux.spec :swlkup.model.token/doc
   :token "R4nd0m"
   :ngo "lifeline"}
 
  {:crux.db/id "MaxMüller"
-  :crux.spec :swlkup.model.supervisor/supervisor
-  :swlkup.model.login/login:id "login_max_mueller"
+  :crux.spec :swlkup.model.supervisor/doc
+  :swlkup.model.login/login:ids "login_max_mueller"
   :name_full "Max Müller"
   :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_joe.png"
   :languages [:de :en]
@@ -107,8 +109,8 @@
   :text "Irgend etwas über mich ;)"
   :ngos :any}
  {:crux.db/id "MariaMusterfrau"
-  :crux.spec :swlkup.model.supervisor/supervisor
-  :swlkup.model.login/login:id "maria@mm.de"
+  :crux.spec :swlkup.model.supervisor/doc
+  :swlkup.model.login/login:ids "maria@mm.de"
   :name_full "Maria Musterfrau"
   :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_stephanie.png"
   :languages [:it :es :fr :ar]

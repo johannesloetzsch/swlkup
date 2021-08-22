@@ -15,7 +15,7 @@
          (q_id_unary '{:find [(pull ?e [*])]
                        :in [ngo]
                        :where [[?e :crux.db/id ngo]
-                               [?e :crux.spec :swlkup.model.ngo/ngo]]}
+                               [?e :crux.spec :swlkup.model.ngo/doc]]}
                      (get-in node [:_ :swlkup.resolver.root.user.lookup/lookup :ngo])))))
 
 (s/def ::ngo (t/resolver #'ngo))

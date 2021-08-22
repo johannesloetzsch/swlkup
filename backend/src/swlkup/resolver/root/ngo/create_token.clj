@@ -19,7 +19,7 @@
        (when ngo:id
          (let [token (generate-token)]
               (tx [[:crux.tx/put {:crux.db/id (uuid)
-                                  :crux.spec :swlkup.model.token/token
+                                  :crux.spec ::token/doc
                                   :token token
                                   :ngo ngo:id
                                   :purpose (:purpose opt)}]])

@@ -62,3 +62,10 @@
                      ::text])
 
 (s/def ::supervisor_input SupervisorInput)
+
+(s/def ::doc (s/keys :req-un [::ngos
+                              ::name_full
+                              ::languages
+                              ::offers
+                              :input/contacts
+                              :input/location]))

@@ -15,6 +15,7 @@
 (s/def ::db-dir string?)  ;; ignored when ::db-inmemory
 (s/def ::db-seed string?)  ;; an edn-file to be used for seeding
 (s/def ::db-export-prefix (s/nilable string?))  ;; path where during startup an export should be written
+(s/def ::db-validate boolean?)
 
 (s/def ::mail-host string?)
 (s/def ::mail-user string?)
@@ -30,6 +31,7 @@
                               ::validate-output
                               ::db-inmemory ::db-dir
                               ::db-seed ::db-export-prefix
+                              ::db-validate
                               ::mail-host ::mail-user ::mail-pass ::mail-port ::mail-from
 
                               ::frontend-graphql-endpoint

@@ -13,11 +13,11 @@
   "For a supervisor login, get the supervisors data"
   [_node opt ctx _info]
   (let [{:keys [q_id_unary]} (:db_ctx ctx)
-        [supervisor:id] (auth+role->entity ctx (:auth opt) ::supervisor/supervisor)]
+        [supervisor:id] (auth+role->entity ctx (:auth opt) ::supervisor/doc)]
        (when supervisor:id
              (supervisor/db->graphql
                (q_id_unary '{:find [(pull ?e [*])]
-                             :where [[?e :crux.spec :swlkup.model.supervisor/supervisor]
+                             :where [[?e :crux.spec :swlkup.model.supervisor/doc]
                                      [?e :crux.db/id ->supervisor:id]]
                              :in [->supervisor:id]}
                            supervisor:id)))))

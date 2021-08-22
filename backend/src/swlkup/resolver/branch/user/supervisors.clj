@@ -16,7 +16,7 @@
        (when valid
              (let [db-docs (q_unary '{:find [(pull ?e [*]) ?name_full]
                                       :order-by [[?name_full :asc]]  ;; For reproducability in tests
-                                      :where [[?e :crux.spec :swlkup.model.supervisor/supervisor]
+                                      :where [[?e :crux.spec :swlkup.model.supervisor/doc]
                                               [?e :ngos ngos]
                                               [?e :name_full ?name_full]]
                                       :in [[ngos ...]]}  ;; Collection binding

@@ -7,13 +7,15 @@
        (sync)
        (q_unary '{:find [(pull ?e [*])] :where [[?e :crux.db/id]]})))
 
-(defn export [db_ctx file]
-  (->> (all_docs db_ctx)
-       ;(into [])
-       (#(with-out-str (pprint %)))
+(defn write-edn [file docs]
+  (->> (with-out-str (pprint docs))
        (spit file)))
 
-(defn seed [db_ctx file]
+(defn export [file db_ctx]
+  (->> (all_docs db_ctx)
+       (write-edn file)))
+
+(defn seed [file db_ctx]
   (let [{:keys [tx_sync]} db_ctx]
        (->> (clojure.edn/read-string (slurp file))
             (map (fn [entry] [:crux.tx/put entry]))

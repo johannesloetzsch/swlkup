@@ -6,3 +6,5 @@
 (s/def ::purpose (s/nilable t/string))
 
 (s/def ::token_struct (s/keys :req-un [::token ::purpose]))
+
+(s/def ::doc (s/keys :req-un [::token]))

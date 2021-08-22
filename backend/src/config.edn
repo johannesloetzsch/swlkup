@@ -8,6 +8,7 @@
  :db-dir "./data/crux/rocksdb"
  :db-seed ""
  :db-export-prefix "./data/export_"
+ :db-validate true
 
  :mail-host ""
  :mail-user ""

@@ -28,7 +28,7 @@
                                        :where [[?l :crux.spec ::login/login]
                                                [?l :invited-by ?ngo:id]
                                                [?l :mail ?mail]
-                                               [?e ::login/login:id ?l]
+                                               [?e ::login/login:ids ?l]
                                                [?e :name_full ?name_full]]
                                        :in [?ngo:id]}
                                      ngo:id)]

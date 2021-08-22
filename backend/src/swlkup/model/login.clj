@@ -7,6 +7,9 @@
 
 (s/def ::login (s/keys :req-un [::mail ::password-hash]))
 
-(s/def ::login:id t/id)
+(s/def ::login:id t/string)
 
 (s/def ::password t/string)  ;; The unhashed password is not part of the login schema
+
+(s/def ::login:ids (s/or :1 ::login:id
+                         :* (s/* ::login:id)))
