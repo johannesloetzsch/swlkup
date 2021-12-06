@@ -1,6 +1,7 @@
 import { useQuery, UseQueryOptions } from 'react-query';
 import { fetcher } from './fetcher';
 export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -20,46 +21,52 @@ export type Scalars = {
 /** Authentication requires either a valid mail+password combination or a jwt obtained by an earlier login. */
 export type Auth = {
   /** Self descriptive. */
+  jwt: Scalars['String'];
+  /** Self descriptive. */
   mail: Scalars['String'];
   /** Self descriptive. */
   password: Scalars['String'];
-  /** Self descriptive. */
-  jwt: Scalars['String'];
 };
 
 export type Contacts = {
   __typename?: 'Contacts';
+  email?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
   website?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
 };
 
 export type ContactsInput = {
-  phone?: Maybe<Scalars['String']>;
-  website?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  website?: InputMaybe<Scalars['String']>;
 };
 
 export type Location = {
   __typename?: 'Location';
-  zip?: Maybe<Scalars['String']>;
   address_string?: Maybe<Scalars['String']>;
+  zip?: Maybe<Scalars['String']>;
 };
 
 export type LocationInput = {
-  zip?: Maybe<Scalars['String']>;
-  address_string?: Maybe<Scalars['String']>;
+  address_string?: InputMaybe<Scalars['String']>;
+  zip?: InputMaybe<Scalars['String']>;
 };
-
 
 /** If this server supports mutation, the type that mutation operations will be rooted at. */
 export type MutationType = {
   __typename?: 'MutationType';
+  create_token: Scalars['String'];
   /** Add a new supervisor account to the database and send a mail containing the password via mail */
   supervisor_register: Scalars['Boolean'];
   /** Update a supervisors data */
   supervisor_update: Scalars['Boolean'];
-  create_token: Scalars['String'];
+};
+
+
+/** If this server supports mutation, the type that mutation operations will be rooted at. */
+export type MutationTypeCreate_TokenArgs = {
+  auth: Auth;
+  purpose?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -76,31 +83,29 @@ export type MutationTypeSupervisor_UpdateArgs = {
   supervisor_input: SupervisorInput;
 };
 
-
-/** If this server supports mutation, the type that mutation operations will be rooted at. */
-export type MutationTypeCreate_TokenArgs = {
-  auth: Auth;
-  purpose?: Maybe<Scalars['String']>;
-};
-
-
 /** The type that query operations will be rooted at. */
 export type QueryType = {
   __typename?: 'QueryType';
+  created_tokens: Array<Created_Tokens>;
+  /** All languages */
+  languages: Array<Languages>;
   /** For a username+password get a jwt containing the login:id */
   login: Login;
   /** All supervisors visible to the ngo assiged to the token */
   lookup: Lookup;
   /** All Ngos */
   ngos: Array<Ngos>;
-  /** All languages */
-  languages: Array<Languages>;
   /** All offers */
   offers: Array<Offers>;
   /** For a supervisor login, get the supervisors data */
   supervisor_get?: Maybe<Supervisor_Get>;
   supervisors_registered: Array<Supervisors_Registered>;
-  created_tokens: Array<Created_Tokens>;
+};
+
+
+/** The type that query operations will be rooted at. */
+export type QueryTypeCreated_TokensArgs = {
+  auth: Auth;
 };
 
 
@@ -133,45 +138,39 @@ export type QueryTypeSupervisors_RegisteredArgs = {
   auth: Auth;
 };
 
-
-/** The type that query operations will be rooted at. */
-export type QueryTypeCreated_TokensArgs = {
-  auth: Auth;
-};
-
 /** The new Dataset of a Supervisor */
 export type SupervisorInput = {
   /** Self descriptive. */
-  ngos: Scalars['NgoRefs'];
-  /** Self descriptive. */
-  name_full: Scalars['String'];
-  languages: Array<Scalars['String']>;
-  offers: Array<Scalars['String']>;
-  /** Self descriptive. */
   contacts: ContactsInput;
+  languages: Array<Scalars['String']>;
   /** Self descriptive. */
   location: LocationInput;
-  photo?: Maybe<Scalars['String']>;
-  text_specialization?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
+  /** Self descriptive. */
+  name_full: Scalars['String'];
+  /** Self descriptive. */
+  ngos: Scalars['NgoRefs'];
+  offers: Array<Scalars['String']>;
+  photo?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  text_specialization?: InputMaybe<Scalars['String']>;
 };
 
 export type Created_Tokens = {
   __typename?: 'created_tokens';
+  purpose?: Maybe<Scalars['String']>;
   /** The secret given to a group of users, allowing anonym access to the lookup */
   token: Scalars['String'];
-  purpose?: Maybe<Scalars['String']>;
 };
 
 /** All languages */
 export type Languages = {
   __typename?: 'languages';
   /** Self descriptive. */
+  flag_url: Scalars['String'];
+  /** Self descriptive. */
   id: Scalars['String'];
   /** Self descriptive. */
   name: Scalars['String'];
-  /** Self descriptive. */
-  flag_url: Scalars['String'];
 };
 
 /** For a username+password get a jwt containing the login:id */
@@ -184,11 +183,11 @@ export type Login = {
 export type Lookup = {
   __typename?: 'lookup';
   /** Self descriptive. */
-  valid: Scalars['Boolean'];
-  /** Self descriptive. */
   ngo?: Maybe<Ngo>;
   /** Self descriptive. */
   supervisors?: Maybe<Array<Supervisors>>;
+  /** Self descriptive. */
+  valid: Scalars['Boolean'];
 };
 
 /** Details of a ngo */
@@ -209,51 +208,51 @@ export type Ngos = {
 export type Offers = {
   __typename?: 'offers';
   /** Self descriptive. */
+  desc: Scalars['String'];
+  /** Self descriptive. */
   id: Scalars['String'];
   /** Self descriptive. */
   target: Scalars['String'];
-  /** Self descriptive. */
-  desc: Scalars['String'];
 };
 
 /** For a supervisor login, get the supervisors data */
 export type Supervisor_Get = {
   __typename?: 'supervisor_get';
   /** Self descriptive. */
-  id: Scalars['String'];
-  /** Self descriptive. */
-  ngos: Scalars['NgoRefs'];
-  /** Self descriptive. */
-  name_full: Scalars['String'];
-  languages: Array<Scalars['String']>;
-  offers: Array<Scalars['String']>;
-  /** Self descriptive. */
   contacts: Contacts;
   /** Self descriptive. */
+  id: Scalars['String'];
+  languages: Array<Scalars['String']>;
+  /** Self descriptive. */
   location: Location;
+  /** Self descriptive. */
+  name_full: Scalars['String'];
+  /** Self descriptive. */
+  ngos: Scalars['NgoRefs'];
+  offers: Array<Scalars['String']>;
   photo?: Maybe<Scalars['String']>;
-  text_specialization?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
+  text_specialization?: Maybe<Scalars['String']>;
 };
 
 /** All supervisor visible with the used credentials */
 export type Supervisors = {
   __typename?: 'supervisors';
   /** Self descriptive. */
-  id: Scalars['String'];
-  /** Self descriptive. */
-  ngos: Scalars['NgoRefs'];
-  /** Self descriptive. */
-  name_full: Scalars['String'];
-  languages: Array<Scalars['String']>;
-  offers: Array<Scalars['String']>;
-  /** Self descriptive. */
   contacts: Contacts;
   /** Self descriptive. */
+  id: Scalars['String'];
+  languages: Array<Scalars['String']>;
+  /** Self descriptive. */
   location: Location;
+  /** Self descriptive. */
+  name_full: Scalars['String'];
+  /** Self descriptive. */
+  ngos: Scalars['NgoRefs'];
+  offers: Array<Scalars['String']>;
   photo?: Maybe<Scalars['String']>;
-  text_specialization?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
+  text_specialization?: Maybe<Scalars['String']>;
 };
 
 export type Supervisors_Registered = {
@@ -268,88 +267,28 @@ export type LoginQueryVariables = Exact<{
 }>;
 
 
-export type LoginQuery = (
-  { __typename?: 'QueryType' }
-  & { login: (
-    { __typename?: 'login' }
-    & Pick<Login, 'jwt'>
-  ) }
-);
+export type LoginQuery = { __typename?: 'QueryType', login: { __typename?: 'login', jwt?: string | null | undefined } };
 
 export type LookupQueryVariables = Exact<{
-  token?: Maybe<Scalars['String']>;
+  token?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type LookupQuery = (
-  { __typename?: 'QueryType' }
-  & { lookup: (
-    { __typename?: 'lookup' }
-    & Pick<Lookup, 'valid'>
-    & { ngo?: Maybe<(
-      { __typename?: 'ngo' }
-      & Pick<Ngo, 'name'>
-    )>, supervisors?: Maybe<Array<(
-      { __typename?: 'supervisors' }
-      & Pick<Supervisors, 'id' | 'name_full' | 'photo' | 'languages' | 'offers' | 'text'>
-      & { contacts: (
-        { __typename?: 'Contacts' }
-        & Pick<Contacts, 'phone' | 'email' | 'website'>
-      ) }
-    )>> }
-  ), languages: Array<(
-    { __typename?: 'languages' }
-    & Pick<Languages, 'id' | 'name' | 'flag_url'>
-  )>, offers: Array<(
-    { __typename?: 'offers' }
-    & Pick<Offers, 'id' | 'target' | 'desc'>
-  )> }
-);
+export type LookupQuery = { __typename?: 'QueryType', lookup: { __typename?: 'lookup', valid: boolean, ngo?: { __typename?: 'ngo', name?: string | null | undefined } | null | undefined, supervisors?: Array<{ __typename?: 'supervisors', id: string, name_full: string, photo?: string | null | undefined, languages: Array<string>, offers: Array<string>, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, email?: string | null | undefined, website?: string | null | undefined } }> | null | undefined }, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string }>, offers: Array<{ __typename?: 'offers', id: string, target: string, desc: string }> };
 
 export type SupervisorGetQueryVariables = Exact<{
   auth: Auth;
 }>;
 
 
-export type SupervisorGetQuery = (
-  { __typename?: 'QueryType' }
-  & { supervisor_get?: Maybe<(
-    { __typename?: 'supervisor_get' }
-    & Pick<Supervisor_Get, 'id' | 'ngos' | 'name_full' | 'languages' | 'offers' | 'photo' | 'text_specialization' | 'text'>
-    & { contacts: (
-      { __typename?: 'Contacts' }
-      & Pick<Contacts, 'phone' | 'website' | 'email'>
-    ), location: (
-      { __typename?: 'Location' }
-      & Pick<Location, 'zip'>
-    ) }
-  )>, languages: Array<(
-    { __typename?: 'languages' }
-    & Pick<Languages, 'id' | 'name' | 'flag_url'>
-  )>, offers: Array<(
-    { __typename?: 'offers' }
-    & Pick<Offers, 'id' | 'target' | 'desc'>
-  )>, ngos: Array<(
-    { __typename?: 'ngos' }
-    & Pick<Ngos, 'id' | 'name'>
-  )> }
-);
+export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, photo?: string | null | undefined, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', zip?: string | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string }>, offers: Array<{ __typename?: 'offers', id: string, target: string, desc: string }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
 
 export type NgoQueryVariables = Exact<{
   auth: Auth;
 }>;
 
 
-export type NgoQuery = (
-  { __typename?: 'QueryType' }
-  & { created_tokens: Array<(
-    { __typename?: 'created_tokens' }
-    & Pick<Created_Tokens, 'token' | 'purpose'>
-  )>, supervisors_registered: Array<(
-    { __typename?: 'supervisors_registered' }
-    & Pick<Supervisors_Registered, 'mail' | 'name_full'>
-  )> }
-);
+export type NgoQuery = { __typename?: 'QueryType', created_tokens: Array<{ __typename?: 'created_tokens', token: string, purpose?: string | null | undefined }>, supervisors_registered: Array<{ __typename?: 'supervisors_registered', mail: string, name_full?: string | null | undefined }> };
 
 
 export const LoginDocument = `
@@ -363,9 +302,9 @@ export const useLoginQuery = <
       TData = LoginQuery,
       TError = unknown
     >(
-      variables: LoginQueryVariables, 
+      variables: LoginQueryVariables,
       options?: UseQueryOptions<LoginQuery, TError, TData>
-    ) => 
+    ) =>
     useQuery<LoginQuery, TError, TData>(
       ['Login', variables],
       fetcher<LoginQuery, LoginQueryVariables>(LoginDocument, variables),
@@ -408,11 +347,11 @@ export const useLookupQuery = <
       TData = LookupQuery,
       TError = unknown
     >(
-      variables?: LookupQueryVariables, 
+      variables?: LookupQueryVariables,
       options?: UseQueryOptions<LookupQuery, TError, TData>
-    ) => 
+    ) =>
     useQuery<LookupQuery, TError, TData>(
-      ['Lookup', variables],
+      variables === undefined ? ['Lookup'] : ['Lookup', variables],
       fetcher<LookupQuery, LookupQueryVariables>(LookupDocument, variables),
       options
     );
@@ -456,9 +395,9 @@ export const useSupervisorGetQuery = <
       TData = SupervisorGetQuery,
       TError = unknown
     >(
-      variables: SupervisorGetQueryVariables, 
+      variables: SupervisorGetQueryVariables,
       options?: UseQueryOptions<SupervisorGetQuery, TError, TData>
-    ) => 
+    ) =>
     useQuery<SupervisorGetQuery, TError, TData>(
       ['SupervisorGet', variables],
       fetcher<SupervisorGetQuery, SupervisorGetQueryVariables>(SupervisorGetDocument, variables),
@@ -480,9 +419,9 @@ export const useNgoQuery = <
       TData = NgoQuery,
       TError = unknown
     >(
-      variables: NgoQueryVariables, 
+      variables: NgoQueryVariables,
       options?: UseQueryOptions<NgoQuery, TError, TData>
-    ) => 
+    ) =>
     useQuery<NgoQuery, TError, TData>(
       ['Ngo', variables],
       fetcher<NgoQuery, NgoQueryVariables>(NgoDocument, variables),
