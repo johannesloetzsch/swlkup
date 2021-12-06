@@ -1,0 +1,1 @@
+{}  // overwrite the toplevel .babelrc that was needed due to https://nextjs.org/docs/messages/failed-loading-swc
