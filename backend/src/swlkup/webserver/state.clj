@@ -19,4 +19,6 @@
 
   (with-handler :term
     (mount/stop)  ;; Export the database
-    (System/exit 0)))
+    (System/exit 0))
+  
+  (mount.core/running-states))
