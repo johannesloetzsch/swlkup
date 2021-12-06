@@ -15,7 +15,7 @@
       (assoc doc k nil)))
 
 (defn db->graphql [doc]
-  (-> (assoc doc :id (:crux.db/id doc))
+  (-> (assoc doc :id (:xt/id doc))
       (assoc-missing-opt :photo)
       (assoc-missing-opt :text_specialization)
       (assoc-missing-opt :text)))

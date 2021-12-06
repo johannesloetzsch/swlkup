@@ -1,97 +1,97 @@
 [
- {:crux.db/id :en
+ {:xt/id :en
   :id "en"
-  :crux.spec :swlkup.model.languages/languages
+  :xt/spec :swlkup.model.languages/languages
   :name "English"
   :flag_url "https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg"}
- {:crux.db/id :de
+ {:xt/id :de
   :id "de"
-  :crux.spec :swlkup.model.languages/languages
+  :xt/spec :swlkup.model.languages/languages
   :name "Deutsch"
   :flag_url "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg"}
- {:crux.db/id :it
+ {:xt/id :it
   :id "it"
-  :crux.spec :swlkup.model.languages/languages
+  :xt/spec :swlkup.model.languages/languages
   :name "Italiano"
   :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg"}
- {:crux.db/id :es
+ {:xt/id :es
   :id "es"
-  :crux.spec :swlkup.model.languages/languages
+  :xt/spec :swlkup.model.languages/languages
   :name "Español"
   :flag_url "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"}
- {:crux.db/id :fr
+ {:xt/id :fr
   :id "fr"
-  :crux.spec :swlkup.model.languages/languages
+  :xt/spec :swlkup.model.languages/languages
   :name "Français"
   :flag_url "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg"}
- {:crux.db/id :ar
+ {:xt/id :ar
   :id "ar"
-  :crux.spec :swlkup.model.languages/languages
+  :xt/spec :swlkup.model.languages/languages
   :name "العربية"
   :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/0e/Flag_of_the_Arabic_language.svg"}
 
- {:crux.db/id "counseling"
+ {:xt/id "counseling"
   :id "counseling"
-  :crux.spec :swlkup.model.offers/offers
+  :xt/spec :swlkup.model.offers/offers
   :target :individual
   :desc "Counselling/Coaching for individuals"}
- {:crux.db/id "crisis_intervention"
+ {:xt/id "crisis_intervention"
   :id "crisis_intervention"
-  :crux.spec :swlkup.model.offers/offers
+  :xt/spec :swlkup.model.offers/offers
   :target :individual
   :desc "Crisis intervention for individuals"}
- {:crux.db/id "briefing"
+ {:xt/id "briefing"
   :id "briefing"
-  :crux.spec :swlkup.model.offers/offers
+  :xt/spec :swlkup.model.offers/offers
   :target :group
   :desc "Psychological briefing & debriefing of crews"}
- {:crux.db/id "moderation"
+ {:xt/id "moderation"
   :id "moderation"
-  :crux.spec :swlkup.model.offers/offers
+  :xt/spec :swlkup.model.offers/offers
   :target :group
   :desc "Moderation"}
- {:crux.db/id "mediation"
+ {:xt/id "mediation"
   :id "mediation"
-  :crux.spec :swlkup.model.offers/offers
+  :xt/spec :swlkup.model.offers/offers
   :target :group
   :desc "Mediation"}
- {:crux.db/id "supervision"
+ {:xt/id "supervision"
   :id "supervision"
-  :crux.spec :swlkup.model.offers/offers
+  :xt/spec :swlkup.model.offers/offers
   :target :group
   :desc "Supervision"}
- {:crux.db/id "workshops"
+ {:xt/id "workshops"
   :id "workshops"
-  :crux.spec :swlkup.model.offers/offers
+  :xt/spec :swlkup.model.offers/offers
   :target :group
   :desc "Workshops"}
 
- #_{:crux.db/id "translation"
-  :crux.spec :swlkup.model.offers/offers
+ #_{:xt/id "translation"
+  :xt/spec :swlkup.model.offers/offers
     }
 
- {:crux.db/id "lifeline"
-  :crux.spec :swlkup.model.ngo/doc
+ {:xt/id "lifeline"
+  :xt/spec :swlkup.model.ngo/doc
   :name "Mission Lifeline"}
- {:crux.db/id "seawatch"
-  :crux.spec :swlkup.model.ngo/doc
+ {:xt/id "seawatch"
+  :xt/spec :swlkup.model.ngo/doc
   :name "Sea-Watch"}
- {:crux.db/id "example_ngo"
-  :crux.spec :swlkup.model.ngo/doc
+ {:xt/id "example_ngo"
+  :xt/spec :swlkup.model.ngo/doc
   :name "Example NGO"
   :swlkup.model.login/login:ids ["login_crewing_example-ngo"]}
 
- {:crux.db/id :T0p53cret
-  :crux.spec :swlkup.model.token/doc
+ {:xt/id :T0p53cret
+  :xt/spec :swlkup.model.token/doc
   :token "T0p53cret"
   :ngo "seawatch"}
- {:crux.db/id :R4nd0m
-  :crux.spec :swlkup.model.token/doc
+ {:xt/id :R4nd0m
+  :xt/spec :swlkup.model.token/doc
   :token "R4nd0m"
   :ngo "lifeline"}
 
- {:crux.db/id "MaxMüller"
-  :crux.spec :swlkup.model.supervisor/doc
+ {:xt/id "MaxMüller"
+  :xt/spec :swlkup.model.supervisor/doc
   :swlkup.model.login/login:ids "login_max_mueller"
   :name_full "Max Müller"
   :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_joe.png"
@@ -108,8 +108,8 @@
   :text_specialization "PTSD"
   :text "Irgend etwas über mich ;)"
   :ngos :any}
- {:crux.db/id "MariaMusterfrau"
-  :crux.spec :swlkup.model.supervisor/doc
+ {:xt/id "MariaMusterfrau"
+  :xt/spec :swlkup.model.supervisor/doc
   :swlkup.model.login/login:ids "maria@mm.de"
   :name_full "Maria Musterfrau"
   :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_stephanie.png"
@@ -128,13 +128,13 @@
   :text "Here I should write something about myself, my specialization and my motivation for supporting SAR NGOs…"
   :ngos #{"seawatch" "sosmediterranee"}}
 
- {:crux.db/id "login_max_mueller"
-  :crux.spec :swlkup.model.login/doc
+ {:xt/id "login_max_mueller"
+  :xt/spec :swlkup.model.login/doc
   :mail "praxis@max.mueller.de"
   :password-hash "100$12$argon2id$v13$hq47jacLIYoiNMD9kdyy+w$ISDi+bSSTmsgqu648LQLv7ySU+lG2VGKRfa06HNfjzk$$$"}
 
- {:crux.db/id "login_crewing_example-ngo"
-  :crux.spec :swlkup.model.login/doc
+ {:xt/id "login_crewing_example-ngo"
+  :xt/spec :swlkup.model.login/doc
   :mail "crewing@example-ngo.com"
   :password-hash "100$12$argon2id$v13$lWXab18B+9b79jAk7noAwg$01ak9vbuyxhuKDvBnWV8wuwxIJ5GR6zjz/lJhdw1s+I$$$" #_"Vr(+cFtUG=rsj2:/]*uR" }
 ]

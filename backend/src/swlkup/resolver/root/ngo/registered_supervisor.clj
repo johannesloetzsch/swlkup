@@ -19,13 +19,13 @@
         [ngo:id] (auth+role->entity ctx (:auth opt) ::ngo/doc)]
        (when ngo:id
          (let [supervisors_registered (q '{:find [?mail]
-                                           :where [[?l :crux.spec ::login/doc]
+                                           :where [[?l :xt/spec ::login/doc]
                                                    [?l :invited-by ?ngo:id]
                                                    [?l :mail ?mail]]
                                            :in [?ngo:id]}
                                          ngo:id)
                supervisors_active (q '{:find [?mail ?name_full]
-                                       :where [[?l :crux.spec ::login/doc]
+                                       :where [[?l :xt/spec ::login/doc]
                                                [?l :invited-by ?ngo:id]
                                                [?l :mail ?mail]
                                                [?e ::login/login:ids ?l]

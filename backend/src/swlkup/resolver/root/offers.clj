@@ -12,6 +12,6 @@
   [_node _opt ctx _info]
   (let [{:keys [q_unary]} (:db_ctx ctx)]
        (q_unary '{:find [(pull ?e [*])]
-                  :where [[?e :crux.spec :swlkup.model.offers/offers]]})))
+                  :where [[?e :xt/spec :swlkup.model.offers/offers]]})))
 
 (s/def ::offers (t/resolver #'offers))

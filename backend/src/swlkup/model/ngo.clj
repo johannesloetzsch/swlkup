@@ -16,5 +16,5 @@
 
 (defn db->graphql [doc]
   (some-> doc
-          (select-keys [:crux.db/id :name])
-          (assoc :id (:crux.db/id doc))))
+          (select-keys [:xt/id :name])
+          (assoc :id (:xt/id doc))))

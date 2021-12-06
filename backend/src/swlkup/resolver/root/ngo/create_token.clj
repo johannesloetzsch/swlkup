@@ -18,8 +18,8 @@
         [ngo:id] (auth+role->entity ctx (:auth opt) ::ngo/doc)]
        (when ngo:id
          (let [token (generate-token)]
-              (tx [[:crux.tx/put {:crux.db/id (uuid)
-                                  :crux.spec ::token/doc
+              (tx [[:xtdb.api/put {:xt/id (uuid)
+                                  :xt/spec ::token/doc
                                   :token token
                                   :ngo ngo:id
                                   :purpose (:purpose opt)}]])

@@ -29,9 +29,9 @@
          (let [mail (:mail opt)
                password (generate-password)
                password:hash (hash-password password)
-               t (tx [[:crux.tx/match (login_id mail) nil]
-                      [:crux.tx/put {:crux.db/id (login_id mail)
-                                     :crux.spec :swlkup.model.login/doc
+               t (tx [[:xtdb.api/match (login_id mail) nil]
+                      [:xtdb.api/put {:xt/id (login_id mail)
+                                     :xt/spec :swlkup.model.login/doc
                                      :mail mail
                                      :password-hash password:hash
                                      :invited-by ngo:id}]])]

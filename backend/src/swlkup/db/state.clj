@@ -1,5 +1,5 @@
 (ns swlkup.db.state
-  (:require[crux.api :as crux]
+  (:require[xtdb.api :as xtdb]
             [clojure.java.io :as io]
             [swlkup.db.export :refer [export seed ]]
             [mount.core :as mount :refer [defstate]]
@@ -16,29 +16,29 @@
              (export file db_ctx))))
 
 (defn submit-tx [node tx-ops]
-  (crux/submit-tx node (validate-tx tx-ops)))
+  (xtdb/submit-tx node (validate-tx tx-ops)))
 
 (defn q [node & args]
-  (apply crux/q (crux/db node) args))
+  (apply xtdb/q (xtdb/db node) args))
 
 (defn ->db_ctx []
-  (let [node (crux/start-node (when-not (:db-inmemory env)
-                                        {:my-rocksdb {:crux/module 'crux.rocksdb/->kv-store
+  (let [node (xtdb/start-node (when-not (:db-inmemory env)
+                                        {:my-rocksdb {:xtdb/module 'xtdb.rocksdb/->kv-store
                                                       :db-dir (clojure.java.io/file (:db-dir env))
                                                       :sync? true}
-                                         :crux/tx-log {:kv-store :my-rocksdb}
-                                         :crux/document-store {:kv-store :my-rocksdb}}))
+                                         :xtdb/tx-log {:kv-store :my-rocksdb}
+                                         :xtdb/document-store {:kv-store :my-rocksdb}}))
         db_ctx {:node node
                 :tx (fn [tx-ops]
                         (submit-tx node tx-ops))
                 :tx_sync (fn [tx-ops]
                              (->> (submit-tx node tx-ops)
-                                  (crux.api/await-tx node)))
+                                  (xtdb.api/await-tx node)))
                 :tx-committed? (fn [transaction]
-                                   (println "synced" (crux/sync node))
-                                   (println "awaited" (crux/await-tx node transaction))
-                                   (crux/tx-committed? node transaction))
-                :sync (fn [] (crux/sync node))
+                                   (println "synced" (xtdb/sync node))
+                                   (println "awaited" (xtdb/await-tx node transaction))
+                                   (xtdb/tx-committed? node transaction))
+                :sync (fn [] (xtdb/sync node))
                 :q (fn [& args]
                        (apply q node args))
                 :q_unary (fn [& args]

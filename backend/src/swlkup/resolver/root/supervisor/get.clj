@@ -17,8 +17,8 @@
        (when supervisor:id
              (supervisor/db->graphql
                (q_id_unary '{:find [(pull ?e [*])]
-                             :where [[?e :crux.spec :swlkup.model.supervisor/doc]
-                                     [?e :crux.db/id ->supervisor:id]]
+                             :where [[?e :xt/spec :swlkup.model.supervisor/doc]
+                                     [?e :xt/id ->supervisor:id]]
                              :in [->supervisor:id]}
                            supervisor:id)))))
 

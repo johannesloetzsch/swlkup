@@ -7,8 +7,8 @@
                  [mount "0.1.16"]
                  [spootnik/signal "0.2.4"]
                  ;; db
-                 [pro.juxt.crux/crux-core "1.17.1"]
-                 [pro.juxt.crux/crux-rocksdb "1.17.1"]
+                 [com.xtdb/xtdb-core "1.20.0"]
+                 [com.xtdb/xtdb-rocksdb "1.20.0"]
                  ;; graphql + http
                  [org.clojars.johannesloetzsch/specialist-server "0.6.1"]
                  [compojure "1.6.2"]

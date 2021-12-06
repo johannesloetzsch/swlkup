@@ -18,6 +18,6 @@
        (when login:id
              (map db->graphql
                   (q_unary '{:find [(pull ?e [*])]
-                             :where [[?e :crux.spec :swlkup.model.ngo/doc]]})))))
+                             :where [[?e :xt/spec :swlkup.model.ngo/doc]]})))))
 
 (s/def ::ngos (t/resolver #'ngos))
