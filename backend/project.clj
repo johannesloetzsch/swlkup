@@ -12,17 +12,20 @@
                  ;; graphql + http
                  [org.clojars.johannesloetzsch/specialist-server "0.6.1"]
                  [compojure "1.6.2"]
-                 [ring/ring-core "1.8.2"]
-                 [ring/ring-jetty-adapter "1.8.2"]
+                 [ring/ring-core "1.9.4"]
+                 [ring/ring-jetty-adapter "1.9.4"]
                  [ring/ring-devel "1.9.4"]
                  [ring-cors "0.1.13"]
                  [ring/ring-json "0.5.1"]
                  [ring-json-response "0.2.0"]
                  [ring-webjars "0.2.0"]
+                 ;; graphiql
                  [org.webjars/graphiql "0.11.11"]
+                 [org.webjars.npm/react "17.0.2" :exclusions [org.webjars.npm/loose-envify org.webjars.npm/js-tokens org.webjars.npm/object-assign]]
+                 [org.webjars.npm/react-dom "17.0.2" :exclusions [org.webjars.npm/loose-envify org.webjars.npm/js-tokens org.webjars.npm/object-assign org.webjars.npm/scheduler]]
                  ;; auth + mail
                  [cryptohash-clj "0.1.10"]
-                 [likid_geimfari/secrets "1.0.0"]
+                 [likid_geimfari/secrets "1.1.0"]
                  [crypto-random "1.2.1"]
                  [buddy/buddy-sign "3.4.1"]
                  ;[com.draines/postal "2.0.4"]

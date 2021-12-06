@@ -60,10 +60,10 @@
       "sha256": "381d72c526be217b770f9f8c3f749a86d3b1548ac5c1fcb48d267530ec60d43f",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom"
     },
-    "org.eclipse.jetty:jetty-http:jar:9.4.31.v20200723": {
-      "layout": "org/eclipse/jetty/jetty-http/9.4.31.v20200723/jetty-http-9.4.31.v20200723.jar",
-      "sha256": "7bc268d15b15c7ebf311ab0f7b3737c004a057f0171504eb1c651db765539a8f",
-      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.4.31.v20200723/jetty-http-9.4.31.v20200723.jar"
+    "ring:ring-core:jar:1.9.4": {
+      "layout": "ring/ring-core/1.9.4/ring-core-1.9.4.jar",
+      "sha256": "645dd7d9759a5d2eaa165eeb7414c87267f7ff206b93fb25960d387acdd9f26a",
+      "url": "https://clojars.org/repo/ring/ring-core/1.9.4/ring-core-1.9.4.jar"
     },
     "org.clojure:tools.macro:jar:0.1.5": {
       "layout": "org/clojure/tools.macro/0.1.5/tools.macro-0.1.5.jar",
@@ -94,6 +94,11 @@
       "layout": "com/fasterxml/jackson/dataformat/jackson-dataformats-binary/2.10.2/jackson-dataformats-binary-2.10.2.pom",
       "sha256": "f70398c9d2b57b5a620886d59840b4c7c2a0cd0f3e6b0e0de54fc2b4bc43664c",
       "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformats-binary/2.10.2/jackson-dataformats-binary-2.10.2.pom"
+    },
+    "ring:ring-servlet:pom:1.9.4": {
+      "layout": "ring/ring-servlet/1.9.4/ring-servlet-1.9.4.pom",
+      "sha256": "98fd9d6475dc6991775a1a09dbe2d0c3819529b5b2f375777f6df22194d968b3",
+      "url": "https://clojars.org/repo/ring/ring-servlet/1.9.4/ring-servlet-1.9.4.pom"
     },
     "buddy:buddy-core:jar:1.10.1": {
       "layout": "buddy/buddy-core/1.10.1/buddy-core-1.10.1.jar",
@@ -190,6 +195,11 @@
       "sha256": "33a4dd47bb4764e4eb3692d86386d17a0d9827f4f4bb0f70121efab6bc03ba35",
       "url": "https://repo.maven.apache.org/maven2/commons-logging/commons-logging-api/1.1/commons-logging-api-1.1.jar"
     },
+    "com.xtdb:xtdb-core:jar:1.20.0": {
+      "layout": "com/xtdb/xtdb-core/1.20.0/xtdb-core-1.20.0.jar",
+      "sha256": "fa031fb528c47d227ce64ae71ab9e70ad42317c9c3ffdcb62751373fd1809334",
+      "url": "https://repo.maven.apache.org/maven2/com/xtdb/xtdb-core/1.20.0/xtdb-core-1.20.0.jar"
+    },
     "org.apache.maven.shared:maven-filtering:jar:1.1": {
       "layout": "org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.jar",
       "sha256": "05fa641c31894ce930c6eb76ec1aa53a9de4cd9baa837fe492e9e0407099d226",
@@ -229,6 +239,11 @@
       "layout": "org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.pom",
       "sha256": "1ab7fdd1b82382690c081d3ea3f53bad2902e1d62a11a8096488711e7a5f607e",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.pom"
+    },
+    "org.eclipse.jetty:jetty-project:pom:9.4.42.v20210604": {
+      "layout": "org/eclipse/jetty/jetty-project/9.4.42.v20210604/jetty-project-9.4.42.v20210604.pom",
+      "sha256": "756ec5a84410f74481b7682bc9ca362afb556052f010bcb4331569bd88afc372",
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-project/9.4.42.v20210604/jetty-project-9.4.42.v20210604.pom"
     },
     "pro.juxt.clojars-mirrors.com.taoensso:nippy:jar:3.1.1": {
       "layout": "pro/juxt/clojars-mirrors/com/taoensso/nippy/3.1.1/nippy-3.1.1.jar",
@@ -285,11 +300,6 @@
       "sha256": "3cb6712f827c80dc6b0b0b967776dba451c023a92b7741bba45d23ab7a83281a",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/8/maven-parent-8.pom"
     },
-    "ring:ring-core:jar:1.8.2": {
-      "layout": "ring/ring-core/1.8.2/ring-core-1.8.2.jar",
-      "sha256": "1d6abd08c558c6fcf3cd0775d8863d1bf4143467e417f28f28cf4e1069ff42a1",
-      "url": "https://clojars.org/repo/ring/ring-core/1.8.2/ring-core-1.8.2.jar"
-    },
     "org.apache.maven:maven-parent:pom:5": {
       "layout": "org/apache/maven/maven-parent/5/maven-parent-5.pom",
       "sha256": "5d7c2a229173155823c45380332f221bf0d27e52c9db76e9217940306765bd50",
@@ -299,11 +309,6 @@
       "layout": "org/antlr/antlr-master/3.5.2/antlr-master-3.5.2.pom",
       "sha256": "42d91a531ea5100eb09b541aa002c3b908e8f282bd73b6e2f52f371ef1331bd6",
       "url": "https://repo.maven.apache.org/maven2/org/antlr/antlr-master/3.5.2/antlr-master-3.5.2.pom"
-    },
-    "ring:ring-servlet:pom:1.8.2": {
-      "layout": "ring/ring-servlet/1.8.2/ring-servlet-1.8.2.pom",
-      "sha256": "b7de6886d75814669571c650662ce1bce31d48bc9996f461047e233d1a52c656",
-      "url": "https://clojars.org/repo/ring/ring-servlet/1.8.2/ring-servlet-1.8.2.pom"
     },
     "org.codehaus.plexus:plexus-component-annotations:pom:1.5.5": {
       "layout": "org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.pom",
@@ -350,11 +355,6 @@
       "sha256": "87cd27e1a02a5c3eb6d85059ce98696bb1b44c2b8b650f0567c86df60fa61da7",
       "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/39/commons-parent-39.pom"
     },
-    "org.eclipse.jetty:jetty-server:pom:9.4.31.v20200723": {
-      "layout": "org/eclipse/jetty/jetty-server/9.4.31.v20200723/jetty-server-9.4.31.v20200723.pom",
-      "sha256": "6cf3009e5bd99ae68bc4a9b64baa16b2cc4dc7667008f29489948938f8fe65cc",
-      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.4.31.v20200723/jetty-server-9.4.31.v20200723.pom"
-    },
     "com.fasterxml.jackson.dataformat:jackson-dataformat-smile:pom:2.9.6": {
       "layout": "com/fasterxml/jackson/dataformat/jackson-dataformat-smile/2.9.6/jackson-dataformat-smile-2.9.6.pom",
       "sha256": "a1749dea204e0f21755d1a3f79afb7678edba53f8482072857bbc9468cb80875",
@@ -390,6 +390,11 @@
       "sha256": "2cc0e74f4f8fe9f9733cd207101809273026464c64d3f1fb2af06b9d2a3c323e",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.jar"
     },
+    "org.eclipse.jetty:jetty-util:jar:9.4.42.v20210604": {
+      "layout": "org/eclipse/jetty/jetty-util/9.4.42.v20210604/jetty-util-9.4.42.v20210604.jar",
+      "sha256": "992f51e4b0c77f6c25b3c3d3ac5c8f7f83c9fce51985f2b52a0013e55a2be410",
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.4.42.v20210604/jetty-util-9.4.42.v20210604.jar"
+    },
     "org.apache.maven:maven-artifact-manager:jar:2.0.9": {
       "layout": "org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.jar",
       "sha256": "d913865e03e719ac5733260019e98090a12b50683134e65f78c36e8d67f11ff1",
@@ -409,6 +414,11 @@
       "layout": "org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.jar",
       "sha256": "c16be9fd50777338fa36d09c5c037b2d9ef9b68f00c67e9aa54b2d2b19fbf8f2",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.jar"
+    },
+    "likid_geimfari:secrets:pom:1.1.0": {
+      "layout": "likid_geimfari/secrets/1.1.0/secrets-1.1.0.pom",
+      "sha256": "82df105aac0764a88269206d3ee5877d24a853b1190e0b34a5364bfe51b7665b",
+      "url": "https://clojars.org/repo/likid_geimfari/secrets/1.1.0/secrets-1.1.0.pom"
     },
     "org.apache:apache:pom:18": {
       "layout": "org/apache/apache/18/apache-18.pom",
@@ -560,11 +570,6 @@
       "sha256": "3cec92f5c097f46ab5151b5d072e42cb8d9773d93cdd50975099cc7b7c6f431c",
       "url": "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.10.0/commons-io-2.10.0.pom"
     },
-    "org.eclipse.jetty:jetty-project:pom:9.4.31.v20200723": {
-      "layout": "org/eclipse/jetty/jetty-project/9.4.31.v20200723/jetty-project-9.4.31.v20200723.pom",
-      "sha256": "a7c7bb38e675727d575cca46fa67b30e9bc8723f652ed680194ed8142e47c54b",
-      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-project/9.4.31.v20200723/jetty-project-9.4.31.v20200723.pom"
-    },
     "org.apache.maven:maven-plugin-api:pom:2.0.6": {
       "layout": "org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.pom",
       "sha256": "e5886cbf7478ed0a89d4502cb4b6b4d25095a53b74e07439ec0ab3f793405822",
@@ -584,6 +589,11 @@
       "layout": "ring/ring-codec/1.0.1/ring-codec-1.0.1.pom",
       "sha256": "394d0048f2087db09c02215941e7490edf67d232762b4a8329e93c23b84d5df1",
       "url": "https://clojars.org/repo/ring/ring-codec/1.0.1/ring-codec-1.0.1.pom"
+    },
+    "org.webjars.npm:react:jar:17.0.2": {
+      "layout": "org/webjars/npm/react/17.0.2/react-17.0.2.jar",
+      "sha256": "bb5b9111fd73c765fbb0b2f2be61a56ecc20c9efbc358ef78ade214744337cb3",
+      "url": "https://repo.maven.apache.org/maven2/org/webjars/npm/react/17.0.2/react-17.0.2.jar"
     },
     "org.codehaus.plexus:plexus-compiler-manager:jar:2.2": {
       "layout": "org/codehaus/plexus/plexus-compiler-manager/2.2/plexus-compiler-manager-2.2.jar",
@@ -725,6 +735,11 @@
       "sha256": "39f3675b910e6e9b93825f8284bec9f4ad3044cd20a6f7c8ff9e2f8695ebf21e",
       "url": "https://repo.maven.apache.org/maven2/com/github/jnr/jnr-x86asm/1.0.2/jnr-x86asm-1.0.2.jar"
     },
+    "org.eclipse.jetty:jetty-http:jar:9.4.42.v20210604": {
+      "layout": "org/eclipse/jetty/jetty-http/9.4.42.v20210604/jetty-http-9.4.42.v20210604.jar",
+      "sha256": "72583b06773581247fab87e9fcf2906c8a894e0c957bb985ee1b6dee3e9b9500",
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.4.42.v20210604/jetty-http-9.4.42.v20210604.jar"
+    },
     "commons-codec:commons-codec:pom:1.15": {
       "layout": "commons-codec/commons-codec/1.15/commons-codec-1.15.pom",
       "sha256": "c86ee198a35a3715487860f419cbf642e7e4d9e8714777947dbe6a4e3a20ab58",
@@ -769,6 +784,11 @@
       "layout": "org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.pom",
       "sha256": "c50bb4169e2ae41d184b6507839100033bf6e86f54828829038aa0f7c8e89aa3",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.pom"
+    },
+    "org.eclipse.jetty:jetty-io:jar:9.4.42.v20210604": {
+      "layout": "org/eclipse/jetty/jetty-io/9.4.42.v20210604/jetty-io-9.4.42.v20210604.jar",
+      "sha256": "d0d0636d41e116098d769dbe42fb7b7a0de6ba8fc43d9530c048aa511f5dc99b",
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.4.42.v20210604/jetty-io-9.4.42.v20210604.jar"
     },
     "nrepl:nrepl:jar:0.8.3": {
       "layout": "nrepl/nrepl/0.8.3/nrepl-0.8.3.jar",
@@ -835,11 +855,6 @@
       "sha256": "14df735a04e945f31198b4e9cbfddd103d238108d4f35bf77441216f0c4a4b29",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/2.12.4/maven-surefire-common-2.12.4.pom"
     },
-    "likid_geimfari:secrets:pom:1.0.0": {
-      "layout": "likid_geimfari/secrets/1.0.0/secrets-1.0.0.pom",
-      "sha256": "0cd9ced80b7a1bbc206fd1e57f84c17c6c79d58996d37d10e575ee29fea0b44e",
-      "url": "https://clojars.org/repo/likid_geimfari/secrets/1.0.0/secrets-1.0.0.pom"
-    },
     "org.ow2:ow2:pom:1.5": {
       "layout": "org/ow2/ow2/1.5/ow2-1.5.pom",
       "sha256": "0f8a1b116e760b8fe6389c51b84e4b07a70fc11082d4f936e453b583dd50b43b",
@@ -895,6 +910,11 @@
       "sha256": "56ab9c6c2d022a9b7079006ba500a996cd2c21411d53cac524933af20c5a4b99",
       "url": "https://repo.maven.apache.org/maven2/org/apache/xbean/xbean/3.4/xbean-3.4.pom"
     },
+    "org.webjars.npm:react-dom:pom:17.0.2": {
+      "layout": "org/webjars/npm/react-dom/17.0.2/react-dom-17.0.2.pom",
+      "sha256": "398e10357d1cc8c9915a01ff38caf20939f632455da2261b6f5963fdabfd2c52",
+      "url": "https://repo.maven.apache.org/maven2/org/webjars/npm/react-dom/17.0.2/react-dom-17.0.2.pom"
+    },
     "org.rocksdb:rocksdbjni:pom:6.12.7": {
       "layout": "org/rocksdb/rocksdbjni/6.12.7/rocksdbjni-6.12.7.pom",
       "sha256": "10a02e14e6259caf148274a67fad73226e56ff2ee36cf7d5553a3ebe83f7358b",
@@ -914,11 +934,6 @@
       "layout": "com/google/collections/google-collections/1.0/google-collections-1.0.pom",
       "sha256": "893d56afcea1b22f83220fd7e49a6668c5b8901e39bd59dc57b42f55673721ce",
       "url": "https://repo.maven.apache.org/maven2/com/google/collections/google-collections/1.0/google-collections-1.0.pom"
-    },
-    "commons-io:commons-io:jar:2.6": {
-      "layout": "commons-io/commons-io/2.6/commons-io-2.6.jar",
-      "sha256": "f877d304660ac2a142f3865badfc971dec7ed73c747c7f8d5d2f5139ca736513",
-      "url": "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.6/commons-io-2.6.jar"
     },
     "spootnik:signal:jar:0.2.4": {
       "layout": "spootnik/signal/0.2.4/signal-0.2.4.jar",
@@ -999,11 +1014,6 @@
       "layout": "buddy/buddy-core/1.10.1/buddy-core-1.10.1.pom",
       "sha256": "dd627333d8c4d3e1370c0fb3b1aa34db27ebe845d7d17a30d258198ff0b9e181",
       "url": "https://clojars.org/repo/buddy/buddy-core/1.10.1/buddy-core-1.10.1.pom"
-    },
-    "org.eclipse.jetty:jetty-util:jar:9.4.31.v20200723": {
-      "layout": "org/eclipse/jetty/jetty-util/9.4.31.v20200723/jetty-util-9.4.31.v20200723.jar",
-      "sha256": "2fea8e63ea9a6032725f9819aa948657374a353cd776690b31f5ab11057ad894",
-      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.4.31.v20200723/jetty-util-9.4.31.v20200723.jar"
     },
     "org.antlr:antlr-runtime:pom:3.5.2": {
       "layout": "org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.pom",
@@ -1130,6 +1140,16 @@
       "sha256": "dce817d7c4229d5e666247c05853ef8ad7ac1b72d27953501c4a1ea739f67b25",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.jar"
     },
+    "com.xtdb:xtdb-rocksdb:jar:1.20.0": {
+      "layout": "com/xtdb/xtdb-rocksdb/1.20.0/xtdb-rocksdb-1.20.0.jar",
+      "sha256": "0f68bfe3ebf04974442e9badc30731b810cd7b30342747f7b4ed248e23aacc2c",
+      "url": "https://repo.maven.apache.org/maven2/com/xtdb/xtdb-rocksdb/1.20.0/xtdb-rocksdb-1.20.0.jar"
+    },
+    "ring:ring-servlet:jar:1.9.4": {
+      "layout": "ring/ring-servlet/1.9.4/ring-servlet-1.9.4.jar",
+      "sha256": "3d4607e174d2209bd8b0b37d36bbc5e1ff9cc3082cb92086fca3f8be06ae1003",
+      "url": "https://clojars.org/repo/ring/ring-servlet/1.9.4/ring-servlet-1.9.4.jar"
+    },
     "org.apache.commons:commons-lang3:jar:3.1": {
       "layout": "org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.jar",
       "sha256": "131f0519a8e4602e47cf024bfd7e0834bcf5592a7207f9a2fdb711d4f5afc166",
@@ -1140,15 +1160,15 @@
       "sha256": "734c8356420cc8e30c795d64fd1fcd5d44ea9d90342a2cc3262c5158fbc6d98b",
       "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar"
     },
-    "ring:ring-jetty-adapter:pom:1.8.2": {
-      "layout": "ring/ring-jetty-adapter/1.8.2/ring-jetty-adapter-1.8.2.pom",
-      "sha256": "2d5b2dddc84ed81c536630fe25e58bf9aef3e34b1031f9570a4f0c6ef256cf7b",
-      "url": "https://clojars.org/repo/ring/ring-jetty-adapter/1.8.2/ring-jetty-adapter-1.8.2.pom"
-    },
     "org.agrona:agrona:pom:1.11.0": {
       "layout": "org/agrona/agrona/1.11.0/agrona-1.11.0.pom",
       "sha256": "60e87075d51ee6e4dc8a6e4df6b4c9ee17669306fb728335af2b85f23a4446ba",
       "url": "https://repo.maven.apache.org/maven2/org/agrona/agrona/1.11.0/agrona-1.11.0.pom"
+    },
+    "org.eclipse.jetty:jetty-server:jar:9.4.42.v20210604": {
+      "layout": "org/eclipse/jetty/jetty-server/9.4.42.v20210604/jetty-server-9.4.42.v20210604.jar",
+      "sha256": "686df52be3629ed40f95c35963777f0e7606c807c14fb817bd602793e3ccd0f9",
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.4.42.v20210604/jetty-server-9.4.42.v20210604.jar"
     },
     "org.apache.commons:commons-parent:pom:52": {
       "layout": "org/apache/commons/commons-parent/52/commons-parent-52.pom",
@@ -1320,25 +1340,15 @@
       "sha256": "3d356e97c1ab8c5673e8908b07e1e50d842dab8cbea8a2082f87016b891f91a6",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.pom"
     },
-    "org.eclipse.jetty:jetty-server:jar:9.4.31.v20200723": {
-      "layout": "org/eclipse/jetty/jetty-server/9.4.31.v20200723/jetty-server-9.4.31.v20200723.jar",
-      "sha256": "d55313f7a67af71db647cd4e41fb6af66f081d797fd422f9dcb8b096f9208f77",
-      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.4.31.v20200723/jetty-server-9.4.31.v20200723.jar"
-    },
-    "ring:ring-servlet:jar:1.8.2": {
-      "layout": "ring/ring-servlet/1.8.2/ring-servlet-1.8.2.jar",
-      "sha256": "d96662c1fb73cb26ca9ce3de74a03f9125d0c2b25034734923a99c3739372219",
-      "url": "https://clojars.org/repo/ring/ring-servlet/1.8.2/ring-servlet-1.8.2.jar"
+    "ring:ring-jetty-adapter:pom:1.9.4": {
+      "layout": "ring/ring-jetty-adapter/1.9.4/ring-jetty-adapter-1.9.4.pom",
+      "sha256": "39b13c5a1a6800c5f837a096fbd10de5566aa8aecc6e6a517bb051855b886ce2",
+      "url": "https://clojars.org/repo/ring/ring-jetty-adapter/1.9.4/ring-jetty-adapter-1.9.4.pom"
     },
     "org.codehaus.plexus:plexus-container-default:pom:1.0-alpha-9-stable-1": {
       "layout": "org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom",
       "sha256": "ef71d45a49edfe76be0f520312a76bc2aae73ec0743a5ffffe10d30122c6e2b2",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom"
-    },
-    "pro.juxt.crux:crux-core:jar:1.17.1": {
-      "layout": "pro/juxt/crux/crux-core/1.17.1/crux-core-1.17.1.jar",
-      "sha256": "5fcabcf0bc297e0e19b5b31548d0f2157b4b4f920d6baa72aa2ca01d3daefae1",
-      "url": "https://repo.maven.apache.org/maven2/pro/juxt/crux/crux-core/1.17.1/crux-core-1.17.1.jar"
     },
     "com.ibm.icu:icu4j:jar:61.1": {
       "layout": "com/ibm/icu/icu4j/61.1/icu4j-61.1.jar",
@@ -1384,11 +1394,6 @@
       "layout": "org/clojure/core.specs.alpha/0.1.24/core.specs.alpha-0.1.24.pom",
       "sha256": "d36717f9ebb822b3197b35129fd13061cd71ab7fc36f0f40386c77e6a08f9f59",
       "url": "https://repo.maven.apache.org/maven2/org/clojure/core.specs.alpha/0.1.24/core.specs.alpha-0.1.24.pom"
-    },
-    "pro.juxt.crux:crux-rocksdb:pom:1.17.1": {
-      "layout": "pro/juxt/crux/crux-rocksdb/1.17.1/crux-rocksdb-1.17.1.pom",
-      "sha256": "7d417b4ccb516ac5826f259dab8e9abf8ae742d0c41533be26591373b236052a",
-      "url": "https://repo.maven.apache.org/maven2/pro/juxt/crux/crux-rocksdb/1.17.1/crux-rocksdb-1.17.1.pom"
     },
     "org.apache:apache:pom:6": {
       "layout": "org/apache/apache/6/apache-6.pom",
@@ -1445,6 +1450,16 @@
       "sha256": "c14fb9c32b59cc03251f609416db7c0cff01f811edcccb4f6a865d6e7046bd0b",
       "url": "https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/10/forge-parent-10.pom"
     },
+    "org.webjars.npm:react:pom:17.0.2": {
+      "layout": "org/webjars/npm/react/17.0.2/react-17.0.2.pom",
+      "sha256": "a256dc2a6d226ca6b290315da6792c4bc4e863c5a7c65cb5a22f0a112c9916b8",
+      "url": "https://repo.maven.apache.org/maven2/org/webjars/npm/react/17.0.2/react-17.0.2.pom"
+    },
+    "likid_geimfari:secrets:jar:1.1.0": {
+      "layout": "likid_geimfari/secrets/1.1.0/secrets-1.1.0.jar",
+      "sha256": "8ebc67521642b98ee832f0f9f2e228487ed9687e684718d5fee3ee9f7a39bfde",
+      "url": "https://clojars.org/repo/likid_geimfari/secrets/1.1.0/secrets-1.1.0.jar"
+    },
     "com.fasterxml.jackson.dataformat:jackson-dataformat-smile:pom:2.0.0": {
       "layout": "com/fasterxml/jackson/dataformat/jackson-dataformat-smile/2.0.0/jackson-dataformat-smile-2.0.0.pom",
       "sha256": "893763d275e45bff38cc29bb64d4fcef53252922015f01a70825c6e0c121fafa",
@@ -1469,11 +1484,6 @@
       "layout": "com/fasterxml/jackson/core/jackson-core/2.3.3/jackson-core-2.3.3.pom",
       "sha256": "e8135af60a414a92b4d8d647e0487d1d728d74987fd65b4c33fce7fe09052488",
       "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3.3/jackson-core-2.3.3.pom"
-    },
-    "ring:ring-jetty-adapter:jar:1.8.2": {
-      "layout": "ring/ring-jetty-adapter/1.8.2/ring-jetty-adapter-1.8.2.jar",
-      "sha256": "8afaa7d653b927dcb20459b6796e824afd9b86d99151a073cbecaf27dbccafd7",
-      "url": "https://clojars.org/repo/ring/ring-jetty-adapter/1.8.2/ring-jetty-adapter-1.8.2.jar"
     },
     "org.apache.commons:commons-compress:jar:1.9": {
       "layout": "org/apache/commons/commons-compress/1.9/commons-compress-1.9.jar",
@@ -1505,11 +1515,6 @@
       "sha256": "3ddacd746356ccfba4ec679ecef988bb5384779ddcfead87697d5ea80fd99181",
       "url": "https://clojars.org/repo/yogthos/config/1.1.8/config-1.1.8.jar"
     },
-    "org.eclipse.jetty:jetty-io:jar:9.4.31.v20200723": {
-      "layout": "org/eclipse/jetty/jetty-io/9.4.31.v20200723/jetty-io-9.4.31.v20200723.jar",
-      "sha256": "a6edcf29312db7cc2e86ed65ed027dc77c03ee6f658b298d90e1bd63a7d13804",
-      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.4.31.v20200723/jetty-io-9.4.31.v20200723.jar"
-    },
     "org.apache.maven:maven-error-diagnostics:pom:2.0.6": {
       "layout": "org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.pom",
       "sha256": "cb80662bd8274131bb09e140a4075bff660bdab5be56bf0f926efee0389f3c4e",
@@ -1539,11 +1544,6 @@
       "layout": "org/clojure/java.classpath/0.3.0/java.classpath-0.3.0.pom",
       "sha256": "dc74fc61e08c3e900186a7a8caf000423f441bd43d5d0e9a89171c3858fbf6a8",
       "url": "https://repo.maven.apache.org/maven2/org/clojure/java.classpath/0.3.0/java.classpath-0.3.0.pom"
-    },
-    "org.eclipse.jetty:jetty-http:pom:9.4.31.v20200723": {
-      "layout": "org/eclipse/jetty/jetty-http/9.4.31.v20200723/jetty-http-9.4.31.v20200723.pom",
-      "sha256": "edf4f961b1851bf068627e26c1039afe9260b853713a4e1d4652a2cce25bdc4b",
-      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.4.31.v20200723/jetty-http-9.4.31.v20200723.pom"
     },
     "com.google.code.findbugs:jsr305:jar:2.0.1": {
       "layout": "com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar",
@@ -1660,6 +1660,11 @@
       "sha256": "df10657745e39010954fd009276b65b75198bdc40d0adb9916f9697c71fcd986",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.pom"
     },
+    "ring:ring-jetty-adapter:jar:1.9.4": {
+      "layout": "ring/ring-jetty-adapter/1.9.4/ring-jetty-adapter-1.9.4.jar",
+      "sha256": "fa3e5ba15f8d6bab6f466be8f78fa6709b177572a1aa0226d8d7a514972e8a8b",
+      "url": "https://clojars.org/repo/ring/ring-jetty-adapter/1.9.4/ring-jetty-adapter-1.9.4.jar"
+    },
     "org.codehaus.plexus:plexus-utils:jar:2.0.5": {
       "layout": "org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar",
       "sha256": "b4c51a337078b934ad656ee78a2d3a805a507129dc034692c67db0f94b659d3e",
@@ -1684,6 +1689,11 @@
       "layout": "org/clojure/clojure/1.7.0/clojure-1.7.0.pom",
       "sha256": "5f7296ed51ff70ebab6d283f803242990bd7bda7419f94132ecf406a35c94b7f",
       "url": "https://repo.maven.apache.org/maven2/org/clojure/clojure/1.7.0/clojure-1.7.0.pom"
+    },
+    "commons-io:commons-io:jar:2.10.0": {
+      "layout": "commons-io/commons-io/2.10.0/commons-io-2.10.0.jar",
+      "sha256": "15093cffda2a0c65783c1d371de55548303cc158df94a66fc6cd15d25c3e2ef8",
+      "url": "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.10.0/commons-io-2.10.0.jar"
     },
     "mount:mount:pom:0.1.16": {
       "layout": "mount/mount/0.1.16/mount-0.1.16.pom",
@@ -1790,11 +1800,6 @@
       "sha256": "0b16842a33350f5478c4c717bf664251c27459ec5c0b8d0ca4d0050545aba48b",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.9/maven-artifact-2.0.9.jar"
     },
-    "org.eclipse.jetty:jetty-util:pom:9.4.31.v20200723": {
-      "layout": "org/eclipse/jetty/jetty-util/9.4.31.v20200723/jetty-util-9.4.31.v20200723.pom",
-      "sha256": "db81f9b861ed780bed0a03be560efcea45911a06397dfe73ef44447888d085a7",
-      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.4.31.v20200723/jetty-util-9.4.31.v20200723.pom"
-    },
     "org.apache.maven:maven-artifact:jar:2.0.6": {
       "layout": "org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.jar",
       "sha256": "f45629a70af0dfec1c1b542e162a2aceb976bb492825b6ee192e6a14fff238b6",
@@ -1809,6 +1814,11 @@
       "layout": "org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom",
       "sha256": "228367b7569fb1462a3eb1423bc2778e2fc7fbaee3d3767890c02b8924fa1889",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom"
+    },
+    "org.eclipse.jetty:jetty-util:pom:9.4.42.v20210604": {
+      "layout": "org/eclipse/jetty/jetty-util/9.4.42.v20210604/jetty-util-9.4.42.v20210604.pom",
+      "sha256": "5b49b3e96067a6fc8d51008d83a8d1f0bf9a2a102ca2c4d384dc72bdb4e7b5fd",
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-util/9.4.42.v20210604/jetty-util-9.4.42.v20210604.pom"
     },
     "org.glassfish:javax.json:pom:1.0.4": {
       "layout": "org/glassfish/javax.json/1.0.4/javax.json-1.0.4.pom",
@@ -1884,6 +1894,11 @@
       "layout": "ring/ring-codec/1.1.2/ring-codec-1.1.2.jar",
       "sha256": "758d273bfd67afbcf83b7939523f9e288e227c9b2d22232c3e95f5112b0ad060",
       "url": "https://clojars.org/repo/ring/ring-codec/1.1.2/ring-codec-1.1.2.jar"
+    },
+    "org.eclipse.jetty:jetty-server:pom:9.4.42.v20210604": {
+      "layout": "org/eclipse/jetty/jetty-server/9.4.42.v20210604/jetty-server-9.4.42.v20210604.pom",
+      "sha256": "f549fac6ab0dc80fb514c3fb067f94882073944e3496d0091c0318d8736202a3",
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-server/9.4.42.v20210604/jetty-server-9.4.42.v20210604.pom"
     },
     "org.clojure:tools.macro:pom:0.1.5": {
       "layout": "org/clojure/tools.macro/0.1.5/tools.macro-0.1.5.pom",
@@ -2055,10 +2070,20 @@
       "sha256": "0b9c8ec750e680c28c385b3a3dfa8755e904a4ae82be0b95c109c54e5a1ca5d0",
       "url": "https://repo.maven.apache.org/maven2/com/github/jnr/jffi/1.2.23/jffi-1.2.23.jar"
     },
+    "com.xtdb:xtdb-rocksdb:pom:1.20.0": {
+      "layout": "com/xtdb/xtdb-rocksdb/1.20.0/xtdb-rocksdb-1.20.0.pom",
+      "sha256": "5d894821371a62223680f7657f4e5b0deffb11b059b3efe61b0e42f935a823d1",
+      "url": "https://repo.maven.apache.org/maven2/com/xtdb/xtdb-rocksdb/1.20.0/xtdb-rocksdb-1.20.0.pom"
+    },
     "org.codehaus.plexus:plexus-utils:jar:1.5.1": {
       "layout": "org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.jar",
       "sha256": "72582f8ba285601fa753ceeda73ff3cbd94c6e78f52ec611621eaa0186165452",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.jar"
+    },
+    "org.eclipse.jetty:jetty-io:pom:9.4.42.v20210604": {
+      "layout": "org/eclipse/jetty/jetty-io/9.4.42.v20210604/jetty-io-9.4.42.v20210604.pom",
+      "sha256": "8d3a1be7bb5fa50c82d73ef20cd3d8eca0725b099c8f0dafb6e21cd3e130cfd6",
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.4.42.v20210604/jetty-io-9.4.42.v20210604.pom"
     },
     "org.clojure:spec.alpha:pom:0.1.143": {
       "layout": "org/clojure/spec.alpha/0.1.143/spec.alpha-0.1.143.pom",
@@ -2159,11 +2184,6 @@
       "layout": "commons-lang/commons-lang/2.1/commons-lang-2.1.pom",
       "sha256": "f1a709cd489f23498a0b6b3dfbfc0d21d4f15904791446dec7f8a58a7da5bd6a",
       "url": "https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.1/commons-lang-2.1.pom"
-    },
-    "pro.juxt.crux:crux-core:pom:1.17.1": {
-      "layout": "pro/juxt/crux/crux-core/1.17.1/crux-core-1.17.1.pom",
-      "sha256": "d0cefa9aebc1b7c769b23f8d2aa52a6dd0a1db7cabaec263c0f99b85086b2087",
-      "url": "https://repo.maven.apache.org/maven2/pro/juxt/crux/crux-core/1.17.1/crux-core-1.17.1.pom"
     },
     "org.slf4j:slf4j-parent:pom:1.7.30": {
       "layout": "org/slf4j/slf4j-parent/1.7.30/slf4j-parent-1.7.30.pom",
@@ -2275,11 +2295,6 @@
       "sha256": "69771506f3cd8432252d6a6ca87087c669497febfca02afb9a72fcbd943faa1e",
       "url": "https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.pom"
     },
-    "pro.juxt.crux:crux-rocksdb:jar:1.17.1": {
-      "layout": "pro/juxt/crux/crux-rocksdb/1.17.1/crux-rocksdb-1.17.1.jar",
-      "sha256": "7d3bd26c36a798fc59ab7045c096851c5f25fb3ec3abb72912ccfe48cc6dfd54",
-      "url": "https://repo.maven.apache.org/maven2/pro/juxt/crux/crux-rocksdb/1.17.1/crux-rocksdb-1.17.1.jar"
-    },
     "org.apache.maven:maven-monitor:pom:2.0.9": {
       "layout": "org/apache/maven/maven-monitor/2.0.9/maven-monitor-2.0.9.pom",
       "sha256": "4fe978f252f57c1768d917603127db3b82e98820059b4943ae04b79c5ac79419",
@@ -2350,6 +2365,11 @@
       "sha256": "d82408269aada2eb1521ee8ff17f7c67333684f8ed2a09a9e35badd2e7575957",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom"
     },
+    "org.webjars.npm:react-dom:jar:17.0.2": {
+      "layout": "org/webjars/npm/react-dom/17.0.2/react-dom-17.0.2.jar",
+      "sha256": "5bca1f4ee61e9ca5e52843120e7ebeda842623fb1e706e391cc5719f2c031931",
+      "url": "https://repo.maven.apache.org/maven2/org/webjars/npm/react-dom/17.0.2/react-dom-17.0.2.jar"
+    },
     "org.apache.maven:maven-project:pom:2.2.1": {
       "layout": "org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom",
       "sha256": "34af0baedaef19375b7c1a7da967e9089d5e0754647fdbe9a302590392874b77",
@@ -2389,6 +2409,11 @@
       "layout": "ring/ring-core/1.9.4/ring-core-1.9.4.pom",
       "sha256": "23c8604b36bce2dd345cf8ba2d96cb4b042e37be80c799852f5f3da51e750371",
       "url": "https://clojars.org/repo/ring/ring-core/1.9.4/ring-core-1.9.4.pom"
+    },
+    "com.xtdb:xtdb-core:pom:1.20.0": {
+      "layout": "com/xtdb/xtdb-core/1.20.0/xtdb-core-1.20.0.pom",
+      "sha256": "a97a0d82c3033870d6bd492936bc5b5676211ad01c2049afb1170482845bdf0b",
+      "url": "https://repo.maven.apache.org/maven2/com/xtdb/xtdb-core/1.20.0/xtdb-core-1.20.0.pom"
     },
     "ring:ring-core:pom:1.9.2": {
       "layout": "ring/ring-core/1.9.2/ring-core-1.9.2.pom",
@@ -2450,11 +2475,6 @@
       "sha256": "fbcd609c7e063e83b30dce58555b23dee3e519dc00aaac7471e52b4140917329",
       "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.9.6/jackson-base-2.9.6.pom"
     },
-    "likid_geimfari:secrets:jar:1.0.0": {
-      "layout": "likid_geimfari/secrets/1.0.0/secrets-1.0.0.jar",
-      "sha256": "4c19a87d4ec6a35fa7c29899e4faee28ae52dba71fd95e382c8e84f1ea020ad0",
-      "url": "https://clojars.org/repo/likid_geimfari/secrets/1.0.0/secrets-1.0.0.jar"
-    },
     "org.apache.maven.reporting:maven-reporting-api:pom:2.0.9": {
       "layout": "org/apache/maven/reporting/maven-reporting-api/2.0.9/maven-reporting-api-2.0.9.pom",
       "sha256": "e50e96c88041e2236420e5483b407175c07f401b0d49f0744fa48de2d372448d",
@@ -2479,6 +2499,11 @@
       "layout": "org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.pom",
       "sha256": "4ac659858bac5929ea8fc183d7ce4b588d7e69363a76277f6a26349393686657",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.pom"
+    },
+    "org.eclipse.jetty:jetty-http:pom:9.4.42.v20210604": {
+      "layout": "org/eclipse/jetty/jetty-http/9.4.42.v20210604/jetty-http-9.4.42.v20210604.pom",
+      "sha256": "9e2b751646731b723080de505403d04d3815e27e7e4f3ea940b4f121bc2300ae",
+      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-http/9.4.42.v20210604/jetty-http-9.4.42.v20210604.pom"
     },
     "org.apache.maven:maven-plugin-descriptor:jar:2.0.9": {
       "layout": "org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.jar",
@@ -2520,20 +2545,10 @@
       "sha256": "cb54dedc5d8c4510148dfa792701cbac1a84c383a84f48f5a32e6d7e460bbb72",
       "url": "https://repo.maven.apache.org/maven2/log4j/log4j/1.2.12/log4j-1.2.12.pom"
     },
-    "org.eclipse.jetty:jetty-io:pom:9.4.31.v20200723": {
-      "layout": "org/eclipse/jetty/jetty-io/9.4.31.v20200723/jetty-io-9.4.31.v20200723.pom",
-      "sha256": "949435b0797b101328b42e021703c07b4f0e3952e1a2e062c1837e68fe7cd9aa",
-      "url": "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-io/9.4.31.v20200723/jetty-io-9.4.31.v20200723.pom"
-    },
     "org.clojure:tools.namespace:jar:0.2.11": {
       "layout": "org/clojure/tools.namespace/0.2.11/tools.namespace-0.2.11.jar",
       "sha256": "0c5f0be70614edf5b0772d157de067c4f276c1f7ed27a3cd20bc0654aed8adae",
       "url": "https://repo.maven.apache.org/maven2/org/clojure/tools.namespace/0.2.11/tools.namespace-0.2.11.jar"
-    },
-    "ring:ring-core:pom:1.8.2": {
-      "layout": "ring/ring-core/1.8.2/ring-core-1.8.2.pom",
-      "sha256": "0242e6d7ab52237f93fdadc00df634c0828afb6c4eac09605d9c1bd1a285ec21",
-      "url": "https://clojars.org/repo/ring/ring-core/1.8.2/ring-core-1.8.2.pom"
     },
     "org.apache.maven:maven-artifact:pom:2.0.6": {
       "layout": "org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.pom",
