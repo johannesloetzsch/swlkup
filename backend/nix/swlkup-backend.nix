@@ -50,6 +50,8 @@ lib.mergeAttrs
   (pkgs.writeScriptBin "${pname}" ''
     #!${pkgs.runtimeShell}
 
+    ${pkgs.which}/bin/which mail || export PATH=./backend/resources/mock:$PATH
+
     ${jdk11_headless}/bin/java -jar ${swlkup-backend-jar}/${name}-standalone.jar $@ &
 
     ## We write a pid-file, so the integration test knows how to kill the server
