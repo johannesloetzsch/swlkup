@@ -2974,6 +2974,15 @@ let
         sha1 = "d2745701025a6c775a6c545793ed502fc0c649a1";
       };
     };
+    "html-parse-stringify-3.0.1" = {
+      name = "html-parse-stringify";
+      packageName = "html-parse-stringify";
+      version = "3.0.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/html-parse-stringify/-/html-parse-stringify-3.0.1.tgz";
+        sha512 = "KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==";
+      };
+    };
     "http-cache-semantics-4.1.0" = {
       name = "http-cache-semantics";
       packageName = "http-cache-semantics";
@@ -3026,6 +3035,24 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-5.0.0.tgz";
         sha512 = "EkYm5BcKUGiduxzSt3Eppko+PiNWNEpa4ySk9vTC6wDsQJW9rHSa+UhGNJoRYp7bz6Ht1eaRIa6QaJqO5rCFbA==";
+      };
+    };
+    "i18next-21.5.4" = {
+      name = "i18next";
+      packageName = "i18next";
+      version = "21.5.4";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/i18next/-/i18next-21.5.4.tgz";
+        sha512 = "ukwRJpLhYg4EUfCOtbaKjlwF71qyel1XMXQN78OkQMcaQG68UzlYgLC6g2fhoTNBvoH2tJkaaqzDumhC9skAhA==";
+      };
+    };
+    "i18next-browser-languagedetector-6.1.2" = {
+      name = "i18next-browser-languagedetector";
+      packageName = "i18next-browser-languagedetector";
+      version = "6.1.2";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/i18next-browser-languagedetector/-/i18next-browser-languagedetector-6.1.2.tgz";
+        sha512 = "YDzIGHhMRvr7M+c8B3EQUKyiMBhfqox4o1qkFvt4QXuu5V2cxf74+NCr+VEkUuU0y+RwcupA238eeolW1Yn80g==";
       };
     };
     "iconv-lite-0.4.24" = {
@@ -4828,6 +4855,15 @@ let
         sha512 = "s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==";
       };
     };
+    "react-i18next-11.14.3" = {
+      name = "react-i18next";
+      packageName = "react-i18next";
+      version = "11.14.3";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/react-i18next/-/react-i18next-11.14.3.tgz";
+        sha512 = "Hf2aanbKgYxPjG8ZdKr+PBz9sY6sxXuZWizxCYyJD2YzvJ0W9JTQcddVEjDaKyBoCyd3+5HTerdhc9ehFugc6g==";
+      };
+    };
     "react-is-17.0.2" = {
       name = "react-is";
       packageName = "react-is";
@@ -5926,6 +5962,15 @@ let
         sha512 = "2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==";
       };
     };
+    "void-elements-3.1.0" = {
+      name = "void-elements";
+      packageName = "void-elements";
+      version = "3.1.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/void-elements/-/void-elements-3.1.0.tgz";
+        sha1 = "614f7fbf8d801f0bb5f0661f5b2f5785750e4f09";
+      };
+    };
     "watchpack-2.3.0" = {
       name = "watchpack";
       packageName = "watchpack";
@@ -6582,6 +6627,7 @@ let
       sources."he-1.2.0"
       sources."header-case-2.0.4"
       sources."hmac-drbg-1.0.1"
+      sources."html-parse-stringify-3.0.1"
       sources."http-cache-semantics-4.1.0"
       (sources."http-errors-1.7.2" // {
         dependencies = [
@@ -6591,6 +6637,8 @@ let
       sources."http-proxy-agent-5.0.0"
       sources."https-browserify-1.0.0"
       sources."https-proxy-agent-5.0.0"
+      sources."i18next-21.5.4"
+      sources."i18next-browser-languagedetector-6.1.2"
       sources."iconv-lite-0.4.24"
       sources."ieee754-1.2.1"
       sources."ignore-5.1.9"
@@ -6865,6 +6913,7 @@ let
       sources."rc-1.2.8"
       sources."react-17.0.2"
       sources."react-dom-17.0.2"
+      sources."react-i18next-11.14.3"
       sources."react-is-17.0.2"
       sources."react-query-3.34.0"
       sources."react-refresh-0.8.3"
@@ -7025,6 +7074,7 @@ let
       sources."value-or-promise-1.0.11"
       sources."vary-1.1.2"
       sources."vm-browserify-1.1.2"
+      sources."void-elements-3.1.0"
       sources."watchpack-2.3.0"
       sources."webidl-conversions-3.0.1"
       sources."whatwg-fetch-3.6.2"

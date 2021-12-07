@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import create from 'zustand'
+import { useTranslation, Trans } from 'react-i18next';
 
 interface TokenState {
   token: string
@@ -12,16 +13,17 @@ const useTokenStore = create<TokenState>(set => ({
 }))
 
 export default function Home() {
+  const {t} = useTranslation()
   const {token, setToken} = useTokenStore()
   const router = useRouter()
 
   return (
     <div>
-      <p>Please enter your <i><b>access token</b></i></p>
+      <p><Trans i18nKey="Please enter your <1>access token</1>">Please enter your <b>access token</b></Trans>:</p>
       <form onSubmit={ (event) => {event.preventDefault()
                                    router.push("/token/" + token/*, undefined, {shallow: true}*/)} }>
         <input name="token" onChange={(event) => setToken(event.target.value)}/>
-        <input type="submit" value="Enter"/>
+        <input type="submit" value={t('Enter') as string}/>
       </form>
     </div>
   )
