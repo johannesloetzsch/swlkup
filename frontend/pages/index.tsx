@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div>
-      <p><Trans i18nKey="Please enter your <1>access token</1>">Please enter your <b>access token</b></Trans>:</p>
+      <p><Trans i18nKey="Please enter your access token">Please enter your <b>access token</b></Trans>:</p>
       <form onSubmit={ (event) => {event.preventDefault()
                                    router.push("/token/" + token/*, undefined, {shallow: true}*/)} }>
         <input name="token" onChange={(event) => setToken(event.target.value)}/>

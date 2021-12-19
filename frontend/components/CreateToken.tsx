@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useAuthStore, AuthState } from './Login'
 import { fetcher } from '../codegen/fetcher'
 import { useNgoQuery } from '../codegen/generates'
+import { useTranslation, Trans } from 'react-i18next';
 
 async function mutate(auth: AuthState, purpose: string) {
   console.log(purpose)
@@ -14,6 +15,7 @@ async function mutate(auth: AuthState, purpose: string) {
 }
 
 export function CreateToken() {
+  const {t} = useTranslation()
   useEffect( () => {fetch_config() }, [config])
 
   const auth = useAuthStore()
@@ -25,7 +27,7 @@ export function CreateToken() {
 
   return (
     auth.jwt && <div style={{width: "100%"}}>
-      <h4>Token</h4>
+      <h4>{ t('Token') }</h4>
 
       <form onSubmit={ async event => { event.preventDefault()
                                         const purpose = (document.getElementsByName('purpose')[0] as HTMLInputElement).value
@@ -35,16 +37,16 @@ export function CreateToken() {
                                         && (document.getElementById('token_form') as HTMLFormElement).reset() }}
 	    id="token_form">
         <fieldset>
-	  <legend>Create a new Token</legend>
-          Description of the group for whom you are creating the token: <textarea name="purpose" required={true}/><br/>
+	  <legend>{ t('Create a new Token') }</legend>
+	  { t('Description of the group for whom you are creating the token') }<textarea name="purpose" required={true}/><br/>
 	  <br/>
-	  <input type="submit" value="Create"/>
+	  <input type="submit" value={ t('Create') as string }/>
         </fieldset>
       </form>
 
       { Boolean(data?.created_tokens.length) &&
 	<>
-          <h5>{data?.created_tokens.length} Created Tokens:</h5>
+          <h5>{data?.created_tokens.length} { t('Created Tokens') }:</h5>
           <ul>
           { data?.created_tokens.map(t =>
               <li key={t.token}> <a href={config.base_url+"/token/"+t.token} style={{fontFamily: "monospace"}}>{t.token}</a> {t.purpose && " - " + t.purpose}</li>

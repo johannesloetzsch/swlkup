@@ -1,6 +1,6 @@
 describe('Routing to /token/*', () => {
   it('Entering the token in the form at / should navigate to the expected page', () => {
-    cy.visit('/')
+    cy.visit('/?lng=en')
     cy.get('form').within($form => {
       cy.get('input[name=token]')
         .type("R4nd0m")

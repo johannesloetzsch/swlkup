@@ -28,6 +28,7 @@ describe('Walk through', () => {
       cy.get($form).submit()
     })
     cy.get('main').contains('registered supervisors')
+    cy.log('HINT: till now this test is not idempotent since the supervisor is not being deleted')
     cy.exec('cat /tmp/mail.log').then($result => {
       supervisor_password = $result.stdout.split('\n').filter(l => l.startsWith("Password:"))[0].split(' ')[1]
     })

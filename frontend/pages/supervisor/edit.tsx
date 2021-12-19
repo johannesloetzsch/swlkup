@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { Login, useAuthStore, AuthState } from '../../components/Login'
 import { useSupervisorGetQuery, Offers, SupervisorInput} from '../../codegen/generates'
 import { fetcher } from '../../codegen/fetcher'
+import { useTranslation, Trans } from 'react-i18next';
+import constants from '../../i18n/const.json'
 
 function filter_empty_vals(map: object) {
   return Object.fromEntries(Object.entries(map).filter(kv => kv[1]))
@@ -66,12 +68,13 @@ function offer_options(offers: Offers[], supervisor: any) {
   return offers.map( offer => (
           <label key={offer.id}>
             <input type="checkbox" name="offer" value={offer.id} id={offer.id} defaultChecked={supervisor?.offers.includes(offer.id)} onChange={validate} />
-            {offer.desc}<br/>
+            <Trans i18nKey={offer.id as string}/><br/>
           </label>
         ))
 }
 
 export default function SupervisorEdit() {
+  const {t} = useTranslation()
   const auth = useAuthStore()
   useEffect(() => {
     auth.setJwt(localStorage.getItem('jwt') || '')
@@ -94,6 +97,8 @@ export default function SupervisorEdit() {
     <>
       <Login />
       <br/><br/>
+      <Trans i18nKey="introduction_supervisor" values={constants}/>
+      <br/><br/>
 
       { data && data.ngos && <>
         <form onSubmit={ async event => { event.preventDefault()
@@ -105,7 +110,7 @@ export default function SupervisorEdit() {
 	                                  && jump_top() }
                        } id="supervisor_form">
           <fieldset>
-            <legend>Languages you speak</legend>
+            <legend>{ t('Languages you speak') }</legend>
             { data.languages.map( lang => (
               <label key={lang.id}>
                 <input type="checkbox" name="language" value={lang.id} id={lang.id} defaultChecked={supervisor?.languages.includes(lang.id)} onChange={validate} />
@@ -116,73 +121,73 @@ export default function SupervisorEdit() {
           </fieldset><br/>
   
           <fieldset>
-            <legend>General information</legend>
+            <legend>{ t('General information') }</legend>
 	    <table><tbody>
 	      <tr>
-	        <td>Name:</td>
+	        <td>{ t('Name') }</td>
                 <td><input type="text" name="name_full" defaultValue={supervisor?.name_full || undefined} required={true}/></td>
 	      </tr>
 	      <tr>
-		<td>Specialization:</td>
+		<td>{ t('Specialization') }</td>
                 <td><input type="text" name="text_specialization" defaultValue={supervisor?.text_specialization || undefined} required={true}/></td>
 	      </tr>
               <tr>
-	        <td>Motivation:</td>
+	        <td>{ t('Motivation') }</td>
                 <td><textarea name="text" defaultValue={supervisor?.text || undefined} rows={4} required={true}/></td>
               </tr>
 	    </tbody></table>
           </fieldset><br/>
   
           <fieldset>
-            <legend>What kind of offers are you providing?</legend>
+            <legend>{ t('What kind of offers are you providing?') }</legend>
             <table><tbody>
 	      <tr>
-	        <td>For individuals:</td>
+	        <td>{ t('For individuals') }</td>
                 <td>{ offer_options(data.offers.filter(offer => offer.target === 'individual'), supervisor) }</td>
 	      </tr>
 	      <tr>
-                <td>For groups:</td>
+                <td>{ t('For groups') }</td>
                 <td>{ offer_options(data.offers.filter(offer => offer.target === 'group'), supervisor) }</td>
 	      </tr>
 	    </tbody></table>
           </fieldset><br/>
   
           <fieldset>
-            <legend>Contact information <i>(phone or email)</i></legend>
+            <legend><Trans i18nKey="Contact information (phone or email)">Contact information <i>(phone or email)</i></Trans></legend>
 	    <table><tbody>
               <tr>
-	        <td>Phone:</td>
+	        <td>{ t('Phone') }</td>
                 <td><input type="text" name="phone" defaultValue={supervisor?.contacts.phone || undefined} onChange={validate}/></td>
 	      </tr>
               <tr>
-                <td>Email:</td>
+                <td>{ t('Email') }</td>
                 <td><input type="text" name="email" defaultValue={supervisor?.contacts.email || undefined} onChange={validate}/></td>
               </tr>
               <tr>
-	        <td>Website:<br/><i>(optional)</i></td>
+	        <td>{ t('Website') }<br/><i>({ t('optional') })</i></td>
                 <td><input type="text" name="website" defaultValue={supervisor?.contacts.website || undefined}/></td>
 	      </tr>
             </tbody></table>
           </fieldset><br/>
   
           <fieldset>
-            <legend>Location</legend>
+            <legend>{ t('Location') }</legend>
 	    <table><tbody>
 	      <tr>
-                <td>Zip code:<br/><i>(optional)</i></td>
+                <td>{ t('Zip code') }<br/><i>({ t('optional') })</i></td>
                 <td><input type="text" name="zip" defaultValue={supervisor?.location.zip || undefined}/></td>
 	      </tr>
 	    </tbody></table>
           </fieldset><br/>
   
           <fieldset>
-            <legend>For which ngos are you offering your services?</legend>
+            <legend>{ t('For which ngos are you offering your services?') }</legend>
   	    <table><tbody>
   	      <tr>
 	        <td>
 		  <label>
                     <input type="radio" name="all_ngos" value="true" defaultChecked={default_any_ngo} onChange={validate} onClick={validate}/>
-		    Any
+		    { t('Any') }
 		  </label>
 		</td>
 		<td></td>
@@ -191,7 +196,7 @@ export default function SupervisorEdit() {
 	        <td>
 		  <label>
                     <input type="radio" name="all_ngos" value="false" defaultChecked={!default_any_ngo} id="all_ngos_false" onChange={validate} onClick={validate}/>
-  	            Only this explicitly selected:
+		    { t('Only this explicitly selected') }
                   </label>
                 </td>
   	        <td>
@@ -210,7 +215,7 @@ export default function SupervisorEdit() {
           </fieldset><br/>
 
           <div style={{textAlign: "right"}}>
-            <input type="submit" value="Update"/>
+            <input type="submit" value={ t('Save and Publish') as string }/>
 	  </div>
         </form>
       </> }

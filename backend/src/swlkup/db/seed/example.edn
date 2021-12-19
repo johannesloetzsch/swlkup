@@ -66,10 +66,6 @@
   :target :group
   :desc "Workshops"}
 
- #_{:xt/id "translation"
-  :xt/spec :swlkup.model.offers/offers
-    }
-
  {:xt/id "lifeline"
   :xt/spec :swlkup.model.ngo/doc
   :name "Mission Lifeline"}

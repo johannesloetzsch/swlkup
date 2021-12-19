@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useLoginQuery } from '../codegen/generates'
 import create from 'zustand'
+import { useTranslation, Trans } from 'react-i18next';
 
 function jwtDecode(jwt: string) {
   /* Just parses the payload — Be aware that signature is not checked */
@@ -26,6 +27,7 @@ export const useAuthStore = create<AuthState>(set => ({
 }))
 
 export function Login() {
+  const {t} = useTranslation()
   const auth = useAuthStore()
 
   const { data } = useLoginQuery({auth}, {enabled: Boolean(!auth.jwt && auth.mail && auth.password)})
@@ -50,13 +52,13 @@ export function Login() {
       <form onSubmit={ (event) => {event.preventDefault()
                                    auth.setLogin((document.getElementById('mail') as HTMLInputElement).value,
                                                  (document.getElementById('password') as HTMLInputElement).value) }}>
-        <label>Email:
+        <label>{ t('Email') }:
           <input id='mail' name='mail'/>
         </label>&nbsp;
-        <label>Password:
+        <label>{ t('Password') }:
           <input id='password' type='password' name='password'/>
         </label>&nbsp;
-        <input type='submit' value='Login'/>
+        <input type='submit' value={ t('Login') as string }/>
       </form>
     )
   } else {
@@ -65,7 +67,7 @@ export function Login() {
                                          localStorage.removeItem('jwt')
                                          auth.logout()}}
 	    style={{width: "100%", textAlign: "right"}}>
-        <input type='submit' value='Logout'/>
+        <input type='submit' value={ t('Logout') as string }/>
       </form>
     )
   }

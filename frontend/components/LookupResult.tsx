@@ -2,6 +2,8 @@ import styles from '../styles/Supervisor.module.css'
 import { Languages, LookupQuery, Supervisors, Offers } from '../codegen/generates'
 import create from 'zustand'
 import { Checkbox } from './Checkbox'
+import { useTranslation, Trans } from 'react-i18next';
+import constants from '../i18n/const.json'
 
 type Options = any //Map<string, boolean>
 
@@ -59,12 +61,13 @@ const useFilterStore = create<FilterState>((set, get) => ({
 
 function FilterForm({languages, offers, selections}:
                     {languages: Languages[], offers: Offers[], selections: any}) {
+  const {t} = useTranslation()
   const {setLanguage, getLanguages, setTarget, getTargets, setOffer, getOffers, setContact, getContacts} = useFilterStore()
   const visibleOffers = offers.filter(o => selections.selectedTargets.includes( o.target ))
   return (
     <form>
       <fieldset>
-        <legend>Only show supervisors speaking one of this languages</legend>
+        <legend>{ t('Only show supervisors speaking one of this languages') }</legend>
         { languages.map( lang => (
           <Checkbox name="language" value={lang.id} id={lang.id} onChange={setLanguage} key={lang.id}
                     refInput={el => el && (el.indeterminate = getLanguages([]).length === 0
@@ -75,41 +78,40 @@ function FilterForm({languages, offers, selections}:
         ) ) }
       </fieldset><br/>
       <fieldset>
-        <legend>What kind of offers are you looking for?</legend>
-        { [{"id": "individual", "label": "Individual"}, {"id": "group", "label": "Group"}].map( target => (
-            <Checkbox name="target" value={target.id} id={target.id} onChange={setTarget} key={target.id}
+        <legend>{ t('What kind of offers are you looking for?') }</legend>
+        { ["individual", "group"].map( target => (
+            <Checkbox name="target" value={target} id={target} onChange={setTarget} key={target}
                       refInput={el => el && (el.indeterminate = getTargets([]).length === 0
-                                         && selections.selectedTargets.includes(target.id))} >
-              {target.label}
+                                         && selections.selectedTargets.includes(target))} >
+              {t(target)}
             </Checkbox>
         ) ) }
         <hr/>
-        { visibleOffers.map( offer => (
+        { visibleOffers.sort((o1, o2) => o1.target < o2.target ? 1 : -1).map( offer => (
           <span key={offer.id}>
             <Checkbox name="offer" value={offer.id} id={offer.id} onChange={setOffer}
                       refInput={el => el && (el.indeterminate = getOffers([]).length === 0
                                          && selections.selectedOffers.includes(offer.id))} >
-              {offer.desc}
+              {t(offer.id)}
             </Checkbox><br/>
           </span>
         ) ) }
       </fieldset><br/>
       <fieldset>
-        <legend>How would you like to get support?</legend>
-        { [{"id": "inperson", "label": "In Person"}, {"id": "remote", "label": "Remote"}].map( contact => (
-            <Checkbox name="contact" value={contact.id} id={contact.id} onChange={setContact} key={contact.id}
+        <legend>{ t('How would you like to get support?') }</legend>
+        { ["inperson", "remote"].map( contact => (
+            <Checkbox name="contact" value={contact} id={contact} onChange={setContact} key={contact}
                       refInput={el => el && (el.indeterminate = getContacts([]).length === 0
-                                         && selections.selectedContacts.includes(contact.id))} >
-              {contact.label}
+                                         && selections.selectedContacts.includes(contact))} >
+              {t(contact)}
             </Checkbox>
         ) ) }
         { selections.selectedContacts.includes("inperson")
           && <span><hr/>
-               Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here,<br/> than the list of supervisors will be sorted by distance.<br/>
-               <label htmlFor="country">Country</label>&nbsp;
-               <input type="text" name="country" id="country"/>
-               &nbsp;&nbsp;&nbsp;
-               <label htmlFor="zip">Zip code</label>&nbsp;
+	      <p>{ t('Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here, than the list of supervisors will be sorted by distance.') }</p>
+               <label htmlFor="country">{ t('Country') }</label>&nbsp;
+               <input type="text" name="country" id="country"/><br/>
+               <label htmlFor="zip">{ t('Zip code') }</label>&nbsp;
                <input type="text" name="zip" id="zip"/>
              </span>
         }
@@ -155,6 +157,7 @@ function Supervisor({supervisor, languages}:
 }
 
 export function LookupResult({data}: {data: LookupQuery}) {
+  const {t} = useTranslation()
   const {getLanguages, getTargets, getOffers, getContacts} = useFilterStore()
   const selectedLanguages = getLanguages(data.languages.map(lang => lang.id))
   const selectedTargets = getTargets(["individual"])
@@ -166,11 +169,12 @@ export function LookupResult({data}: {data: LookupQuery}) {
   return (
     <>
       <div>
-        <p> The Token was created by {data.lookup.ngo?.name}.</p>
-        <p> {data.lookup.supervisors?.length} Supervisors are available. You can use the following options to filter them:</p><br/>
+        <Trans i18nKey="introduction_user" values={{contact: constants.contact}}/>
+	<span style={{visibility: "hidden"}}> The Token was created by {data.lookup.ngo?.name}.</span>
+	<span style={{visibility: "hidden"}}> {data.lookup.supervisors?.length} Supervisors are available</span>
         <FilterForm languages={data.languages} offers={data.offers}
                     selections={{selectedLanguages, selectedTargets, selectedOffers, selectedContacts}}/>
-        <p> {filteredSupervisors?.length} Supervisors match this filters: </p>
+        <p>{ t('supervisor_matches', {count: filteredSupervisors?.length}) }</p>
       </div>
 
       <div className={styles.grid}>

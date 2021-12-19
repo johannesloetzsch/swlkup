@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useAuthStore, AuthState } from './Login'
 import { fetcher } from '../codegen/fetcher'
 import { useNgoQuery } from '../codegen/generates'
+import { useTranslation, Trans } from 'react-i18next';
 
 async function mutate(auth: AuthState, mail: string) {
   const result = await fetcher<any, any>(`mutation Invite($auth: Auth!, $mail: String) {
@@ -12,6 +13,7 @@ async function mutate(auth: AuthState, mail: string) {
 }
 
 export function InviteSupervisor() {
+  const {t} = useTranslation()
   const auth = useAuthStore()
   useEffect(() => {
     auth.setJwt(localStorage.getItem('jwt') || '')
@@ -23,7 +25,7 @@ export function InviteSupervisor() {
 
   return auth.jwt && (
     <div style={{width: "100%"}}>
-      <h4>Supervisor</h4>
+      <h4>{ t('Supervisor') }</h4>
       <form onSubmit={ async event => { event.preventDefault()
                                         const mail = (document.getElementsByName('supervisor_email')[0] as HTMLInputElement).value
 					remove()
@@ -32,21 +34,21 @@ export function InviteSupervisor() {
                                         && (document.getElementById('invitation_form') as HTMLFormElement).reset() }}
 	    id="invitation_form">
         <fieldset>
-	  <legend>Invite a new Supervisor</legend>
-          Mail address of Supervisor you want invite: <input type="text" name="supervisor_email" required={true}/><br/>
+	  <legend>{ t('Invite a new Supervisor') }</legend>
+	  { t('Mail address of Supervisor you want invite') }<input type="text" name="supervisor_email" required={true}/><br/>
 	  <br/>
-	  <input type="submit" value="Invite"/>
+	  <input type="submit" value={ t('Invite') as string }/>
         </fieldset>
 
         { Boolean(registered_active?.length) &&
           <>
-            <h5>{registered_active?.length} Active registered supervisors:</h5>
+            <h5>{registered_active?.length} { t('Active registered supervisors') }:</h5>
             <p>{ registered_active?.map(s => s.name_full + ' (' + s.mail + ')').join(', ') }</p>
           </>
         }
         { Boolean(registered_new?.length) &&
           <>
-            <h5>{registered_new?.length} New registered supervisors:</h5>
+            <h5>{registered_new?.length} { t('New registered supervisors') }:</h5>
             <p>{ registered_new?.map(s => s.mail).join(', ') }</p>
           </>
         }

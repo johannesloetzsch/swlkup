@@ -12,7 +12,7 @@ function assert_loggedOut() {
 
 describe('Login', () => {
   it('Login + Use Session + Logout', () => {
-    cy.visit('/supervisor/edit')
+    cy.visit('/supervisor/edit?lng=en')
     cy.get('form').within($form => {
       cy.get('input[name=mail]')
         .type("praxis@max.mueller.de")
