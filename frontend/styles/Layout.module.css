@@ -1,15 +1,16 @@
 .container {
+  background-color: mintcream;
   min-height: 100vh;
-  padding: 0 0.5rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*height: 100vh;*/
 }
 
 .main {
-  padding: 5rem 0;
+  max-width: 800px;
+  padding: 5px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -17,12 +18,35 @@
   align-items: center;
 }
 
-.footer {
+.header {
+  background-color: floralwhite;
   width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
+  min-height: 100px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.slogan {
+  text-align: center;
+}
+
+.slogan h1 {
+  margin: 5px;
+  overflow-wrap: break-word;
+}
+
+.header div {
+  min-width: 100px;  /** keep LangSelection and Login symetric **/
+}
+
+.footer {
+  background-color: floralwhite;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
 }
 

@@ -7,7 +7,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: darkblue;
   text-decoration: none;
 }
 
@@ -15,14 +15,14 @@ a {
   box-sizing: border-box;
 }
 
-
 fieldset {
-  padding: 15px;
-  border: solid 1px lightgray;
+  padding-top: 1rem;
+  background-color: floralwhite;
+  border: solid 1px;
 }
 
 hr {
-  border: solid 0.5px lightgray;
+  border: inset 1px;
 }
 
 
@@ -39,5 +39,17 @@ form input[type="text"] {
 }
 
 form textarea {
+  width: 100%;
+}
+
+.cypress {
+  display: none;
+}
+
+p.subtitle {
+  margin-top: 0px;
+}
+
+div.fullwidth {
   width: 100%;
 }

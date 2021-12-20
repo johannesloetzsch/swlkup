@@ -25,7 +25,7 @@ export function InviteSupervisor() {
 
   return auth.jwt && (
     <div style={{width: "100%"}}>
-      <h4>{ t('Supervisor') }</h4>
+      <h3>{ t('Supervisor') }</h3>
       <form onSubmit={ async event => { event.preventDefault()
                                         const mail = (document.getElementsByName('supervisor_email')[0] as HTMLInputElement).value
 					remove()
@@ -42,7 +42,7 @@ export function InviteSupervisor() {
 
         { Boolean(registered_active?.length) &&
           <>
-            <h5>{registered_active?.length} { t('Active registered supervisors') }:</h5>
+            <h4>{registered_active?.length} { t('Active registered supervisors') }:</h4>
             <p>{ registered_active?.map(s => s.name_full + ' (' + s.mail + ')').join(', ') }</p>
           </>
         }

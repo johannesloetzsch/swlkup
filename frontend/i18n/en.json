@@ -1,11 +1,16 @@
 {
 "Impressum": "Impressum",
 "Privacy policy": "Privacy policy",
+"Source": "Source",
 
 "Enter": "Enter",
 "Please enter your access token": "Please enter your <1>access token</1>",
 
-"introduction_user": "<p>Hallo, wir freuen uns, dass du diese Datenbank gefunden hast.<br/>Im weiteren bitten wir dich deinen Bedarf zu spezifizieren, damit dir passende Supervisor:innen vorschlagen werden.</p><p>Über die Eingabemaske hast du die Möglichkeit, das für dich passende Angebot auszuwählen. Das Angebot deckt unterschiedliche Bedarfe ab (Moderationen, Supervision, Beratung, Mediation,...) und ist offen für Einzelpersonen oder Gruppen. Dabei kann es von einzelnen Sitzungen über mehrmalige Angbote reichen.</p><p>Die Nutzung der Datenbank verläuft anonym und gewährt keine Einblick auf Nutzung.<br/>Solltest du Unterstützung oder Beratung wünschen, wende dich an {{contact}}.<br/>Ansonsten wünschen wir dir viel Erfolg!</p>",
+"This is not a valid Token.": "This is not a valid Token.",
+"Sorry, something went wrong.": "Sorry, something went wrong.",
+"Please try again.": "Please try again.",
+
+"introduction_user": "<p>Hallo,<br/>wir freuen uns, dass du diese Datenbank gefunden hast.<br/>Im weiteren bitten wir dich deinen Bedarf zu spezifizieren, damit dir passende Supervisor:innen vorschlagen werden.</p><p>Über die Eingabemaske hast du die Möglichkeit, das für dich passende Angebot auszuwählen. Das Angebot deckt unterschiedliche Bedarfe ab (Moderationen, Supervision, Beratung, Mediation,...) und ist offen für Einzelpersonen oder Gruppen. Dabei kann es von einzelnen Sitzungen über mehrmalige Angbote reichen.</p><p>Die Nutzung der Datenbank verläuft anonym und gewährt keine Einblick auf Nutzung.<br/>Solltest du Unterstützung oder Beratung wünschen, wende dich an {{contact}}.<br/>Ansonsten wünschen wir dir viel Erfolg!</p>",
 "Only show supervisors speaking one of this languages": "Only show supervisors speaking one of this languages",
 "What kind of offers are you looking for?": "What kind of offers are you looking for?",
 "individual": "Individual",

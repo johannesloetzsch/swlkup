@@ -170,13 +170,18 @@ export function LookupResult({data}: {data: LookupQuery}) {
     <>
       <div>
         <Trans i18nKey="introduction_user" values={{contact: constants.contact}}/>
-	<span style={{visibility: "hidden"}}> The Token was created by {data.lookup.ngo?.name}.</span>
-	<span style={{visibility: "hidden"}}> {data.lookup.supervisors?.length} Supervisors are available</span>
-        <FilterForm languages={data.languages} offers={data.offers}
-                    selections={{selectedLanguages, selectedTargets, selectedOffers, selectedContacts}}/>
-        <p>{ t('supervisor_matches', {count: filteredSupervisors?.length}) }</p>
       </div>
 
+      <h3>{ t('Filter') }</h3>
+      <div className="fullwidth">
+	<span className="cypress"> The Token was created by {data.lookup.ngo?.name}.</span>
+	<span className="cypress"> {data.lookup.supervisors?.length} Supervisors are available</span>
+        <FilterForm languages={data.languages} offers={data.offers}
+                    selections={{selectedLanguages, selectedTargets, selectedOffers, selectedContacts}}/>
+      </div>
+
+      <h3>{ t('Results') }</h3>
+      <p className="subtitle">{ t('supervisor_matches', {count: filteredSupervisors?.length}) }</p>
       <div className={styles.grid}>
         {filteredSupervisors?.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} key={supervisor.id} /> )}
       </div>

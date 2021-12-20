@@ -27,7 +27,7 @@ export function CreateToken() {
 
   return (
     auth.jwt && <div style={{width: "100%"}}>
-      <h4>{ t('Token') }</h4>
+      <h3>{ t('Token') }</h3>
 
       <form onSubmit={ async event => { event.preventDefault()
                                         const purpose = (document.getElementsByName('purpose')[0] as HTMLInputElement).value
@@ -46,7 +46,7 @@ export function CreateToken() {
 
       { Boolean(data?.created_tokens.length) &&
 	<>
-          <h5>{data?.created_tokens.length} { t('Created Tokens') }:</h5>
+          <h4>{data?.created_tokens.length} { t('Created Tokens') }:</h4>
           <ul>
           { data?.created_tokens.map(t =>
               <li key={t.token}> <a href={config.base_url+"/token/"+t.token} style={{fontFamily: "monospace"}}>{t.token}</a> {t.purpose && " - " + t.purpose}</li>

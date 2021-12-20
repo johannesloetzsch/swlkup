@@ -1,5 +1,6 @@
 {"contact": "TODO",
 
+ "url_impressum": "https://sea-watch.org/impressum/",
  "url_privacy_policy": "https://sea-watch.org/impressum/datenschutz/",
- "url_impressum": "https://sea-watch.org/impressum/"
+ "url_source": "https://github.com/johannesloetzsch/swlkup"
 }

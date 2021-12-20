@@ -1,11 +1,16 @@
 {
 "Impressum": "Impressum",
 "Privacy policy": "Datenschutzerklärung",
+"Source": "Quellcode",
 
 "Enter": "Öffnen",
 "Please enter your access token": "Bitte gib deinen <1>Zugangscode</1> ein",
 
-"introduction_user": "<p>Hallo, wir freuen uns, dass du diese Datenbank gefunden hast.<br/>Im weiteren bitten wir dich deinen Bedarf zu spezifizieren, damit dir passende Supervisor:innen vorschlagen werden.</p><p>Über die Eingabemaske hast du die Möglichkeit, das für dich passende Angebot auszuwählen. Das Angebot deckt unterschiedliche Bedarfe ab (Moderationen, Supervision, Beratung, Mediation,...) und ist offen für Einzelpersonen oder Gruppen. Dabei kann es von einzelnen Sitzungen über mehrmalige Angbote reichen.</p><p>Die Nutzung der Datenbank verläuft anonym und gewährt keine Einblick auf Nutzung.<br/>Solltest du Unterstützung oder Beratung wünschen, wende dich an {{contact}}.<br/>Ansonsten wünschen wir dir viel Erfolg!</p>",
+"This is not a valid Token.": "Der Zugangscode ist ungültig.",
+"Sorry, something went wrong.": "Sorry, irgendetwas hat nicht funktioniert.",
+"Please try again.": "Bitte versuche es erneut.",
+
+"introduction_user": "<p>Hallo,<br/>wir freuen uns, dass du diese Datenbank gefunden hast.<br/>Im weiteren bitten wir dich deinen Bedarf zu spezifizieren, damit dir passende Supervisor:innen vorschlagen werden.</p><p>Über die Eingabemaske hast du die Möglichkeit, das für dich passende Angebot auszuwählen. Das Angebot deckt unterschiedliche Bedarfe ab (Moderationen, Supervision, Beratung, Mediation,...) und ist offen für Einzelpersonen oder Gruppen. Dabei kann es von einzelnen Sitzungen über mehrmalige Angbote reichen.</p><p>Die Nutzung der Datenbank verläuft anonym und gewährt keine Einblick auf Nutzung.<br/>Solltest du Unterstützung oder Beratung wünschen, wende dich an {{contact}}.<br/>Ansonsten wünschen wir dir viel Erfolg!</p>",
 "Only show supervisors speaking one of this languages": "Zeige nur Supervisoren, die eine dieser Sprachen sprechen",
 "What kind of offers are you looking for?": "Nach welchen Angeboten suchst du?",
 "individual": "Einzelperson",
