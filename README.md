@@ -1,3 +1,5 @@
+![logo](./frontend/public/favicon.ico)
+
 Swlkup is an application to manage a database of supervisors and provide anonymous access for authorized users.
 
 ## Quickstart

@@ -13,13 +13,13 @@ export default function Layout({children}) {
         <Head>
           <title>Supervisor Lookup</title>
           <meta name="description" content="Supervisor Lookup" />
-          {/* <link rel="icon" href="/favicon.ico" /> */}
+          <link rel="icon" href="/favicon.ico" />
         </Head>
 
         <div className={styles.header}>
           <div>LangSelection</div>
           <div className={styles.slogan}>
-            <h1>psychological.<wbr/>contact</h1>
+            <h1>psych<img src="/favicon.ico" className={styles.favicon}/>logical.<wbr/>contact</h1>
             Find support from the SAR Network
           </div>
           <div>{/*Login*/}</div>
