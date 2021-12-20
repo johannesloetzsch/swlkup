@@ -1,6 +1,7 @@
 import styles from '../styles/Layout.module.css'
 import Head from 'next/head'
 import QueryClientProvider from '../components/QueryClientProvider'
+import LanguageSelection from './LanguageSelection';
 import { useTranslation, Trans } from 'react-i18next';
 import constants from '../i18n/const.json'
 
@@ -17,7 +18,7 @@ export default function Layout({children}) {
         </Head>
 
         <div className={styles.header}>
-          <div>LangSelection</div>
+          <div><LanguageSelection/></div>
           <div className={styles.slogan}>
             <h1>psych<img src="/favicon.ico" className={styles.favicon}/>logical.<wbr/>contact</h1>
             { t('Find support from the SAR Network') }

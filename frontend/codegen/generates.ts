@@ -269,6 +269,11 @@ export type LoginQueryVariables = Exact<{
 
 export type LoginQuery = { __typename?: 'QueryType', login: { __typename?: 'login', jwt?: string | null | undefined } };
 
+export type LanguagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LanguagesQuery = { __typename?: 'QueryType', languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string }> };
+
 export type LookupQueryVariables = Exact<{
   token?: InputMaybe<Scalars['String']>;
 }>;
@@ -308,6 +313,27 @@ export const useLoginQuery = <
     useQuery<LoginQuery, TError, TData>(
       ['Login', variables],
       fetcher<LoginQuery, LoginQueryVariables>(LoginDocument, variables),
+      options
+    );
+export const LanguagesDocument = `
+    query Languages {
+  languages {
+    id
+    name
+    flag_url
+  }
+}
+    `;
+export const useLanguagesQuery = <
+      TData = LanguagesQuery,
+      TError = unknown
+    >(
+      variables?: LanguagesQueryVariables,
+      options?: UseQueryOptions<LanguagesQuery, TError, TData>
+    ) =>
+    useQuery<LanguagesQuery, TError, TData>(
+      variables === undefined ? ['Languages'] : ['Languages', variables],
+      fetcher<LanguagesQuery, LanguagesQueryVariables>(LanguagesDocument, variables),
       options
     );
 export const LookupDocument = `

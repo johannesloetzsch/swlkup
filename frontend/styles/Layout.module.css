@@ -38,7 +38,7 @@
 }
 
 .header div {
-  min-width: 100px;  /** keep LangSelection and Login symetric **/
+  min-width: 200px;  /** keep LangSelection and Login symetric **/
 }
 
 .footer {

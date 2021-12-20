@@ -5,6 +5,15 @@ export const login = gql`
     login(auth: $auth) {jwt}
   }`
 
+export const languages = gql`
+  query Languages {
+    languages {
+      id
+      name
+      flag_url
+    }
+  }`
+
 export const lookup = gql`
   query Lookup($token: String="R4nd0m") {
     lookup(token: $token) {
