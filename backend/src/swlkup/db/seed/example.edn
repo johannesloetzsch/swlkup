@@ -3,32 +3,44 @@
   :id "en"
   :xt/spec :swlkup.model.languages/languages
   :name "English"
-  :flag_url "https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg"}
+  :flag_url "https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg"
+  :idx 0}
  {:xt/id :de
   :id "de"
   :xt/spec :swlkup.model.languages/languages
   :name "Deutsch"
-  :flag_url "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg"}
- {:xt/id :it
-  :id "it"
-  :xt/spec :swlkup.model.languages/languages
-  :name "Italiano"
-  :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg"}
- {:xt/id :es
-  :id "es"
-  :xt/spec :swlkup.model.languages/languages
-  :name "Español"
-  :flag_url "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"}
+  :flag_url "https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg"
+  :idx 1}
  {:xt/id :fr
   :id "fr"
   :xt/spec :swlkup.model.languages/languages
   :name "Français"
-  :flag_url "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg"}
+  :flag_url "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg"
+  :idx 2}
+ {:xt/id :it
+  :id "it"
+  :xt/spec :swlkup.model.languages/languages
+  :name "Italiano"
+  :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg"
+  :idx 3}
+ {:xt/id :es
+  :id "es"
+  :xt/spec :swlkup.model.languages/languages
+  :name "Español"
+  :flag_url "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"
+  :idx 4}
  {:xt/id :ar
   :id "ar"
   :xt/spec :swlkup.model.languages/languages
   :name "العربية"
-  :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/0e/Flag_of_the_Arabic_language.svg"}
+  :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/0e/Flag_of_the_Arabic_language.svg"
+  :idx 5}
+ {:xt/id :fa
+  :id "fa"
+  :xt/spec :swlkup.model.languages/languages
+  :name "فارسی"
+  :flag_url "https://upload.wikimedia.org/wikipedia/commons/a/a2/Farsi.svg"
+  :idx 6}
 
  {:xt/id "counseling"
   :id "counseling"

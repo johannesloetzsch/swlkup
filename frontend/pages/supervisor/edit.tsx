@@ -4,6 +4,7 @@ import { useSupervisorGetQuery, Offers, SupervisorInput} from '../../codegen/gen
 import { fetcher } from '../../codegen/fetcher'
 import { useTranslation, Trans } from 'react-i18next';
 import constants from '../../i18n/const.json'
+import { sort } from '../../components/LanguageSelection'
 
 function filter_empty_vals(map: object) {
   return Object.fromEntries(Object.entries(map).filter(kv => kv[1]))
@@ -147,11 +148,11 @@ export default function SupervisorEdit() {
 
           <fieldset>
             <legend>{ t('Languages you speak') }</legend>
-            { data.languages.map( lang => (
+            { sort(data.languages).map( lang => (
               <label key={lang.id}>
                 <input type="checkbox" name="language" value={lang.id} id={lang.id} defaultChecked={supervisor?.languages.includes(lang.id)} onChange={validate} />
                 <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
-                {lang.name}
+	        <span className="bidi-isolate">{lang.name}</span>&nbsp;
               </label>
             ) ) }
           </fieldset><br/>

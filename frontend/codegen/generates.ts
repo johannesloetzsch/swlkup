@@ -170,6 +170,8 @@ export type Languages = {
   /** Self descriptive. */
   id: Scalars['String'];
   /** Self descriptive. */
+  idx: Scalars['Int'];
+  /** Self descriptive. */
   name: Scalars['String'];
 };
 
@@ -272,21 +274,21 @@ export type LoginQuery = { __typename?: 'QueryType', login: { __typename?: 'logi
 export type LanguagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LanguagesQuery = { __typename?: 'QueryType', languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string }> };
+export type LanguagesQuery = { __typename?: 'QueryType', languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }> };
 
 export type LookupQueryVariables = Exact<{
   token?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type LookupQuery = { __typename?: 'QueryType', lookup: { __typename?: 'lookup', valid: boolean, ngo?: { __typename?: 'ngo', name?: string | null | undefined } | null | undefined, supervisors?: Array<{ __typename?: 'supervisors', id: string, name_full: string, photo?: string | null | undefined, languages: Array<string>, offers: Array<string>, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, email?: string | null | undefined, website?: string | null | undefined } }> | null | undefined }, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string }>, offers: Array<{ __typename?: 'offers', id: string, target: string, desc: string }> };
+export type LookupQuery = { __typename?: 'QueryType', lookup: { __typename?: 'lookup', valid: boolean, ngo?: { __typename?: 'ngo', name?: string | null | undefined } | null | undefined, supervisors?: Array<{ __typename?: 'supervisors', id: string, name_full: string, photo?: string | null | undefined, languages: Array<string>, offers: Array<string>, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, email?: string | null | undefined, website?: string | null | undefined } }> | null | undefined }, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, desc: string }> };
 
 export type SupervisorGetQueryVariables = Exact<{
   auth: Auth;
 }>;
 
 
-export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, photo?: string | null | undefined, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', zip?: string | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string }>, offers: Array<{ __typename?: 'offers', id: string, target: string, desc: string }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
+export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, photo?: string | null | undefined, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', zip?: string | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, desc: string }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
 
 export type NgoQueryVariables = Exact<{
   auth: Auth;
@@ -321,6 +323,7 @@ export const LanguagesDocument = `
     id
     name
     flag_url
+    idx
   }
 }
     `;
@@ -361,6 +364,7 @@ export const LookupDocument = `
     id
     name
     flag_url
+    idx
   }
   offers {
     id
@@ -405,6 +409,7 @@ export const SupervisorGetDocument = `
     id
     name
     flag_url
+    idx
   }
   offers {
     id

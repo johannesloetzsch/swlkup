@@ -5,9 +5,11 @@
 }
 
 .label {
+    display: inline-block;
     position: relative;
     padding-left: 14px;
-    margin-left: 14px;
+    margin-left: 4px;
+    white-space:nowrap;
 }
 
 .indicator{

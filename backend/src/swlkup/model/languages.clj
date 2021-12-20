@@ -5,5 +5,6 @@
 (s/def ::id t/string)
 (s/def ::name t/string)
 (s/def ::flag_url t/string)
+(s/def ::idx t/int)
 
-(s/def ::languages (s/keys :req-un [::id ::name ::flag_url]))
+(s/def ::languages (s/keys :req-un [::id ::name ::flag_url ::idx]))

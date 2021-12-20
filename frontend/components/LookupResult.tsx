@@ -4,6 +4,7 @@ import create from 'zustand'
 import { Checkbox } from './Checkbox'
 import { useTranslation, Trans } from 'react-i18next';
 import constants from '../i18n/const.json'
+import { sort } from './LanguageSelection'
 
 type Options = any //Map<string, boolean>
 
@@ -68,12 +69,12 @@ function FilterForm({languages, offers, selections}:
     <form>
       <fieldset>
         <legend>{ t('Only show supervisors speaking one of this languages') }</legend>
-        { languages.map( lang => (
+        { sort(languages).map( lang => (
           <Checkbox name="language" value={lang.id} id={lang.id} onChange={setLanguage} key={lang.id}
                     refInput={el => el && (el.indeterminate = getLanguages([]).length === 0
                                        && selections.selectedLanguages.includes(lang.id))} >
             <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
-            {lang.name}
+            <span className="bidi-isolate">{lang.name}</span>
           </Checkbox>
         ) ) }
       </fieldset><br/>

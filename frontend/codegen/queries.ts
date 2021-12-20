@@ -11,6 +11,7 @@ export const languages = gql`
       id
       name
       flag_url
+      idx
     }
   }`
 
@@ -40,6 +41,7 @@ export const lookup = gql`
       id
       name
       flag_url
+      idx
     }
 
     offers {
@@ -74,6 +76,7 @@ export const supervisor_get = gql`
       id
       name
       flag_url
+      idx
     }
 
     offers {

@@ -53,3 +53,7 @@ p.subtitle {
 div.fullwidth {
   width: 100%;
 }
+
+.bidi-isolate {
+  unicode-bidi: isolate;
+}
