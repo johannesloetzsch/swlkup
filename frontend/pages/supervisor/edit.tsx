@@ -96,8 +96,9 @@ export default function SupervisorEdit() {
   return (
     <>
       <Login />
-      <br/><br/>
-      <Trans i18nKey="introduction_supervisor" values={constants}/>
+      <div>
+        <Trans i18nKey="introduction_supervisor" values={constants}>text <a href={constants.url_privacy_policy}>privacy_policy</a></Trans>
+      </div>
       <br/><br/>
 
       { data && data.ngos && <>
@@ -109,76 +110,6 @@ export default function SupervisorEdit() {
 					  && refetch()
 	                                  && jump_top() }
                        } id="supervisor_form">
-          <fieldset>
-            <legend>{ t('Languages you speak') }</legend>
-            { data.languages.map( lang => (
-              <label key={lang.id}>
-                <input type="checkbox" name="language" value={lang.id} id={lang.id} defaultChecked={supervisor?.languages.includes(lang.id)} onChange={validate} />
-                <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
-                {lang.name}
-              </label>
-            ) ) }
-          </fieldset><br/>
-  
-          <fieldset>
-            <legend>{ t('General information') }</legend>
-	    <table><tbody>
-	      <tr>
-	        <td>{ t('Name') }</td>
-                <td><input type="text" name="name_full" defaultValue={supervisor?.name_full || undefined} required={true}/></td>
-	      </tr>
-	      <tr>
-		<td>{ t('Specialization') }</td>
-                <td><input type="text" name="text_specialization" defaultValue={supervisor?.text_specialization || undefined} required={true}/></td>
-	      </tr>
-              <tr>
-	        <td>{ t('Motivation') }</td>
-                <td><textarea name="text" defaultValue={supervisor?.text || undefined} rows={4} required={true}/></td>
-              </tr>
-	    </tbody></table>
-          </fieldset><br/>
-  
-          <fieldset>
-            <legend>{ t('What kind of offers are you providing?') }</legend>
-            <table><tbody>
-	      <tr>
-	        <td>{ t('For individuals') }</td>
-                <td>{ offer_options(data.offers.filter(offer => offer.target === 'individual'), supervisor) }</td>
-	      </tr>
-	      <tr>
-                <td>{ t('For groups') }</td>
-                <td>{ offer_options(data.offers.filter(offer => offer.target === 'group'), supervisor) }</td>
-	      </tr>
-	    </tbody></table>
-          </fieldset><br/>
-  
-          <fieldset>
-            <legend><Trans i18nKey="Contact information (phone or email)">Contact information <i>(phone or email)</i></Trans></legend>
-	    <table><tbody>
-              <tr>
-	        <td>{ t('Phone') }</td>
-                <td><input type="text" name="phone" defaultValue={supervisor?.contacts.phone || undefined} onChange={validate}/></td>
-	      </tr>
-              <tr>
-                <td>{ t('Email') }</td>
-                <td><input type="text" name="email" defaultValue={supervisor?.contacts.email || undefined} onChange={validate}/></td>
-              </tr>
-              <tr>
-	        <td>{ t('Website') }<br/><i>({ t('optional') })</i></td>
-                <td><input type="text" name="website" defaultValue={supervisor?.contacts.website || undefined}/></td>
-	      </tr>
-            </tbody></table>
-          </fieldset><br/>
-  
-          <fieldset>
-            <legend>{ t('Location') }</legend>
-	    <table><tbody>
-	      <tr>
-                <td>{ t('Zip code') }<br/><i>({ t('optional') })</i></td>
-                <td><input type="text" name="zip" defaultValue={supervisor?.location.zip || undefined}/></td>
-	      </tr>
-	    </tbody></table>
-          </fieldset><br/>
   
           <fieldset>
             <legend>{ t('For which ngos are you offering your services?') }</legend>
@@ -212,6 +143,77 @@ export default function SupervisorEdit() {
 		</td>
 	      </tr>
   	    </tbody></table>
+          </fieldset><br/>
+
+          <fieldset>
+            <legend>{ t('Languages you speak') }</legend>
+            { data.languages.map( lang => (
+              <label key={lang.id}>
+                <input type="checkbox" name="language" value={lang.id} id={lang.id} defaultChecked={supervisor?.languages.includes(lang.id)} onChange={validate} />
+                <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
+                {lang.name}
+              </label>
+            ) ) }
+          </fieldset><br/>
+  
+          <fieldset>
+            <legend>{ t('What kind of offers are you providing?') }</legend>
+            <table><tbody>
+	      <tr>
+	        <td>{ t('For individuals') }</td>
+                <td>{ offer_options(data.offers.filter(offer => offer.target === 'individual'), supervisor) }</td>
+	      </tr>
+	      <tr>
+                <td>{ t('For groups') }</td>
+                <td>{ offer_options(data.offers.filter(offer => offer.target === 'group'), supervisor) }</td>
+	      </tr>
+	    </tbody></table>
+          </fieldset><br/>
+  
+          <fieldset>
+            <legend>{ t('General information') }</legend>
+	    <table><tbody>
+	      <tr>
+	        <td>{ t('Name') }</td>
+                <td><input type="text" name="name_full" defaultValue={supervisor?.name_full || undefined} required={true}/></td>
+	      </tr>
+	      <tr>
+		<td>{ t('Specialization') }</td>
+                <td><input type="text" name="text_specialization" defaultValue={supervisor?.text_specialization || undefined} required={true}/></td>
+	      </tr>
+              <tr>
+	        <td>{ t('Motivation') }</td>
+                <td><textarea name="text" defaultValue={supervisor?.text || undefined} rows={4} required={true}/></td>
+              </tr>
+	    </tbody></table>
+          </fieldset><br/>
+  
+          <fieldset>
+            <legend><Trans i18nKey="Contact information (phone or email)">Contact information <i>(phone or email)</i></Trans></legend>
+	    <table><tbody>
+              <tr>
+	        <td>{ t('Phone') }</td>
+                <td><input type="text" name="phone" defaultValue={supervisor?.contacts.phone || undefined} onChange={validate}/></td>
+	      </tr>
+              <tr>
+                <td>{ t('Email') }</td>
+                <td><input type="text" name="email" defaultValue={supervisor?.contacts.email || undefined} onChange={validate}/></td>
+              </tr>
+              <tr>
+	        <td>{ t('Website') }<br/><i>({ t('optional') })</i></td>
+                <td><input type="text" name="website" defaultValue={supervisor?.contacts.website || undefined}/></td>
+	      </tr>
+            </tbody></table>
+          </fieldset><br/>
+  
+          <fieldset>
+            <legend>{ t('Location') }</legend>
+	    <table><tbody>
+	      <tr>
+                <td>{ t('Zip code') }<br/><i>({ t('optional') })</i></td>
+                <td><input type="text" name="zip" defaultValue={supervisor?.location.zip || undefined}/></td>
+	      </tr>
+	    </tbody></table>
           </fieldset><br/>
 
           <div style={{textAlign: "right"}}>
