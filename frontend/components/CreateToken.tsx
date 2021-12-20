@@ -49,7 +49,7 @@ export function CreateToken() {
           <h4>{data?.created_tokens.length} { t('Created Tokens') }:</h4>
           <ul>
           { data?.created_tokens.map(t =>
-              <li key={t.token}> <a href={config.base_url+"/token/"+t.token} style={{fontFamily: "monospace"}}>{t.token}</a> {t.purpose && " - " + t.purpose}</li>
+              <li key={t.token}> <a href={config.base_url+"/token/"+t.token} style={{fontFamily: "monospace"}} className="token">{t.token}</a> {t.purpose && " - " + t.purpose}</li>
             )
           }
           </ul>

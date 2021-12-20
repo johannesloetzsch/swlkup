@@ -18,7 +18,8 @@ describe('Walk through', () => {
 	.type("Next Mission")
       cy.get($form).submit()
     })
-   cy.get('a').invoke('attr', 'href').then($href => { token_url = $href })
+   cy.get('a.token').invoke('attr', 'href').then($href => { token_url = $href })
+   cy.log(token_url)
 
     cy.get('form[id="invitation_form"]').within($form => {
       cy.get('input[name=supervisor_email]')
