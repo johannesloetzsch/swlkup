@@ -1,3 +1,9 @@
 .center {
   text-align: center;
 }
+
+.explanation {
+  white-space: normal;
+  margin-left: 1em;
+  font-size: smaller;
+}

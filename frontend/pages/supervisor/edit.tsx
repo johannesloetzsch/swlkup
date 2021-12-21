@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
+import styles_core from '../../styles/Core.module.css'
 import { Login, useAuthStore, AuthState } from '../../components/Login'
 import { useSupervisorGetQuery, Offers, SupervisorInput} from '../../codegen/generates'
 import { fetcher } from '../../codegen/fetcher'
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation, Trans, TFunction } from 'react-i18next';
 import constants from '../../i18n/const.json'
 import { sort } from '../../components/LanguageSelection'
 
@@ -65,11 +66,14 @@ async function mutate(auth: AuthState, supervisor: SupervisorInput) {
   return result.supervisor_update
 }
 
-function offer_options(offers: Offers[], supervisor: any) {
+function offer_options(t: TFunction, offers: Offers[], supervisor: any) {
   return offers.map( offer => (
           <label key={offer.id}>
             <input type="checkbox" name="offer" value={offer.id} id={offer.id} defaultChecked={supervisor?.offers.includes(offer.id)} onChange={validate} />
             <Trans i18nKey={offer.id as string}/><br/>
+	    <div className={styles_core.explanation} style={{paddingLeft: "14px"}}> {/** padding is required to behave like Checkbox in LookupResult **/}
+              {t(`${offer.id}_desc`)}
+	    </div>
           </label>
         ))
 }
@@ -162,11 +166,11 @@ export default function SupervisorEdit() {
             <table><tbody>
 	      <tr>
 	        <td>{ t('For individuals') }</td>
-                <td>{ offer_options(data.offers.filter(offer => offer.target === 'individual'), supervisor) }</td>
+                <td>{ offer_options(t, data.offers.filter(offer => offer.target === 'individual'), supervisor) }</td>
 	      </tr>
 	      <tr>
                 <td>{ t('For groups') }</td>
-                <td>{ offer_options(data.offers.filter(offer => offer.target === 'group'), supervisor) }</td>
+                <td>{ offer_options(t, data.offers.filter(offer => offer.target === 'group'), supervisor) }</td>
 	      </tr>
 	    </tbody></table>
           </fieldset><br/>

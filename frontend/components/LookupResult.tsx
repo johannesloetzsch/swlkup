@@ -1,4 +1,5 @@
 import styles from '../styles/Supervisor.module.css'
+import styles_core from '../styles/Core.module.css'
 import { Languages, LookupQuery, Supervisors, Offers } from '../codegen/generates'
 import create from 'zustand'
 import { Checkbox } from './Checkbox'
@@ -94,6 +95,9 @@ function FilterForm({languages, offers, selections}:
                       refInput={el => el && (el.indeterminate = getOffers([]).length === 0
                                          && selections.selectedOffers.includes(offer.id))} >
               {t(offer.id)}
+	      <div className={styles_core.explanation}>
+                {t(`${offer.id}_desc`)}
+	      </div>
             </Checkbox><br/>
           </span>
         ) ) }
