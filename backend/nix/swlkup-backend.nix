@@ -16,7 +16,7 @@ let
     '';
   };
 
-  version = "0.2.1";
+  version = "0.2.2";
   pname = "swlkup-backend";
   name = "${pname}-${version}";
 
