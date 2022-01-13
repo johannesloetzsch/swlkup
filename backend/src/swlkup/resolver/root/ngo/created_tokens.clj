@@ -15,10 +15,11 @@
   (let [{:keys [q]} (:db_ctx ctx)
         [ngo:id] (auth+role->entity ctx (:auth opt) ::ngo/doc)]
        (when ngo:id
-         (let [tokens (q '{:find [?token ?purpose]
-                           :keys [token purpose]
+         (let [tokens (q '{:find [?valid ?token ?purpose]
+                           :keys [valid token purpose]
                            :where [[?t :xt/spec :swlkup.model.token/doc]
                                    [?t :ngo ->ngo:id]
+                                   [?t :valid ?valid]
                                    [?t :token ?token]
                                    [?t :purpose ?purpose]]
                            :in [->ngo:id]}

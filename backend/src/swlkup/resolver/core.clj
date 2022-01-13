@@ -5,6 +5,7 @@
             [swlkup.resolver.root.ngo.registered-supervisor :refer [supervisors_registered]]
             [swlkup.resolver.root.ngo.create-token :refer [create_token]]
             [swlkup.resolver.root.ngo.created-tokens :refer [created_tokens]]
+            [swlkup.resolver.root.ngo.invalidate-token :refer [invalidate_token]]
             [swlkup.resolver.root.supervisor.get :refer [supervisor_get]]
             [swlkup.resolver.root.supervisor.update :refer [supervisor_update]]
             [swlkup.resolver.root.user.lookup :refer [lookup]]
@@ -25,7 +26,8 @@
                                  :created_tokens #'created_tokens}
                          :mutation {:supervisor_register #'supervisor_register
                                     :supervisor_update #'supervisor_update
-                                    :create_token #'create_token}}))
+                                    :create_token #'create_token
+                                    :invalidate_token #'invalidate_token}}))
 
 (defn ->graphql
   "Create a wrapped graphql-executor, that merges context into the request.

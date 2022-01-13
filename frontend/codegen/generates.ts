@@ -56,6 +56,7 @@ export type LocationInput = {
 export type MutationType = {
   __typename?: 'MutationType';
   create_token: Scalars['String'];
+  invalidate_token: Scalars['Boolean'];
   /** Add a new supervisor account to the database and send a mail containing the password via mail */
   supervisor_register: Scalars['Boolean'];
   /** Update a supervisors data */
@@ -67,6 +68,13 @@ export type MutationType = {
 export type MutationTypeCreate_TokenArgs = {
   auth: Auth;
   purpose?: InputMaybe<Scalars['String']>;
+};
+
+
+/** If this server supports mutation, the type that mutation operations will be rooted at. */
+export type MutationTypeInvalidate_TokenArgs = {
+  auth: Auth;
+  token: Scalars['String'];
 };
 
 
@@ -160,6 +168,8 @@ export type Created_Tokens = {
   purpose?: Maybe<Scalars['String']>;
   /** The secret given to a group of users, allowing anonym access to the lookup */
   token: Scalars['String'];
+  /** Self descriptive. */
+  valid: Scalars['Boolean'];
 };
 
 /** All languages */
@@ -295,7 +305,7 @@ export type NgoQueryVariables = Exact<{
 }>;
 
 
-export type NgoQuery = { __typename?: 'QueryType', created_tokens: Array<{ __typename?: 'created_tokens', token: string, purpose?: string | null | undefined }>, supervisors_registered: Array<{ __typename?: 'supervisors_registered', mail: string, name_full?: string | null | undefined }> };
+export type NgoQuery = { __typename?: 'QueryType', created_tokens: Array<{ __typename?: 'created_tokens', token: string, purpose?: string | null | undefined, valid: boolean }>, supervisors_registered: Array<{ __typename?: 'supervisors_registered', mail: string, name_full?: string | null | undefined }> };
 
 
 export const LoginDocument = `
@@ -439,6 +449,7 @@ export const NgoDocument = `
   created_tokens(auth: $auth) {
     token
     purpose
+    valid
   }
   supervisors_registered(auth: $auth) {
     mail

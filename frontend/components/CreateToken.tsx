@@ -6,12 +6,17 @@ import { useNgoQuery } from '../codegen/generates'
 import { useTranslation, Trans } from 'react-i18next';
 
 async function mutate(auth: AuthState, purpose: string) {
-  console.log(purpose)
   const result = await fetcher<any, any>(`mutation Create($auth: Auth!, $purpose: String) {
 					    create_token(auth: $auth, purpose: $purpose) }`,
                                          {auth, purpose})()
-  console.debug(result)
   return result.create_token
+}
+
+async function invalidate (auth: AuthState, token: string) {
+  const result = await fetcher<any, any>(`mutation InvalidateToken($auth: Auth!, $token:String!) {
+                                            invalidate_token(auth: $auth, token: $token) }`,
+					 {auth, token})()
+  return result.invalidate_token
 }
 
 export function CreateToken() {
@@ -48,8 +53,14 @@ export function CreateToken() {
 	<>
           <h4>{data?.created_tokens.length} { t('Created Tokens') }:</h4>
           <ul>
-          { data?.created_tokens.map(t =>
-              <li key={t.token}> <a href={config.base_url+"/token/"+t.token} style={{fontFamily: "monospace"}} className="token">{t.token}</a> {t.purpose && " - " + t.purpose}</li>
+          { data?.created_tokens.map(token =>
+              <li key={token.token} style={{textDecoration: token.valid ? "none" : "line-through"}}>
+                <a href={config.base_url+"/token/"+token.token} style={{fontFamily: "monospace"}} className="token">{token.token}</a>
+                {token.purpose && " - " + token.purpose}
+		&nbsp;
+		{/* TODO: ask for confirmation and show token_disable_recommendation */}
+		{token.valid && <input type="button" onClick={async () => await invalidate(auth, token.token) && refetch()} value={ t('Disable') as string } />}
+              </li>
             )
           }
           </ul>

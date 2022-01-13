@@ -38,6 +38,11 @@
                                    (println "synced" (xtdb/sync node))
                                    (println "awaited" (xtdb/await-tx node transaction))
                                    (xtdb/tx-committed? node transaction))
+                :tx-fn-put (fn [fn-name quoted-fn]
+                               ;; In future we may want add transaction functions only once (at startup)
+                               (xtdb/submit-tx node [[::xtdb/put {:xt/id fn-name :xt/fn quoted-fn}]]))
+                :tx-fn-call (fn [fn-name & args]
+                                (xtdb/submit-tx node [(concat [::xtdb/fn fn-name] args)]))
                 :sync (fn [] (xtdb/sync node))
                 :q (fn [& args]
                        (apply q node args))

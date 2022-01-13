@@ -18,7 +18,9 @@
         token (:token opt)
         token-data (q_id_unary '{:find [(pull ?e [*])]
                                  :in [token]
-                                 :where [[?e :token token]]}
+                                 :where [[?e :xt/spec :swlkup.model.token/doc]
+                                         [?e :valid true]
+                                         [?e :token token]]}
                                token)]
        {:_ {::lookup token-data}
         :_cred {::token token-data}

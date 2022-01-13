@@ -91,12 +91,20 @@
 
  {:xt/id :T0p53cret
   :xt/spec :swlkup.model.token/doc
-  :token "T0p53cret"
-  :ngo "seawatch"}
+  :ngo "seawatch"
+  :valid true
+  :token "T0p53cret"}
  {:xt/id :R4nd0m
   :xt/spec :swlkup.model.token/doc
-  :token "R4nd0m"
-  :ngo "lifeline"}
+  :ngo "lifeline"
+  :valid true
+  :token "R4nd0m"}
+ {:xt/id :InvalidateTest
+  :xt/spec :swlkup.model.token/doc
+  :ngo "example_ngo"
+  :valid true
+  :token "InvalidateTest"
+  :purpose "It is used in a testcase"}
 
  {:xt/id "MaxMüller"
   :xt/spec :swlkup.model.supervisor/doc

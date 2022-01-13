@@ -20,6 +20,7 @@
          (let [token (generate-token)]
               (tx [[:xtdb.api/put {:xt/id (uuid)
                                   :xt/spec ::token/doc
+                                  :valid true
                                   :token token
                                   :ngo ngo:id
                                   :purpose (:purpose opt)}]])
