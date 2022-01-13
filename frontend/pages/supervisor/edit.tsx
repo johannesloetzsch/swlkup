@@ -63,7 +63,14 @@ async function mutate(auth: AuthState, supervisor: SupervisorInput) {
                                             supervisor_update(auth: $auth, supervisor_input: $supervisor) }`,
                                          {auth, supervisor})()
   //console.debug(result)
-  return result.supervisor_update
+  return result?.supervisor_update
+}
+
+async function mutate_delete(auth: AuthState) {
+  const result = await fetcher<any, any>(`mutation delete($auth: Auth) {
+                                            supervisor_delete(auth: $auth) }`,
+                                         {auth})()
+  return result?.supervisor_delete
 }
 
 function offer_options(t: TFunction, offers: Offers[], supervisor: any) {
@@ -223,7 +230,13 @@ export default function SupervisorEdit() {
 
           <div style={{textAlign: "right"}}>
             <input type="submit" value={ t('Save and Publish') as string }/>
-	  </div>
+          </div>
+
+          <div style={{textAlign: "right"}}>
+	    <br/>
+	    {/* TODO: ask for confirmation */}
+            <input type="button" value={ t('Delete Profile') as string } onClick={async () => { await mutate_delete(auth) && refetch() }} name="delete"/>
+          </div>
         </form>
       </> }
     </>

@@ -2,7 +2,7 @@ describe('Invalidate Token', () => {
 
   it('Initially the token should be valid', () => {
     cy.visit('/token/InvalidateTest?lng=en')
-    cy.get('main').contains('2 Supervisors are matching these filters')
+    cy.get('main').contains('1 Supervisor matches these filters')
   })
 
   it('Ngo: Create token and invite supervisor', () => {

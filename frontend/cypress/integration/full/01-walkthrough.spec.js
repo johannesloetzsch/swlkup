@@ -61,4 +61,23 @@ describe('Walk through', () => {
     cy.visit(token_url)
     cy.get('main').contains('F. Nord')
   })
+
+  it('Delete profile of the new supervisor', () => {
+    cy.visit('/supervisor/edit')
+    cy.get('form').within($form => {
+      cy.get('input[name=mail]')
+        .type("supervisor@example.com")
+      cy.get('input[name=password]')
+        .type(supervisor_password)
+      cy.get($form).submit()
+    })
+    cy.get('input[type=button][name=delete]').click()
+  })
+
+  it('New supervisor should not be longer visible', () => {
+    cy.log(token_url)
+    cy.visit(token_url)
+    cy.get('main').contains('1 Supervisor matches these filters')
+    cy.get('main').not(':contains("F. Nord")')
+  })
 })

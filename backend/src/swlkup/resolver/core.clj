@@ -8,6 +8,7 @@
             [swlkup.resolver.root.ngo.invalidate-token :refer [invalidate_token]]
             [swlkup.resolver.root.supervisor.get :refer [supervisor_get]]
             [swlkup.resolver.root.supervisor.update :refer [supervisor_update]]
+            [swlkup.resolver.root.supervisor.delete :refer [supervisor_delete]]
             [swlkup.resolver.root.user.lookup :refer [lookup]]
             [swlkup.resolver.root.ngos :refer [ngos]]
             [swlkup.resolver.root.languages :refer [languages]]
@@ -26,6 +27,7 @@
                                  :created_tokens #'created_tokens}
                          :mutation {:supervisor_register #'supervisor_register
                                     :supervisor_update #'supervisor_update
+                                    :supervisor_delete #'supervisor_delete
                                     :create_token #'create_token
                                     :invalidate_token #'invalidate_token}}))
 
