@@ -17,6 +17,7 @@ export default function Token() {
   } else if(data?.lookup.valid) {
     return ( <LookupResult data={data} /> )
   } else if(data) {
+    {/* TODO: distinct error when token was invalidated */}
     return ( <p className={styles.center}>{ t('This is not a valid Token.') }<br/>{ t('Please try again.') }</p> )
   } else {
     return ( <p className={styles.center}>{ t('Sorry, something went wrong.') }<br/>{ t('Please try again.') }</p> )

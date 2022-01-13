@@ -59,7 +59,7 @@ export function CreateToken() {
                 {token.purpose && " - " + token.purpose}
 		&nbsp;
 		{/* TODO: ask for confirmation and show token_disable_recommendation */}
-		{token.valid && <input type="button" onClick={async () => await invalidate(auth, token.token) && refetch()} value={ t('Disable') as string } />}
+		{token.valid && <input type="button" onClick={async () => await invalidate(auth, token.token) && refetch()} value={ t('Disable') as string } name={token.token} />}
               </li>
             )
           }
