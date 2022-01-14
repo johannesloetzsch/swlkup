@@ -6,6 +6,7 @@ import { fetcher } from '../../codegen/fetcher'
 import { useTranslation, Trans, TFunction } from 'react-i18next';
 import constants from '../../i18n/const.json'
 import { sort } from '../../components/LanguageSelection'
+import { DeleteSupervisorDialog, useDeleteStore } from '../../components/supervisor/DeleteSupervisorDialog'
 
 function filter_empty_vals(map: object) {
   return Object.fromEntries(Object.entries(map).filter(kv => kv[1]))
@@ -54,7 +55,6 @@ function validate() {
 		 ? {data: {supervisor}}
 	         : {data: {supervisor},
 	            errors: filter_empty_vals(errors)}
-  //form && console.log(result)
   return result
 }
 
@@ -62,15 +62,7 @@ async function mutate(auth: AuthState, supervisor: SupervisorInput) {
   const result = await fetcher<any, any>(`mutation update($auth: Auth, $supervisor: SupervisorInput) {
                                             supervisor_update(auth: $auth, supervisor_input: $supervisor) }`,
                                          {auth, supervisor})()
-  //console.debug(result)
   return result?.supervisor_update
-}
-
-async function mutate_delete(auth: AuthState) {
-  const result = await fetcher<any, any>(`mutation delete($auth: Auth) {
-                                            supervisor_delete(auth: $auth) }`,
-                                         {auth})()
-  return result?.supervisor_delete
 }
 
 function offer_options(t: TFunction, offers: Offers[], supervisor: any) {
@@ -87,10 +79,13 @@ function offer_options(t: TFunction, offers: Offers[], supervisor: any) {
 
 export default function SupervisorEdit() {
   const {t} = useTranslation()
+
   const auth = useAuthStore()
   useEffect(() => {
     auth.setJwt(localStorage.getItem('jwt') || '')
   }, [auth.jwt])
+
+  const {deleted} = useDeleteStore()
 
   const {data, remove, refetch} = useSupervisorGetQuery({auth}, {enabled: Boolean(auth.jwt)})
   const supervisor = data?.supervisor_get
@@ -107,13 +102,19 @@ export default function SupervisorEdit() {
 
   return (
     <>
+      { deleted && <p>
+         { t('Your Account has been deleted.') }
+	</p>
+      }
+
       <Login />
-      <div>
-        <Trans i18nKey="introduction_supervisor" values={constants}>text <a href={constants.url_privacy_policy}>privacy_policy</a></Trans>
-      </div>
-      <br/><br/>
 
       { data && data.ngos && <>
+        <div>
+          <Trans i18nKey="introduction_supervisor" values={constants}>text <a href={constants.url_privacy_policy}>privacy_policy</a></Trans>
+        </div>
+        <br/><br/>
+
         <form onSubmit={ async event => { event.preventDefault()
 		                          const {data, errors} = validate()
 		                          remove()  /** we want delete the cache between calculation based on this data and mutation **/
@@ -234,8 +235,7 @@ export default function SupervisorEdit() {
 
           <div style={{textAlign: "right"}}>
 	    <br/>
-	    {/* TODO: ask for confirmation */}
-            <input type="button" value={ t('Delete Profile') as string } onClick={async () => { await mutate_delete(auth) && refetch() }} name="delete"/>
+	    <DeleteSupervisorDialog/>
           </div>
         </form>
       </> }

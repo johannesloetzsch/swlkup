@@ -72,6 +72,9 @@ describe('Walk through', () => {
       cy.get($form).submit()
     })
     cy.get('input[type=button][name=delete]').click()
+    cy.get('input[id=confirm_delete]').check()
+    cy.get('input[type=button][name=delete]').click()
+    cy.get('main').contains('Your account has been deleted.')
   })
 
   it('New supervisor should not be longer visible', () => {

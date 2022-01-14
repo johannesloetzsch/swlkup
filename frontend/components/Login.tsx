@@ -23,7 +23,8 @@ export const useAuthStore = create<AuthState>(set => ({
   setLogin: (mail, password) => set( _orig => ({mail, password})),
   jwt: '',
   setJwt: jwt => set( _orig => ({jwt}) ),
-  logout: () => set({mail: '', password: '', jwt: ''})
+  logout: () => { localStorage.removeItem('jwt')
+	          set({mail: '', password: '', jwt: ''}) }
 }))
 
 export function Login() {
@@ -42,7 +43,6 @@ export function Login() {
 
     if(jwtDecode(auth.jwt).exp < Date.now()/1000) {
       console.log('session expired')
-      localStorage.removeItem('jwt')
       auth.logout()
     }
   }, [auth.jwt, data])
@@ -64,7 +64,6 @@ export function Login() {
   } else {
     return (
       <form onSubmit={ async (event) => {event.preventDefault()
-                                         localStorage.removeItem('jwt')
                                          auth.logout()}}
 	    style={{width: "100%", textAlign: "right"}}>
         <input type='submit' value={ t('Logout') as string }/>
