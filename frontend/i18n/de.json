@@ -91,7 +91,7 @@
 "Created Tokens": "Erstellte Token",
 "Disable": "Deaktivieren",
 "I'm sure I want to disable this token.": "Ich bin mir sicher, dass ich den Token deaktivieren möchte.",
-"token_disable_recommendation": "Wir empfehlen Token nach ihrer Verteilung für einige Jahre aktiv zu lassen.<br/>Im Fall, dass ein Token versehentlich veröffentlicht wurde, sollte er unmittelbar deaktiviert werden, um die Daten der Supervisor:innen zu schützen. Anschließend empfehlen wir, allen berechtigten Nutzern des deaktivierten Tokens einen neue generierten Token zukommen zu lassen.",
+"token_disable_recommendation": "Wir empfehlen Token nach ihrer Verteilung für einige Jahre aktiv zu lassen.<br/>Im Fall, dass ein Token versehentlich veröffentlicht wurde, sollte er unmittelbar deaktiviert werden, um die Daten der Supervisor:innen zu schützen. Anschließend empfehlen wir, allen berechtigten Nutzern des deaktivierten Tokens einen neu generierten Token zukommen zu lassen.",
 "Supervisor": "Supervisor",
 "Invite a new Supervisor": "Neuen Supervisor einladen",
 "Mail address of Supervisor you want invite": "Email des Supervisors",

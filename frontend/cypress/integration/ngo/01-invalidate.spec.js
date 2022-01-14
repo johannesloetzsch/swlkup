@@ -15,6 +15,8 @@ describe('Invalidate Token', () => {
       cy.get($form).submit()
     })
     cy.get('input[type=button][name=InvalidateTest]').click()
+    cy.get('input[id=confirm_invalidation]').check()
+    cy.get('input[type=button][name=InvalidateTest]').click()
   })
 
   it('The Token should now be disabled', () => {

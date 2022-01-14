@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { useAuthStore, AuthState } from './Login'
-import { fetcher } from '../codegen/fetcher'
-import { useNgoQuery } from '../codegen/generates'
+import { useAuthStore, AuthState } from '../Login'
+import { fetcher } from '../../codegen/fetcher'
+import { useNgoQuery } from '../../codegen/generates'
 import { useTranslation, Trans } from 'react-i18next';
 
 async function mutate(auth: AuthState, mail: string) {

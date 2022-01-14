@@ -1,22 +1,16 @@
-import { config, fetch_config } from "../config";
+import { config, fetch_config } from "../../config";
 import { useEffect } from 'react'
-import { useAuthStore, AuthState } from './Login'
-import { fetcher } from '../codegen/fetcher'
-import { useNgoQuery } from '../codegen/generates'
+import { useAuthStore, AuthState } from '../Login'
+import { fetcher } from '../../codegen/fetcher'
+import { useNgoQuery, Created_Tokens } from '../../codegen/generates'
 import { useTranslation, Trans } from 'react-i18next';
+import { InvalidateTokenDialog } from './InvalidateTokenDialog'
 
 async function mutate(auth: AuthState, purpose: string) {
   const result = await fetcher<any, any>(`mutation Create($auth: Auth!, $purpose: String) {
 					    create_token(auth: $auth, purpose: $purpose) }`,
                                          {auth, purpose})()
   return result.create_token
-}
-
-async function invalidate (auth: AuthState, token: string) {
-  const result = await fetcher<any, any>(`mutation InvalidateToken($auth: Auth!, $token:String!) {
-                                            invalidate_token(auth: $auth, token: $token) }`,
-					 {auth, token})()
-  return result.invalidate_token
 }
 
 export function CreateToken() {
@@ -49,6 +43,8 @@ export function CreateToken() {
         </fieldset>
       </form>
 
+      <p><Trans i18nKey={'token_disable_recommendation'}/></p>
+
       { Boolean(data?.created_tokens.length) &&
 	<>
           <h4>{data?.created_tokens.length} { t('Created Tokens') }:</h4>
@@ -56,10 +52,9 @@ export function CreateToken() {
           { data?.created_tokens.map(token =>
               <li key={token.token} style={{textDecoration: token.valid ? "none" : "line-through"}}>
                 <a href={config.base_url+"/token/"+token.token} style={{fontFamily: "monospace"}} className="token">{token.token}</a>
-                {token.purpose && " - " + token.purpose}
+                { token.purpose && " - " + token.purpose }
 		&nbsp;
-		{/* TODO: ask for confirmation and show token_disable_recommendation */}
-		{token.valid && <input type="button" onClick={async () => await invalidate(auth, token.token) && refetch()} value={ t('Disable') as string } name={token.token} />}
+                { token.valid && <InvalidateTokenDialog token={token} refetch={refetch}/> }
               </li>
             )
           }

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { LookupResult } from '../../components/LookupResult'
+import { LookupResult } from '../../components/user/LookupResult'
 import { useLookupQuery } from '../../codegen/generates'
 import styles from '../../styles/Core.module.css'
 import { useTranslation, Trans } from 'react-i18next';
