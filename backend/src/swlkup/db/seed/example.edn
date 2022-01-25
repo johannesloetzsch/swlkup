@@ -29,18 +29,24 @@
   :name "Español"
   :flag_url "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"
   :idx 4}
+ {:xt/id :tr
+  :id "tr"
+  :xt/spec :swlkup.model.languages/languages
+  :name "Türkçe"
+  :flag_url "https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg"
+  :idx 5}
  {:xt/id :ar
   :id "ar"
   :xt/spec :swlkup.model.languages/languages
   :name "العربية"
   :flag_url "https://upload.wikimedia.org/wikipedia/commons/0/0e/Flag_of_the_Arabic_language.svg"
-  :idx 5}
+  :idx 6}
  {:xt/id :fa
   :id "fa"
   :xt/spec :swlkup.model.languages/languages
   :name "فارسی"
   :flag_url "https://upload.wikimedia.org/wikipedia/commons/a/a2/Farsi.svg"
-  :idx 6}
+  :idx 7}
 
  {:xt/id "counseling"
   :id "counseling"

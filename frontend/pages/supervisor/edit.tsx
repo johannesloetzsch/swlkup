@@ -46,7 +46,7 @@ function validate() {
   const errors = {email: supervisor.contacts.phone || supervisor.contacts.email ? '' : 'Please provide a phone number or an email address.',
                   language: supervisor.languages?.length ? '' : 'Please select at least one language.',
                   offer: supervisor.offers?.length ? '' : 'Please select at least one offer.',
-                  all_ngos: supervisor.ngos?.length ? '' : 'Please select the ngos you want support or choose the option `Àny`.'}
+                  all_ngos: supervisor.ngos?.length ? '' : 'Please select the NGOs you want support or choose the option `Any`.'}
 
   setCustomValidity(errors)
 

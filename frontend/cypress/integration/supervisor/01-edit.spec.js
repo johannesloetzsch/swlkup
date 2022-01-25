@@ -25,7 +25,7 @@ describe('Edit supervisor', () => {
 
       cy.get('#all_ngos_false').check()
       cy.get('input[name=ngos]').uncheck()
-      cy.get('input:invalid').invoke('prop', 'validationMessage').should('equal','Please select the ngos you want support or choose the option `Àny`.')
+      cy.get('input:invalid').invoke('prop', 'validationMessage').should('equal','Please select the NGOs you want support or choose the option `Any`.')
       cy.get('input[value=lifeline]').check()
 
       cy.get('input[name=phone]').clear()
