@@ -8,7 +8,7 @@ let
 
   mavenRepository = buildMavenRepositoryFromLockFile { file = ./deps/mvn2nix-lock.json; };
 
-  src = stdenv.mkDerivation {
+  src = mkDerivation {
     name = "swlkup-backend-src";
     src = lib.cleanSource ./..;
     installPhase = ''

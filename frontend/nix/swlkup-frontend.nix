@@ -1,7 +1,7 @@
 {pkgs ? import <nixpkgs> {},
  nodejs ? pkgs.nodejs-12_x,
- stdenv ? pkgs.stdenv,
  lib ? pkgs.lib,
+ stdenv ? pkgs.stdenv,
  ...}:
 
 let
