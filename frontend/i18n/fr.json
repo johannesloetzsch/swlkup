@@ -5,7 +5,7 @@
 "Source": "Code source",
 
 "Enter": "Entrée",
-"Please enter your access token": "Veuilles entrer le <1>Zugangscode</1>",
+"Please enter your access token": "Veuilles entrer le <1>token</1>",
 
 "This is not a valid Token.": "Ce n'est pas un token valable.",
 "Sorry, something went wrong.": "Désolé, quelque chose s'est mal passé.",
