@@ -7,6 +7,7 @@ import { useTranslation, Trans, TFunction } from 'react-i18next';
 import constants from '../../i18n/const.json'
 import { sort } from '../../components/LanguageSelection'
 import { DeleteSupervisorDialog, useDeleteStore } from '../../components/supervisor/DeleteSupervisorDialog'
+import { ProfilePictureUpload } from '../../components/supervisor/ProfilePictureUpload'
 
 function filter_empty_vals(map: object) {
   return Object.fromEntries(Object.entries(map).filter(kv => kv[1]))
@@ -46,7 +47,7 @@ function validate() {
   const errors = {email: supervisor.contacts.phone || supervisor.contacts.email ? '' : 'Please provide a phone number or an email address.',
                   language: supervisor.languages?.length ? '' : 'Please select at least one language.',
                   offer: supervisor.offers?.length ? '' : 'Please select at least one offer.',
-                  all_ngos: supervisor.ngos?.length ? '' : 'Please select the NGOs you want support or choose the option `Any`.'}
+              	  all_ngos: supervisor.ngos?.length ? '' : 'Please select the NGOs you want support or choose the option `Any`.'}
 
   setCustomValidity(errors)
 
@@ -227,6 +228,11 @@ export default function SupervisorEdit() {
                 <td><input type="text" name="zip" defaultValue={supervisor?.location.zip || undefined}/></td>
 	      </tr>
 	    </tbody></table>
+          </fieldset><br/>
+
+          <fieldset>
+            <legend>{ t('Profile picture') } <i>({ t('optional') })</i></legend>
+	    <ProfilePictureUpload/>
           </fieldset><br/>
 
           <div style={{textAlign: "right"}}>

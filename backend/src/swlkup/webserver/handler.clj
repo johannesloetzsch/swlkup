@@ -1,21 +1,42 @@
 (ns swlkup.webserver.handler
-  (:require [swlkup.config.state :refer [env]]
-            [compojure.core :refer [defroutes GET POST]]
+  (:require [compojure.core :refer [defroutes GET POST]]
             [compojure.route :as route]
-            [ring.util.response :refer [response resource-response content-type]]
-            [ring.util.json-response :refer [json-response]]
-            [ring.middleware.content-type :refer [wrap-content-type]] 
-            [ring.middleware.not-modified :refer [wrap-not-modified]]
-            [ring.middleware.resource :refer [wrap-resource]]
-            [ring.middleware.webjars :refer [wrap-webjars]]
-            [ring.middleware.json :refer [wrap-json-response wrap-json-body]]
+            [ring.util.response :refer [response file-response]]
             [ring.middleware.cors :refer [wrap-cors]]
-            [lib.graphql.middleware :refer [wrap-graphql-error]]
+            [swlkup.webserver.middleware :refer [wrap-rest wrap-graphql wrap-graphiql wrap-nextjs-frontend wrap-frontend-config wrap-defaults]]
             [swlkup.resolver.core :refer [graphql]]
-            [lib.resources.list-resources :refer [list-resources]]
-            [clojure.string :as string :refer [ends-with?]]))
+            [clojure.java.io :as io]
+            [clojure.string :as string :refer [split]]
+            [swlkup.auth.core :refer [auth+role->entity]]
+            [swlkup.model.supervisor :as supervisor]
+            [swlkup.db.state :refer [db_ctx]]
+            [swlkup.config.state :refer [env]]))
 
-(def frontend-url "http://localhost:3000/")
+(def frontend-url (:frontend-base-url env))
+
+(defn upload-supervisor-picture
+  "dest is a safe path, depending only on the uuid of the supervisor"
+  [req]
+  (let [source (get-in req [:multipart-params "upload" :tempfile])
+        ctx {:db_ctx db_ctx}
+        jwt (-> (get-in req [:headers "authorization"] "")
+                (split #"Bearer ") last)
+        [supervisor:id _login:id] (auth+role->entity ctx {:jwt jwt} ::supervisor/doc)
+        dest (str (:upload-dir env) "/" supervisor:id)]
+       (if-not supervisor:id
+               {:status 403
+                :body "Invalid supervisor:id, ensure you are logged in and there exists a profile for this login."}
+               (if (> (.length (io/file source)) (* 1024 1024 (:upload-limit-mb env)))
+                    {:status 413
+                     :body (str "Upload exceeds maximum size of " (:upload-limit-mb env) "MB")}
+                    (do (io/copy (io/file source) (io/file dest))
+                        (response "Upload Successful"))))))
+
+(defn serve-uploaded-supervisor-picture
+  "file-response prevents directory-transversal and symlinks"
+  [id]
+  (file-response id {:root (:upload-dir env)}))
+
 
 (defroutes app-routes
   (GET "/" [] (str "<p>The backend takes care of data storage and securing its access.<br/>"
@@ -26,75 +47,20 @@
                    "   You may want start it independently and open <a href=\"" frontend-url "\">" frontend-url "</a>.</br>"
                    "   Alternatively production builds including the frontend are available via nix."
                    "</p/>"))
-  (POST "/graphql" req
-    (response (graphql (:body req))))
+  (wrap-graphql
+    (POST "/graphql" req
+      (response (graphql (:body req)))))
+  (wrap-rest
+    (POST "/api/upload-supervisor-picture" req
+      (upload-supervisor-picture req)))
+  (GET "/uploads/:id" [id]
+    (serve-uploaded-supervisor-picture id))
   (route/not-found "Not Found"))
 
-(defn wrap-graphiql
-  "Add graphqli using org.webjars/graphiql and resources/public/graphiql/index.html"
-  [handler]
-  (-> handler
-      (wrap-webjars)
-      (wrap-resource "public")))
-
-(defn wrap-graphql
-  "Handle Content-Type and Errors of graphql-endpoint"
-  [handler]
-  (-> handler
-      (wrap-json-body {:keywords? true :bigdecimals? true})
-      (wrap-json-response)
-      (wrap-graphql-error)))
-
-(defn wrap-nextjs-frontend
-  "Serve the frontend:
-   1. Everything from the backend that is not the mocked /
-   2. Any directory should serve the index.html when existing
-   3. Serve an .html file instead of a requested file without extension
-   4. When a not existing file is accessed in a directory with only 1 .html (probably a route with a variable), serve that instead
-   5. If all attempts failed, pass the 404"
-  [handler]
-  (fn [req]
-      (let [res (handler req)
-            path (string/replace (:uri req) #"/[^/]*$" "/")
-            file (string/replace (:uri req) #".*/" "")
-            html (->> (list-resources (str "public" path))
-                      (remove #(re-matches #".+[/].*" %))  ;; only files that are not in a subdirectory
-                      (filter #(re-matches #".*\.html" %)))]
-           (cond (not (or (= 404 (:status res))
-                          (= "/" (:uri req))))
-                   res
-                 (and (ends-with? (:uri req) "/")
-                      (some #{"index.html"} html))
-                   {:status 302
-                    :headers {"Location" (str (:uri req) "index.html")}
-                    :body ""}
-                 (some #{(str file ".html")} html)
-                   {:status 302
-                    :headers {"Location" (str (:uri req) ".html")}
-                    :body ""}
-                 (= 1 (count html))
-                   (-> (resource-response (str "public" path (first html)))
-                       (content-type "text/html"))
-                 :else
-                   res))))
-
-(defn wrap-frontend-config
-  "Provide config for static build of frontend"
-  [handler]
-  (fn [req]
-      (if (= "/config.json" (:uri req))
-          (json-response {:graphql_endpoint (:frontend-graphql-endpoint env)
-                          :base_url (:frontend-base-url env)})
-          (handler req))))
-
-(defn wrap-defaults [handler]
-  (-> handler
-      (wrap-content-type)
-      (wrap-not-modified)))
 
 (def app
   (-> app-routes
-      (wrap-graphql)
+
       (wrap-graphiql)
 
       (wrap-nextjs-frontend)

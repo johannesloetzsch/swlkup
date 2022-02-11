@@ -10,12 +10,15 @@
  :db-export-prefix "./data/export_"
  :db-validate true
 
+ :upload-dir "./data/upload"  ;; ensure you created it
+ :upload-limit-mb 1
+
  :mail-host ""
  :mail-user ""
  :mail-pass ""
  :mail-port 587
  :mail-from nil
 
- :frontend-graphql-endpoint "http://localhost:4000/graphql"
  :frontend-base-url "http://localhost:4000"
+ :frontend-backend-base-url "http://localhost:4000"
 }

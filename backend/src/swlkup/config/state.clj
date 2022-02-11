@@ -17,14 +17,17 @@
 (s/def ::db-export-prefix (s/nilable string?))  ;; path where during startup an export should be written
 (s/def ::db-validate boolean?)
 
+(s/def ::upload-dir string?)
+(s/def ::upload-limit-mb number?)
+
 (s/def ::mail-host string?)
 (s/def ::mail-user string?)
 (s/def ::mail-pass string?)
 (s/def ::mail-port number?)
 (s/def ::mail-from (s/nilable string?))
 
-(s/def ::frontend-graphql-endpoint string?)
 (s/def ::frontend-base-url string?)
+(s/def ::frontend-backend-base-url string?)
 
 (s/def ::env (s/keys :req-un [::verbose
                               ::port
@@ -32,10 +35,11 @@
                               ::db-inmemory ::db-dir
                               ::db-seed ::db-export-prefix
                               ::db-validate
+                              ::upload-dir
+                              ::upload-limit-mb
                               ::mail-host ::mail-user ::mail-pass ::mail-port ::mail-from
-
-                              ::frontend-graphql-endpoint
-                              ::frontend-base-url]))
+                              ::frontend-base-url
+                              ::frontend-backend-base-url]))
 
 (defn filter-defined [keys-spec m]
   (let [req-un (last (s/form keys-spec))

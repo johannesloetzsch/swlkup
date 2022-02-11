@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import styles from '../../styles/Supervisor.module.css'
 import styles_core from '../../styles/Core.module.css'
 import { Languages, LookupQuery, Supervisors, Offers } from '../../codegen/generates'
@@ -6,6 +7,7 @@ import { Checkbox } from '../Checkbox'
 import { useTranslation, Trans } from 'react-i18next';
 import constants from '../../i18n/const.json'
 import { sort } from '../LanguageSelection'
+import { config, fetch_config } from "../../config";
 
 type Options = any //Map<string, boolean>
 
@@ -125,8 +127,10 @@ function FilterForm({languages, offers, selections}:
   )
 }
 
-function Supervisor({supervisor, languages}:
-                    {supervisor: Supervisors, languages: Languages[]}) {
+function Supervisor({supervisor, languages, backend_base_url}:
+                    {supervisor: Supervisors, languages: Languages[], backend_base_url: URL}) {
+  const img_url = `${backend_base_url}/uploads/${supervisor?.id}`
+
   return (
     <div className={styles.card}>
       <table style={{width: "100%"}}>
@@ -143,8 +147,9 @@ function Supervisor({supervisor, languages}:
           <tr>
             <td>{supervisor.text}</td>
             <td style={{textAlign: "right"}}>
-              {supervisor.photo && <img src={supervisor.photo} style={{maxWidth: "110px",  /** enough to display 4 flags **/
-                                                                       maxHeight: "200px"}}/>}
+              { // supervisor.photo &&  /** TODO **/
+		<img src={img_url} style={{width: "110px", minWidth: "110px",  /** enough to display 4 flags above it **/
+                                           maxHeight: "200px"}}/> }
             </td>
           </tr>
         </tbody>
@@ -162,6 +167,7 @@ function Supervisor({supervisor, languages}:
 }
 
 export function LookupResult({data}: {data: LookupQuery}) {
+  useEffect( () => {fetch_config() }, [config])
   const {t} = useTranslation()
   const {getLanguages, getTargets, getOffers, getContacts} = useFilterStore()
   const selectedLanguages = getLanguages(data.languages.map(lang => lang.id))
@@ -188,7 +194,7 @@ export function LookupResult({data}: {data: LookupQuery}) {
       <h3>{ t('Results') }</h3>
       <p className="subtitle">{ t('supervisor_matches', {count: filteredSupervisors?.length}) }</p>
       <div className={styles.grid}>
-        {filteredSupervisors?.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} key={supervisor.id} /> )}
+        {filteredSupervisors?.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} backend_base_url={config.backend_base_url as any as URL} key={supervisor.id} /> )}
       </div>
     </>
   )
