@@ -48,16 +48,26 @@
   :flag_url "https://upload.wikimedia.org/wikipedia/commons/a/a2/Farsi.svg"
   :idx 7}
 
- {:xt/id "counseling"
-  :id "counseling"
+ {:xt/id "counseling_volunteers"
+  :id "counseling_volunteers"
   :xt/spec :swlkup.model.offers/offers
   :target :individual
-  :desc "Counselling/Coaching for individuals"}
- {:xt/id "crisis_intervention"
-  :id "crisis_intervention"
+  :desc "Counselling/Coaching for volunteers"}
+ {:xt/id "crisis_intervention_volunteers"
+  :id "crisis_intervention_volunteers"
   :xt/spec :swlkup.model.offers/offers
   :target :individual
-  :desc "Crisis intervention for individuals"}
+  :desc "Crisis intervention for volunteers"}
+ {:xt/id "counseling_refugees"
+  :id "counseling_refugees"
+  :xt/spec :swlkup.model.offers/offers
+  :target :individual
+  :desc "Counselling/Coaching for refugees"}
+ {:xt/id "crisis_intervention_refugees"
+  :id "crisis_intervention_refugees"
+  :xt/spec :swlkup.model.offers/offers
+  :target :individual
+  :desc "Crisis intervention for refugees"}
  {:xt/id "briefing_ship"
   :id "briefing_ship"
   :xt/spec :swlkup.model.offers/offers
@@ -123,7 +133,7 @@
   :name_full "Max Müller"
   :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_joe.png"
   :languages [:de :en]
-  :offers #{"counselling" "crisis_intervention"}
+  :offers #{"counselling_refugees" "crisis_intervention_refugees"}
   :contacts {:phone "0351 1234 5678"
              :email "praxis@max.mueller.de"
              :website "https://max.mueller.de"}
@@ -141,7 +151,7 @@
   :name_full "Maria Musterfrau"
   :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_stephanie.png"
   :languages [:it :es :fr :ar]
-  :offers #{"counseling" "crisis_intervention"
+  :offers #{"counseling_refugees" "crisis_intervention_refugees"
             "mediation" "moderation" "supervision" "workshops"}
   :contacts {:phone "+49 123 4567 8901"
              :email "maria@mm.de"

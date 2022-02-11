@@ -18,10 +18,10 @@ describe('Edit supervisor', () => {
       cy.get('input:invalid').invoke('prop', 'validationMessage').should('equal','Please select at least one language.')
       cy.get('#en').check({force: true})
 
-      cy.get('#crisis_intervention').uncheck()
+      cy.get('#crisis_intervention_refugees').uncheck()
       cy.get('#supervision').uncheck()
       cy.get('input:invalid').invoke('prop', 'validationMessage').should('equal','Please select at least one offer.')
-      cy.get('#crisis_intervention').check()
+      cy.get('#crisis_intervention_refugees').check()
 
       cy.get('#all_ngos_false').check()
       cy.get('input[name=ngos]').uncheck()

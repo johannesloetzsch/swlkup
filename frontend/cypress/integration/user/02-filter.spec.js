@@ -27,17 +27,17 @@ describe('Test filters on a LookupResult for a token', () => {
     cy.visit('/token/T0p53cret')
     cy.log('Default: No filter on offers and show filters for offers for individuals only')
     cy.get('main').contains('2 Supervisors are matching these filters')
-    cy.get('input[name=offer]').should('have.length', 2)
+    cy.get('input[name=offer]').should('have.length', 4)
 
     cy.log('The same as the default')
     cy.get('#individual').check({force: true})
     cy.get('main').contains('2 Supervisors are matching these filters')
-    cy.get('input[name=offer]').should('have.length', 2)
+    cy.get('input[name=offer]').should('have.length', 4)
 
     cy.log('No filter on offers and show filters for offers for individuals and groups')
     cy.get('#group').check({force: true})
     cy.get('main').contains('2 Supervisors are matching these filters')
-    cy.get('input[name=offer]').should('have.length', 8)
+    cy.get('input[name=offer]').should('have.length', 10)
 
     cy.log('No filter on offers and show filters for offers for groups only')
     cy.get('#individual').uncheck({force: true})
