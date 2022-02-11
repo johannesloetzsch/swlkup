@@ -1,6 +1,6 @@
 import { config, fetch_config } from "../../config";
 import { useEffect } from 'react'
-import { useAuthStore, AuthState } from '../Login'
+import { useAuthStore, AuthState, jwtFromLocalStorage } from '../Login'
 import { fetcher } from '../../codegen/fetcher'
 import { useNgoQuery, Created_Tokens } from '../../codegen/generates'
 import { useTranslation, Trans } from 'react-i18next';
@@ -19,7 +19,7 @@ export function CreateToken() {
 
   const auth = useAuthStore()
   useEffect(() => {
-    auth.setJwt(localStorage.getItem('jwt') || '')
+    auth.setJwt(jwtFromLocalStorage())
   }, [auth.jwt])
 
   const { data, remove, refetch } = useNgoQuery({auth}, {enabled: Boolean(auth.jwt)})

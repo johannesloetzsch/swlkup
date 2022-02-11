@@ -27,6 +27,10 @@ export const useAuthStore = create<AuthState>(set => ({
 	          set({mail: '', password: '', jwt: ''}) }
 }))
 
+export function jwtFromLocalStorage() {
+  return localStorage.getItem('jwt') || ''
+}
+
 export function Login() {
   const {t} = useTranslation()
   const auth = useAuthStore()
@@ -38,7 +42,7 @@ export function Login() {
       localStorage.setItem('jwt', auth.jwt)
     }
     else {
-      auth.setJwt(data?.login.jwt || localStorage.getItem('jwt') || '')
+      auth.setJwt(data?.login.jwt || jwtFromLocalStorage())
     }
 
     if(jwtDecode(auth.jwt).exp < Date.now()/1000) {

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import styles_core from '../../styles/Core.module.css'
-import { Login, useAuthStore, AuthState } from '../../components/Login'
+import { Login, useAuthStore, AuthState, jwtFromLocalStorage } from '../../components/Login'
 import { useSupervisorGetQuery, Offers, SupervisorInput} from '../../codegen/generates'
 import { fetcher } from '../../codegen/fetcher'
 import { useTranslation, Trans, TFunction } from 'react-i18next';
@@ -83,7 +83,7 @@ export default function SupervisorEdit() {
 
   const auth = useAuthStore()
   useEffect(() => {
-    auth.setJwt(localStorage.getItem('jwt') || '')
+    auth.setJwt(jwtFromLocalStorage())
   }, [auth.jwt])
 
   const {deleted} = useDeleteStore()
