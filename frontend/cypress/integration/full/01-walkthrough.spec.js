@@ -1,7 +1,7 @@
 let token_url = ""  // will be set once a new token was generated
 let supervisor_password = "" // will be set once a new supervisor was invited
 
-/** Integration test, running each core feature once, high level checking most important routes and resolvers for the lifecycle of supervisors and tokens **/
+/** High level checking the lifecycle of a supervisor. **/
 describe('Walk through', () => {
 
   it('Ngo: Create token and invite supervisor', () => {
@@ -18,18 +18,19 @@ describe('Walk through', () => {
 	.type("Next Mission")
       cy.get($form).submit()
     })
-   cy.get('a.token').invoke('attr', 'href').then($href => { token_url = $href })
+   cy.get('a.token_valid').invoke('attr', 'href').then($href => { token_url = $href })
    cy.log(token_url)
 
     cy.get('form[id="invitation_form"]').within($form => {
       cy.get('input[name=supervisor_email]')
 	.type("supervisor@example.com")
 
+      cy.log('The next instruction might pause, when cypress in running as background job')
       cy.exec('rm /tmp/mail.log || true')
+      cy.log('Submitting might fail, when the supervisor already exists (when it was not correctly deleted in the previous test run)')
       cy.get($form).submit()
     })
     cy.get('main').contains('registered supervisors')
-    cy.log('HINT: till now this test is not idempotent since the supervisor is not being deleted')
     cy.exec('cat /tmp/mail.log').then($result => {
       supervisor_password = $result.stdout.split('\n').filter(l => l.startsWith("Password:"))[0].split(' ')[1]
     })

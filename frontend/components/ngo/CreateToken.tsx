@@ -51,7 +51,7 @@ export function CreateToken() {
           <ul>
           { data?.created_tokens.map(token =>
               <li key={token.token} style={{textDecoration: token.valid ? "none" : "line-through"}}>
-                <a href={config.base_url+"/token/"+token.token} style={{fontFamily: "monospace"}} className="token">{token.token}</a>
+                <a href={config.base_url+"/token/"+token.token} style={{fontFamily: "monospace"}} className={`token_${token.valid ? 'valid' : 'invalid'}`}>{token.token}</a>
                 { token.purpose && " - " + token.purpose }
 		&nbsp;
                 { token.valid && <InvalidateTokenDialog token={token} refetch={refetch}/> }

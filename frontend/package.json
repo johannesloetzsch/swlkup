@@ -8,7 +8,7 @@
     "build": "next build --no-lint",
     "start": "next start",
     "export": "next export",
-    "serve": "node serve.mjs"
+    "serve": "node serve.js"
   },
   "dependencies": {
     "graphql-request": "^3.7.0",
