@@ -42,6 +42,9 @@
 "Results": "Ergebnisse",
 "supervisor_matches_one": "1 Supervisor:in wurde für diese Filtereinstellungen gefunden",
 "supervisor_matches_other": "{{count}} Supervisoren:innen wurden für diese Filtereinstellungen gefunden",
+"Mail to all": "Mail an alle",
+"Copy to clipboard": "In Zwischenablage kopieren",
+"Open mail client": "Im Mailclient öffnen",
 
 "You have been invited by the SAR Support Network.": "Du bist von {{email}} zum SAR Support Netzwerk eingeladen worden.",
 "We would be glad, if you participate by setting up your profile at {{url}}": "Wir würden uns freuen, wenn du uns unterstützt. Hier kannst du dein Profil konfigurieren {{url}}",

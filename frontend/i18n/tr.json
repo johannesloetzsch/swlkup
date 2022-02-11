@@ -42,6 +42,9 @@
 "Results": "Sonuçlar",
 "supervisor_matches_one": "1 Süpervizör bu filtrelemeyle eşleşiyor",
 "supervisor_matches_other": "{{count}} Süpervizör bu filtrelemeyle eşleşiyor",
+"Mail to all": "Mail to all",
+"Copy to clipboard": "Copy to clipboard",
+"Open mail client": "Open mail client",
 
 "You have been invited by the SAR Support Network.": " {{email}} tarafından SAR  Destek Ağı'na davet edildiniz.",
 "We would be glad, if you participate by setting up your profile at {{url}}": "Aşağıdaki linkten profil oluşturarak katılırsanız çok seviniriz {{url}}",

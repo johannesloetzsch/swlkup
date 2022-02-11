@@ -7,7 +7,8 @@ import { Checkbox } from '../Checkbox'
 import { useTranslation, Trans } from 'react-i18next';
 import constants from '../../i18n/const.json'
 import { sort } from '../LanguageSelection'
-import { config, fetch_config } from "../../config";
+import { config, fetch_config } from '../../config';
+import { MailToAll } from './MailToAll'
 
 type Options = any //Map<string, boolean>
 
@@ -193,9 +194,8 @@ export function LookupResult({data}: {data: LookupQuery}) {
 
       <h3>{ t('Results') }</h3>
       <p className="subtitle">{ t('supervisor_matches', {count: filteredSupervisors?.length}) }</p>
-      <div className={styles.grid}>
-        {filteredSupervisors?.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} backend_base_url={config.backend_base_url as any as URL} key={supervisor.id} /> )}
-      </div>
+
+      <MailToAll filteredSupervisors={filteredSupervisors as Supervisors[]}/>
     </>
   )
 }
