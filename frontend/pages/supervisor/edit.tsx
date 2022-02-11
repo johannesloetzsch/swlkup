@@ -237,7 +237,7 @@ export default function SupervisorEdit() {
 
           <div style={{textAlign: "right"}}>
 	    <label>
-              <input type="checkbox" required/>
+              <input type="checkbox" required name="confirm_privacy_policy"/>
               <Trans i18nKey="confirm_privacy_policy" values={constants}>text <a href={constants.url_privacy_policy}>privacy_policy</a></Trans>
 	    </label>&nbsp;
             <input type="submit" value={ t('Save and Publish') as string }/>

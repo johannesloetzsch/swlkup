@@ -41,6 +41,10 @@ describe('Edit supervisor', () => {
       cy.get('input[name=text_specialization]').type('PTSD')
       cy.get('textarea[name=text]').type('Why not? ;)')
 
+      cy.log('confirm to privacy policy')
+      cy.get('input:invalid').invoke('prop', 'validationMessage').should('equal','Please check this box if you want to proceed.')
+      cy.get('input[name=confirm_privacy_policy]').check()
+
       cy.log('optional inputs')
       cy.get('input[name=website]').clear()
       cy.get('input[name=zip]').clear()

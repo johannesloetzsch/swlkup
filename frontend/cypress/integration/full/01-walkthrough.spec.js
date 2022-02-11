@@ -1,7 +1,7 @@
 let token_url = ""  // will be set once a new token was generated
 let supervisor_password = "" // will be set once a new supervisor was invited
 
-/** Integration test, running each core feature once, high level checking most important routes and resolvers **/
+/** Integration test, running each core feature once, high level checking most important routes and resolvers for the lifecycle of supervisors and tokens **/
 describe('Walk through', () => {
 
   it('Ngo: Create token and invite supervisor', () => {
@@ -52,6 +52,7 @@ describe('Walk through', () => {
       cy.get('input[name=name_full]').clear().type('F. Nord')
       cy.get('input[name=text_specialization]').clear().type('Writing Testcases')
       cy.get('textarea[name=text]').clear().type('…')
+      cy.get('input[name=confirm_privacy_policy]').check()
       cy.get($form).submit()
     })
   })

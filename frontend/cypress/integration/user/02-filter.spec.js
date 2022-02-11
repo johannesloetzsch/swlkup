@@ -37,12 +37,12 @@ describe('Test filters on a LookupResult for a token', () => {
     cy.log('No filter on offers and show filters for offers for individuals and groups')
     cy.get('#group').check({force: true})
     cy.get('main').contains('2 Supervisors are matching these filters')
-    cy.get('input[name=offer]').should('have.length', 7)
+    cy.get('input[name=offer]').should('have.length', 8)
 
     cy.log('No filter on offers and show filters for offers for groups only')
     cy.get('#individual').uncheck({force: true})
     cy.get('main').contains('2 Supervisors are matching these filters')
-    cy.get('input[name=offer]').should('have.length', 5)
+    cy.get('input[name=offer]').should('have.length', 6)
 
     cy.log('Filter: moderation only')
     cy.get('#moderation').check({force: true})

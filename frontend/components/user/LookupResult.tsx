@@ -194,6 +194,9 @@ export function LookupResult({data}: {data: LookupQuery}) {
 
       <h3>{ t('Results') }</h3>
       <p className="subtitle">{ t('supervisor_matches', {count: filteredSupervisors?.length}) }</p>
+      <div className={styles.grid}>
+        {filteredSupervisors?.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} backend_base_url={config.backend_base_url as any as URL} key={supervisor.id} /> )}
+      </div>
 
       <MailToAll filteredSupervisors={filteredSupervisors as Supervisors[]}/>
     </>
