@@ -58,11 +58,16 @@
   :xt/spec :swlkup.model.offers/offers
   :target :individual
   :desc "Crisis intervention for individuals"}
- {:xt/id "briefing"
-  :id "briefing"
+ {:xt/id "briefing_ship"
+  :id "briefing_ship"
   :xt/spec :swlkup.model.offers/offers
   :target :group
-  :desc "Psychological briefing & debriefing of crews"}
+  :desc "Psychological briefing & debriefing of ship crews"}
+ {:xt/id "briefing_airborne"
+  :id "briefing_airborne"
+  :xt/spec :swlkup.model.offers/offers
+  :target :group
+  :desc "Psychological briefing & debriefing of airplane crews"}
  {:xt/id "moderation"
   :id "moderation"
   :xt/spec :swlkup.model.offers/offers
