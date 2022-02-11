@@ -47,7 +47,7 @@ export const lookup = gql`
     offers {
       id
       target
-      desc
+      idx
     }
   }`
 
@@ -82,7 +82,7 @@ export const supervisor_get = gql`
     offers {
       id
       target
-      desc
+      idx
     }
 
     ngos(auth: $auth) {

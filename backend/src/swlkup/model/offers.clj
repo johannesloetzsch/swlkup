@@ -4,6 +4,6 @@
 
 (s/def ::id t/string)
 (s/def ::target t/string)
-(s/def ::desc t/string)
+(s/def ::idx t/int)
 
-(s/def ::offers (s/keys :req-un [::id ::target ::desc]))
+(s/def ::offers (s/keys :req-un [::id ::target ::idx]))

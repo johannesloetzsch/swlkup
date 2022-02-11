@@ -57,6 +57,8 @@ export type MutationType = {
   __typename?: 'MutationType';
   create_token: Scalars['String'];
   invalidate_token: Scalars['Boolean'];
+  /** Delete a supervisors dataset and login */
+  supervisor_delete: Scalars['Boolean'];
   /** Add a new supervisor account to the database and send a mail containing the password via mail */
   supervisor_register: Scalars['Boolean'];
   /** Update a supervisors data */
@@ -75,6 +77,12 @@ export type MutationTypeCreate_TokenArgs = {
 export type MutationTypeInvalidate_TokenArgs = {
   auth: Auth;
   token: Scalars['String'];
+};
+
+
+/** If this server supports mutation, the type that mutation operations will be rooted at. */
+export type MutationTypeSupervisor_DeleteArgs = {
+  auth: Auth;
 };
 
 
@@ -220,9 +228,9 @@ export type Ngos = {
 export type Offers = {
   __typename?: 'offers';
   /** Self descriptive. */
-  desc: Scalars['String'];
-  /** Self descriptive. */
   id: Scalars['String'];
+  /** Self descriptive. */
+  idx: Scalars['Int'];
   /** Self descriptive. */
   target: Scalars['String'];
 };
@@ -291,14 +299,14 @@ export type LookupQueryVariables = Exact<{
 }>;
 
 
-export type LookupQuery = { __typename?: 'QueryType', lookup: { __typename?: 'lookup', valid: boolean, ngo?: { __typename?: 'ngo', name?: string | null | undefined } | null | undefined, supervisors?: Array<{ __typename?: 'supervisors', id: string, name_full: string, photo?: string | null | undefined, languages: Array<string>, offers: Array<string>, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, email?: string | null | undefined, website?: string | null | undefined } }> | null | undefined }, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, desc: string }> };
+export type LookupQuery = { __typename?: 'QueryType', lookup: { __typename?: 'lookup', valid: boolean, ngo?: { __typename?: 'ngo', name?: string | null | undefined } | null | undefined, supervisors?: Array<{ __typename?: 'supervisors', id: string, name_full: string, photo?: string | null | undefined, languages: Array<string>, offers: Array<string>, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, email?: string | null | undefined, website?: string | null | undefined } }> | null | undefined }, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }> };
 
 export type SupervisorGetQueryVariables = Exact<{
   auth: Auth;
 }>;
 
 
-export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, photo?: string | null | undefined, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', zip?: string | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, desc: string }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
+export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, photo?: string | null | undefined, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', zip?: string | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
 
 export type NgoQueryVariables = Exact<{
   auth: Auth;
@@ -379,7 +387,7 @@ export const LookupDocument = `
   offers {
     id
     target
-    desc
+    idx
   }
 }
     `;
@@ -424,7 +432,7 @@ export const SupervisorGetDocument = `
   offers {
     id
     target
-    desc
+    idx
   }
   ngos(auth: $auth) {
     id

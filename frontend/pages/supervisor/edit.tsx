@@ -67,7 +67,8 @@ async function mutate(auth: AuthState, supervisor: SupervisorInput) {
 }
 
 function offer_options(t: TFunction, offers: Offers[], supervisor: any) {
-  return offers.map( offer => (
+  return offers.sort((o1, o2) => o1.idx - o2.idx)
+	       .map( offer => (
           <label key={offer.id}>
             <input type="checkbox" name="offer" value={offer.id} id={offer.id} defaultChecked={supervisor?.offers.includes(offer.id)} onChange={validate} />
             <Trans i18nKey={offer.id as string}/><br/>

@@ -52,52 +52,52 @@
   :id "counseling_volunteers"
   :xt/spec :swlkup.model.offers/offers
   :target :individual
-  :desc "Counselling/Coaching for volunteers"}
- {:xt/id "crisis_intervention_volunteers"
-  :id "crisis_intervention_volunteers"
-  :xt/spec :swlkup.model.offers/offers
-  :target :individual
-  :desc "Crisis intervention for volunteers"}
+  :idx 0}
  {:xt/id "counseling_refugees"
   :id "counseling_refugees"
   :xt/spec :swlkup.model.offers/offers
   :target :individual
-  :desc "Counselling/Coaching for refugees"}
+  :idx 1}
+ {:xt/id "crisis_intervention_volunteers"
+  :id "crisis_intervention_volunteers"
+  :xt/spec :swlkup.model.offers/offers
+  :target :individual
+  :idx 2}
  {:xt/id "crisis_intervention_refugees"
   :id "crisis_intervention_refugees"
   :xt/spec :swlkup.model.offers/offers
   :target :individual
-  :desc "Crisis intervention for refugees"}
+  :idx 3}
  {:xt/id "briefing_ship"
   :id "briefing_ship"
   :xt/spec :swlkup.model.offers/offers
   :target :group
-  :desc "Psychological briefing & debriefing of ship crews"}
+  :idx 4}
  {:xt/id "briefing_airborne"
   :id "briefing_airborne"
   :xt/spec :swlkup.model.offers/offers
   :target :group
-  :desc "Psychological briefing & debriefing of airplane crews"}
+  :idx 5}
  {:xt/id "moderation"
   :id "moderation"
   :xt/spec :swlkup.model.offers/offers
   :target :group
-  :desc "Moderation"}
+  :idx 6}
  {:xt/id "mediation"
   :id "mediation"
   :xt/spec :swlkup.model.offers/offers
   :target :group
-  :desc "Mediation"}
+  :idx 7}
  {:xt/id "supervision"
   :id "supervision"
   :xt/spec :swlkup.model.offers/offers
   :target :group
-  :desc "Supervision"}
+  :idx 8}
  {:xt/id "workshops"
   :id "workshops"
   :xt/spec :swlkup.model.offers/offers
   :target :group
-  :desc "Workshops"}
+  :idx 9}
 
  {:xt/id "lifeline"
   :xt/spec :swlkup.model.ngo/doc

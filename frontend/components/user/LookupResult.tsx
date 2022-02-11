@@ -68,7 +68,9 @@ function FilterForm({languages, offers, selections}:
                     {languages: Languages[], offers: Offers[], selections: any}) {
   const {t} = useTranslation()
   const {setLanguage, getLanguages, setTarget, getTargets, setOffer, getOffers, setContact, getContacts} = useFilterStore()
-  const visibleOffers = offers.filter(o => selections.selectedTargets.includes( o.target ))
+  const visibleOffers = offers.sort((o1, o2) => o2.idx - o1.idx)
+                              .sort((o1, o2) => o1.target < o2.target ? 1 : -1)
+                              .filter(o => selections.selectedTargets.includes( o.target ))
   return (
     <form>
       <fieldset>
@@ -92,7 +94,7 @@ function FilterForm({languages, offers, selections}:
             </Checkbox>
         ) ) }
         <hr/>
-        { visibleOffers.sort((o1, o2) => o1.target < o2.target ? 1 : -1).map( offer => (
+        { visibleOffers.map( offer => (
           <span key={offer.id}>
             <Checkbox name="offer" value={offer.id} id={offer.id} onChange={setOffer}
                       refInput={el => el && (el.indeterminate = getOffers([]).length === 0
