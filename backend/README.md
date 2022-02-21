@@ -2,7 +2,7 @@
 
 The core of the server is an graphql-api based on [specialist](https://github.com/ajk/specialist-server).
 
-As database the [datalog](https://en.wikipedia.org/wiki/Datalog) implementation [CRUX](https://opencrux.com/) is used with a [RocksDB](https://rocksdb.org/) data store.
+As database the [datalog](https://en.wikipedia.org/wiki/Datalog) implementation [XTDB](https://xtdb.com/) is used with a [RocksDB](https://rocksdb.org/) data store. Some help how to access the database for development/debug purposes can be found in [./DB.md](./DB.md)
 
 ## Running development server
 
