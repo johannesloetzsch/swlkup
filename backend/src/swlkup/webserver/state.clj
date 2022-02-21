@@ -1,5 +1,5 @@
 (ns swlkup.webserver.state
-  (:gen-class)
+  (:gen-class)  ;; this Class contains our -main function
   (:require [ring.adapter.jetty]
             [ring.middleware.reload]
             [swlkup.webserver.handler]
