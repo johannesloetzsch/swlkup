@@ -27,7 +27,8 @@
                                                       :db-dir (clojure.java.io/file (:db-dir env))
                                                       :sync? true}
                                          :xtdb/tx-log {:kv-store :my-rocksdb}
-                                         :xtdb/document-store {:kv-store :my-rocksdb}}))
+                                         :xtdb/document-store {:kv-store :my-rocksdb}}))  ;; To optimize for read performance, we might switch to LMDB (B-Tree instead of LSM-Tree)
+                                                                                          ;; But for our workload it doesn't matter much
         db_ctx {:node node
                 :tx (fn [tx-ops]
                         (submit-tx node tx-ops))
