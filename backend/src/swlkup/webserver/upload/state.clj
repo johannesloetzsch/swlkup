@@ -6,26 +6,38 @@
             [clojure.java.io :as io]
             [clojure.string :as string :refer [split]]
             [swlkup.auth.core :refer [auth+role->entity]]
-            [swlkup.model.supervisor :as supervisor]
-            [swlkup.db.state :refer [db_ctx]]))
+            [swlkup.db.state :refer [db_ctx]]
+            [swlkup.resolver.root.supervisor.update]
+            [swlkup.model.supervisor :as supervisor]))
 
 (defn -upload-supervisor-picture
   "dest is a safe path, depending only on the uuid of the supervisor"
   [req]
   (let [source (get-in req [:multipart-params "upload" :tempfile])
         ctx {:db_ctx db_ctx}
-        jwt (-> (get-in req [:headers "authorization"] "")
-                (split #"Bearer ") last)
-        [supervisor:id _login:id] (auth+role->entity ctx {:jwt jwt} ::supervisor/doc)
+        auth {:jwt (-> (get-in req [:headers "authorization"] "")
+                       (split #"Bearer ") last)}
+        [supervisor:id login:id] ;; The upload destination should depend on the supervisor:id.
+                                 ;; If the for this login no supervisor profile exists till now, we create it first.
+                                 (let [[supervisor:id login:id] (auth+role->entity ctx auth ::supervisor/doc)]
+                                      (if supervisor:id
+                                          [supervisor:id login:id]
+                                          (when login:id
+                                                #_(println "create profile")
+                                                (let [opt {:auth auth
+                                                           :supervisor_input supervisor/empty}]
+                                                     (swlkup.resolver.root.supervisor.update/supervisor_update nil opt ctx nil))
+                                                (auth+role->entity ctx auth ::supervisor/doc))))
+
         dest (str (:upload-dir env) "/" supervisor:id)]
        (if-not supervisor:id
                {:status 403
-                :body "Invalid supervisor:id, ensure you are logged in and there exists a profile for this login."}
+                :body "Invalid login:id, ensure you are logged in!"}
                (if (> (.length (io/file source)) (* 1024 1024 (:upload-limit-mb env)))
-                    {:status 413
-                     :body (str "Upload exceeds maximum size of " (:upload-limit-mb env) "MB")}
-                    (do (io/copy (io/file source) (io/file dest))
-                        (response "Upload Successful"))))))
+                   {:status 413
+                    :body (str "Upload exceeds maximum size of " (:upload-limit-mb env) "MB")}
+                   (do (io/copy (io/file source) (io/file dest))
+                       (response "Upload Successful"))))))
 
 (defn -serve-uploaded-supervisor-picture
   "file-response prevents directory-transversal and symlinks"

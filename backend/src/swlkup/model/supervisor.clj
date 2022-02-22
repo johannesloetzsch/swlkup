@@ -28,16 +28,13 @@
 (s/def ::languages (t/field (s/* ::languages/id) ""))
 (s/def ::offers (t/field (s/coll-of ::offers/id) ""))
 
-;(s/def ::offers_online t/boolean)
-;(s/def ::offers_offline t/boolean)
+(s/def ::photo (t/field (s/nilable t/string) "URL, relative to `backend-base-url`"))
 
 (s/def ::supervisor (s/keys :req-un [::id
                                      ::ngos
                                      ::name_full
                                      ::languages
                                      ::offers
-                                     ;::offers_online
-                                     ;::offers_offline
                                      ::contacts/contacts]
                             :opt-un [::location/location
                                      ::photo
@@ -63,9 +60,21 @@
 
 (s/def ::supervisor_input SupervisorInput)
 
-(s/def ::doc (s/keys :req-un [::ngos
-                              ::name_full
-                              ::languages
-                              ::offers
-                              :input/contacts
-                              :input/location]))
+(s/def ::doc (s/or :deactivated #(:deactivated %)
+                   :default     (s/keys :req-un [::ngos
+                                                 ::name_full
+                                                 ::languages
+                                                 ::offers
+                                                 :input/contacts
+                                                 :input/location])))
+
+;; TODO adjust the types to allow deactivated supervisors without dummy data
+(def empty {:deactivated true
+            :ngos :any
+            :name_full ""
+            :languages []
+            :offers #{}
+            :contacts {:phone "",
+                       :email ""
+                       :website ""}
+            :location {:zip ""}})
