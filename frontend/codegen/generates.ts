@@ -166,6 +166,7 @@ export type SupervisorInput = {
   /** Self descriptive. */
   ngos: Scalars['NgoRefs'];
   offers: Array<Scalars['String']>;
+  /** URL, relative to `backend-base-url` */
   photo?: InputMaybe<Scalars['String']>;
   text?: InputMaybe<Scalars['String']>;
   text_specialization?: InputMaybe<Scalars['String']>;
@@ -240,6 +241,7 @@ export type Supervisor_Get = {
   __typename?: 'supervisor_get';
   /** Self descriptive. */
   contacts: Contacts;
+  deactivated?: Maybe<Scalars['Boolean']>;
   /** Self descriptive. */
   id: Scalars['String'];
   languages: Array<Scalars['String']>;
@@ -250,6 +252,7 @@ export type Supervisor_Get = {
   /** Self descriptive. */
   ngos: Scalars['NgoRefs'];
   offers: Array<Scalars['String']>;
+  /** URL, relative to `backend-base-url` */
   photo?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   text_specialization?: Maybe<Scalars['String']>;
@@ -260,6 +263,7 @@ export type Supervisors = {
   __typename?: 'supervisors';
   /** Self descriptive. */
   contacts: Contacts;
+  deactivated?: Maybe<Scalars['Boolean']>;
   /** Self descriptive. */
   id: Scalars['String'];
   languages: Array<Scalars['String']>;
@@ -270,6 +274,7 @@ export type Supervisors = {
   /** Self descriptive. */
   ngos: Scalars['NgoRefs'];
   offers: Array<Scalars['String']>;
+  /** URL, relative to `backend-base-url` */
   photo?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   text_specialization?: Maybe<Scalars['String']>;

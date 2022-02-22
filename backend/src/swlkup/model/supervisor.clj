@@ -1,4 +1,5 @@
 (ns swlkup.model.supervisor
+  (:refer-clojure :exclude [empty])
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
             [swlkup.model.ngo :as ngo]
@@ -30,6 +31,8 @@
 
 (s/def ::photo (t/field (s/nilable t/string) "URL, relative to `backend-base-url`"))
 
+(s/def ::deactivated (s/nilable t/boolean))
+
 (s/def ::supervisor (s/keys :req-un [::id
                                      ::ngos
                                      ::name_full
@@ -39,7 +42,8 @@
                             :opt-un [::location/location
                                      ::photo
                                      ::text_specialization
-                                     ::text]))
+                                     ::text
+                                     ::deactivated]))
 
 (s/def :input/contacts ContactsInput)
 (s/def :input/location LocationInput)

@@ -31,6 +31,7 @@ export function DeleteSupervisorDialog() {
 
   return (
     <>
+      <br/>
       <div style={{textAlign: "left",
                    display: openedConfirmation ? "block" : "none"}}>
         <label>

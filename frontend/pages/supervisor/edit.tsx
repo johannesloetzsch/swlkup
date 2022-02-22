@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import styles_core from '../../styles/Core.module.css'
 import { Login, useAuthStore, AuthState, jwtFromLocalStorage } from '../../components/Login'
-import { useSupervisorGetQuery, Offers, SupervisorInput} from '../../codegen/generates'
+import { useSupervisorGetQuery, Offers, SupervisorInput, Supervisors, Supervisor_Get} from '../../codegen/generates'
 import { fetcher } from '../../codegen/fetcher'
 import { useTranslation, Trans, TFunction } from 'react-i18next';
 import constants from '../../i18n/const.json'
 import { sort } from '../../components/LanguageSelection'
-import { DeleteSupervisorDialog, useDeleteStore } from '../../components/supervisor/DeleteSupervisorDialog'
+import { ProfileStatus } from '../../components/supervisor/ProfileStatus'
 import { ProfilePictureUpload } from '../../components/supervisor/ProfilePictureUpload'
 
 function filter_empty_vals(map: object) {
@@ -24,6 +24,7 @@ function setCustomValidity(error_map:object) {
   }
 }
 
+/** Once submitting the profile form, we jump to the top, where the ProfileStatus is displayed. **/
 function jump_top() {
   location.href = '#'
 }
@@ -87,8 +88,6 @@ export default function SupervisorEdit() {
     auth.setJwt(jwtFromLocalStorage())
   }, [auth.jwt])
 
-  const {deleted} = useDeleteStore()
-
   const {data, remove, refetch} = useSupervisorGetQuery({auth}, {enabled: Boolean(auth.jwt)})
   const supervisor = data?.supervisor_get
 
@@ -104,12 +103,9 @@ export default function SupervisorEdit() {
 
   return (
     <>
-      { deleted && <p>
-         { t('Your Account has been deleted.') }
-	</p>
-      }
+      <Login /><br/>
 
-      <Login />
+      { <ProfileStatus supervisor={supervisor as Supervisors|undefined}/> }
 
       { data && data.ngos && <>
         <div>
@@ -251,11 +247,6 @@ export default function SupervisorEdit() {
               <Trans i18nKey="confirm_privacy_policy" values={constants}>text <a href={constants.url_privacy_policy}>privacy_policy</a></Trans>
 	    </label>&nbsp;
             <input type="submit" value={ t('Save and Publish') as string }/>
-          </div>
-
-          <div style={{textAlign: "right"}}>
-	    <br/>
-	    <DeleteSupervisorDialog/>
           </div>
         </form>
       </> }

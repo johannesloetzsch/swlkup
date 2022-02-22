@@ -67,6 +67,11 @@
 "I'm sure I want delete my account. All data stored about me will be deleted. I will not be able to login any longer.": "I'm sure I want delete my account. All data stored about me will be deleted. I will no longer be able to login.",
 "Your Account has been deleted.": "Your account has been deleted.",
 
+"Please login to edit your profile.": "Please login to edit your profile.",
+"Please create your profile by submitting the form below.": "Please create your profile by submitting the form below.",
+"Your Profile is inactive. To activate it, please submit the form below.": "Your Profile is inactive. To activate it, please submit the form below.",
+"Your Profile is online and can be found by users with an valid token.": "Your Profile is online and can be found by users with an valid token.",
+
 "introduction_supervisor": "<p>Hello Supervisor,<br/> we are happy that you want to support activists and refugees.</p><p>In the following, we ask you for the necessary information required for you to be found and contacted.<br/>You decide yourself whether you want to support all the NGOs in our network or a subset. Your data will only be displayed to users who received an access token from one of the authorized NGOs.</p><p>For allowing users to choose a suitable supervisor, we ask for language skills and a list of offers you might be willing to provide.<br/>When you provide support in person, we additionally ask for your country and zip code. This allows users to sort results by distance.<br/>Next to the data evaluated during the search, there are text inputs for describing your specialization and motivation. Optionally you can also upload a profile picture.<p>Of course you can change or delete all this data at any point.<br/>The application was developed with the approach of privacy by design. For supervisors we only store the data queried explicitly at this page. About the activists and refugees using the database, no information at all is recorded. Further information can be found at our <1>privacy policy statement</1>.</p><p>If you have questions, please feel free to contact {{contact}}.<br/>Thanks a lot, and we are happy that you are part of our network!",
 "For which ngos are you offering your services?": "For which NGOs are you offering your services?",
 "Any": "Any",
