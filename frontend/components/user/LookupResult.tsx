@@ -132,7 +132,7 @@ function FilterForm({languages, offers, selections}:
 
 function Supervisor({supervisor, languages, backend_base_url}:
                     {supervisor: Supervisors, languages: Languages[], backend_base_url: URL}) {
-  const img_url = `${backend_base_url}/uploads/${supervisor?.id}`
+  const img_url = `${backend_base_url}/uploads/${supervisor?.id}.jpeg`  // TODO supervisor.photo
 
   return (
     <div className={styles.card}>

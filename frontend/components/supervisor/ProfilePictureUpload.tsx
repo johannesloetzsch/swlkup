@@ -4,20 +4,20 @@ import { useAuthStore } from '../../components/Login'
 import { useSupervisorGetQuery } from '../../codegen/generates'
 import { config, fetch_config } from "../../config";
 
-function upload_profile_picture(jwt: String, upload_url: URL) {
+function upload_profile_picture(jwt: String, upload_url: URL, refetch: any) {
   const files = (document.getElementById('profilePicture') as HTMLInputElement).files as any as File[]
   if(!files)
     return
   const file = files[0]
 
-  var ajax = new XMLHttpRequest
   var formData = new FormData
-
   formData.append('upload', file)
-  ajax.open('POST', upload_url, true);
-  ajax.setRequestHeader('Authorization', `Bearer ${jwt}`)
-  ajax.send(formData);
-  /** TODO: show progress and reload image when upload was successful **/
+
+  var req = new XMLHttpRequest
+  req.onreadystatechange = () => { req.readyState === 4 && req.status === 200 && refetch() }
+  req.open('POST', upload_url, true);
+  req.setRequestHeader('Authorization', `Bearer ${jwt}`)
+  req.send(formData);
 }
 
 export function ProfilePictureUpload() {
@@ -29,14 +29,14 @@ export function ProfilePictureUpload() {
   const {data, refetch} = useSupervisorGetQuery({auth}, {enabled: Boolean(auth.jwt)})
   const supervisor = data?.supervisor_get
 
-  const img_url = `${config.backend_base_url}/uploads/${supervisor?.id}`
+  const img_url = `${config.backend_base_url}/uploads/${supervisor?.id}.jpeg?${new Date().getTime()}`  // TODO: url from supervisor.photo
   const upload_url = `${config.backend_base_url}/api/upload-supervisor-picture` as any as URL
 
   return (
     <>
       <div style={{display: "inline-block"}}>
-        <input type="file" id="profilePicture" name="upload" accept="image/*"/><br/>
-        <input type="button" value={ t('Upload') as string } onClick={ () => upload_profile_picture(auth.jwt, upload_url) } />
+        <input type="file" id="profilePicture" name="upload" accept="image/jpeg"/><br/>
+        <input type="button" value={ t('Upload') as string } onClick={ () => upload_profile_picture(auth.jwt, upload_url, refetch) } />
       </div>
       <img src={img_url} style={{maxHeight: "100px", maxWidth: "50%", verticalAlign: "middle"}}/>
     </>

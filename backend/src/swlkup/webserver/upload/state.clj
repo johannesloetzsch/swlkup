@@ -29,7 +29,7 @@
                                                      (swlkup.resolver.root.supervisor.update/supervisor_update nil opt ctx nil))
                                                 (auth+role->entity ctx auth ::supervisor/doc))))
 
-        dest (str (:upload-dir env) "/" supervisor:id)]
+        dest (str (:upload-dir env) "/" supervisor:id ".jpeg")]
        (if-not supervisor:id
                {:status 403
                 :body "Invalid login:id, ensure you are logged in!"}
