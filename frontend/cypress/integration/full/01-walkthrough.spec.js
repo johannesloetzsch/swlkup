@@ -1,6 +1,30 @@
 let token_url = ""  // will be set once a new token was generated
 let supervisor_password = "" // will be set once a new supervisor was invited
 
+function login_supervisor() {
+  cy.visit('/supervisor/edit')
+  cy.get('form').within($form => {
+    cy.get('input[name=mail]')
+      .type("supervisor@example.com")
+    cy.get('input[name=password]')
+      .type(supervisor_password)
+    cy.get($form).submit()
+  })
+}
+
+function assert_visible() {
+  cy.log(token_url)
+  cy.visit(token_url)
+  cy.get('main').contains('F. Nord')
+}
+
+function assert_invisible() {
+  cy.log(token_url)
+  cy.visit(token_url)
+  cy.get('main').contains('1 Supervisor matches these filters')
+  cy.get('main').not(':contains("F. Nord")')
+}
+
 /** High level checking the lifecycle of a supervisor. **/
 describe('Walk through', () => {
 
@@ -37,14 +61,7 @@ describe('Walk through', () => {
   })
 
   it('Edit new supervisor', () => {
-    cy.visit('/supervisor/edit')
-    cy.get('form').within($form => {
-      cy.get('input[name=mail]')
-        .type("supervisor@example.com")
-      cy.get('input[name=password]')
-        .type(supervisor_password)
-      cy.get($form).submit()
-    })
+    login_supervisor()
     cy.get('form[id="supervisor_form"]').within($form => {
       cy.get('#it').check({force: true})
       cy.get('#moderation').check()
@@ -59,30 +76,32 @@ describe('Walk through', () => {
   })
 
   it('Token: New supervisor visible by new token?', () => {
-    cy.log(token_url)
-    cy.visit(token_url)
-    cy.get('main').contains('F. Nord')
+    assert_visible()
   })
 
-  it('Delete profile of the new supervisor', () => {
-    cy.visit('/supervisor/edit')
-    cy.get('form').within($form => {
-      cy.get('input[name=mail]')
-        .type("supervisor@example.com")
-      cy.get('input[name=password]')
-        .type(supervisor_password)
+  it('Deactivate the supervisor', () => {
+    login_supervisor()
+    cy.get('input[type=button][name=deactivate]').click()
+    cy.get('main').contains('Your profile is inactive.')
+    assert_invisible()
+  })
+
+  it('Reactivate the supervisor', () => {
+    login_supervisor()
+    cy.get('form[id="supervisor_form"]').within($form => {
+      cy.get('input[name=confirm_privacy_policy]').check()
       cy.get($form).submit()
     })
+    cy.get('main').contains('Your profile is online')
+    assert_visible()
+  })
+
+  it('Delete profile of supervisor', () => {
+    login_supervisor()
     cy.get('input[type=button][name=delete]').click()
     cy.get('input[id=confirm_delete]').check()
     cy.get('input[type=button][name=delete]').click()
     cy.get('main').contains('Your account has been deleted.')
-  })
-
-  it('New supervisor should not be longer visible', () => {
-    cy.log(token_url)
-    cy.visit(token_url)
-    cy.get('main').contains('1 Supervisor matches these filters')
-    cy.get('main').not(':contains("F. Nord")')
+    assert_invisible()
   })
 })

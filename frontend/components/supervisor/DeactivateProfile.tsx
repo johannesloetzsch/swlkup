@@ -19,7 +19,8 @@ export function DeactivateProfile() {
     <>
       <br/>
       <input type="button" value={ t('Deactivate Profile') as string }
-             onClick={async () => await mutate_deactivate(auth) && refetch()} />
+             onClick={async () => await mutate_deactivate(auth) && refetch()}
+	     name="deactivate" />
     </>
   )
 }

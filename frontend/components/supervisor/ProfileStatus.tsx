@@ -17,8 +17,8 @@ export function ProfileStatus({supervisor}: {supervisor: Supervisors|undefined})
   const status_message = ({deleted: 'Your Account has been deleted.',
 			   logged_out: 'Please login to edit your profile.',
 			   new: 'Please create your profile by submitting the form below.',
-                           deactivated: "Your Profile is inactive. To activate it, please submit the form below.",
-			   activated: 'Your Profile is online and can be found by users with an valid token.'})[status]
+                           deactivated: "Your profile is inactive. To activate it, please submit the form below.",
+			   activated: 'Your profile is online and can be found by users with an valid token.'})[status]
 
   return (
     <>
