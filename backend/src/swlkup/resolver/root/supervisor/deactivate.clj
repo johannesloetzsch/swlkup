@@ -3,8 +3,7 @@
             [specialist-server.type :as t]
             [swlkup.auth.core :refer [auth+role->entity]]
             [swlkup.model.auth :as auth]
-            [swlkup.model.supervisor :as supervisor]
-            [xtdb.api :as xt]))
+            [swlkup.model.supervisor :as supervisor]))
 
 (s/fdef supervisor_deactivate
         :args (s/tuple map? (s/keys :req-un [::auth/auth ::supervisor/deactivated]) map? map?)
@@ -21,7 +20,7 @@
                                    '(fn [ctx eid deactivated]
                                         (let [db (xtdb.api/db ctx)
                                               entity (xtdb.api/entity db eid)]
-                                             [[::xt/put (assoc entity :deactivated deactivated)]])))
+                                             [[:xtdb.api/put (assoc entity :deactivated deactivated)]])))
                         (tx-fn-call :deactivate-supervisor supervisor:id (:deactivated opt)))]
        (sync)
        (boolean (:xtdb.api/tx-id tx_result))))

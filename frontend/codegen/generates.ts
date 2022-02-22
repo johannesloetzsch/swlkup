@@ -63,7 +63,14 @@ export type MutationType = {
   supervisor_delete: Scalars['Boolean'];
   /** Add a new supervisor account to the database and send a mail containing the password via mail */
   supervisor_register: Scalars['Boolean'];
-  /** Update a supervisors data */
+  /**
+   * Update a supervisors profile
+   *
+   *    (:supervisor_input opt) will be merged into an existing database entry when existing.
+   *    To delete an entry, it must explicitly be in the dictionary.
+   *    This allows editing a profile without overwriting :photo and :deactivated.
+   *
+   */
   supervisor_update: Scalars['Boolean'];
 };
 
@@ -167,6 +174,7 @@ export type QueryTypeSupervisors_RegisteredArgs = {
 export type SupervisorInput = {
   /** Self descriptive. */
   contacts: ContactsInput;
+  deactivated?: InputMaybe<Scalars['Boolean']>;
   languages: Array<Scalars['String']>;
   /** Self descriptive. */
   location: LocationInput;
@@ -320,7 +328,14 @@ export type SupervisorGetQueryVariables = Exact<{
 }>;
 
 
-export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, deactivated?: boolean | null | undefined, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, photo?: string | null | undefined, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', zip?: string | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
+export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, deactivated?: boolean | null | undefined, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', zip?: string | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
+
+export type SupervisorGetPhotoQueryVariables = Exact<{
+  auth: Auth;
+}>;
+
+
+export type SupervisorGetPhotoQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', photo?: string | null | undefined } | null | undefined };
 
 export type NgoQueryVariables = Exact<{
   auth: Auth;
@@ -434,7 +449,6 @@ export const SupervisorGetDocument = `
     location {
       zip
     }
-    photo
     text_specialization
     text
   }
@@ -465,6 +479,25 @@ export const useSupervisorGetQuery = <
     useQuery<SupervisorGetQuery, TError, TData>(
       ['SupervisorGet', variables],
       fetcher<SupervisorGetQuery, SupervisorGetQueryVariables>(SupervisorGetDocument, variables),
+      options
+    );
+export const SupervisorGetPhotoDocument = `
+    query SupervisorGetPhoto($auth: Auth!) {
+  supervisor_get(auth: $auth) {
+    photo
+  }
+}
+    `;
+export const useSupervisorGetPhotoQuery = <
+      TData = SupervisorGetPhotoQuery,
+      TError = unknown
+    >(
+      variables: SupervisorGetPhotoQueryVariables,
+      options?: UseQueryOptions<SupervisorGetPhotoQuery, TError, TData>
+    ) =>
+    useQuery<SupervisorGetPhotoQuery, TError, TData>(
+      ['SupervisorGetPhoto', variables],
+      fetcher<SupervisorGetPhotoQuery, SupervisorGetPhotoQueryVariables>(SupervisorGetPhotoDocument, variables),
       options
     );
 export const NgoDocument = `

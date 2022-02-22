@@ -7,7 +7,7 @@
             [clojure.string :as string :refer [split]]
             [swlkup.auth.core :refer [auth+role->entity]]
             [swlkup.db.state :refer [db_ctx]]
-            [swlkup.resolver.root.supervisor.update]
+            [swlkup.resolver.root.supervisor.update :refer [supervisor_update supervisor_update_photo]]
             [swlkup.model.supervisor :as supervisor]))
 
 (defn -upload-supervisor-picture
@@ -23,13 +23,13 @@
                                       (if supervisor:id
                                           [supervisor:id login:id]
                                           (when login:id
-                                                #_(println "create profile")
                                                 (let [opt {:auth auth
                                                            :supervisor_input supervisor/empty}]
-                                                     (swlkup.resolver.root.supervisor.update/supervisor_update nil opt ctx nil))
+                                                     (supervisor_update nil opt ctx nil))
                                                 (auth+role->entity ctx auth ::supervisor/doc))))
 
-        dest (str (:upload-dir env) "/" supervisor:id ".jpeg")]
+        dest (str (:upload-dir env) "/" supervisor:id ".jpeg")
+        public_path (str "/uploads/" supervisor:id ".jpeg")]
        (if-not supervisor:id
                {:status 403
                 :body "Invalid login:id, ensure you are logged in!"}
@@ -37,6 +37,10 @@
                    {:status 413
                     :body (str "Upload exceeds maximum size of " (:upload-limit-mb env) "MB")}
                    (do (io/copy (io/file source) (io/file dest))
+                       (let [simple_hash (hash (slurp (io/file dest)))  ;; This is not an cryptographic integrety check, but only to determine caching.
+                             opt {:auth auth
+                                  :photo (str public_path "?" simple_hash)}]
+                            (supervisor_update_photo nil opt ctx nil))
                        (response "Upload Successful"))))))
 
 (defn -serve-uploaded-supervisor-picture

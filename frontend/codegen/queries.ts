@@ -68,7 +68,6 @@ export const supervisor_get = gql`
       location {
         zip
       }
-      photo
       text_specialization
       text
     }
@@ -89,6 +88,13 @@ export const supervisor_get = gql`
     ngos(auth: $auth) {
       id
       name
+    }
+  }`
+
+export const supervisor_get_photo = gql`
+  query SupervisorGetPhoto($auth: Auth!) {
+    supervisor_get(auth: $auth) {
+      photo
     }
   }`
 

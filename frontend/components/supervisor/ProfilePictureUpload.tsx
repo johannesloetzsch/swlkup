@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../components/Login'
-import { useSupervisorGetQuery } from '../../codegen/generates'
+import { useSupervisorGetPhotoQuery } from '../../codegen/generates'
 import { config, fetch_config } from "../../config";
 
 function upload_profile_picture(jwt: String, upload_url: URL, refetch: any) {
@@ -26,11 +26,12 @@ export function ProfilePictureUpload() {
   const {t} = useTranslation()
   const auth = useAuthStore()
 
-  const {data, refetch} = useSupervisorGetQuery({auth}, {enabled: Boolean(auth.jwt)})
-  const supervisor = data?.supervisor_get
+  /** We use a separate query for the profile picture. This allows refetching without compromising unsubmitted changes in the form. **/
+  const {data, refetch} = useSupervisorGetPhotoQuery({auth}, {enabled: Boolean(auth.jwt)})
+  const photo = data?.supervisor_get?.photo
 
-  const img_url = `${config.backend_base_url}/uploads/${supervisor?.id}.jpeg?${new Date().getTime()}`  // TODO: url from supervisor.photo
   const upload_url = `${config.backend_base_url}/api/upload-supervisor-picture` as any as URL
+  const img_src = `${config.backend_base_url}${photo}`
 
   return (
     <>
@@ -38,7 +39,7 @@ export function ProfilePictureUpload() {
         <input type="file" id="profilePicture" name="upload" accept="image/jpeg"/><br/>
         <input type="button" value={ t('Upload') as string } onClick={ () => upload_profile_picture(auth.jwt, upload_url, refetch) } />
       </div>
-      <img src={img_url} style={{maxHeight: "100px", maxWidth: "50%", verticalAlign: "middle"}}/>
+      { photo && <img src={img_src} style={{maxHeight: "100px", maxWidth: "50%", verticalAlign: "middle"}}/> }
     </>
   )
 }

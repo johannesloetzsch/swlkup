@@ -132,7 +132,6 @@
   :xt/spec :swlkup.model.supervisor/doc
   :swlkup.model.login/login:ids "login_max_mueller"
   :name_full "Max Müller"
-  :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_joe.png"
   :languages [:de :en]
   :offers #{"counselling_refugees" "crisis_intervention_refugees"}
   :contacts {:phone "0351 1234 5678"
@@ -151,7 +150,6 @@
   :xt/spec :swlkup.model.supervisor/doc
   :swlkup.model.login/login:ids "maria@mm.de"
   :name_full "Maria Musterfrau"
-  :photo "https://raw.githubusercontent.com/wiki/community-garden/community-garden.github.io/images/team_avatar_stephanie.png"
   :languages [:it :es :fr :ar]
   :offers #{"counseling_refugees" "crisis_intervention_refugees"
             "mediation" "moderation" "supervision" "workshops"}

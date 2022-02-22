@@ -132,7 +132,7 @@ function FilterForm({languages, offers, selections}:
 
 function Supervisor({supervisor, languages, backend_base_url}:
                     {supervisor: Supervisors, languages: Languages[], backend_base_url: URL}) {
-  const img_url = `${backend_base_url}/uploads/${supervisor?.id}.jpeg`  // TODO supervisor.photo
+  const img_src = `${config.backend_base_url}${supervisor?.photo}`
 
   return (
     <div className={styles.card}>
@@ -150,9 +150,10 @@ function Supervisor({supervisor, languages, backend_base_url}:
           <tr>
             <td>{supervisor.text}</td>
             <td style={{textAlign: "right"}}>
-              { // supervisor.photo &&  /** TODO **/
-		<img src={img_url} style={{width: "110px", minWidth: "110px",  /** enough to display 4 flags above it **/
-                                           maxHeight: "200px"}}/> }
+              { supervisor?.photo && <img src={img_src}
+                                          style={{width: "110px", minWidth: "110px",  /** enough to display 4 flags above it **/
+                                                  maxHeight: "200px"}}/>
+              }
             </td>
           </tr>
         </tbody>
