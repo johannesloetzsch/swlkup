@@ -5,7 +5,8 @@
 
 (def mail "praxis@max.mueller.de")
 (def password "i!A;z\\\"'^G3Q)w])%83)")
-(def supervisor_updated {:name_full "Max M. Müller"
+(def supervisor_updated {:deactivated false
+                         :name_full "Max M. Müller"
                          :languages ["de"]
                          :ngos "any" #_["lifeline", "seawatch"]
                          :offers ["counseling", "moderation"]

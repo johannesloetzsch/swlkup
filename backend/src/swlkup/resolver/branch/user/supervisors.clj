@@ -18,6 +18,7 @@
                                       :order-by [[?name_full :asc]]  ;; For reproducability in tests
                                       :where [[?e :xt/spec :swlkup.model.supervisor/doc]
                                               [?e :ngos ngos]
+                                              [?e :deactivated false]
                                               [?e :name_full ?name_full]]
                                       :in [[ngos ...]]}  ;; Collection binding
                                     #{(:ngo token) :any})]

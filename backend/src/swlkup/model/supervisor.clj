@@ -34,6 +34,7 @@
 (s/def ::deactivated (s/nilable t/boolean))
 
 (s/def ::supervisor (s/keys :req-un [::id
+                                     ::deactivated
                                      ::ngos
                                      ::name_full
                                      ::languages
@@ -50,7 +51,8 @@
 
 (t/defobject SupervisorInput {:kind t/input-object-kind
                               :description "The new Dataset of a Supervisor"}
-            :req-un [::ngos
+            :req-un [::deactivated
+                     ::ngos
                      ::name_full
                      ::languages
                      ::offers

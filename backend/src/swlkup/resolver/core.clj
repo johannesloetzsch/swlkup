@@ -9,6 +9,7 @@
             [swlkup.resolver.root.supervisor.get :refer [supervisor_get]]
             [swlkup.resolver.root.supervisor.update :refer [supervisor_update]]
             [swlkup.resolver.root.supervisor.delete :refer [supervisor_delete]]
+            [swlkup.resolver.root.supervisor.deactivate :refer [supervisor_deactivate]]
             [swlkup.resolver.root.user.lookup :refer [lookup]]
             [swlkup.resolver.root.ngos :refer [ngos]]
             [swlkup.resolver.root.languages :refer [languages]]
@@ -28,6 +29,7 @@
                          :mutation {:supervisor_register #'supervisor_register
                                     :supervisor_update #'supervisor_update
                                     :supervisor_delete #'supervisor_delete
+                                    :supervisor_deactivate #'supervisor_deactivate
                                     :create_token #'create_token
                                     :invalidate_token #'invalidate_token}}))
 

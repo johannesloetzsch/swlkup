@@ -55,6 +55,7 @@ export const supervisor_get = gql`
   query SupervisorGet($auth: Auth!) {
     supervisor_get(auth: $auth) {
       id
+      deactivated
       ngos
       name_full
       languages

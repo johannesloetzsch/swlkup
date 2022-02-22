@@ -34,7 +34,8 @@ function validate() {
   const formData = form && new FormData(form)
   const formObject = form && Object.fromEntries(formData)
   const formArray = form && Array.from(formData)
-  const supervisor = {'name_full': formObject?.name_full,
+  const supervisor = {'deactivated': false,  /** When pressing `Save and Publish`, the profile will be activated **/
+	              'name_full': formObject?.name_full,
 	              'text_specialization': formObject?.text_specialization,
                       'text': formObject?.text,
                       'contacts': {'phone': formObject?.phone,

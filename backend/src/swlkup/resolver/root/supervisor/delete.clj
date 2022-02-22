@@ -2,9 +2,7 @@
   (:require [clojure.spec.alpha :as s]
             [specialist-server.type :as t]
             [swlkup.auth.core :refer [auth+role->entity]]
-            [swlkup.auth.uuid.core :refer [uuid]]
             [swlkup.model.auth :as auth]
-            [swlkup.model.login :as login]
             [swlkup.model.supervisor :as supervisor]))
 
 (s/fdef supervisor_delete
