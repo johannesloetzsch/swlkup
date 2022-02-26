@@ -66,7 +66,8 @@ export const supervisor_get = gql`
         email
       }
       location {
-        zip
+        country city zip
+	type importance display_name lat lon diameter
       }
       text_specialization
       text

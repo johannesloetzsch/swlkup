@@ -10,8 +10,15 @@
             [ring.util.response :refer [resource-response content-type]]
             [lib.graphql.middleware :refer [wrap-graphql-error]]
             [lib.resources.list-resources :refer [list-resources]]
-            [clojure.string :as string :refer [ends-with?]]))
+            [clojure.string :as string :refer [ends-with?]]
+            [clojure.pprint :refer [pprint]]))
 
+(defn wrap-debug
+  [handler]
+  (fn [req]
+      (pprint (:body req))
+      (let [res (handler req)]
+           res)))
 
 (defn wrap-graphiql
   "Add graphqli using org.webjars/graphiql and resources/public/graphiql/index.html"
@@ -24,9 +31,10 @@
   "Handle Content-Type and Errors of graphql-endpoint"
   [handler]
   (-> handler
-      (wrap-json-body {:keywords? true :bigdecimals? true})
-      (wrap-json-response)
-      (wrap-graphql-error)))
+      ;(wrap-debug)  ;; TODO
+      (wrap-graphql-error)
+      (wrap-json-body {:keywords? true :bigdecimals? false})  ;; java.math.BigDecimal doesn't conform to t/float or float?
+      (wrap-json-response)))
 
 (defn wrap-rest
   "Use the same error handling as for graphql"

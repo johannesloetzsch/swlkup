@@ -19,7 +19,17 @@
   (-> (assoc doc :id (:xt/id doc))
       (assoc-missing-opt :photo)
       (assoc-missing-opt :text_specialization)
-      (assoc-missing-opt :text)))
+      (assoc-missing-opt :text)
+      (update :location #(-> %
+                             (assoc-missing-opt :country)
+                             (assoc-missing-opt :city)
+                             (assoc-missing-opt :zip)
+                             (assoc-missing-opt :type)
+                             (assoc-missing-opt :importance)
+                             (assoc-missing-opt :display_name)
+                             (assoc-missing-opt :lat)
+                             (assoc-missing-opt :lon)
+                             (assoc-missing-opt :diameter)))))
 
 (s/def ::id t/string)
 (s/def ::name_full t/string)

@@ -1,13 +1,15 @@
 import { useEffect } from 'react'
 import styles_core from '../../styles/Core.module.css'
 import { Login, useAuthStore, AuthState, jwtFromLocalStorage } from '../../components/Login'
-import { useSupervisorGetQuery, Offers, SupervisorInput, Supervisors, Supervisor_Get} from '../../codegen/generates'
+import { useSupervisorGetQuery, Offers, SupervisorInput, Supervisors, Supervisor_Get } from '../../codegen/generates'
 import { fetcher } from '../../codegen/fetcher'
 import { useTranslation, Trans, TFunction } from 'react-i18next';
 import constants from '../../i18n/const.json'
 import { sort } from '../../components/LanguageSelection'
 import { ProfileStatus } from '../../components/supervisor/ProfileStatus'
+import { ProfileLocation } from '../../components/supervisor/ProfileLocation'
 import { ProfilePictureUpload } from '../../components/supervisor/ProfilePictureUpload'
+import { useLocationStore } from '../../lib/geo/LocationStore'
 
 function filter_empty_vals(map: object) {
   return Object.fromEntries(Object.entries(map).filter(kv => kv[1]))
@@ -35,16 +37,16 @@ function validate() {
   const formObject = form && Object.fromEntries(formData)
   const formArray = form && Array.from(formData)
   const supervisor = {'deactivated': false,  /** When pressing `Save and Publish`, the profile will be activated **/
-	              'name_full': formObject?.name_full,
-	              'text_specialization': formObject?.text_specialization,
-                      'text': formObject?.text,
-                      'contacts': {'phone': formObject?.phone,
-				   'email': formObject?.email,
-			           'website': formObject?.website},
-		      'location': {'zip': formObject?.zip},
-                      'languages': formArray?.filter(x => x[0] == 'language').map(x => x[1]),
-                      'offers': formArray?.filter(x => x[0] == 'offer').map(x => x[1]),
-                      'ngos': formObject?.all_ngos === 'true' ? 'any' : formArray?.filter(x => x[0] == 'ngos').map(x => x[1])}
+	              'name_full': formObject?.name_full as string,
+	              'text_specialization': formObject?.text_specialization as string,
+                      'text': formObject?.text as string,
+                      'contacts': {'phone': formObject?.phone as string,
+				   'email': formObject?.email as string,
+			           'website': formObject?.website as string},
+		      //'location': {'zip': formObject?.zip},
+                      'languages': formArray?.filter(x => x[0] == 'language').map(x => x[1]) as string[],
+                      'offers': formArray?.filter(x => x[0] == 'offer').map(x => x[1]) as string[],
+                      'ngos': formObject?.all_ngos === 'true' ? 'any' : formArray?.filter(x => x[0] == 'ngos').map(x => x[1]) as string[]}
 
   const errors = {email: supervisor.contacts.phone || supervisor.contacts.email ? '' : 'Please provide a phone number or an email address.',
                   language: supervisor.languages?.length ? '' : 'Please select at least one language.',
@@ -92,6 +94,8 @@ export default function SupervisorEdit() {
   const {data, remove, refetch} = useSupervisorGetQuery({auth}, {enabled: Boolean(auth.jwt)})
   const supervisor = data?.supervisor_get
 
+  const { country, city, zip, type, importance, display_name, lat, lon, diameter } = useLocationStore()
+
   useEffect(() => {
     /** When the mutation was successfull, we want check the new data from the db,
         so we refetch the data and then reset the form.
@@ -118,7 +122,8 @@ export default function SupervisorEdit() {
 		                          const {data, errors} = validate()
 		                          remove()  /** we want delete the cache between calculation based on this data and mutation **/
 					  !has_errors(errors)
-					  && await mutate(auth, (data.supervisor as any))
+					  && await mutate(auth, {...data.supervisor,
+							         location: {country, city, zip, type, importance, display_name, lat, lon, diameter}})
 					  && refetch()
 	                                  && jump_top() }
                        } id="supervisor_form">
@@ -228,13 +233,8 @@ export default function SupervisorEdit() {
           </fieldset><br/>
   
           <fieldset>
-            <legend>{ t('Location') }</legend>
-	    <table><tbody>
-	      <tr>
-                <td>{ t('Zip code') }<br/><i>({ t('optional') })</i></td>
-                <td><input type="text" name="zip" defaultValue={supervisor?.location.zip || undefined}/></td>
-	      </tr>
-	    </tbody></table>
+            <legend>{ t('Location') } <i>({ t('optional') })</i></legend>
+	    <ProfileLocation supervisor={supervisor as Supervisors|undefined}/>
           </fieldset><br/>
 
           <fieldset>

@@ -1,6 +1,9 @@
 {"contact": "supervision@sea-watch.org",
 
- "url_impressum": "https://sea-watch.org/impressum/",
- "url_privacy_policy": "https://sea-watch.org/impressum/datenschutz/",
- "url_source": "https://github.com/johannesloetzsch/swlkup"
+ "url_impressum": "https://sea-watch.org/impressum",
+ "url_privacy_policy": "https://sea-watch.org/impressum/datenschutz",
+
+ "url_source": "https://github.com/johannesloetzsch/swlkup",
+
+ "url_nominatim": "https://nominatim.org"
 }

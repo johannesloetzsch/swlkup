@@ -43,12 +43,26 @@ export type ContactsInput = {
 
 export type Location = {
   __typename?: 'Location';
-  address_string?: Maybe<Scalars['String']>;
+  city?: Maybe<Scalars['String']>;
+  country?: Maybe<Scalars['String']>;
+  diameter?: Maybe<Scalars['Float']>;
+  display_name?: Maybe<Scalars['String']>;
+  importance?: Maybe<Scalars['Float']>;
+  lat?: Maybe<Scalars['Float']>;
+  lon?: Maybe<Scalars['Float']>;
+  type?: Maybe<Scalars['String']>;
   zip?: Maybe<Scalars['String']>;
 };
 
 export type LocationInput = {
-  address_string?: InputMaybe<Scalars['String']>;
+  city?: InputMaybe<Scalars['String']>;
+  country?: InputMaybe<Scalars['String']>;
+  diameter?: InputMaybe<Scalars['Float']>;
+  display_name?: InputMaybe<Scalars['String']>;
+  importance?: InputMaybe<Scalars['Float']>;
+  lat?: InputMaybe<Scalars['Float']>;
+  lon?: InputMaybe<Scalars['Float']>;
+  type?: InputMaybe<Scalars['String']>;
   zip?: InputMaybe<Scalars['String']>;
 };
 
@@ -328,7 +342,7 @@ export type SupervisorGetQueryVariables = Exact<{
 }>;
 
 
-export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, deactivated?: boolean | null | undefined, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', zip?: string | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
+export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, deactivated?: boolean | null | undefined, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', country?: string | null | undefined, city?: string | null | undefined, zip?: string | null | undefined, type?: string | null | undefined, importance?: number | null | undefined, display_name?: string | null | undefined, lat?: number | null | undefined, lon?: number | null | undefined, diameter?: number | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
 
 export type SupervisorGetPhotoQueryVariables = Exact<{
   auth: Auth;
@@ -447,7 +461,15 @@ export const SupervisorGetDocument = `
       email
     }
     location {
+      country
+      city
       zip
+      type
+      importance
+      display_name
+      lat
+      lon
+      diameter
     }
     text_specialization
     text
