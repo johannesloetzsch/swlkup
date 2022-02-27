@@ -51,8 +51,9 @@
 
 (defstate upload
   "The handler `upload-supervisor-picture` requires `(:upload-dir env)` to exist. By wrapping the upload handlers into a state, we can ensure this at startup."
-  :start (do ;; TODO We should either create the dir if not existing or assert that it is already existing
-             (println "Info: Please ensure the upload directory is existing")
+  :start (do (let [f (io/file (:upload-dir env))]
+                  (assert (or (.isDirectory f) (.mkdirs f))
+                          "Unable to create :upload-dir"))
              {:handler {:upload-supervisor-picture -upload-supervisor-picture
                         :serve-uploaded-supervisor-picture -serve-uploaded-supervisor-picture}}))
              

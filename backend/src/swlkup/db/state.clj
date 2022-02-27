@@ -6,13 +6,14 @@
             [swlkup.config.state :refer [env]]
             [swlkup.db.validate :refer [validate-db validate-tx]]))
 
-(defn export-named-by-date [db_ctx]
+(defn export-named-by-date [db_ctx cause]
   (when (:db-export-prefix env)
         (let [date (.format (java.text.SimpleDateFormat. "yyyy-MM-dd_HH:mm:ss")
                             (.getTime (java.util.Calendar/getInstance)))
-              file (str (:db-export-prefix env) date ".edn")]
+              file (str (:db-export-prefix env) date "_" cause ".edn")]
              (when (:verbose env)
                    (println "Export database to:" file))
+             (io/make-parents file)
              (export file db_ctx))))
 
 (defn submit-tx [node tx-ops]
@@ -36,8 +37,8 @@
                              (->> (submit-tx node tx-ops)
                                   (xtdb.api/await-tx node)))
                 :tx-committed? (fn [transaction]
-                                   (println "synced" (xtdb/sync node))
-                                   (println "awaited" (xtdb/await-tx node transaction))
+                                   #_(println "synced" (xtdb/sync node))
+                                   #_(println "awaited" (xtdb/await-tx node transaction))
                                    (xtdb/tx-committed? node transaction))
                 :tx-fn-put (fn [fn-name quoted-fn]
                                ;; In future we may want add transaction functions only once (at startup)
@@ -60,7 +61,7 @@
                                 (-> (apply q node args)
                                     ffirst))}]
 
-       (export-named-by-date db_ctx)
+       (export-named-by-date db_ctx "start")  ;; before seeding
 
        (let [seed-file (if (not-empty (:db-seed env))
                            (:db-seed env)
@@ -76,5 +77,5 @@
 
 (defstate db_ctx
   :start (->db_ctx)
-  :stop (do (export-named-by-date db_ctx)
+  :stop (do (export-named-by-date db_ctx "stop")
             (.close (:node db_ctx))))
