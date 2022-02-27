@@ -17,8 +17,9 @@
 (defn -main [& _args]
   (mount/start)
 
-  (with-handler :term
-    (mount/stop)  ;; Export the database
-    (System/exit 0))
-  
-  (mount.core/running-states))
+  (let [finaly (fn [] (mount/stop)  ;; Export the database
+                      (System/exit 0))]
+       (with-handler :term (finaly))  ;; kill
+       (with-handler :int (finaly)))  ;; Ctrl+C
+
+  (mount.core/running-states))  ;; Return value for debugging when called on repl
