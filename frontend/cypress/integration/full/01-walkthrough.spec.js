@@ -7,7 +7,7 @@ function login_supervisor() {
     cy.get('input[name=mail]')
       .type("supervisor@example.com")
     cy.get('input[name=password]')
-      .type(supervisor_password)
+      .type(supervisor_password, {parseSpecialCharSequences: false})
     cy.get($form).submit()
   })
 }
