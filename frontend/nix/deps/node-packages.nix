@@ -886,6 +886,15 @@ let
         sha512 = "oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==";
       };
     };
+    "@react-leaflet/core-1.1.1" = {
+      name = "_at_react-leaflet_slash_core";
+      packageName = "@react-leaflet/core";
+      version = "1.1.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@react-leaflet/core/-/core-1.1.1.tgz";
+        sha512 = "7PGLWa9MZ5x/cWy8EH2VzI4T8q5WpuHbixzCDXqixP/WyqwIrg5NDUPgYuFnB4IEIZF+6nA265mYzswFo/h1Pw==";
+      };
+    };
     "@samverschueren/stream-to-observable-0.3.1" = {
       name = "_at_samverschueren_slash_stream-to-observable";
       packageName = "@samverschueren/stream-to-observable";
@@ -922,6 +931,15 @@ let
         sha512 = "XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==";
       };
     };
+    "@types/geojson-7946.0.8" = {
+      name = "_at_types_slash_geojson";
+      packageName = "@types/geojson";
+      version = "7946.0.8";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.8.tgz";
+        sha512 = "1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==";
+      };
+    };
     "@types/js-yaml-4.0.5" = {
       name = "_at_types_slash_js-yaml";
       packageName = "@types/js-yaml";
@@ -947,6 +965,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/@types/jsonwebtoken/-/jsonwebtoken-8.5.6.tgz";
         sha512 = "+P3O/xC7nzVizIi5VbF34YtqSonFsdnbXBnWUCYRiKOi1f9gA4sEFvXkrGr/QVV23IbMYvcoerI7nnhDUiWXRQ==";
+      };
+    };
+    "@types/leaflet-1.7.9" = {
+      name = "_at_types_slash_leaflet";
+      packageName = "@types/leaflet";
+      version = "1.7.9";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@types/leaflet/-/leaflet-1.7.9.tgz";
+        sha512 = "H8vPgD49HKzqM41ArHGZM70g/tfhp8W+JcPxfnF+5H/Xvp+xiP+KQOUNWU8U89fqS1Jj3cpRY/+nbnaHFzwnFA==";
       };
     };
     "@types/node-16.11.11" = {
@@ -3685,6 +3712,15 @@ let
         sha512 = "weT+r0kTkRQdCdYCNtkMwWXQTMEswKrFBkm4ckQOMVhhqhIMI1UT2hMj+1iigIhgSZm5gTmrRXBNoGUgaTY1xA==";
       };
     };
+    "leaflet-1.7.1" = {
+      name = "leaflet";
+      packageName = "leaflet";
+      version = "1.7.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/leaflet/-/leaflet-1.7.1.tgz";
+        sha512 = "/xwPEBidtg69Q3HlqPdU3DnrXQOvQU/CCHA1tcDQVzOwm91YMYaILjNp7L4Eaw5Z4sOYdbBz6koWyibppd8Zqw==";
+      };
+    };
     "lines-and-columns-1.2.4" = {
       name = "lines-and-columns";
       packageName = "lines-and-columns";
@@ -4871,6 +4907,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz";
         sha512 = "w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==";
+      };
+    };
+    "react-leaflet-3.2.5" = {
+      name = "react-leaflet";
+      packageName = "react-leaflet";
+      version = "3.2.5";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/react-leaflet/-/react-leaflet-3.2.5.tgz";
+        sha512 = "Z3KZ+4SijsRbbrt2I1a3ZDY6+V6Pm91eYTdxTN18G6IOkFRsJo1BuSPLFnyFrlF3WDjQFPEcTPkEgD1VEeAoBg==";
       };
     };
     "react-query-3.34.0" = {
@@ -6218,7 +6263,7 @@ let
   args = {
     name = "swlkup-frontend";
     packageName = "swlkup-frontend";
-    version = "0.2.0";
+    version = "0.3.1";
     src = ../..;
     dependencies = [
       sources."@babel/code-frame-7.16.0"
@@ -6354,13 +6399,16 @@ let
       sources."@nodelib/fs.scandir-2.1.5"
       sources."@nodelib/fs.stat-2.0.5"
       sources."@nodelib/fs.walk-1.2.8"
+      sources."@react-leaflet/core-1.1.1"
       sources."@samverschueren/stream-to-observable-0.3.1"
       sources."@sindresorhus/is-0.14.0"
       sources."@szmarczak/http-timer-1.1.2"
       sources."@tootallnate/once-2.0.0"
+      sources."@types/geojson-7946.0.8"
       sources."@types/js-yaml-4.0.5"
       sources."@types/json-stable-stringify-1.0.33"
       sources."@types/jsonwebtoken-8.5.6"
+      sources."@types/leaflet-1.7.9"
       sources."@types/node-16.11.11"
       sources."@types/parse-json-4.0.0"
       sources."@types/prop-types-15.7.4"
@@ -6711,6 +6759,7 @@ let
       sources."jws-3.2.2"
       sources."keyv-3.1.0"
       sources."latest-version-5.1.0"
+      sources."leaflet-1.7.1"
       sources."lines-and-columns-1.2.4"
       (sources."listr-0.14.3" // {
         dependencies = [
@@ -6915,6 +6964,7 @@ let
       sources."react-dom-17.0.2"
       sources."react-i18next-11.14.3"
       sources."react-is-17.0.2"
+      sources."react-leaflet-3.2.5"
       sources."react-query-3.34.0"
       sources."react-refresh-0.8.3"
       sources."readable-stream-3.6.0"

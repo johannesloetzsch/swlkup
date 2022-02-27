@@ -11,7 +11,10 @@ export function MailToAll({filteredSupervisors}: {filteredSupervisors: Superviso
     auth.setJwt(jwtFromLocalStorage())
   }, [auth.jwt])
 
-  const recipients = filteredSupervisors?.map( supervisor => supervisor.contacts.email ).join(', ')
+  const recipients = filteredSupervisors
+                     .map(supervisor => supervisor.contacts.email)
+		     .filter(email => email)
+		     .join(', ')
 
   /** displayed only when logged in, but not for pseudonym users **/
   return auth.jwt && recipients && (

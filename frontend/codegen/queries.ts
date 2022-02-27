@@ -33,7 +33,12 @@ export const lookup = gql`
           email
           website
         }
+        text_specialization
         text
+        location {
+          country city zip
+          type importance display_name lat lon diameter
+        }
       }
     }
 
@@ -67,7 +72,7 @@ export const supervisor_get = gql`
       }
       location {
         country city zip
-	type importance display_name lat lon diameter
+        type importance display_name lat lon diameter
       }
       text_specialization
       text

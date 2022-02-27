@@ -335,7 +335,7 @@ export type LookupQueryVariables = Exact<{
 }>;
 
 
-export type LookupQuery = { __typename?: 'QueryType', lookup: { __typename?: 'lookup', valid: boolean, ngo?: { __typename?: 'ngo', name?: string | null | undefined } | null | undefined, supervisors?: Array<{ __typename?: 'supervisors', id: string, name_full: string, photo?: string | null | undefined, languages: Array<string>, offers: Array<string>, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, email?: string | null | undefined, website?: string | null | undefined } }> | null | undefined }, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }> };
+export type LookupQuery = { __typename?: 'QueryType', lookup: { __typename?: 'lookup', valid: boolean, ngo?: { __typename?: 'ngo', name?: string | null | undefined } | null | undefined, supervisors?: Array<{ __typename?: 'supervisors', id: string, name_full: string, photo?: string | null | undefined, languages: Array<string>, offers: Array<string>, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, email?: string | null | undefined, website?: string | null | undefined }, location: { __typename?: 'Location', country?: string | null | undefined, city?: string | null | undefined, zip?: string | null | undefined, type?: string | null | undefined, importance?: number | null | undefined, display_name?: string | null | undefined, lat?: number | null | undefined, lon?: number | null | undefined, diameter?: number | null | undefined } }> | null | undefined }, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }> };
 
 export type SupervisorGetQueryVariables = Exact<{
   auth: Auth;
@@ -418,7 +418,19 @@ export const LookupDocument = `
         email
         website
       }
+      text_specialization
       text
+      location {
+        country
+        city
+        zip
+        type
+        importance
+        display_name
+        lat
+        lon
+        diameter
+      }
     }
   }
   languages {

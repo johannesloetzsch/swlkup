@@ -56,10 +56,14 @@ describe('Test filters on a LookupResult for a token', () => {
   it('Contact filters', () => {
     cy.visit('/token/T0p53cret')
     cy.log('Default: inperson is unchecked')
-    cy.get('#zip').should('not.exist')
+    cy.get('input[name=country]').should('not.exist')
+    cy.get('input[name=city]').should('not.exist')
+    cy.get('input[name=zip]').should('not.exist')
 
     cy.log('Checking inperson asks for zip code')
     cy.get('#inperson').check({force: true})
-    cy.get('#zip')
+    cy.get('input[name=country]')
+    cy.get('input[name=city]')
+    cy.get('input[name=zip]')
   })
 })

@@ -9,6 +9,11 @@ import constants from '../../i18n/const.json'
 import { sort } from '../LanguageSelection'
 import { config, fetch_config } from '../../config';
 import { MailToAll } from './MailToAll'
+import { Supervisor } from '../../components/user/Supervisor'
+import { LocationForm } from '../shared/LocationForm'
+import { LocationResultWithoutSSR } from './LocationResultWithoutSSR'
+import { useLocationStore } from '../../lib/geo/LocationStore'
+import { haversine_distance, lon, lat } from '../../lib/geo/distance'
 
 type Options = any //Map<string, boolean>
 
@@ -68,6 +73,7 @@ function FilterForm({languages, offers, selections}:
                     {languages: Languages[], offers: Offers[], selections: any}) {
   const {t} = useTranslation()
   const {setLanguage, getLanguages, setTarget, getTargets, setOffer, getOffers, setContact, getContacts} = useFilterStore()
+  const location = useLocationStore()
   const visibleOffers = offers.sort((o1, o2) => o2.idx - o1.idx)
                               .sort((o1, o2) => o1.target < o2.target ? 1 : -1)
                               .filter(o => selections.selectedTargets.includes( o.target ))
@@ -118,11 +124,9 @@ function FilterForm({languages, offers, selections}:
         ) ) }
         { selections.selectedContacts.includes("inperson")
           && <span><hr/>
-	      <p>{ t('Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here, than the list of supervisors will be sorted by distance.') }</p>
-               <label htmlFor="country">{ t('Country') }</label>&nbsp;
-               <input type="text" name="country" id="country"/><br/>
-               <label htmlFor="zip">{ t('Zip code') }</label>&nbsp;
-               <input type="text" name="zip" id="zip"/>
+	      <p>{ t('Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here. Than the list of supervisors will be sorted by distance and displayed on a map.') }</p>
+	       <LocationForm/>
+	       { (location.country || location.city || location.zip) && !location.type && <p>{ t('The location could not be found.') }</p> }
              </span>
         }
       </fieldset><br/>
@@ -130,57 +134,29 @@ function FilterForm({languages, offers, selections}:
   )
 }
 
-function Supervisor({supervisor, languages, backend_base_url}:
-                    {supervisor: Supervisors, languages: Languages[], backend_base_url: URL}) {
-  const img_src = `${config.backend_base_url}${supervisor?.photo}`
-
-  return (
-    <div className={styles.card}>
-      <table style={{width: "100%"}}>
-        <tbody>
-          <tr>
-            <td><h2>{supervisor.name_full}</h2></td>
-            <td style={{textAlign: "right", verticalAlign: "top"}}>
-            {supervisor.languages && supervisor.languages.map( lang_id =>
-              { const lang = languages[languages.findIndex( l => l.id === lang_id )]
-                  return <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px", paddingLeft: "5px"}}/>
-            })}
-               </td>
-          </tr>
-          <tr>
-            <td>{supervisor.text}</td>
-            <td style={{textAlign: "right"}}>
-              { supervisor?.photo && <img src={img_src}
-                                          style={{width: "110px", minWidth: "110px",  /** enough to display 4 flags above it **/
-                                                  maxHeight: "200px"}}/>
-              }
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      {/* <p>{supervisor.offers.join(", ")}</p> */}
-      <p>
-        <i>
-          <span style={{display: "inline-block"}}>{supervisor.contacts.website} &nbsp;</span><br/>
-          <span style={{display: "inline-block"}}>{supervisor.contacts.email} &nbsp;</span><br/>
-          <span style={{display: "inline-block"}}>{supervisor.contacts.phone}</span>
-        </i>
-      </p>
-    </div>
-  )
+function distance_for_known_locations(lon: lon, lat: lat, supervisor: Supervisors) {
+  const location = supervisor.location
+  const distance = lon && lat && location.lon && location.lat && haversine_distance(lat, lon, location.lat, location.lon)
+  return distance || (distance === 0 ? 0 : Infinity)
 }
 
 export function LookupResult({data}: {data: LookupQuery}) {
   useEffect( () => {fetch_config() }, [config])
-  const {t} = useTranslation()
-  const {getLanguages, getTargets, getOffers, getContacts} = useFilterStore()
+  const { t } = useTranslation()
+  const { getLanguages, getTargets, getOffers, getContacts } = useFilterStore()
+  const { lon, lat } = useLocationStore()
   const selectedLanguages = getLanguages(data.languages.map(lang => lang.id))
   const selectedTargets = getTargets(["individual"])
   const selectedOffers = getOffers(data.offers.map(offer => offer.id))
-  const selectedContacts = getContacts([/*"inperson",*/ "remote"])  // TODO decide what the default should be
-  const filteredSupervisors = data.lookup.supervisors
-                             ?.filter(s => s.languages.some( (supervisorLang: string) => selectedLanguages.includes(supervisorLang) ))
-                             .filter(s => s.offers.some( (supervisorOffer: string) => selectedOffers.includes(supervisorOffer) ))
+  const selectedContacts = getContacts(["remote"])  // This default doesn't require loading loading external content (OSM) and so is the best choice to provide privacy
+  const supervisorsWithDistance = (data.lookup.supervisors as Supervisors[])
+                                  ?.map(s => ({...s,
+					       location: {...s.location,
+						          distance: distance_for_known_locations(lon as lon, lat as lat, s) }}))
+  const filteredSupervisors = supervisorsWithDistance                              
+	                      .filter(s => s.languages.some( (supervisorLang: string) => selectedLanguages.includes(supervisorLang) ))
+                              .filter(s => s.offers.some( (supervisorOffer: string) => selectedOffers.includes(supervisorOffer) ))
+			      .sort((s1, s2) => s1.location.distance - s2.location.distance)
   return (
     <>
       <div>
@@ -197,8 +173,9 @@ export function LookupResult({data}: {data: LookupQuery}) {
 
       <h3>{ t('Results') }</h3>
       <p className="subtitle">{ t('supervisor_matches', {count: filteredSupervisors?.length}) }</p>
+      { selectedContacts.includes("inperson") && lon && lat && <LocationResultWithoutSSR filteredSupervisors={filteredSupervisors}/> }
       <div className={styles.grid}>
-        {filteredSupervisors?.map( supervisor => <Supervisor supervisor={supervisor as Supervisors} languages={data.languages} backend_base_url={config.backend_base_url as any as URL} key={supervisor.id} /> )}
+        {filteredSupervisors?.map( supervisor => <Supervisor supervisor={supervisor} languages={data.languages} key={supervisor.id} /> )}
       </div>
 
       <MailToAll filteredSupervisors={filteredSupervisors as Supervisors[]}/>

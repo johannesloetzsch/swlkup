@@ -1,8 +1,9 @@
 import { useTranslation, Trans } from 'react-i18next';
+import { useLocationStore } from '../../lib/geo/LocationStore'
 import constants from '../../i18n/const.json'
 import { useEffect } from 'react'
 import { Supervisors } from '../../codegen/generates'
-import { useLocationStore } from '../../lib/geo/LocationStore'
+import { LocationForm } from '../../components/shared/LocationForm'
 
 function GeocodingResult() {
   const {t} = useTranslation()
@@ -33,29 +34,14 @@ function GeocodingResult() {
 }
 
 export function ProfileLocation({supervisor}: {supervisor: Supervisors|undefined}) {
-  const {t} = useTranslation()
-
-  const { country, city, zip, setCountry, setCity, setZip, setLocationFromDB } = useLocationStore()
+  const { setLocationFromDB } = useLocationStore()
   useEffect(() => {
     setLocationFromDB({type: 'postcode', zip: supervisor?.location.zip}) // TODO
   }, [supervisor?.location])
 
   return (
     <>
-      <table><tbody>
-        <tr>
-          <td>{ t('Country') }</td>
-          <td><input type="text" name="country" value={country} onChange={e=>setCountry(e.target.value)}/></td>
-        </tr>
-        <tr>
-          <td>{ t('City') }</td>
-          <td><input type="text" name="city" value={city} onChange={e=>setCity(e.target.value)}/></td>
-        </tr>
-        <tr>
-          <td>{ t('Zip code') }</td>
-          <td><input type="text" name="zip" value={zip} onChange={e=>setZip(e.target.value)}/></td>
-        </tr>
-      </tbody></table>
+      <LocationForm/>
       <br/>
       <GeocodingResult/>
     </>
