@@ -40,7 +40,7 @@
 "How would you like to get support?": "Welchen Kontakt suchst du?",
 "inperson": "In Präsenz",
 "remote": "Telefonisch oder Online",
-"Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here. Than the list of supervisors will be sorted by distance and displayed on a map.": "Da du ein Treffen in Präsenz wünschst, kannst Du hier deinen Ort eingeben. Die Ergebnisse werden dann nach Entfernung sortiert und auf einer Karte dargestellt.",
+"note_location_services": "Da du ein Treffen in Präsenz wünschst, kannst Du hier deinen Ort eingeben. Die Ergebnisse werden dann nach Entfernung sortiert und auf einer Karte dargestellt.<br/>Für diese optonale Funktion werden Abfragen an die externen Dienste <1>Nominatim</1> und <2>Openstreetmap</2> gesendet, welche den eingegebenen Ort beinhalten.",
 "Country": "Land",
 "City": "Stadt",
 "Zip code": "Postleitzahl",

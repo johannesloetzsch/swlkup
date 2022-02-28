@@ -40,7 +40,7 @@
 "How would you like to get support?": "Quel forme de contact cherches-tu ?",
 "inperson": "en personne",
 "remote": "Par téléphone ou en ligne",
-"Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here. Than the list of supervisors will be sorted by distance and displayed on a map.": "Puisque tu sembles être intéressé par une rencontre personnelle avec un superviseur, tu peux entrer ta localisation ici, puis la liste des superviseurs sera triée par distance.",
+"note_location_services": "Puisque tu sembles être intéressé par une rencontre personnelle avec un superviseur, tu peux entrer ta localisation ici, puis la liste des superviseurs sera triée par distance. TODO",
 "Country": "Pays",
 "City": "City",
 "Zip code": "Code postale",

@@ -40,7 +40,7 @@
 "How would you like to get support?": "How would you like to get support?",
 "inperson": "In Person",
 "remote": "via Phone or Online",
-"Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here. Than the list of supervisors will be sorted by distance and displayed on a map.": "Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here. Than the list of supervisors will be sorted by distance and displayed on a map.",
+"note_location_services": "Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here. Than the list of supervisors will be sorted by distance and displayed on a map.<br/>For this optional feature, we send requests to the external services <1>Nominatim</1> and <2>Openstreetmap</2>, which contain the approximate location.",
 "Country": "Country",
 "City": "City",
 "Zip code": "Zip code",

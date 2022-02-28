@@ -40,7 +40,7 @@
 "How would you like to get support?": "Nasıl destek almak istersiniz?",
 "inperson": "Yüz Yüze",
 "remote": "Telefonla veya Çevirimiçi",
-"Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here. Than the list of supervisors will be sorted by distance and displayed on a map.": "Bir süpervizörle yüzyüze görüşmek istediğiniz için, lütfen buraya konumuzu girin — uygun süpervizörler yakınlığa göre listelenecektir.",
+"note_location_services": "Bir süpervizörle yüzyüze görüşmek istediğiniz için, lütfen buraya konumuzu girin — uygun süpervizörler yakınlığa göre listelenecektir. TODO",
 "Country": "Ülke",
 "City": "City",
 "Zip code": "Posta Kodu",

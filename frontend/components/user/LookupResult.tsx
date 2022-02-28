@@ -124,7 +124,12 @@ function FilterForm({languages, offers, selections}:
         ) ) }
         { selections.selectedContacts.includes("inperson")
           && <span><hr/>
-	      <p>{ t('Since you seem to be interested in a personal meeting with an supervisor, you can enter your location here. Than the list of supervisors will be sorted by distance and displayed on a map.') }</p>
+               <p>
+                 <Trans i18nKey="note_location_services" values={constants}
+		        components={{1: <a href={constants.url_nominatim}>Nominatim</a>,
+			             2: <a href={constants.url_openstreetmap}>Openstreetmap</a>}}/>
+		 {/** This services see the Referer header **/}
+               </p>
 	       <LocationForm/>
 	       { (location.country || location.city || location.zip) && !location.type && <p>{ t('The location could not be found.') }</p> }
              </span>
