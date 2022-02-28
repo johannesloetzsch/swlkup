@@ -26,6 +26,9 @@
 (s/def ::mail-port number?)
 (s/def ::mail-from (s/nilable string?))
 
+(s/def ::admin-passphrase (s/nilable string?))  ;; allows setting up ngo logins and encrypted downloads of db exports
+(s/def ::admin-gpg-id string?)
+
 (s/def ::frontend-base-url string?)
 (s/def ::frontend-backend-base-url string?)
 
@@ -38,8 +41,14 @@
                               ::upload-dir
                               ::upload-limit-mb
                               ::mail-host ::mail-user ::mail-pass ::mail-port ::mail-from
+                              ::admin-passphrase
+                              ::admin-gpg-id
                               ::frontend-base-url
                               ::frontend-backend-base-url]))
+
+(defn strip-secrets [env]
+  (assoc env :mail-pass "*"
+             :admin-passphrase "*"))
 
 (defn filter-defined [keys-spec m]
   (let [req-un (last (s/form keys-spec))
@@ -52,9 +61,6 @@
                                     keyword)
                                req-un)]
        (select-keys m (into [] unnamespaced-keys))))
-
-(defn strip-secrets [env]
-  (assoc env :mail-pass "*"))
 
 (defstate env
   :start (let [env (->> (merge (config.core/load-env)

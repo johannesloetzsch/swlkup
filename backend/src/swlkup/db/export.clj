@@ -7,8 +7,11 @@
        (sync)
        (q_unary '{:find [(pull ?e [*])] :where [[?e :xt/id]]})))
 
+(defn edn->pprint [edn]
+  (with-out-str (pprint edn)))
+
 (defn write-edn [file docs]
-  (->> (with-out-str (pprint docs))
+  (->> (edn->pprint docs)
        (spit file)))
 
 (defn export [file db_ctx]

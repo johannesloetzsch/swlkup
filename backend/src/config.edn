@@ -7,10 +7,10 @@
  :db-inmemory false
  :db-dir "./data/xtdb/rocksdb"
  :db-seed ""
- :db-export-prefix "./data/export_"
+ :db-export-prefix "./data/export/"
  :db-validate true
 
- :upload-dir "./data/upload"  ;; ensure you created it
+ :upload-dir "./data/upload"
  :upload-limit-mb 1
 
  :mail-host ""
@@ -18,6 +18,9 @@
  :mail-pass ""
  :mail-port 587
  :mail-from nil
+
+ :admin-passphrase nil
+ :admin-gpg-id "9EA68B7F21204979645182E4287B083353C3241C"
 
  :frontend-base-url "http://localhost:4000"
  :frontend-backend-base-url "http://localhost:4000"
