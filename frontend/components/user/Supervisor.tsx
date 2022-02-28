@@ -2,11 +2,23 @@ import { Languages, Supervisors } from '../../codegen/generates'
 import { config } from '../../config'
 import styles from '../../styles/Supervisor.module.css'
 
+/** Prevent XSS by `script` or `object` urls **/
+function Sanitized_link({href}: {href: string|null|undefined}) {
+  const secure = href && href.startsWith('http')
+  const fallback = !secure && href && `https://${href}`
+  return (
+    secure && <a href={href}>{ href }</a>
+           || fallback && <a href={fallback}>{ href }</a>
+	   || null
+  )
+}
+
 export function Supervisor({supervisor, languages}: {supervisor: Supervisors, languages: Languages[]}) {
+  const id = `${supervisor.id}_${supervisor.name_full}`
   const img_src = `${config.backend_base_url}${supervisor?.photo}`
 
   return (
-    <div className={styles.card} id={`${supervisor.id}_${supervisor.name_full}`}>
+    <div className={styles.card} id={id}>
       <table style={{width: "100%"}}>
         <tbody>
           <tr>
@@ -32,9 +44,9 @@ export function Supervisor({supervisor, languages}: {supervisor: Supervisors, la
       {/* <p>{supervisor.offers.join(", ")}</p> */}
       <p>
         <i>
-          <span style={{display: "inline-block"}}>{supervisor.contacts.website} &nbsp;</span><br/>
-          <span style={{display: "inline-block"}}>{supervisor.contacts.email} &nbsp;</span><br/>
-          <span style={{display: "inline-block"}}>{supervisor.contacts.phone}</span>
+          <span style={{display: "inline-block"}}><Sanitized_link href={supervisor.contacts.website}/> &nbsp;</span><br/>
+          <span style={{display: "inline-block"}}>{ supervisor.contacts.email && <a href={`mailto:${supervisor.contacts.email}`}>{supervisor.contacts.email}</a>} &nbsp;</span><br/>
+          <span style={{display: "inline-block"}}>{ supervisor.contacts.phone && <a href={`tel:${supervisor.contacts.phone}`}>{supervisor.contacts.phone}</a>} &nbsp;</span><br/>
         </i>
       </p>
     </div>

@@ -126,8 +126,8 @@ function FilterForm({languages, offers, selections}:
           && <span><hr/>
                <p>
                  <Trans i18nKey="note_location_services" values={constants}
-		        components={{1: <a href={constants.url_nominatim}>Nominatim</a>,
-			             2: <a href={constants.url_openstreetmap}>Openstreetmap</a>}}/>
+                        components={{1: <a href={constants.url_openstreetmap}>Openstreetmap</a>,
+                                     2: <a href={constants.url_nominatim}>Nominatim</a>}}/>
 		 {/** This services see the Referer header **/}
                </p>
 	       <LocationForm/>

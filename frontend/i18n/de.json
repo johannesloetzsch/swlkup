@@ -40,7 +40,7 @@
 "How would you like to get support?": "Welchen Kontakt suchst du?",
 "inperson": "In Präsenz",
 "remote": "Telefonisch oder Online",
-"note_location_services": "Da du ein Treffen in Präsenz wünschst, kannst Du hier deinen Ort eingeben. Die Ergebnisse werden dann nach Entfernung sortiert und auf einer Karte dargestellt.<br/>Für diese optonale Funktion werden Abfragen an die externen Dienste <1>Nominatim</1> und <2>Openstreetmap</2> gesendet, welche den eingegebenen Ort beinhalten.",
+"note_location_services": "Da du ein Treffen in Präsenz wünschst, kannst Du hier deinen Ort eingeben. Die Ergebnisse werden dann nach Entfernung sortiert und auf einer Karte dargestellt.<br/>Für diese optionale Funktion werden Inhalte von <1>Openstreetmap</1> geladen, die ein Übermitteln des ungefähren Ortes erfordern.",
 "Country": "Land",
 "City": "Stadt",
 "Zip code": "Postleitzahl",

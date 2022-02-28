@@ -15,13 +15,14 @@ export function MailToAll({filteredSupervisors}: {filteredSupervisors: Superviso
                      .map(supervisor => supervisor.contacts.email)
 		     .filter(email => email)
 		     .join(', ')
+  const href = `mailto:?bcc=${recipients}`
 
   /** displayed only when logged in, but not for pseudonym users **/
   return auth.jwt && recipients && (
     <div className="fullwidth">
       <h4>{ t('Mail to all') }</h4>
       <blockquote>
-        { recipients }
+        <a href={href}>{ recipients }</a>
       </blockquote>
     </div>
   ) || null
