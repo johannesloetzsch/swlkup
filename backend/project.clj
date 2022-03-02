@@ -3,11 +3,11 @@
   :min-lein-version "2.0.0"
   :dependencies [;; core
                  [org.clojure/clojure "1.10.3"]
-                 [yogthos/config "1.1.9" :exclusions [org.clojure/tools.logging]]
+                 [yogthos/config "1.1.9"]
                  [mount "0.1.16"]
                  [spootnik/signal "0.2.4"]
                  ;; db
-                 [com.xtdb/xtdb-core "1.20.0" :exclusions [org.clojure/tools.logging]]
+                 [com.xtdb/xtdb-core "1.20.0"]
                  [com.xtdb/xtdb-rocksdb "1.20.0"]
                  ;; graphql + http
                  [org.clojars.johannesloetzsch/specialist-server "0.7.0"]
@@ -40,4 +40,5 @@
                    #_#_:jvm-opts ["-Dverbose=true"]}
              :test {:jvm-opts ["-Ddb-inmemory=true" "-Ddb-export-prefix="]}
              :uberjar {:aot :all}}
-  :jvm-opts ["-Dlog4j2.formatMsgNoLookups=true"])  ;; not required, since log4j is no runtime dependency, but for defense-in-depth
+  :jvm-opts ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/jul-factory"
+             "-Dlog4j2.formatMsgNoLookups=true"])  ;; not required, since log4j is no runtime dependency, but for defense-in-depth
