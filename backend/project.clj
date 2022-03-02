@@ -10,15 +10,15 @@
                  [com.xtdb/xtdb-core "1.20.0"]
                  [com.xtdb/xtdb-rocksdb "1.20.0"]
                  ;; graphql + http
-                 [org.clojars.johannesloetzsch/specialist-server "0.7.0"]
+                 [org.clojars.johannesloetzsch/specialist-server "0.7.0" :exclusions [com.ibm.icu/icu4j]]
                  [compojure "1.6.2"]
                  [ring/ring-core "1.9.5"]
                  [ring/ring-jetty-adapter "1.9.5"]
                  [ring/ring-devel "1.9.5"]
                  [ring-cors "0.1.13"]
-                 [ring/ring-json "0.5.1"]
+                 [ring/ring-json "0.5.1" :exclusions [cheshire]]
+                   [cheshire "5.10.2"]
                  [ring-json-response "0.2.0"]
-                 [ring-webjars "0.2.0"]
                  ;; auth + mail
                  [cryptohash-clj "0.1.10"]
                  [likid_geimfari/secrets "1.1.1"]
@@ -26,6 +26,8 @@
                  [buddy/buddy-sign "3.4.333"]
                  #_[com.draines/postal "2.0.4"]
                  ;; graphiql  ;; TODO not required for productive build
+                 [ring-webjars "0.2.0" :exclusions [org.webjars/webjars-locator]]
+                   [org.webjars/webjars-locator "0.45"]
                  [org.webjars/graphiql "0.11.11"]
                  [org.webjars.npm/react "17.0.2" :exclusions [org.webjars.npm/loose-envify org.webjars.npm/js-tokens org.webjars.npm/object-assign]]
                  [org.webjars.npm/react-dom "17.0.2" :exclusions [org.webjars.npm/loose-envify org.webjars.npm/js-tokens org.webjars.npm/object-assign org.webjars.npm/scheduler]]

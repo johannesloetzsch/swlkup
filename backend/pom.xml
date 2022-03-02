@@ -92,6 +92,12 @@
       <groupId>org.clojars.johannesloetzsch</groupId>
       <artifactId>specialist-server</artifactId>
       <version>0.7.0</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>icu4j</artifactId>
+          <groupId>com.ibm.icu</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>compojure</groupId>
@@ -122,15 +128,21 @@
       <groupId>ring</groupId>
       <artifactId>ring-json</artifactId>
       <version>0.5.1</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>cheshire</artifactId>
+          <groupId>cheshire</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>cheshire</groupId>
+      <artifactId>cheshire</artifactId>
+      <version>5.10.2</version>
     </dependency>
     <dependency>
       <groupId>ring-json-response</groupId>
       <artifactId>ring-json-response</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-    <dependency>
-      <groupId>ring-webjars</groupId>
-      <artifactId>ring-webjars</artifactId>
       <version>0.2.0</version>
     </dependency>
     <dependency>
@@ -152,6 +164,22 @@
       <groupId>buddy</groupId>
       <artifactId>buddy-sign</artifactId>
       <version>3.4.333</version>
+    </dependency>
+    <dependency>
+      <groupId>ring-webjars</groupId>
+      <artifactId>ring-webjars</artifactId>
+      <version>0.2.0</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>webjars-locator</artifactId>
+          <groupId>org.webjars</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>webjars-locator</artifactId>
+      <version>0.45</version>
     </dependency>
     <dependency>
       <groupId>org.webjars</groupId>
