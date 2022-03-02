@@ -19,16 +19,20 @@
                  [ring/ring-json "0.5.1"]
                  [ring-json-response "0.2.0"]
                  [ring-webjars "0.2.0"]
-                 ;; graphiql
-                 [org.webjars/graphiql "0.11.11"]
-                 [org.webjars.npm/react "17.0.2" :exclusions [org.webjars.npm/loose-envify org.webjars.npm/js-tokens org.webjars.npm/object-assign]]
-                 [org.webjars.npm/react-dom "17.0.2" :exclusions [org.webjars.npm/loose-envify org.webjars.npm/js-tokens org.webjars.npm/object-assign org.webjars.npm/scheduler]]
                  ;; auth + mail
                  [cryptohash-clj "0.1.10"]
                  [likid_geimfari/secrets "1.1.0"]
                  [crypto-random "1.2.1"]
                  [buddy/buddy-sign "3.4.1"]
-                 ;[com.draines/postal "2.0.4"]
+                 #_[com.draines/postal "2.0.4"]
+                 ;; graphiql  ;; TODO not required for productive build
+                 [org.webjars/graphiql "0.11.11"]
+                 [org.webjars.npm/react "17.0.2" :exclusions [org.webjars.npm/loose-envify org.webjars.npm/js-tokens org.webjars.npm/object-assign]]
+                 [org.webjars.npm/react-dom "17.0.2" :exclusions [org.webjars.npm/loose-envify org.webjars.npm/js-tokens org.webjars.npm/object-assign org.webjars.npm/scheduler]]
+                 ;; logging
+                 #_[org.clojure/tools.logging "1.2.4"]
+                 [org.slf4j/slf4j-api "2.0.0-alpha6"]
+                 [org.slf4j/slf4j-simple "2.0.0-alpha6"]
                 ]
   :main swlkup.webserver.state
   :profiles {:dev {:dependencies [;; helpers for testing
@@ -40,5 +44,6 @@
                    #_#_:jvm-opts ["-Dverbose=true"]}
              :test {:jvm-opts ["-Ddb-inmemory=true" "-Ddb-export-prefix="]}
              :uberjar {:aot :all}}
-  :jvm-opts ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/jul-factory"
+  :jvm-opts ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/slf4j-factory"  ;; used by yogthos/config and com.xtdb/xtdb-core
+             "-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"  ;; usded by jetty (via ring/ring-jetty-adapter)
              "-Dlog4j2.formatMsgNoLookups=true"])  ;; not required, since log4j is no runtime dependency, but for defense-in-depth
