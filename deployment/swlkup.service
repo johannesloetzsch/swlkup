@@ -6,6 +6,8 @@ Type=simple
 User=swlkup
 WorkingDirectory=/home/swlkup/
 Environment=CONFIG=config.edn
+Environment=MALLOC_ARENA_MAX=2
+Environment=JAVA_TOOL_OPTIONS='-Dclojure.tools.logging.factory=clojure.tools.logging.impl/slf4j-factory -Dorg.slf4j.simpleLogger.defaultLogLevel=warn -Dlog4j2.formatMsgNoLookups=true'
 ExecStart=/usr/bin/java -jar swlkup.jar
 
 [Install]
