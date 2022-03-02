@@ -1,17 +1,21 @@
 (ns swlkup.db.validate
   (:require [clojure.spec.alpha :as s]
             [swlkup.db.export :refer [all_docs write-edn]]
-            [clojure.pprint :refer [pprint]]))
+            [clojure.pprint :refer [pprint]]
+            [clojure.tools.logging :refer [error]]))
 
 (defn validate
   "Validate a xtdb-document or a collection of documents.
    When not conforming to the spec, an explaination is associated."
   [doc]
   (if (map? doc)
-      (let [spec (:xt/spec doc)]
-           (if (s/valid? spec doc)
-               doc 
-               (assoc doc :explain (s/explain-data spec doc))))
+      (when-not (:xt/fn doc)
+                (let [spec (:xt/spec doc)]
+                     (when-not spec
+                               (error ":xt/spec must not be empty!" doc))
+                     (if (s/valid? spec doc)
+                         doc
+                         (assoc doc :explain (s/explain-data spec doc)))))
       (map validate doc)))
 
 (defn validate-db
