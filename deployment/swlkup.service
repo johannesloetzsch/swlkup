@@ -1,0 +1,12 @@
+[Unit]
+Description=https://github.com/johannesloetzsch/swlkup
+
+[Service]
+Type=simple
+User=swlkup
+WorkingDirectory=/home/swlkup/
+Environment=CONFIG=config.edn
+ExecStart=/usr/bin/java -jar swlkup.jar
+
+[Install]
+WantedBy=multi-user.target

@@ -28,7 +28,9 @@ jobs:
           command: nix build .#frontend -o result-frontend
       - run:
           name: Reproducible build + unit tests
-          command: nix build -o result-fullstack --show-trace
+          command: |
+            nix build -o result-fullstack --show-trace
+            sha256sum $(nix eval --raw .#fullstack.jar)/*.jar  ## for debugging only, exclusively trust your own build
       - run:
           name: Integration tests
           command: |
