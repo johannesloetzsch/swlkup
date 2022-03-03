@@ -1,0 +1,4 @@
+**/node-packages.nix linguist-generated
+**/node-env.nix linguist-generated
+
+codegen/generates.ts linguist-generated
