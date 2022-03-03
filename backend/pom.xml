@@ -146,6 +146,11 @@
       <version>0.2.0</version>
     </dependency>
     <dependency>
+      <groupId>co.deps</groupId>
+      <artifactId>ring-etag-middleware</artifactId>
+      <version>0.2.1</version>
+    </dependency>
+    <dependency>
       <groupId>cryptohash-clj</groupId>
       <artifactId>cryptohash-clj</artifactId>
       <version>0.1.10</version>

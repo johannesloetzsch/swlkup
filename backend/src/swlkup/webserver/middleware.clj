@@ -5,19 +5,24 @@
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]
             [ring.middleware.content-type :refer [wrap-content-type]]
             [ring.middleware.not-modified :refer [wrap-not-modified]]
-            [ring.middleware.multipart-params :refer [wrap-multipart-params]]
             [ring.util.json-response :refer [json-response]]
             [ring.util.response :refer [resource-response content-type]]
             [lib.graphql.middleware :refer [wrap-graphql-error]]
+            [co.deps.ring-etag-middleware :as etag]
             [lib.resources.list-resources :refer [list-resources]]
-            [clojure.string :as string :refer [ends-with?]]
-            [clojure.pprint :refer [pprint]]))
+            [clojure.string :as string :refer [ends-with?]]))
 
 (defn wrap-debug
   [handler]
   (fn [req]
-      (pprint (:body req))
-      (let [res (handler req)]
+      (let [res (handler req)
+            selected_headers ["if-modified-since" "if-none-match"]]
+           (when (:verbose env)
+                 (prn)
+                 (println (:uri req))
+                 (prn (keys (sort (:headers req))))
+                 (prn (select-keys (:headers req) selected_headers))
+                 (prn (:status res) (:headers res)))
            res)))
 
 (defn wrap-graphiql
@@ -31,7 +36,6 @@
   "Handle Content-Type and Errors of graphql-endpoint"
   [handler]
   (-> handler
-      ;(wrap-debug)  ;; TODO
       (wrap-graphql-error)
       (wrap-json-body {:keywords? true :bigdecimals? false})  ;; java.math.BigDecimal doesn't conform to t/float or float?
       (wrap-json-response)))
@@ -55,7 +59,7 @@
             path (string/replace (:uri req) #"/[^/]*$" "/")
             file (string/replace (:uri req) #".*/" "")
             html (->> (list-resources (str "public" path))
-                      (remove #(re-matches #".+[/].*" %))  ;; only files that are not in a subdirectory
+                      (remove #(re-matches #".+[/].*" %))  ;; Only files that are not in a subdirectory
                       (filter #(re-matches #".*\.html" %)))]
            (cond (not (or (= 404 (:status res))
                           (= "/" (:uri req))))
@@ -80,6 +84,8 @@
   [handler]
   (fn [req]
       (if (= "/config.json" (:uri req))
+          ;; If the config would become larger, we should calc an ETag header
+          ;; For using `etag/wrap-file-etag`, body would need to be of instance? File
           (json-response {:base_url (:frontend-base-url env)
                           :backend_base_url (:frontend-backend-base-url env)})
           (handler req))))
@@ -88,5 +94,9 @@
 (defn wrap-defaults [handler]
   (-> handler
       (wrap-content-type)
-      (wrap-multipart-params)
-      (wrap-not-modified)))
+      (wrap-json-response)
+
+      (etag/wrap-file-etag)
+      (wrap-not-modified)
+
+      (wrap-debug)))

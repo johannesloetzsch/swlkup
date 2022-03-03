@@ -3,6 +3,7 @@
             [compojure.route :as route]
             [ring.util.response :refer [response]]
             [ring.middleware.cors :refer [wrap-cors]]
+            [ring.middleware.multipart-params :refer [wrap-multipart-params]]
             [swlkup.webserver.middleware :refer [wrap-rest wrap-graphql wrap-graphiql wrap-nextjs-frontend wrap-frontend-config wrap-defaults]]
             [swlkup.resolver.core :refer [graphql]]
             [swlkup.config.state :refer [env]]
@@ -24,15 +25,16 @@
 
   (->
     (POST "/graphql" req
-      (response (graphql (:body req))))
+          (response (graphql (:body req))))
     wrap-graphql
     wrap-graphiql)
 
   (wrap-rest
-    (POST "/api/upload-supervisor-picture" req
-      ((get-in upload [:handler :upload-supervisor-picture]) req)))
+    (wrap-multipart-params
+      (POST "/api/upload-supervisor-picture" req
+            ((get-in upload [:handler :upload-supervisor-picture]) req))))
   (GET "/uploads/:id" [id]
-    ((get-in upload [:handler :serve-uploaded-supervisor-picture]) id))
+       ((get-in upload [:handler :serve-uploaded-supervisor-picture]) id))
 
   (route/not-found "Not Found"))
 

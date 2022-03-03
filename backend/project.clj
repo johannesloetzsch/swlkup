@@ -19,6 +19,7 @@
                  [ring/ring-json "0.5.1" :exclusions [cheshire]]
                    [cheshire "5.10.2"]
                  [ring-json-response "0.2.0"]
+                 [co.deps/ring-etag-middleware "0.2.1"]
                  ;; auth + mail
                  [cryptohash-clj "0.1.10"]
                  [likid_geimfari/secrets "1.1.1"]

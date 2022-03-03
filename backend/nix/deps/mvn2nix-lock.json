@@ -250,6 +250,11 @@
       "sha256": "45db88321bdfa9c8722b08e46465986588a13e4dbfcac9d91a0069b634bf9b7c",
       "url": "https://repo.maven.apache.org/maven2/pro/juxt/clojars-mirrors/com/taoensso/nippy/3.1.1/nippy-3.1.1.jar"
     },
+    "org.apache.commons:commons-parent:pom:41": {
+      "layout": "org/apache/commons/commons-parent/41/commons-parent-41.pom",
+      "sha256": "b2877c8016f8b28924c8e90dd5ae40cd11f328d02a1de98d80de22574ab36ec7",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/41/commons-parent-41.pom"
+    },
     "org.apache.commons:commons-parent:pom:42": {
       "layout": "org/apache/commons/commons-parent/42/commons-parent-42.pom",
       "sha256": "cd313494c670b483ec256972af1698b330e598f807002354eb765479f604b09c",
@@ -494,6 +499,11 @@
       "layout": "org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.pom",
       "sha256": "aa38ab11a2c97f9b61dec56074d59e98f2ea63c0cd7b3b2f61acff6549d064e6",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.pom"
+    },
+    "co.deps:ring-etag-middleware:pom:0.2.1": {
+      "layout": "co/deps/ring-etag-middleware/0.2.1/ring-etag-middleware-0.2.1.pom",
+      "sha256": "7853ec884225163f0405cdd9b47dd96850e31847b1d3716da5dccdf621acab80",
+      "url": "https://clojars.org/repo/co/deps/ring-etag-middleware/0.2.1/ring-etag-middleware-0.2.1.pom"
     },
     "org.sonatype.aether:aether-util:jar:1.7": {
       "layout": "org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar",
@@ -904,6 +914,11 @@
       "layout": "buddy/buddy-sign/3.4.333/buddy-sign-3.4.333.jar",
       "sha256": "bc0d6c4aaff0f295e618dabea0a55bef1708718e637d5c6b474dde2b80cd8926",
       "url": "https://clojars.org/repo/buddy/buddy-sign/3.4.333/buddy-sign-3.4.333.jar"
+    },
+    "commons-fileupload:commons-fileupload:pom:1.3.3": {
+      "layout": "commons-fileupload/commons-fileupload/1.3.3/commons-fileupload-1.3.3.pom",
+      "sha256": "ce3493f4fcc46dfb6717e28a732247e10c23afcd6e19df7d9571914133f13cc8",
+      "url": "https://repo.maven.apache.org/maven2/commons-fileupload/commons-fileupload/1.3.3/commons-fileupload-1.3.3.pom"
     },
     "org.eclipse.jetty:jetty-util:jar:9.4.44.v20210927": {
       "layout": "org/eclipse/jetty/jetty-util/9.4.44.v20210927/jetty-util-9.4.44.v20210927.jar",
@@ -2240,6 +2255,11 @@
       "sha256": "5d894821371a62223680f7657f4e5b0deffb11b059b3efe61b0e42f935a823d1",
       "url": "https://repo.maven.apache.org/maven2/com/xtdb/xtdb-rocksdb/1.20.0/xtdb-rocksdb-1.20.0.pom"
     },
+    "co.deps:ring-etag-middleware:jar:0.2.1": {
+      "layout": "co/deps/ring-etag-middleware/0.2.1/ring-etag-middleware-0.2.1.jar",
+      "sha256": "3cc43168162dff7a704dac1aab75883e9e55f19b0e070005750d86734836b35c",
+      "url": "https://clojars.org/repo/co/deps/ring-etag-middleware/0.2.1/ring-etag-middleware-0.2.1.jar"
+    },
     "org.apache.commons:commons-text:pom:1.9": {
       "layout": "org/apache/commons/commons-text/1.9/commons-text-1.9.pom",
       "sha256": "9f9216cfc944dca782e6311d62757fd77164fe67da29b58f015687fa09f44050",
@@ -2474,6 +2494,11 @@
       "layout": "tigris/tigris/0.1.2/tigris-0.1.2.jar",
       "sha256": "49aa648edb6c14e57095a11b391eaee606578323fb79755f92331ac6300f97a0",
       "url": "https://clojars.org/repo/tigris/tigris/0.1.2/tigris-0.1.2.jar"
+    },
+    "ring:ring-core:pom:1.6.3": {
+      "layout": "ring/ring-core/1.6.3/ring-core-1.6.3.pom",
+      "sha256": "555808bf310d13c58721ab1af302297e1bffa9f05d37de1715d799a58d1d633a",
+      "url": "https://clojars.org/repo/ring/ring-core/1.6.3/ring-core-1.6.3.pom"
     },
     "org.apache.maven:maven-monitor:pom:2.0.6": {
       "layout": "org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.pom",
