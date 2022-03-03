@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../../components/Login'
 import { useSupervisorGetPhotoQuery } from '../../codegen/generates'
-import { config, fetch_config } from "../../config";
+import { config } from '../../config'
 
 function upload_profile_picture(jwt: String, upload_url: URL, refetch: any) {
   const files = (document.getElementById('profilePicture') as HTMLInputElement).files as any as File[]
@@ -21,8 +20,6 @@ function upload_profile_picture(jwt: String, upload_url: URL, refetch: any) {
 }
 
 export function ProfilePictureUpload() {
-  useEffect( () => {fetch_config() }, [config])
-
   const {t} = useTranslation()
   const auth = useAuthStore()
 

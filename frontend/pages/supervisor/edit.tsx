@@ -10,6 +10,8 @@ import { ProfileStatus } from '../../components/supervisor/ProfileStatus'
 import { ProfileLocation } from '../../components/supervisor/ProfileLocation'
 import { ProfilePictureUpload } from '../../components/supervisor/ProfilePictureUpload'
 import { useLocationStore } from '../../lib/geo/LocationStore'
+import { config } from '../../config';
+import { flag } from '../../lib/urls'
 
 function filter_empty_vals(map: object) {
   return Object.fromEntries(Object.entries(map).filter(kv => kv[1]))
@@ -167,7 +169,7 @@ export default function SupervisorEdit() {
             { sort(data.languages).map( lang => (
               <label key={lang.id}>
                 <input type="checkbox" name="language" value={lang.id} id={lang.id} defaultChecked={supervisor?.languages.includes(lang.id)} onChange={validate} />
-                <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
+                <img key={lang.id} src={flag(config.base_url, lang.id)} title={lang.name} style={{height: "15px"}}/>&nbsp;
 	        <span className="bidi-isolate">{lang.name}</span>&nbsp;
               </label>
             ) ) }

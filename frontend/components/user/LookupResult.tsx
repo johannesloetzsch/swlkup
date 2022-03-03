@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import styles from '../../styles/Supervisor.module.css'
 import styles_core from '../../styles/Core.module.css'
 import { Languages, LookupQuery, Supervisors, Offers } from '../../codegen/generates'
@@ -7,13 +6,14 @@ import { Checkbox } from '../Checkbox'
 import { useTranslation, Trans } from 'react-i18next';
 import constants from '../../i18n/const.json'
 import { sort } from '../LanguageSelection'
-import { config, fetch_config } from '../../config';
+import { config } from '../../config';
 import { MailToAll } from './MailToAll'
 import { Supervisor } from '../../components/user/Supervisor'
 import { LocationForm } from '../shared/LocationForm'
 import { LocationResultWithoutSSR } from './LocationResultWithoutSSR'
 import { useLocationStore } from '../../lib/geo/LocationStore'
 import { haversine_distance, lon, lat } from '../../lib/geo/distance'
+import { flag } from '../../lib/urls'
 
 type Options = any //Map<string, boolean>
 
@@ -85,7 +85,7 @@ function FilterForm({languages, offers, selections}:
           <Checkbox name="language" value={lang.id} id={lang.id} onChange={setLanguage} key={lang.id}
                     refInput={el => el && (el.indeterminate = getLanguages([]).length === 0
                                        && selections.selectedLanguages.includes(lang.id))} >
-            <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px"}}/>&nbsp;
+            <img key={lang.id} src={flag(config.base_url, lang.id)} title={lang.name} style={{height: "15px"}}/>&nbsp;
             <span className="bidi-isolate">{lang.name}</span>
           </Checkbox>
         ) ) }
@@ -146,7 +146,6 @@ function distance_for_known_locations(lon: lon, lat: lat, supervisor: Supervisor
 }
 
 export function LookupResult({data}: {data: LookupQuery}) {
-  useEffect( () => {fetch_config() }, [config])
   const { t } = useTranslation()
   const { getLanguages, getTargets, getOffers, getContacts } = useFilterStore()
   const { lon, lat } = useLocationStore()

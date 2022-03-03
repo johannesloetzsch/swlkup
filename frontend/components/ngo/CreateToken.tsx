@@ -1,8 +1,8 @@
-import { config, fetch_config } from "../../config";
+import { config } from "../../config";
 import { useEffect } from 'react'
 import { useAuthStore, AuthState, jwtFromLocalStorage } from '../Login'
 import { fetcher } from '../../codegen/fetcher'
-import { useNgoQuery, Created_Tokens } from '../../codegen/generates'
+import { useNgoQuery } from '../../codegen/generates'
 import { useTranslation, Trans } from 'react-i18next';
 import { InvalidateTokenDialog } from './InvalidateTokenDialog'
 
@@ -15,7 +15,6 @@ async function mutate(auth: AuthState, purpose: string) {
 
 export function CreateToken() {
   const {t} = useTranslation()
-  useEffect( () => {fetch_config() }, [config])
 
   const auth = useAuthStore()
   useEffect(() => {

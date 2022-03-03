@@ -1,6 +1,7 @@
 import { Languages, Supervisors } from '../../codegen/generates'
 import { config } from '../../config'
 import styles from '../../styles/Supervisor.module.css'
+import { flag } from '../../lib/urls'
 
 /** Prevent XSS by `script` or `object` urls **/
 function Sanitized_link({href}: {href: string|null|undefined}) {
@@ -26,7 +27,7 @@ export function Supervisor({supervisor, languages}: {supervisor: Supervisors, la
             <td style={{textAlign: "right", verticalAlign: "top"}}>
             {supervisor.languages && supervisor.languages.map( lang_id =>
               { const lang = languages[languages.findIndex( l => l.id === lang_id )]
-                  return <img key={lang.id} src={lang.flag_url} title={lang.name} style={{height: "15px", paddingLeft: "5px"}}/>
+                  return <img key={lang.id} src={flag(config.base_url, lang.id)} title={lang.name} style={{height: "15px", paddingLeft: "5px"}}/>
             })}
                </td>
           </tr>
