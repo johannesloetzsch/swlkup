@@ -6,5 +6,5 @@ curl 'https://psychological.contact/graphql' -H 'Content-Type: application/json'
 
 ```sh
 cd backend
-gpg --decrypt /tmp/export.gpg | DB_SEED=/dev/stdin INMEMORY=true lein run
+gpg --decrypt /tmp/export.gpg | DB_SEED=/dev/stdin DB_INMEMORY=true lein run
 ```

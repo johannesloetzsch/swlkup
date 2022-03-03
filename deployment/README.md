@@ -96,3 +96,11 @@ echo -e "5\ny\n" | gpg --command-fd 0 --expert --edit-key $ADMIN_GPG_ID trust
 ```
 
 [Test the feature](../backend/src/swlkup/resolver/root/admin/Export.md)
+
+
+# Hosting of current deployment
+
+## Backups
+
+On 02.03.2022 Jonas wrote:
+> Backups machen wir von den VMs einmal pro Tag. Die Backup Server stehen in zwei anderen Landern plus die VM hat HA aktiviert, das heiszt wenn der Server unter der VM wegbricht sollte sie direkt auf einem anderen Host mit dem selben state neu gespawned werden.
