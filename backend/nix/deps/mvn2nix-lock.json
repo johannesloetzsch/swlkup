@@ -635,11 +635,6 @@
       "sha256": "394d0048f2087db09c02215941e7490edf67d232762b4a8329e93c23b84d5df1",
       "url": "https://clojars.org/repo/ring/ring-codec/1.0.1/ring-codec-1.0.1.pom"
     },
-    "org.webjars.npm:react:jar:17.0.2": {
-      "layout": "org/webjars/npm/react/17.0.2/react-17.0.2.jar",
-      "sha256": "bb5b9111fd73c765fbb0b2f2be61a56ecc20c9efbc358ef78ade214744337cb3",
-      "url": "https://repo.maven.apache.org/maven2/org/webjars/npm/react/17.0.2/react-17.0.2.jar"
-    },
     "org.eclipse.jetty:jetty-server:jar:9.4.44.v20210927": {
       "layout": "org/eclipse/jetty/jetty-server/9.4.44.v20210927/jetty-server-9.4.44.v20210927.jar",
       "sha256": "d4f51fb02454b1c79489418f080d3409c557abca181f083881977b7a729a8f86",
@@ -1094,11 +1089,6 @@
       "layout": "org/ow2/asm/asm-analysis/7.1/asm-analysis-7.1.jar",
       "sha256": "4612c0511a63db2a2570f07ad1959e19ed8eb703e4114da945cb85682519a55c",
       "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/7.1/asm-analysis-7.1.jar"
-    },
-    "org.clojure:tools.logging:pom:1.2.1": {
-      "layout": "org/clojure/tools.logging/1.2.1/tools.logging-1.2.1.pom",
-      "sha256": "260e76be75e7d06312530cc8bf3f74b0e34a2cb9dc3de231ff0e6712ffb7a378",
-      "url": "https://repo.maven.apache.org/maven2/org/clojure/tools.logging/1.2.1/tools.logging-1.2.1.pom"
     },
     "org.clojure:pom.contrib:pom:1.1.0": {
       "layout": "org/clojure/pom.contrib/1.1.0/pom.contrib-1.1.0.pom",
@@ -1565,11 +1555,6 @@
       "sha256": "db59c369cf8640ebd73309ea20250c52372ff2ddee5a66fa0054110c6b3d0438",
       "url": "https://clojars.org/repo/likid_geimfari/secrets/1.1.1/secrets-1.1.1.jar"
     },
-    "org.webjars.npm:react:pom:17.0.2": {
-      "layout": "org/webjars/npm/react/17.0.2/react-17.0.2.pom",
-      "sha256": "a256dc2a6d226ca6b290315da6792c4bc4e863c5a7c65cb5a22f0a112c9916b8",
-      "url": "https://repo.maven.apache.org/maven2/org/webjars/npm/react/17.0.2/react-17.0.2.pom"
-    },
     "io.github.classgraph:classgraph:pom:4.8.139": {
       "layout": "io/github/classgraph/classgraph/4.8.139/classgraph-4.8.139.pom",
       "sha256": "74cb62b2746c200a7b216d3103726b1c04ba96cfe480fb0fd33a14322c9a9dde",
@@ -1629,11 +1614,6 @@
       "layout": "org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.pom",
       "sha256": "d08155c497df37b2c3d9b5b0dfdb02ec0525b2070b5be3739fffde942fcac9af",
       "url": "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.pom"
-    },
-    "yogthos:config:jar:1.1.9": {
-      "layout": "yogthos/config/1.1.9/config-1.1.9.jar",
-      "sha256": "8bdcfe5cbf93e8e3af085252d103cd3f3496515046db39f23015a6eedf954913",
-      "url": "https://clojars.org/repo/yogthos/config/1.1.9/config-1.1.9.jar"
     },
     "org.apache.maven:maven-error-diagnostics:pom:2.0.6": {
       "layout": "org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.pom",
@@ -2035,6 +2015,11 @@
       "sha256": "37e66f15f348df957538f81f7e10a3fdcf84e5fbd687b2001ee3d6ab4a25aafe",
       "url": "https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar"
     },
+    "org.webjars.npm:react:jar:18.0.0-rc.1": {
+      "layout": "org/webjars/npm/react/18.0.0-rc.1/react-18.0.0-rc.1.jar",
+      "sha256": "9afc66caade3b6283de1c6fe6faa0d4c71ddf864c379d20e1ef6f80ca7f764b2",
+      "url": "https://repo.maven.apache.org/maven2/org/webjars/npm/react/18.0.0-rc.1/react-18.0.0-rc.1.jar"
+    },
     "org.apache.maven:maven-settings:pom:2.2.1": {
       "layout": "org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom",
       "sha256": "0d25a88a1b1e44801f8912206a40ff249cb5702ee87cf3d243d5213f7bcf534f",
@@ -2090,6 +2075,11 @@
       "sha256": "ef7dc47f8e4a16864f4779728e87ed78539819e4fb892768a9da6b8ef903f863",
       "url": "https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.8.1/junit-bom-5.8.1.pom"
     },
+    "yogthos:config:jar:1.2.0": {
+      "layout": "yogthos/config/1.2.0/config-1.2.0.jar",
+      "sha256": "28cc4217132a1a6b5fea39678de70e7e0db5efb3f58e0c9f9ca6ebdc10931ad7",
+      "url": "https://clojars.org/repo/yogthos/config/1.2.0/config-1.2.0.jar"
+    },
     "com.github.jnr:jnr-a64asm:pom:1.0.0": {
       "layout": "com/github/jnr/jnr-a64asm/1.0.0/jnr-a64asm-1.0.0.pom",
       "sha256": "9dd9c299ca3ec9287db2ec26571a5cc611dc21a1a4f5d2ef1255a924face47a8",
@@ -2104,6 +2094,11 @@
       "layout": "commons-codec/commons-codec/1.4/commons-codec-1.4.pom",
       "sha256": "f5f30069421ba013e76bece760407dcc80022461dc9555dcbd75fdb06d9a408f",
       "url": "https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.4/commons-codec-1.4.pom"
+    },
+    "org.webjars.npm:react:pom:18.0.0-rc.1": {
+      "layout": "org/webjars/npm/react/18.0.0-rc.1/react-18.0.0-rc.1.pom",
+      "sha256": "bf53998e451474ac497830eb3777538b58ae9116eff9be0ce69cce9cd87bddd2",
+      "url": "https://repo.maven.apache.org/maven2/org/webjars/npm/react/18.0.0-rc.1/react-18.0.0-rc.1.pom"
     },
     "org.clojure:clojure:pom:1.5.1": {
       "layout": "org/clojure/clojure/1.5.1/clojure-1.5.1.pom",
@@ -2430,11 +2425,6 @@
       "sha256": "01bc3d5649a81babf2c95915b566c5431372a86fcbc15883ac1a13f49084231c",
       "url": "https://clojars.org/repo/instaparse/instaparse/1.4.8/instaparse-1.4.8.pom"
     },
-    "yogthos:config:pom:1.1.9": {
-      "layout": "yogthos/config/1.1.9/config-1.1.9.pom",
-      "sha256": "a11a8173a3456eb2de2176702f17646b119fc2022b1d8b0fee98585aef5d841f",
-      "url": "https://clojars.org/repo/yogthos/config/1.1.9/config-1.1.9.pom"
-    },
     "com.fasterxml.jackson.core:jackson-databind:pom:2.13.1": {
       "layout": "com/fasterxml/jackson/core/jackson-databind/2.13.1/jackson-databind-2.13.1.pom",
       "sha256": "3c8ec4b3d5984bc86bc30da9ed86b35c34d3d68af9decf400c35893ad24f58ae",
@@ -2649,6 +2639,11 @@
       "layout": "com/fasterxml/jackson/jackson-bom/2.13.1/jackson-bom-2.13.1.pom",
       "sha256": "5a539c2596d5b7fcf0aba0a08214ce0fa6937b3ed1534fc1a70a9487a394bcb5",
       "url": "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.13.1/jackson-bom-2.13.1.pom"
+    },
+    "yogthos:config:pom:1.2.0": {
+      "layout": "yogthos/config/1.2.0/config-1.2.0.pom",
+      "sha256": "4c1685a48488d2829c7550d70837df0634733161b57dd442dcea987b27969670",
+      "url": "https://clojars.org/repo/yogthos/config/1.2.0/config-1.2.0.pom"
     },
     "org.bouncycastle:bcutil-jdk15on:pom:1.70": {
       "layout": "org/bouncycastle/bcutil-jdk15on/1.70/bcutil-jdk15on-1.70.pom",
