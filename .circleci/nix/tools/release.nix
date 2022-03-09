@@ -1,7 +1,7 @@
 { pkgs }:
 (pkgs.writeScriptBin "deploy" ''
   #!${pkgs.runtimeShell} -e
-  export PATH="${pkgs.lib.makeBinPath (with pkgs; [github-release])}"
+  export PATH="${pkgs.lib.makeBinPath (with pkgs; [github-release coreutils])}"
 
   ## $GITHUB_TOKEN must be a `personal access token` with scope `public_repo`.
   ## The owner of the token must be projekt owner of the repo.
@@ -19,7 +19,14 @@
      github-release delete -t $TAG
   fi
   echo "Create a new release…"
-  github-release release -t $TAG
+  github-release release -t $TAG || true
+
+  ## TODO: await release to be created, for now we wait + print debug output
+  echo 'existing?'
+  github-release info -t $TAG || true
+  sleep 10
+  echo 'existing after waiting?'
+  github-release info -t $TAG || true
 
   echo "Upload Artifacts"
   github-release upload -t $TAG -f "$FILE" -n "$NAME"

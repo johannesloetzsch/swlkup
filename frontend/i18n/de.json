@@ -46,7 +46,7 @@
 "Zip code": "Postleitzahl",
 "Results": "Ergebnisse",
 "supervisor_matches_one": "1 Supervisor:in wurde für diese Filtereinstellungen gefunden",
-"supervisor_matches_other": "{{count}} Supervisoren:innen wurden für diese Filtereinstellungen gefunden",
+"supervisor_matches_other": "{{count}} Supervisor:innen wurden für diese Filtereinstellungen gefunden",
 "Mail to all": "Mail an alle",
 "Copy to clipboard": "In Zwischenablage kopieren",
 "Open mail client": "Im Mailclient öffnen",
