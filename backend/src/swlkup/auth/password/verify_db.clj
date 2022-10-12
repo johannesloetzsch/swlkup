@@ -11,7 +11,9 @@
                                          :in [->mail]}
                                        mail)
         valid (verify-password password password:hash)]
-       (when valid login:id)))
+       (when (and valid
+                  (string? login:id))  ;; could be wrong when evicted
+             login:id)))
 
 (defn id->roles+entities [ctx login:id]
   (let [{:keys [q]} (:db_ctx ctx)]
