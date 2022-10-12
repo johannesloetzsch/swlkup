@@ -76,6 +76,8 @@ export const supervisor_get = gql`
       }
       text_specialization
       text
+
+      ngo
     }
 
     languages {

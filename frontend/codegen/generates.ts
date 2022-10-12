@@ -133,6 +133,8 @@ export type MutationTypeSupervisor_UpdateArgs = {
 export type QueryType = {
   __typename?: 'QueryType';
   created_tokens: Array<Created_Tokens>;
+  /** Export an encrypted database dump */
+  export?: Maybe<Export>;
   /** All languages */
   languages: Array<Languages>;
   /** For a username+password get a jwt containing the login:id */
@@ -152,6 +154,12 @@ export type QueryType = {
 /** The type that query operations will be rooted at. */
 export type QueryTypeCreated_TokensArgs = {
   auth: Auth;
+};
+
+
+/** The type that query operations will be rooted at. */
+export type QueryTypeExportArgs = {
+  password: Scalars['String'];
 };
 
 
@@ -210,6 +218,15 @@ export type Created_Tokens = {
   token: Scalars['String'];
   /** Self descriptive. */
   valid: Scalars['Boolean'];
+};
+
+/** Export an encrypted database dump */
+export type Export = {
+  __typename?: 'export';
+  err?: Maybe<Scalars['String']>;
+  /** Self descriptive. */
+  exit: Scalars['Int'];
+  out?: Maybe<Scalars['String']>;
 };
 
 /** All languages */
@@ -280,6 +297,8 @@ export type Supervisor_Get = {
   location: Location;
   /** Self descriptive. */
   name_full: Scalars['String'];
+  /** NGO-id, if the user is allowd to administrate an ngo */
+  ngo?: Maybe<Scalars['String']>;
   /** Self descriptive. */
   ngos: Scalars['NgoRefs'];
   offers: Array<Scalars['String']>;
@@ -302,6 +321,8 @@ export type Supervisors = {
   location: Location;
   /** Self descriptive. */
   name_full: Scalars['String'];
+  /** NGO-id, if the user is allowd to administrate an ngo */
+  ngo?: Maybe<Scalars['String']>;
   /** Self descriptive. */
   ngos: Scalars['NgoRefs'];
   offers: Array<Scalars['String']>;
@@ -342,7 +363,7 @@ export type SupervisorGetQueryVariables = Exact<{
 }>;
 
 
-export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, deactivated?: boolean | null | undefined, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, text_specialization?: string | null | undefined, text?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', country?: string | null | undefined, city?: string | null | undefined, zip?: string | null | undefined, type?: string | null | undefined, importance?: number | null | undefined, display_name?: string | null | undefined, lat?: number | null | undefined, lon?: number | null | undefined, diameter?: number | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
+export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, deactivated?: boolean | null | undefined, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, text_specialization?: string | null | undefined, text?: string | null | undefined, ngo?: string | null | undefined, contacts: { __typename?: 'Contacts', phone?: string | null | undefined, website?: string | null | undefined, email?: string | null | undefined }, location: { __typename?: 'Location', country?: string | null | undefined, city?: string | null | undefined, zip?: string | null | undefined, type?: string | null | undefined, importance?: number | null | undefined, display_name?: string | null | undefined, lat?: number | null | undefined, lon?: number | null | undefined, diameter?: number | null | undefined } } | null | undefined, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }>, ngos: Array<{ __typename?: 'ngos', id?: string | null | undefined, name?: string | null | undefined }> };
 
 export type SupervisorGetPhotoQueryVariables = Exact<{
   auth: Auth;
@@ -485,6 +506,7 @@ export const SupervisorGetDocument = `
     }
     text_specialization
     text
+    ngo
   }
   languages {
     id

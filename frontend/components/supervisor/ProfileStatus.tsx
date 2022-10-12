@@ -27,8 +27,17 @@ export function ProfileStatus({supervisor}: {supervisor: Supervisors|undefined})
 
 	<div style={{textAlign: "right"}}>
 	  { status === 'activated' && <DeactivateProfile/> }
-          { supervisor && <DeleteSupervisorDialog/> }
         </div>
+
+	{ supervisor?.ngo &&
+	  <> <br/> { t('Your account is administrator of an NGO. Deleting this login is therefore unrecommended. If you would like to do it anyway, please send us an email.') } </>
+	}
+        { supervisor && !supervisor.ngo &&
+	  <div style={{textAlign: "right"}}>
+	    <DeleteSupervisorDialog/>
+          </div>
+	}
+
       </div>
     </>
   )

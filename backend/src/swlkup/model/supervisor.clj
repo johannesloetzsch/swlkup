@@ -43,6 +43,8 @@
 
 (s/def ::deactivated (s/nilable t/boolean))
 
+(s/def ::ngo (t/field (s/nilable t/string) "NGO-id, if the user is allowd to administrate an ngo"))
+
 (s/def ::supervisor (s/keys :req-un [::id
                                      ::deactivated
                                      ::ngos
@@ -54,7 +56,8 @@
                                      ::photo
                                      ::text_specialization
                                      ::text
-                                     ::deactivated]))
+                                     ::deactivated
+                                     ::ngo]))
 
 (s/def :input/contacts ContactsInput)
 (s/def :input/location LocationInput)
