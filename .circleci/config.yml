@@ -37,6 +37,7 @@ jobs:
             nix build .#cypress -o result-cypress
             export CYPRESS_BASE_URL="http://localhost:4000"
             export PATH=./backend/resources/mock:$PATH
+            export DB_SEED=./backend/src/swlkup/db/seed/example.edn
             nix run &
             (sleep 10; cd frontend; nix run ..#cypress -- run); EXIT=$?
             kill $(cat .pid); exit $EXIT

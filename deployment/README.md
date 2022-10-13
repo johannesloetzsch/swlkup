@@ -54,6 +54,7 @@ A minimal configuration requires setting `:frontend-base-url` and `:frontend-bac
 CONFIG=config.edn java -jar swlkup.jar
 ```
 
+Adjust a `:db-seed` derived from `./src/swlkup/db/seed/example.edn` to have the intended NGOs & NGO-logins.
 
 ## Systemd Service
 
