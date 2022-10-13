@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { useLocationStore } from '../../lib/geo/LocationStore'
 import { Supervisors } from '../../codegen/generates'
-import { MapContainer, MapConsumer, TileLayer, Circle, Popup } from 'react-leaflet'
+import { MapContainer, useMap, TileLayer, Circle, Popup } from 'react-leaflet'
+import { useEffect } from 'react'
 import 'leaflet/dist/leaflet.css'
 
 const radius_default_km = 25
@@ -11,6 +12,17 @@ const radius_maximum_km = 100  // only applied to supervisors
 function radius(diameter_km: number|null|undefined) {
   return 1000* Math.max(radium_minimum_km,
                         diameter_km && diameter_km/2 || radius_default_km)
+}
+
+function RecenterMap({lon, lat, zoom}: {lon:number, lat:number, zoom:number}) {
+  /** MapContainer on rerendering keeps the old ref, so we need change this options explicitly. **/
+  const map = useMap()
+
+  useEffect( () => {
+    map.setView([lat, lon], zoom)
+  }, [lat, lon, zoom])
+
+  return null
 }
 
 export default function LocationResult({filteredSupervisors}: {filteredSupervisors: Supervisors[]}) {
@@ -25,12 +37,8 @@ export default function LocationResult({filteredSupervisors}: {filteredSuperviso
     <>
       { lat && lon &&
         <MapContainer center={[lat, lon]} zoom={zoom} style={{width:"100%", height:"50vh"}}>
-          <MapConsumer>
-            {(map) => { /** MapContainer on rerendering keeps the old ref, so we need change this options explicitly. **/
-  		      lon && lat && map.setView([lat, lon], zoom)
-                        return null
-                      }}
-          </MapConsumer>
+          <RecenterMap lon={lon} lat={lat} zoom={zoom}/>
+
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
   
           <Circle center={[lat, lon]}

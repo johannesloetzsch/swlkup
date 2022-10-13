@@ -123,11 +123,11 @@ export default function SupervisorEdit() {
         <form onSubmit={ async event => { event.preventDefault()
 		                          const {data, errors} = validate()
 		                          remove()  /** we want delete the cache between calculation based on this data and mutation **/
-					  !has_errors(errors)
-					  && await mutate(auth, {...data.supervisor,
-							         location: {country, city, zip, type, importance, display_name, lat, lon, diameter}})
-					  && refetch()
-	                                  && jump_top() }
+					  const mutated = !has_errors(errors)
+					                  && await mutate(auth, {...data.supervisor,
+							                         location: {country, city, zip, type, importance, display_name, lat, lon, diameter}})
+					  mutated && refetch()
+	                                  mutated && jump_top() }
                        } id="supervisor_form">
   
           <fieldset>

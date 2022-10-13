@@ -29,9 +29,9 @@ export function InviteSupervisor() {
       <form onSubmit={ async event => { event.preventDefault()
                                         const mail = (document.getElementsByName('supervisor_email')[0] as HTMLInputElement).value
 					remove()
-					await mutate(auth, mail)
-                                        && refetch()
-                                        && (document.getElementById('invitation_form') as HTMLFormElement).reset() }}
+					const mutated = await mutate(auth, mail)
+                                        mutated && refetch()
+                                        mutated && (document.getElementById('invitation_form') as HTMLFormElement).reset() }}
 	    id="invitation_form">
         <fieldset>
 	  <legend>{ t('Invite a new Supervisor') }</legend>

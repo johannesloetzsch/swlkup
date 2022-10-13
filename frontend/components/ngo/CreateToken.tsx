@@ -30,9 +30,9 @@ export function CreateToken() {
       <form onSubmit={ async event => { event.preventDefault()
                                         const purpose = (document.getElementsByName('purpose')[0] as HTMLInputElement).value
 					remove()
-					await mutate(auth, purpose)
-                                        && refetch()
-                                        && (document.getElementById('token_form') as HTMLFormElement).reset() }}
+					const mutated = await mutate(auth, purpose)
+                                        mutated && refetch()
+                                        mutated && (document.getElementById('token_form') as HTMLFormElement).reset() }}
 	    id="token_form">
         <fieldset>
 	  <legend>{ t('Create a new Token') }</legend>
