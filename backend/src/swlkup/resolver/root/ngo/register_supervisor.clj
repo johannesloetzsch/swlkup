@@ -47,3 +47,8 @@
                                            "Password: " password)})))))))
 
 (s/def ::supervisor_register (t/resolver #'supervisor_register))
+
+(comment
+  (let [password (generate-password)
+        password:hash (hash-password password)]
+       (println password:hash password)))
