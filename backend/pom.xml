@@ -4,7 +4,7 @@
   <groupId>swlkup-backend</groupId>
   <artifactId>swlkup-backend</artifactId>
   <packaging>jar</packaging>
-  <version>0.3.3</version>
+  <version>1.0.0</version>
   <name>swlkup-backend</name>
   <description>supervisor lookup backend</description>
   <scm/>
@@ -71,7 +71,7 @@
     <dependency>
       <groupId>mount</groupId>
       <artifactId>mount</artifactId>
-      <version>0.1.16</version>
+      <version>0.1.17</version>
     </dependency>
     <dependency>
       <groupId>spootnik</groupId>
@@ -81,12 +81,12 @@
     <dependency>
       <groupId>com.xtdb</groupId>
       <artifactId>xtdb-core</artifactId>
-      <version>1.22.0</version>
+      <version>1.23.1</version>
     </dependency>
     <dependency>
       <groupId>com.xtdb</groupId>
       <artifactId>xtdb-rocksdb</artifactId>
-      <version>1.22.0</version>
+      <version>1.23.1</version>
     </dependency>
     <dependency>
       <groupId>org.clojars.johannesloetzsch</groupId>
@@ -107,17 +107,17 @@
     <dependency>
       <groupId>ring</groupId>
       <artifactId>ring-core</artifactId>
-      <version>1.9.6</version>
+      <version>1.10.0</version>
     </dependency>
     <dependency>
       <groupId>ring</groupId>
       <artifactId>ring-jetty-adapter</artifactId>
-      <version>1.9.6</version>
+      <version>1.10.0</version>
     </dependency>
     <dependency>
       <groupId>ring</groupId>
       <artifactId>ring-devel</artifactId>
-      <version>1.9.6</version>
+      <version>1.10.0</version>
     </dependency>
     <dependency>
       <groupId>ring-cors</groupId>
@@ -153,12 +153,12 @@
     <dependency>
       <groupId>cryptohash-clj</groupId>
       <artifactId>cryptohash-clj</artifactId>
-      <version>0.1.10</version>
+      <version>0.1.11</version>
     </dependency>
     <dependency>
       <groupId>likid_geimfari</groupId>
       <artifactId>secrets</artifactId>
-      <version>2.1.0</version>
+      <version>2.1.1</version>
     </dependency>
     <dependency>
       <groupId>crypto-random</groupId>
@@ -184,7 +184,7 @@
     <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>webjars-locator</artifactId>
-      <version>0.45</version>
+      <version>0.46</version>
     </dependency>
     <dependency>
       <groupId>org.webjars</groupId>
@@ -241,12 +241,12 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>2.0.3</version>
+      <version>2.0.7</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
-      <version>2.0.3</version>
+      <version>2.0.7</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>

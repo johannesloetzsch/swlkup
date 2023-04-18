@@ -3,7 +3,8 @@ import styles_core from '../../styles/Core.module.css'
 import { Login, useAuthStore, AuthState, jwtFromLocalStorage } from '../../components/Login'
 import { useSupervisorGetQuery, Offers, SupervisorInput, Supervisors, Supervisor_Get } from '../../codegen/generates'
 import { fetcher } from '../../codegen/fetcher'
-import { useTranslation, Trans, TFunction } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
+import { TFunction } from 'i18next'
 import constants from '../../i18n/const.json'
 import { sort } from '../../components/LanguageSelection'
 import { ProfileStatus } from '../../components/supervisor/ProfileStatus'
