@@ -41,6 +41,7 @@ function validate() {
   const formArray = form && Array.from(formData)
   const supervisor = {'deactivated': false,  /** When pressing `Save and Publish`, the profile will be activated **/
 	              'name_full': formObject?.name_full as string,
+	              'text_job_title': formObject?.text_job_title as string,
 	              'text_specialization': formObject?.text_specialization as string,
                       'text': formObject?.text as string,
                       'contacts': {'phone': formObject?.phone as string,
@@ -200,12 +201,19 @@ export default function SupervisorEdit() {
 	      <tr>
 		<td>{ t('job_title') }</td>
                 <td style={{width: "50%"}}>
-		  <input type="text" name="text_job_title" defaultValue={"TODO"/*supervisor?.text_specialization || undefined*/} required={true}/>
+		  <input type="text" name="text_job_title" defaultValue={supervisor?.text_job_title || undefined} required={false /*TODO*/}/>
+		</td>
+	      </tr>
+	      <tr>
+		<td colSpan={2}>
+		  <div className={styles_core.explanation}>
+		    { t('job_title_examples') }
+		  </div>
 		</td>
 	      </tr>
 	      <tr>
 		<td>{ t('Specialization') }</td>
-                <td rowSpan={2} style={{width: "50%"}}>
+                <td style={{width: "50%"}}>
 		  <input type="text" name="text_specialization" defaultValue={supervisor?.text_specialization || undefined} required={true}/>
 		</td>
 	      </tr>

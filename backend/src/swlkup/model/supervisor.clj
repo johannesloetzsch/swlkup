@@ -18,6 +18,7 @@
 (defn db->graphql [doc]
   (-> (assoc doc :id (:xt/id doc))
       (assoc-missing-opt :photo)
+      (assoc-missing-opt :text_job_title)
       (assoc-missing-opt :text_specialization)
       (assoc-missing-opt :text)
       (update :location #(-> %
@@ -54,6 +55,7 @@
                                      ::contacts/contacts]
                             :opt-un [::location/location
                                      ::photo
+                                     ::text_job_title
                                      ::text_specialization
                                      ::text
                                      ::deactivated
@@ -74,6 +76,7 @@
                      ]
             :opt-un [;::location/location
                      ::photo
+                     ::text_job_title
                      ::text_specialization
                      ::text])
 
