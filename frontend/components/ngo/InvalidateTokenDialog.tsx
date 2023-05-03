@@ -1,6 +1,6 @@
 import { useAuthStore, AuthState } from '../Login'
 import { fetcher } from '../../codegen/fetcher'
-import { useNgoQuery, Created_Tokens } from '../../codegen/generates'
+import { Created_Tokens } from '../../codegen/generates'
 import { useTranslation } from 'react-i18next';
 import create from 'zustand'
 

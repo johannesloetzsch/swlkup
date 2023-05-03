@@ -22,6 +22,7 @@
             [swlkup.resolver.root.ngo.create-token :refer [create_token]]
             [swlkup.resolver.root.ngo.created-tokens :refer [created_tokens]]
             [swlkup.resolver.root.ngo.invalidate-token :refer [invalidate_token]]
+            [swlkup.resolver.root.ngo.supervisor-password-reset :refer [supervisor_password_reset]]
             ;; admin passphrase
             [swlkup.resolver.root.admin.export :refer [export]]))
 
@@ -39,7 +40,8 @@
                                     :supervisor_delete #'supervisor_delete
                                     :supervisor_deactivate #'supervisor_deactivate
                                     :create_token #'create_token
-                                    :invalidate_token #'invalidate_token}}))
+                                    :invalidate_token #'invalidate_token
+                                    :supervisor_password_reset #'supervisor_password_reset}}))
 
 (defn ->graphql
   "Create a wrapped graphql-executor, that merges context into the request.

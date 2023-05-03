@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
 import { useAuthStore, AuthState, jwtFromLocalStorage } from '../Login'
+import { SupervisorPasswordReset } from './SupervisorPasswordReset'
 import { fetcher } from '../../codegen/fetcher'
-import { useNgoQuery } from '../../codegen/generates'
-import { useTranslation, Trans } from 'react-i18next';
+import { useNgoQuery, Supervisors_Registered } from '../../codegen/generates'
+import { useTranslation } from 'react-i18next';
+import {Supervisor} from '../user/Supervisor'
 
 async function mutate(auth: AuthState, mail: string) {
   const result = await fetcher<any, any>(`mutation Invite($auth: Auth!, $mail: String) {
@@ -20,8 +22,8 @@ export function InviteSupervisor() {
   }, [auth.jwt])
 
   const { data, remove, refetch } = useNgoQuery({auth}, {enabled: Boolean(auth.jwt)})
-  const registered_active = data?.supervisors_registered?.filter(s => s.name_full) 
-  const registered_new = data?.supervisors_registered?.filter(s => !s.name_full) 
+  const registered_active = data?.supervisors_registered?.filter((s: Supervisors_Registered) => s.name_full)
+  const registered_new = data?.supervisors_registered?.filter((s: Supervisors_Registered) => !s.name_full)
 
   return auth.jwt && (
     <div style={{width: "100%"}}>
@@ -43,13 +45,23 @@ export function InviteSupervisor() {
         { Boolean(registered_active?.length) &&
           <>
             <h4>{registered_active?.length} { t('Active registered supervisors') }:</h4>
-            <p>{ registered_active?.map(s => s.name_full + ' (' + s.mail + ')').join(', ') }</p>
+	    { registered_active?.map((s: Supervisors_Registered) =>
+              <p>
+	        { s.name_full + ' (' + s.mail + ')' } &nbsp;
+	        <SupervisorPasswordReset supervisor={s.mail} />
+	      </p>
+	    ) }
           </>
         }
         { Boolean(registered_new?.length) &&
           <>
             <h5>{registered_new?.length} { t('New registered supervisors') }:</h5>
-            <p>{ registered_new?.map(s => s.mail).join(', ') }</p>
+            { registered_new?.map((s: Supervisors_Registered) =>
+	      <p>
+		{ s.mail } &nbsp;
+	        <SupervisorPasswordReset supervisor={s.mail} />
+	      </p>
+	    ) }
           </>
         }
       </form>

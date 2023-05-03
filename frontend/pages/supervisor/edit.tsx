@@ -198,13 +198,19 @@ export default function SupervisorEdit() {
                 <td><input type="text" name="name_full" defaultValue={supervisor?.name_full || undefined} required={true}/></td>
 	      </tr>
 	      <tr>
+		<td>{ t('job_title') }</td>
+                <td style={{width: "50%"}}>
+		  <input type="text" name="text_job_title" defaultValue={"TODO"/*supervisor?.text_specialization || undefined*/} required={true}/>
+		</td>
+	      </tr>
+	      <tr>
 		<td>{ t('Specialization') }</td>
                 <td rowSpan={2} style={{width: "50%"}}>
 		  <input type="text" name="text_specialization" defaultValue={supervisor?.text_specialization || undefined} required={true}/>
 		</td>
 	      </tr>
 	      <tr>
-		<td>
+		<td colSpan={2}>
 		  <div className={styles_core.explanation}>
 		    { t('Specialization_examples') }
 		  </div>
