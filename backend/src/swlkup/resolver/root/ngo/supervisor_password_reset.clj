@@ -31,7 +31,7 @@
                t (when login
                       (tx_sync [[:xtdb.api/put (assoc login
                                                       :password-hash password-hash)]]))]
-              (when (tx-committed? t)
+              (when (and t (tx-committed? t))
                     {:mail (:mail login) :password password})))))
 
 (s/def ::supervisor_password_reset (t/resolver #'supervisor_password_reset))

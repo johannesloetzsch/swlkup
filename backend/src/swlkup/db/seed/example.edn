@@ -165,6 +165,7 @@
 
  {:xt/id "login_max_mueller"
   :xt/spec :swlkup.model.login/doc
+  :invited-by "example_ngo"
   :mail "praxis@max.mueller.de"
   :password-hash "100$12$argon2id$v13$hq47jacLIYoiNMD9kdyy+w$ISDi+bSSTmsgqu648LQLv7ySU+lG2VGKRfa06HNfjzk$$$" #_"i!A;z\"'^G3Q)w])%83)" }
 

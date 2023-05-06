@@ -1,4 +1,4 @@
-(ns swlkup.resolver.login
+(ns swlkup.resolver.login-test
   (:require [clojure.test :refer [use-fixtures deftest is]]
             [mount.core :as mount]
             [swlkup.resolver.core :refer [graphql]]
