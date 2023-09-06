@@ -21,6 +21,7 @@
       (assoc-missing-opt :text_job_title)
       (assoc-missing-opt :text_specialization)
       (assoc-missing-opt :text)
+      (assoc-missing-opt :experience)
       (update :location #(-> %
                              (assoc-missing-opt :country)
                              (assoc-missing-opt :city)
@@ -46,6 +47,8 @@
 
 (s/def ::ngo (t/field (s/nilable t/string) "NGO-id, if the user is allowd to administrate an ngo"))
 
+;(s/def ::experience #{"trainee" "career entrant" "experienced"})  ;; TODO
+
 (s/def ::supervisor (s/keys :req-un [::id
                                      ::deactivated
                                      ::ngos
@@ -58,6 +61,7 @@
                                      ::text_job_title
                                      ::text_specialization
                                      ::text
+                                     ::experience
                                      ::deactivated
                                      ::ngo]))
 
@@ -78,7 +82,8 @@
                      ::photo
                      ::text_job_title
                      ::text_specialization
-                     ::text])
+                     ::text
+                     ::experience])
 
 (s/def ::supervisor_input SupervisorInput)
 

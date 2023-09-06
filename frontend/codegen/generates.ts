@@ -203,6 +203,7 @@ export type SupervisorInput = {
   /** Self descriptive. */
   contacts: ContactsInput;
   deactivated?: InputMaybe<Scalars['Boolean']>;
+  experience?: InputMaybe<Scalars['String']>;
   languages: Array<Scalars['String']>;
   /** Self descriptive. */
   location: LocationInput;
@@ -297,6 +298,7 @@ export type Supervisor_Get = {
   /** Self descriptive. */
   contacts: Contacts;
   deactivated?: Maybe<Scalars['Boolean']>;
+  experience?: Maybe<Scalars['String']>;
   /** Self descriptive. */
   id: Scalars['String'];
   languages: Array<Scalars['String']>;
@@ -330,6 +332,7 @@ export type Supervisors = {
   /** Self descriptive. */
   contacts: Contacts;
   deactivated?: Maybe<Scalars['Boolean']>;
+  experience?: Maybe<Scalars['String']>;
   /** Self descriptive. */
   id: Scalars['String'];
   languages: Array<Scalars['String']>;
@@ -373,14 +376,14 @@ export type LookupQueryVariables = Exact<{
 }>;
 
 
-export type LookupQuery = { __typename?: 'QueryType', lookup: { __typename?: 'lookup', valid: boolean, ngo?: { __typename?: 'ngo', name?: string | null } | null, supervisors?: Array<{ __typename?: 'supervisors', id: string, name_full: string, photo?: string | null, languages: Array<string>, offers: Array<string>, text_job_title?: string | null, text_specialization?: string | null, text?: string | null, contacts: { __typename?: 'Contacts', phone?: string | null, email?: string | null, website?: string | null }, location: { __typename?: 'Location', country?: string | null, city?: string | null, zip?: string | null, type?: string | null, importance?: number | null, display_name?: string | null, lat?: number | null, lon?: number | null, diameter?: number | null } }> | null }, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }> };
+export type LookupQuery = { __typename?: 'QueryType', lookup: { __typename?: 'lookup', valid: boolean, ngo?: { __typename?: 'ngo', name?: string | null } | null, supervisors?: Array<{ __typename?: 'supervisors', id: string, name_full: string, photo?: string | null, languages: Array<string>, offers: Array<string>, text_job_title?: string | null, text_specialization?: string | null, text?: string | null, experience?: string | null, contacts: { __typename?: 'Contacts', phone?: string | null, email?: string | null, website?: string | null }, location: { __typename?: 'Location', country?: string | null, city?: string | null, zip?: string | null, type?: string | null, importance?: number | null, display_name?: string | null, lat?: number | null, lon?: number | null, diameter?: number | null } }> | null }, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }> };
 
 export type SupervisorGetQueryVariables = Exact<{
   auth: Auth;
 }>;
 
 
-export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, deactivated?: boolean | null, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, text_job_title?: string | null, text_specialization?: string | null, text?: string | null, ngo?: string | null, contacts: { __typename?: 'Contacts', phone?: string | null, website?: string | null, email?: string | null }, location: { __typename?: 'Location', country?: string | null, city?: string | null, zip?: string | null, type?: string | null, importance?: number | null, display_name?: string | null, lat?: number | null, lon?: number | null, diameter?: number | null } } | null, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }>, ngos: Array<{ __typename?: 'ngos', id?: string | null, name?: string | null }> };
+export type SupervisorGetQuery = { __typename?: 'QueryType', supervisor_get?: { __typename?: 'supervisor_get', id: string, deactivated?: boolean | null, ngos: any, name_full: string, languages: Array<string>, offers: Array<string>, text_job_title?: string | null, text_specialization?: string | null, text?: string | null, experience?: string | null, ngo?: string | null, contacts: { __typename?: 'Contacts', phone?: string | null, website?: string | null, email?: string | null }, location: { __typename?: 'Location', country?: string | null, city?: string | null, zip?: string | null, type?: string | null, importance?: number | null, display_name?: string | null, lat?: number | null, lon?: number | null, diameter?: number | null } } | null, languages: Array<{ __typename?: 'languages', id: string, name: string, flag_url: string, idx: number }>, offers: Array<{ __typename?: 'offers', id: string, target: string, idx: number }>, ngos: Array<{ __typename?: 'ngos', id?: string | null, name?: string | null }> };
 
 export type SupervisorGetPhotoQueryVariables = Exact<{
   auth: Auth;
@@ -459,6 +462,7 @@ export const LookupDocument = `
       text_job_title
       text_specialization
       text
+      experience
       location {
         country
         city
@@ -525,6 +529,7 @@ export const SupervisorGetDocument = `
     text_job_title
     text_specialization
     text
+    experience
     ngo
   }
   languages {

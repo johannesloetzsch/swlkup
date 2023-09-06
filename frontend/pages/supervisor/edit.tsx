@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import styles_core from '../../styles/Core.module.css'
 import { Login, useAuthStore, AuthState, jwtFromLocalStorage } from '../../components/Login'
-import { useSupervisorGetQuery, Offers, SupervisorInput, Supervisors, Supervisor_Get } from '../../codegen/generates'
+import { useSupervisorGetQuery, Offers, SupervisorInput, Supervisors } from '../../codegen/generates'
 import { fetcher } from '../../codegen/fetcher'
 import { useTranslation, Trans } from 'react-i18next';
 import { TFunction } from 'i18next'
@@ -44,6 +44,7 @@ function validate() {
 	              'text_job_title': formObject?.text_job_title as string,
 	              'text_specialization': formObject?.text_specialization as string,
                       'text': formObject?.text as string,
+		      "experience": formObject?.experience as string,
                       'contacts': {'phone': formObject?.phone as string,
 				   'email': formObject?.email as string,
 			           'website': formObject?.website as string},
@@ -222,6 +223,16 @@ export default function SupervisorEdit() {
 		  <div className={styles_core.explanation}>
 		    { t('Specialization_examples') }
 		  </div>
+		</td>
+	      </tr>
+	      <tr>
+		<td>{ t('Experience') }</td>
+                <td style={{width: "50%"}}>
+	          <select name="experience" defaultValue={supervisor?.experience || undefined} required={false /*TODO*/}>
+		    { ["", "trainee", "career entrant", "experienced"].map( value =>
+                      <option value={value}>{ t(value) }</option>
+		    ) }
+                  </select>
 		</td>
 	      </tr>
               <tr>
