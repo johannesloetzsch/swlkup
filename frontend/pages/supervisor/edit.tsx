@@ -39,19 +39,20 @@ function validate() {
   const formData = form && new FormData(form)
   const formObject = form && Object.fromEntries(formData)
   const formArray = form && Array.from(formData)
-  const supervisor = {'deactivated': false,  /** When pressing `Save and Publish`, the profile will be activated **/
-	              'name_full': formObject?.name_full as string,
-	              'text_job_title': formObject?.text_job_title as string,
-	              'text_specialization': formObject?.text_specialization as string,
-                      'text': formObject?.text as string,
-		      "experience": formObject?.experience as string,
-                      'contacts': {'phone': formObject?.phone as string,
-				   'email': formObject?.email as string,
-			           'website': formObject?.website as string},
-		      //'location': {'zip': formObject?.zip},
-                      'languages': formArray?.filter(x => x[0] == 'language').map(x => x[1]) as string[],
-                      'offers': formArray?.filter(x => x[0] == 'offer').map(x => x[1]) as string[],
-                      'ngos': formObject?.all_ngos === 'true' ? 'any' : formArray?.filter(x => x[0] == 'ngos').map(x => x[1]) as string[]}
+  const supervisor = {deactivated: false,  /** When pressing `Save and Publish`, the profile will be activated **/
+	              name_full: formObject?.name_full as string,
+	              text_job_title: formObject?.text_job_title as string,
+	              text_specialization: formObject?.text_specialization as string,
+                      text: formObject?.text as string,
+		      experience: formObject?.experience as string,
+                      contacts: {'phone': formObject?.phone as string,
+			         'email': formObject?.email as string,
+			         'website': formObject?.website as string},
+		      //location: {'zip': formObject?.zip},
+                      languages: formArray?.filter(x => x[0] == 'language').map(x => x[1]) as string[],
+                      offers: formArray?.filter(x => x[0] == 'offer').map(x => x[1]) as string[],
+                      ngos: formObject?.all_ngos === 'true' ? 'any' : formArray?.filter(x => x[0] == 'ngos').map(x => x[1]) as string[],
+                      wants_newsletter: Boolean(formObject?.wants_newsletter) }
 
   const errors = {email: supervisor.contacts.phone || supervisor.contacts.email ? '' : 'Please provide a phone number or an email address.',
                   language: supervisor.languages?.length ? '' : 'Please select at least one language.',
@@ -271,6 +272,12 @@ export default function SupervisorEdit() {
           </fieldset><br/>
 
           <div style={{textAlign: "right"}}>
+	    <p>
+              <label>
+                <input type="checkbox" name="wants_newsletter" defaultChecked={supervisor?.wants_newsletter||undefined}/>
+		{ t('I would like to receive our newsletter.') }
+              </label>
+	    </p>
 	    <label>
               <input type="checkbox" required name="confirm_privacy_policy"/>
               <Trans i18nKey="confirm_privacy_policy" values={constants}>text <a href={constants.url_privacy_policy}>privacy_policy</a></Trans>

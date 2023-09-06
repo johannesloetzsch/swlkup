@@ -37,6 +37,7 @@ export const lookup = gql`
         text_specialization
         text
 	experience
+	wants_newsletter
         location {
           country city zip
           type importance display_name lat lon diameter
@@ -82,6 +83,8 @@ export const supervisor_get = gql`
       experience
 
       ngo
+
+      wants_newsletter
     }
 
     languages {

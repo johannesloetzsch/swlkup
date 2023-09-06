@@ -22,6 +22,7 @@
       (assoc-missing-opt :text_specialization)
       (assoc-missing-opt :text)
       (assoc-missing-opt :experience)
+      (assoc-missing-opt :wants_newsletter)
       (update :location #(-> %
                              (assoc-missing-opt :country)
                              (assoc-missing-opt :city)
@@ -40,6 +41,8 @@
 
 (s/def ::languages (t/field (s/* ::languages/id) ""))
 (s/def ::offers (t/field (s/coll-of ::offers/id) ""))
+
+(s/def ::wants_newsletter (s/nilable t/boolean))
 
 (s/def ::photo (t/field (s/nilable t/string) "URL, relative to `backend-base-url`"))
 
@@ -62,6 +65,7 @@
                                      ::text_specialization
                                      ::text
                                      ::experience
+                                     ::wants_newsletter
                                      ::deactivated
                                      ::ngo]))
 
@@ -83,7 +87,8 @@
                      ::text_job_title
                      ::text_specialization
                      ::text
-                     ::experience])
+                     ::experience
+                     ::wants_newsletter])
 
 (s/def ::supervisor_input SupervisorInput)
 

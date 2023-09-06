@@ -55,7 +55,7 @@ describe('Walk through', () => {
       cy.get($form).submit()
     })
     cy.get('main').contains('registered supervisors')
-    cy.wait(500)  // give the external process `mail` some extra time
+    cy.wait(1000)  // give the external process `mail` some extra time
     cy.exec('cat /tmp/mail.log').then($result => {
       supervisor_password = $result.stdout.split('\n').filter(l => l.startsWith("Password:"))[0].split(' ')[1]
     })
