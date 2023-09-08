@@ -1,7 +1,7 @@
 import styles from '../../styles/Supervisor.module.css'
 import styles_core from '../../styles/Core.module.css'
 import { Languages, LookupQuery, Supervisors, Offers } from '../../codegen/generates'
-import create from 'zustand'
+import { create } from 'zustand'
 import { Checkbox } from '../Checkbox'
 import { useTranslation, Trans } from 'react-i18next';
 import constants from '../../i18n/const.json'

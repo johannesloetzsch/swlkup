@@ -2,7 +2,7 @@ import { useAuthStore, AuthState } from '../Login'
 import { fetcher } from '../../codegen/fetcher'
 import { Created_Tokens } from '../../codegen/generates'
 import { useTranslation } from 'react-i18next';
-import create from 'zustand'
+import { create } from 'zustand'
 
 export interface ConfirmationState {
   openedConfirmationFor: string,

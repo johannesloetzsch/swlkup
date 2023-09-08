@@ -1,7 +1,7 @@
 import { useAuthStore, AuthState } from '../Login'
 import { fetcher } from '../../codegen/fetcher'
 import { useTranslation } from 'react-i18next';
-import create from 'zustand'
+import { create } from 'zustand'
 
 type SupervisorMail = string;
 type SupervisorPassword = string;

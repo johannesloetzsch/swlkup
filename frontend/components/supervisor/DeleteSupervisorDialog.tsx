@@ -1,4 +1,4 @@
-import create from 'zustand'
+import { create } from 'zustand'
 import { useAuthStore, AuthState } from '../../components/Login'
 import { fetcher } from '../../codegen/fetcher'
 import { useTranslation } from 'react-i18next';

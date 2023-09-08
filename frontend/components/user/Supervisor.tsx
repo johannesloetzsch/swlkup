@@ -5,7 +5,7 @@ import { flag } from '../../lib/urls'
 import { useTranslation } from 'react-i18next';
 
 /** Prevent XSS by `script` or `object` urls **/
-function Sanitized_link({href, target='_blank'}: {href: string|null|undefined, target: string|undefined}) {
+function Sanitized_link({href, target='_blank'}: {href: string|null|undefined, target?: string|undefined}) {
   const secure = href && href.startsWith('http')
   const fallback = !secure && href && `https://${href}`
   return (

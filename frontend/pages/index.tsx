@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import create from 'zustand'
+import { create } from 'zustand'
 import { useTranslation, Trans } from 'react-i18next';
 import { Logos } from '../components/logos'
 

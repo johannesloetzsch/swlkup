@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useLoginQuery } from '../codegen/generates'
-import create from 'zustand'
+import { create } from 'zustand'
 import { useTranslation, Trans } from 'react-i18next';
 
 function jwtDecode(jwt: string) {
