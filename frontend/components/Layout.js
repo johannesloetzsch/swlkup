@@ -20,7 +20,7 @@ export default function Layout({children}) {
         <div className={styles.header}>
           <div><LanguageSelection/></div>
           <div className={styles.slogan}>
-            <h1>psych<img src="/favicon.ico" className={styles.favicon}/>logical.<wbr/>contact</h1>
+            <h1>sar-psych<img src="/favicon.ico" className={styles.favicon}/>support.org</h1>
             { t('Find support from the SAR Network') }
           </div>
           <div>{/*Login*/}</div>
