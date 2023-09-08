@@ -1,4 +1,19 @@
-![logo](./frontend/public/favicon.ico)
+<div style="display: flex; align-items: center">
+  <a href="https://sar-psychosupport.org" target="_blank">
+    <img src="./frontend/public/favicon.ico" alt="Sar Psychological Support Network" style="width: 80px"/>
+  </a>
+  used by
+  <a href="https://sea-watch.org" target="_blank">
+   <img src="./frontend/public/img/logos/sea_watch_logo.png" alt="Sea-Watch" style="width: 100px"/>
+  </a>
+  <a href="https://resqship.org" target="_blank">
+    <img src="./frontend/public/img/logos/RESQSHIP.png" alt="RESQSHIP" style="width: 120px"/>
+  </a>
+  <a href="https://mare-go.de" target="_blank">
+    <img src="./frontend/public/img/logos/mare_go_logo_2023.png" alt="MARE*GO" style="width: 100px"/>
+  </a>
+  <br/><br/>
+</div>
 
 Swlkup is an application to manage a database of supervisors and provide anonymous access for authorized users.
 
