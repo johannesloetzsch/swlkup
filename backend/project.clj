@@ -1,4 +1,4 @@
-(defproject swlkup-backend "1.1.0"
+(defproject swlkup-backend "1.2.0"
   :description "supervisor lookup backend"
   :min-lein-version "2.0.0"
   :dependencies [;; core
