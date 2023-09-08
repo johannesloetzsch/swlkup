@@ -16,7 +16,7 @@
     buildMavenRepositoryFromLockFile = mvn2nix-pkgs.legacyPackages.x86_64-linux.buildMavenRepositoryFromLockFile;
   in
   rec {
-    legacyPackages.x86_64-linux = {
+    packages.x86_64-linux = {
       inherit nixpkgs pkgs;
 
       ## Tools
@@ -30,9 +30,11 @@
       backend = import ./backend/nix/swlkup-backend.nix { inherit pkgs buildMavenRepositoryFromLockFile; };
       frontend = import ./frontend/nix/swlkup-frontend.nix { inherit pkgs; };
       fullstack =  import ./backend/nix/swlkup-backend.nix { inherit pkgs buildMavenRepositoryFromLockFile;
-                                                             patchPublic = legacyPackages.x86_64-linux.frontend.staticHTML; };
+                                                             patchPublic = packages.x86_64-linux.frontend.staticHTML; };
     };
 
-    defaultPackage.x86_64-linux = legacyPackages.x86_64-linux.fullstack;
+    defaultPackage.x86_64-linux = packages.x86_64-linux.fullstack;
+
+    devShell.x86_64-linux = import ./shell.nix { inherit pkgs; };
   };
 }
