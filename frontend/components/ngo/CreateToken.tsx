@@ -48,7 +48,9 @@ export function CreateToken() {
 	<>
           <h4>{data?.created_tokens.length} { t('Created Tokens') }:</h4>
           <ul>
-          { data?.created_tokens.map(token =>
+          { data?.created_tokens
+		  .sort((t1, t2) => ((t2.valid ? 1 : 0) - (t1.valid ? 1 : 0)))
+		  .map(token =>
               <li key={token.token} style={{textDecoration: token.valid ? "none" : "line-through"}}>
                 <a href={config.base_url+"/token/"+token.token} style={{fontFamily: "monospace"}} className={`token_${token.valid ? 'valid' : 'invalid'}`}>{token.token}</a>
                 { token.purpose && " - " + token.purpose }
